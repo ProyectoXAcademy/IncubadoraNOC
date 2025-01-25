@@ -1,0 +1,7 @@
+## Ignora node_modules en ambas carpetas
+**/node_modules
+
+back/.env
+front/.vscode/
+front/.angular/
+front/.editorconfig
