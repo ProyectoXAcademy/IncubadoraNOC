@@ -11,7 +11,7 @@ const userRoleModel = dbConfig.sequelize.define("UserRoles", {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'User',
+            model: 'Users',
             key: 'user_id'
         }
     },
@@ -19,7 +19,7 @@ const userRoleModel = dbConfig.sequelize.define("UserRoles", {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Role',
+            model: 'Roles',
             key: 'role_id'
         }
     }

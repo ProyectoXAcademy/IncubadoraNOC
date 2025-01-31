@@ -32,7 +32,7 @@ const courseModel = dbConfig.sequelize.define("Courses", {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'User',
+            model: 'Users',
             key: 'user_id'
         }
     },
