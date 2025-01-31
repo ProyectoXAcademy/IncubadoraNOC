@@ -1,7 +1,7 @@
-import { DataTypes } from "sequelize";
-import { dbConfig } from "../Config";
+const {DataTypes} = require('sequelize')
+const {dbConfig} = require('../Config')
 
-const RoleModel = dbConfig.sequelize.define("Roles", {
+const roleModel = dbConfig.sequelize.define("Roles", {
     role_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -15,4 +15,4 @@ const RoleModel = dbConfig.sequelize.define("Roles", {
     timestamps: false
 })
 
-module.exports = RoleModel
+module.exports = roleModel

@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import { dbConfig } from "../Config";
+const {DataTypes} = require('sequelize')
+const {dbConfig} = require('../Config')
 
 const courseModel = dbConfig.sequelize.define("Courses", {
     course_id: {

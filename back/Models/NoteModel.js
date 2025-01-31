@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import { dbConfig } from "../Config";
+const {DataTypes} = require('sequelize')
+const {dbConfig} = require('../Config')
 
 const noteModel = dbConfig.sequelize.define("Notes", {
     note_id: {
@@ -24,12 +24,12 @@ const noteModel = dbConfig.sequelize.define("Notes", {
             key: 'user_id'
         }
     },
-    teacher_id: {
+    course_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Users',
-            key: 'user_id'
+            model: 'Courses',
+            key: 'course_id'
         }
     }
 

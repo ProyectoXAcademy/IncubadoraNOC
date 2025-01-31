@@ -1,8 +1,7 @@
-import {DataTypes} from 'sequelize'
-import {dbConfig} from '../Config'
-import { userModel } from '.'
+const {DataTypes} = require('sequelize')
+const {dbConfig} = require('../Config')
 
-const UserModel = dbConfig.sequelize.define('Users', {
+const userModel = dbConfig.sequelize.define("Users", {
     user_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -32,7 +31,7 @@ const UserModel = dbConfig.sequelize.define('Users', {
     password: {
         type: DataTypes.STRING,
         allowNull: false
-    }
+    },
 }, {
     timestamps: false
 })

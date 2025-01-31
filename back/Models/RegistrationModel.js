@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import { dbConfig } from "../Config";
+const {DataTypes} = require('sequelize')
+const {dbConfig} = require('../Config')
 
 //Es el modelo de la entidad Inscripción
 const registrationModel = dbConfig.sequelize.define("Registrations", {
