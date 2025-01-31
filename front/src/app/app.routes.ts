@@ -7,8 +7,8 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
 export const routes: Routes = [
     {path:'', component:HomeComponent},
     // Rutas de autenticación
-    {path:'/register', component:RegisterComponent},
-    {path:'/login', component:LoginComponent},
+    {path:'register', component:RegisterComponent},
+    {path:'login', component:LoginComponent},
     // Ruta comodín para manejar rutas no encontradas
     { path: '**', component: NotFoundComponent }
 
