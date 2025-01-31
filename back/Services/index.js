@@ -1,3 +1,11 @@
-const firstService = require('./firstService')
+const userService = require('./userService')
+const roleService = require('./roleService')
+const userRoleService = require('./userRoleService')
+const courseService = require('./courseService')
+const registrationService = require('./registrationService')
+const noteService = require('./noteService')
+const paymentService = require('./paymentService')
+const assistanceService = require('./assistanceService')
+const publicationService = require('./publicationService')
 
-module.exports = {firstService}
+module.exports = {userService, roleService, userRoleService, courseService, registrationService, noteService, paymentService, assistanceService, publicationService}

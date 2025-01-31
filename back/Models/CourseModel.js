@@ -35,6 +35,10 @@ const courseModel = dbConfig.sequelize.define("Courses", {
             model: 'User',
             key: 'user_id'
         }
+    },
+    active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
     }
 }, {
     timestamps: false
