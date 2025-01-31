@@ -115,3 +115,33 @@ body {
 .links a:hover {
     text-decoration: underline;
 }
+/* Responsividad */
+@media (max-width: 600px) {
+    .content {
+        flex-direction: column;
+        max-width: 90%;
+    }
+
+    .video {
+        width: 100%;
+        height: auto;
+    }
+
+    .form-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .input-group input {
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
