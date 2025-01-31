@@ -1,33 +1,90 @@
 /* Reset básico */
+
+/*
+colores
+violeta: #6564CC
+azul: #00339E
+azul oscuro: #010163
+naranja: #FC6A07
+
+*/
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     text-align: center;
   }
-  
- 
 
-  
-  nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 20px;
+  *{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: white;
-  }
-  
 
-  
+.borde{
+  border: 1px solid #000;
+}
+
+.presentation{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+
+
+
+}
+.presentation-img{
+  width: 500px;
+  height: 500px;
+  background-image: url('../../assets/logo.png');
+  background-size: contain; 
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.presentation-tit{
+  height: 500px;
+  width: 600px;
+  align-content: center;
+  padding: 24px ;
+}
+.presentation h1{
+  font-size: 2.5rem;
+  background-image: linear-gradient(to right, #010163,#00339E ,#6564CC);
+  -webkit-background-clip: text; 
+  color: transparent; 
+}
+
+/* caract */
+.caract{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.caract-cont{
+  height: 120px;
+  width: 550px;
+  margin: 16px;
+  padding: 16px;
+  border: 1px solid #FC6A0750;
+  border-radius: 5px;
+}
+
+.caract-cont h2{
+  padding: 0 0 4px 0;
+}
+
+
   /* Hero */
-  .hero {
+  .courses {
     background: url('https://source.unsplash.com/1600x900/?education') no-repeat center center/cover;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 80px 20px;
+    height: 200px;
   }
   
   .hero h1 {
