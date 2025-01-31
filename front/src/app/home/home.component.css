@@ -1,0 +1,82 @@
+/* Reset básico */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+ 
+
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+  }
+  
+
+  
+  /* Hero */
+  .hero {
+    background: url('https://source.unsplash.com/1600x900/?education') no-repeat center center/cover;
+    color: white;
+    padding: 80px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+  }
+  
+  .cta {
+    padding: 10px 20px;
+    background: #f39c12;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  
+  /* Cursos Destacados */
+  .cursos-destacados {
+    padding: 50px 20px;
+  }
+  
+  .cursos-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .curso {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 5px;
+    width: 200px;
+  }
+  
+  .curso:hover{
+    background-color: #989d9e;
+  }
+  /* Beneficios */
+  .beneficios {
+    background: #dfe6e9;
+    padding: 30px;
+  }
+  
+  .beneficios ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .beneficios li {
+    font-size: 18px;
+  }
+  
