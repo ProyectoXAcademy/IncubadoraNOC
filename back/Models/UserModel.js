@@ -1,7 +1,8 @@
 import {DataTypes} from 'sequelize'
 import {dbConfig} from '../Config'
+import { userModel } from '.'
 
-const UserModel = dbConfig.sequelize.define('User', {
+const UserModel = dbConfig.sequelize.define('Users', {
     user_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -36,4 +37,4 @@ const UserModel = dbConfig.sequelize.define('User', {
     timestamps: false
 })
 
-module.exports = {UserModel}
+module.exports = userModel
