@@ -6,22 +6,7 @@ const userRoleModel = dbConfig.sequelize.define("UserRoles", {
         type: DataTypes.INTEGER,
         primaryKey: true,
         unique: true,
-    },
-    user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'Users',
-            key: 'user_id'
-        }
-    },
-    role_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'Roles',
-            key: 'role_id'
-        }
+        autoIncrement: true
     }
 }, {
     timestamps: false

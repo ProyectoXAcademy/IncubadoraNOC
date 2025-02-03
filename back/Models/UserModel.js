@@ -6,7 +6,8 @@ const userModel = dbConfig.sequelize.define("Users", {
         type: DataTypes.INTEGER,
         primaryKey: true,
         unique: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     name: {
         type: DataTypes.STRING,

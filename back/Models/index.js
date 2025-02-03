@@ -11,8 +11,12 @@ const publicationModel = require('./PublicationModel')
 // Relaciones entre modelos
 
 // Un usuario puede tener varios roles y un rol puede estar asignado a varios usuarios (muchos a muchos)
-userModel.belongsToMany(roleModel, {through: 'userRoles'})
-roleModel.belongsToMany(userRoleModel, {through: 'userRoles'})
+userModel.belongsToMany(roleModel, {through: 'UserRoles'})
+roleModel.belongsToMany(userModel, {through: 'UserRoles'})
+
+// Un usuario puede tener una o varias inscripciones y/o asistencias
+userModel.hasMany(assistanceModel)
+userModel.hasMany(registrationModel)
 
 // Un curso tiene un docente asignado
 courseModel.belongsTo(userModel, {foreignKey: 'teacher_id'})
@@ -22,19 +26,19 @@ assistanceModel.belongsTo(userModel, {foreignKey: 'student_id'})
 assistanceModel.belongsTo(courseModel, {foreignKey: 'course_id'})
 
 // Una nota tiene asignado un estudiante y un curso
-noteModel.belongsTo(userModel, {foreignKey: 'user_id'})
+noteModel.belongsTo(userModel, {foreignKey: 'student_id'})
 noteModel.belongsTo(courseModel, {foreignKey: 'course_id'})
 
 // Un pago tiene asignado un estudiante y un curso
-paymentModel.belongsTo(userModel, {foreignKey: 'user_id'})
+paymentModel.belongsTo(userModel, {foreignKey: 'student_id'})
 paymentModel.belongsTo(courseModel, {foreignKey: 'course_id'})
 
 // Una inscripción tiene asignado un estudiante y un curso
-registrationModel.belongsTo(userModel, {foreignKey: 'user_id'})
+registrationModel.belongsTo(userModel, {foreignKey: 'student_id'})
 registrationModel.belongsTo(courseModel, {foreignKey: 'course_id'})
 
 // Una publicación tiene un autor/creador
-publicationModel.belongsTo(userModel, {foreignKey: 'user_id'})
+publicationModel.belongsTo(userModel, {foreignKey: 'owner_id'})
 
 
 module.exports = {userModel, roleModel, userRoleModel, courseModel, noteModel, paymentModel, assistanceModel, registrationModel, publicationModel}

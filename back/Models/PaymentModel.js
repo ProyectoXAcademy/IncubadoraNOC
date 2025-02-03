@@ -6,7 +6,8 @@ const paymentModel = dbConfig.sequelize.define("Payments", {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        unique: true
+        unique: true,
+        autoIncrement: true
     },
     value: {
         type: DataTypes.INTEGER,

@@ -15,4 +15,16 @@ const getRoleById = async (role_id) => {
     }
 }
 
-module.exports = {getRoleById}
+const createRole = async (name) => {
+    try {
+        const newRole = {
+            name: name
+        }
+        await roleModel.create(newRole)
+        return newRole
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {getRoleById, createRole}

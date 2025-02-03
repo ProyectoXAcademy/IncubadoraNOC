@@ -10,4 +10,14 @@ const getPublicationById = async (req, res, next) => {
     }
 }
 
-module.exports = {getPublicationById}
+const createPublication = async (req, res, next) => {
+    try {
+        const {type, title, description, issue_date, owner_id} = req.body
+        const newPublication = await publicationService.createPublication(type, title, description, issue_date, owner_id)
+        res.status(200).json(newPublication)
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {getPublicationById, createPublication}

@@ -6,7 +6,8 @@ const noteModel = dbConfig.sequelize.define("Notes", {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        unique: true
+        unique: true,
+        autoIncrement: true
     },
     value: {
         type: DataTypes.INTEGER,

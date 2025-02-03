@@ -6,7 +6,8 @@ const publicationModel = dbConfig.sequelize.define("Publications", {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        unique: true
+        unique: true,
+        autoIncrement: true
     },
     type: {
         type: DataTypes.STRING,

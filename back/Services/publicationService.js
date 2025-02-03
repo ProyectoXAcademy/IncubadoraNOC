@@ -15,4 +15,20 @@ const getPublicationById = async (publication_id) => {
     }
 }
 
-module.exports = {getPublicationById}
+const createPublication = async (type, title, description, issue_date, owner_id) => {
+    try {
+        const newPublication = {
+            type: type,
+            title: title,
+            description: description,
+            issue_date: issue_date,
+            owner_id: owner_id,
+        }
+        await publicationModel.create(newPublication)
+        return newPublication
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {getPublicationById, createPublication}

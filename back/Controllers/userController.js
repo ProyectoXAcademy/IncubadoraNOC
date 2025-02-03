@@ -10,4 +10,14 @@ const getUserById = async (req, res, next) => {
     }
 }
 
-module.exports = {getUserById}
+const createUser = async (req, res, next) => {
+    try {
+        const {name, lastName, dni, date_of_birth, email, password} = req.body
+        const newUser = await userService.createUser(name, lastName, dni, date_of_birth, email, password)
+        res.status(200).json(newUser)
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {getUserById, createUser}

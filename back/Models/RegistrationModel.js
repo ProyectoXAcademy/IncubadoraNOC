@@ -7,7 +7,8 @@ const registrationModel = dbConfig.sequelize.define("Registrations", {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        unique: true
+        unique: true,
+        autoIncrement: true
     },
     registration_date: {
         type: DataTypes.DATE,

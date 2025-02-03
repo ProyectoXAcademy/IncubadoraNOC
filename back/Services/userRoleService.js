@@ -15,4 +15,17 @@ const getUserRoleById = async (userRole_id) => {
     }
 }
 
-module.exports = {getUserRoleById}
+const createUserRole = async (user_id, role_id) => {
+    try {
+        const newUserRole = {
+            UserUserId: user_id,
+            RoleRoleId: role_id
+        }
+        await userRoleModel.create(newUserRole)
+        return newUserRole
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {getUserRoleById, createUserRole}

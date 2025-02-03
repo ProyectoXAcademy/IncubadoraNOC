@@ -6,7 +6,8 @@ const courseModel = dbConfig.sequelize.define("Courses", {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        unique: true
+        unique: true,
+        autoIncrement: true
     },
     name: {
         type: DataTypes.STRING,

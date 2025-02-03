@@ -6,7 +6,8 @@ const assistanceModel = dbConfig.sequelize.define("Assistances", {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        unique: true
+        unique: true,
+        autoIncrement: true
     },
     course_id: {
         type: DataTypes.INTEGER,
