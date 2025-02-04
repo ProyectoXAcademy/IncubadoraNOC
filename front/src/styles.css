@@ -2,21 +2,30 @@
 
 /*PALETA DE COLORES*/
 :root {
-    --color-violeta: #6564CC;
-    --color-azul: #00339E;
-    --color-azul-oscuro:#010163;
-    --color-naranja: #FC6A07;
-  }
-  
-
-
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  --color-violeta: #6564cc;
+  --color-azul: #00339e;
+  --color-azul-oscuro: #010163;
+  --color-naranja: #fc6a07;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*DARK MODE*/
 .dark-mode {
-    background-color: #121212;
-  }
+  background-color: #121212;
+}
+
+/*DARK MODE LOGIN AND REGISTER*/
+.dark-mode .form-container {
+  background-color: #121212 !important;
+}
+
+.dark-mode .title,
+.dark-mode .input-group label,
+.dark-mode .checkbox-group label {
+  color: white;
+}

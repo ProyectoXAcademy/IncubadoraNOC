@@ -16,7 +16,7 @@ body {
 .content {
     display: flex;
     background: white;
-    box-shadow: 0 4px 10px rgba(0, 128, 0, 0.5);
+    box-shadow: 0 4px 10px var(--color-naranja);
     border-radius: 10px;
     overflow: hidden;
     max-width: 1000px;
@@ -81,7 +81,7 @@ body {
 }
 
 .btn {
-    background: #16a34a;
+    background: var(--color-azul-oscuro);
     color: white;
     padding: 10px;
     border: none;
@@ -97,7 +97,7 @@ body {
 }
 
 .btn:hover {
-    background: #15803d;
+    background: var(--color-azul-oscuro);
 }
 
 .links {
@@ -107,7 +107,7 @@ body {
 
 .links a {
     display: block;
-    color: #16a34a;
+    color: var(--color-azul);
     font-weight: bold;
     text-decoration: none;
 }
