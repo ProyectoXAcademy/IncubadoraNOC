@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*PALETA DE COLORES*/
+:root {
+    --color-violeta: #6564CC;
+    --color-azul: #00339E;
+    --color-azul-oscuro:#010163;
+    --color-naranja: #FC6A07;
+  }
+  
+
+
+
 *{
     margin: 0;
     padding: 0;
