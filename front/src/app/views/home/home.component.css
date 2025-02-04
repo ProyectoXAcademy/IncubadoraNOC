@@ -1,82 +1,177 @@
+
+/*
+colores
+violeta: #6564CC
+azul: #00339E
+azul oscuro: #010163
+naranja: #FC6A07
+
+modelo de diseño mobile first
+*/
+
 /* Reset básico */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
-  
- 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
 
-  
-  nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: white;
-  }
-  
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
 
-  
-  /* Hero */
-  .hero {
-    background: url('https://source.unsplash.com/1600x900/?education') no-repeat center center/cover;
-    color: white;
-    padding: 80px 20px;
+.borde {
+  border: 1px solid #000;
+}
+
+.presentation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+  padding: 8px;
+}
+.presentation-img {
+  width: 100%;
+  height: 300px;
+  background-image: url("../../assets/logo.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.presentation-tit {
+  height: 200px;
+  width: 100%;
+  align-content: center;
+  padding: 8px;
+}
+
+.presentation-tit h1 {
+  font-size: 2rem;
+  background-image: linear-gradient(to right, #010163, #00339e, #6564cc);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* caract */
+.caract {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 8px;
+}
+
+.caract-cont {
+  height: 120px;
+  width: 100%;
+  margin: 16px;
+  padding: 16px;
+  border: 1px solid #fc6a0750;
+  border-radius: 5px;
+  transition: all .5s ease;
+}
+
+.caract-cont h2 {
+  padding: 0 0 8px 0;
+}
+
+@media (min-width: 768px) {
+  .presentation {
+    flex-direction: row;
+    margin: 8px;
+    padding: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .presentation-img {
+    width: 500px;
+    height: 500px;
+  }
+
+  .presentation-tit {
+    height: 500px;
+    width: 500px;
+    align-content: center;
+    padding: 24px;
+  }
+  .presentation-tit h1 {
+    font-size: 2.5rem;
+  }
+  .caract-cont:hover{
+    transform: scale(1.02);
   }
   
-  .hero h1 {
-    font-size: 36px;
+  .caract {
+    flex-direction: row;
   }
-  
-  .cta {
-    padding: 10px 20px;
-    background: #f39c12;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-  }
-  
-  /* Cursos Destacados */
-  .cursos-destacados {
-    padding: 50px 20px;
-  }
-  
-  .cursos-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .curso {
-    background: #ecf0f1;
-    padding: 20px;
-    border-radius: 5px;
-    width: 200px;
-  }
-  
-  .curso:hover{
-    background-color: #989d9e;
-  }
-  /* Beneficios */
-  .beneficios {
-    background: #dfe6e9;
-    padding: 30px;
-  }
-  
-  .beneficios ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .beneficios li {
-    font-size: 18px;
-  }
-  
+}
+/*
+hasta acá llega el desarrollo de los estilos
+de la presentacion de la incubadora.
+Incluye diseño responsive
+*/
+
+/* Hero */
+.courses {
+  background: url("https://source.unsplash.com/1600x900/?education") no-repeat
+    center center/cover;
+  color: rgb(0, 0, 0);
+  padding: 80px 20px;
+  height: 200px;
+}
+
+.hero h1 {
+  font-size: 36px;
+}
+
+.cta {
+  padding: 10px 20px;
+  background: #f39c12;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+/* Cursos Destacados */
+.cursos-destacados {
+  padding: 50px 20px;
+}
+
+.cursos-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.curso {
+  background: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.curso:hover {
+  background-color: #989d9e;
+}
+/* Beneficios */
+.beneficios {
+  background: #dfe6e9;
+  padding: 30px;
+}
+
+.beneficios ul {
+  list-style: none;
+  padding: 0;
+}
+
+.beneficios li {
+  font-size: 18px;
+}
