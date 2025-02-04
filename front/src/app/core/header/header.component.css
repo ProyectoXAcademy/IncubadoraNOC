@@ -1,0 +1,170 @@
+
+a {
+  text-decoration: none;
+}
+/* Estilos para el interruptor (switch) */
+.switch {
+  position: relative; /* Posición relativa para el interruptor */
+  display: inline-block; /* Mostrar en línea y como bloque */
+  width: 24px; /* Ancho del interruptor */
+  height: 18px; /* Altura del interruptor */
+}
+
+/* Estilo para el input del interruptor (oculto) */
+.switch input {
+  opacity: 0; /* Hacer el input invisible */
+  width: 0; /* Ancho del input (cero) */
+  height: 0; /* Altura del input (cero) */
+}
+
+/* Estilo para el slider del interruptor */
+.slider {
+  position: absolute; /* Posición absoluta para el slider */
+  cursor: pointer; /* Cambiar el cursor a mano al pasar sobre el slider */
+  top: 0; /* Posición superior */
+  left: 0; /* Posición izquierda */
+  right: 0; /* Posición derecha */
+  bottom: 0; /* Posición inferior */
+  background-color: #2e86fd; /* Color de fondo del slider */
+  border-radius: 24px; /* Bordes redondeados del slider */
+  transition: background-color 0.4s ease; /* Transición suave para el cambio de color de fondo */
+}
+
+/* Estilo para el círculo dentro del slider */
+.slider::before {
+  position: absolute; /* Posición absoluta para el círculo */
+  content: ""; /* Sin contenido */
+  height: 12px; /* Altura del círculo */
+  width: 12px; /* Ancho del círculo */
+  left: 2px; /* Posición izquierda del círculo */
+  bottom: 3px; /* Posición inferior del círculo */
+  border-radius: 50%; /* Bordes redondeados del círculo */
+  background-color: #fff; /* Color de fondo del círculo */
+  transition: transform 0.4s ease; /* Transición suave para el movimiento del círculo */
+}
+
+/* Estilo para el slider cuando el input está marcado */
+input:checked + .slider {
+  background-color: #9e23ff; /* Cambiar color de fondo del slider */
+}
+
+/* Estilo para el slider cuando el input está enfocado */
+input:focus + .slider {
+  box-shadow: 0 0 10px #4E4061; /* Agregar sombra alrededor del slider */
+}
+
+/* Estilo para el círculo dentro del slider cuando el input está marcado */
+input:checked + .slider::before {
+  transform: translateX(8px); /* Mover el círculo a la derecha */
+}
+header {
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+  }
+  
+  
+  .logo a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+ 
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-btn {
+    background-color: #34495e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    width: 180px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-menu li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .dropdown-menu li:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown-menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #f1f1f1;
+  }
+  
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  
+  .search-bar {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+  }
+  
+  
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-btn {
+    background-color: #2980b9;
+    color: white;
+  }
+  
+  .register-btn {
+    background-color: #27ae60;
+    color: white;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
