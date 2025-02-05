@@ -31,7 +31,8 @@
 .dark-mode .courses h1,
 .dark-mode .courses p,
 .dark-mode .notices h1,
-.dark-mode .cursos-destacados h2 {
+.dark-mode .cursos-destacados h2,
+.dark-mode .container marquee span {
   color: white;
 }
 
