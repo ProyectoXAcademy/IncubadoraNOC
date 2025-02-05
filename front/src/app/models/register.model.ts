@@ -1,8 +1,9 @@
-export interface Auth {
+export interface Register {
     name: string;
     lastName:string;
-    dni:string;
-    date_of_birth:string;
+    dni:BigInteger;
+    date_of_birth:Date;
     email: string;
     password: string;
+    role:string;
   }

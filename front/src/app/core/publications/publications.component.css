@@ -58,4 +58,9 @@ h4 {
 .date{
   text-align: end;
 }
-/* DARK MODE*/
+/* RESPONSIVE*/
+@media (max-width: 600px) {
+  .card{
+    width: 15rem;
+  }
+}
