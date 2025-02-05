@@ -1,0 +1,61 @@
+/*PALETA DE COLORES*/
+:root {
+  --color-violeta: #6564cc;
+  --color-azul: #00339e;
+  --color-azul-oscuro: #010163;
+  --color-naranja: #fc6a07;
+}
+
+.borde {
+  border: 1px solid blue;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.card {
+  margin: 0.5rem 1rem;
+  padding: 1rem;
+  width: 25rem;
+  background-color: var(--color-azul);
+  border-radius: 1rem;
+  box-shadow: 0rem 0rem 1rem var(--color-violeta);
+  transition: all ease .5s;
+
+}
+
+.card:hover{
+  box-shadow: 0rem 0rem 1rem var(--color-naranja);
+  transform: translateY(-.2rem);
+}
+
+.card h3,
+h4 {
+  padding: 0.5rem;
+  color: #fff;
+}
+
+
+
+.description {
+  padding: 1rem;
+  background-color: #fff;
+}
+
+.description p {
+  margin: 0.5rem 0;
+}
+
+.type{
+  background-color: var(--color-violeta);
+}
+.date{
+  text-align: end;
+}
+/* DARK MODE*/
