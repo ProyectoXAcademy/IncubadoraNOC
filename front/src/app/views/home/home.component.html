@@ -19,12 +19,45 @@
     </div>
   
   </section>  
+    
+  <section>
+    <div class="carousel-container">
+      <!-- Lista de imágenes definidas directamente en HTML -->
+      <div class="carousel-slide" *ngFor="let img of ['assets/IMG_6426.jpg', 'assets/IMG_6427.jpg', 'assets/IMG_6425.jpg']; let i = index"
+           [ngClass]="{'active': i === currentIndex}">
+        <img [src]="img" alt="Imagen {{ i + 1 }}">
+        
+      </div>
+    
+      <!-- Botones de navegación -->
+      <button class="prev" (click)="prevSlide()">&#10094;</button>
+      <button class="next" (click)="nextSlide()">&#10095;</button>
+    
+      <!-- Indicadores (dots) -->
+      <div class="carousel-dots">
+        <span *ngFor="let img of ['assets/IMG_6426.jpg', 'assets/IMG_6427.jpg', 'assets/IMG_6425.jpg']; let i = index"
+              class="dot" 
+              [ngClass]="{'active': i === currentIndex}"
+              (click)="goToSlide(i)">
+        </span>
+      </div>
+    </div>
+  </section>  
 
+  
   <section class="courses">
     <h1>Aprende con los mejores cursos online</h1>
     <p>Descubre nuestra oferta de formación y mejora tus habilidades.</p>
     <button class="cta">Explorar Cursos</button>
   </section>
+
+
+<!-- PUBLICACIONES -->
+  <section>
+    <h1>Portal de noticias</h1>
+    <app-publications></app-publications>
+  </section>
+
 
   <!-- Cursos Destacados -->
   <section class="cursos-destacados">
@@ -44,4 +77,7 @@
       <li>✅ Certificación al finalizar</li>
       <li>✅ Clases en vivo y grabadas</li>
     </ul>
+    
   </section>
+
+

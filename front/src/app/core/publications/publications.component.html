@@ -1,0 +1,12 @@
+<section>
+  <article *ngFor="let p of publications" class="borde" class="card">
+    <h3>{{ p.title }}</h3>
+
+    <div class="description">
+      <p>{{ p.description }}</p>
+      <p class="date" >{{ p.issue_date }}</p>
+    </div>
+      <h4 class="type">{{ p.type }}</h4>
+
+  </article>
+</section>
