@@ -7,7 +7,7 @@ import { Publication } from '../../models/publication.model';
 })
 export class PublicationsService {
   // agregar endpoint
-  endpoint:string = "endpoint a los servicios"
+  endpoint:string = "http://localhost:3000/api/publication"
   constructor( private http:HttpClient) { }
 
   publicationsGet():Observable<any>{
