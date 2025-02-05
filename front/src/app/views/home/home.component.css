@@ -201,14 +201,12 @@ Incluye diseño responsive
 }
 
 button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   cursor: pointer;
   padding: 10px;
+  margin-top: 10px;
   font-size: 18px;
 }
 
@@ -220,6 +218,9 @@ button {
   margin-top: 10px;
 }
 
+.notices{
+  padding: 20px;
+}
 .dot {
   height: 10px;
   width: 10px;

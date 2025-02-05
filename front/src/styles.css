@@ -26,6 +26,12 @@
 
 .dark-mode .title,
 .dark-mode .input-group label,
-.dark-mode .checkbox-group label {
+.dark-mode .checkbox-group label,
+.dark-mode .caract-cont,
+.dark-mode .courses h1,
+.dark-mode .courses p,
+.dark-mode .notices h1,
+.dark-mode .cursos-destacados h2 {
   color: white;
 }
+
