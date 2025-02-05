@@ -2,6 +2,9 @@
 a {
   text-decoration: none;
 }
+li {
+  list-style: none;
+}
 /* Estilos para el interruptor (switch) */
 .switch {
   position: relative; /* Posición relativa para el interruptor */
@@ -165,6 +168,10 @@ header {
     color: white;
   }
   
+  .logout-btn{
+    background-color:#640e24 ;
+    color: white;
+  }
   .btn:hover {
     opacity: 0.8;
   }

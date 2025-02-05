@@ -9,7 +9,7 @@ import { isPlatformBrowser } from '@angular/common';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:3000/auth/login'; 
+  private apiUrl = 'http://localhost:3000/api/login'; 
   private authenticatedSource = new BehaviorSubject<boolean>(this.isAuthenticated());
   authenticated$ = this.authenticatedSource.asObservable();
 
@@ -26,8 +26,8 @@ export class LoginService {
 
     // Verifica que 'window' esté definido (solo en el navegador)
     if (isPlatformBrowser(this.platformId)) {
-      const authToken = localStorage.getItem('authToken') || '';
-      httpHeaders = httpHeaders.set('Authorization', `Bearer ${authToken}`);
+      const token = localStorage.getItem('token') || '';
+      httpHeaders = httpHeaders.set('Authorization', `Bearer ${token}`);
     }
 
     return { headers: httpHeaders };
@@ -37,7 +37,7 @@ export class LoginService {
     return this.http.post<{ token: string }>(this.apiUrl, userData).pipe(
       tap(response => {
         if (response && response.token) {
-          localStorage.setItem('authToken', response.token);
+          localStorage.setItem('token', response.token);
           this.authenticatedSource.next(true); // Emitir nuevo estado de autenticación
         }
       })
@@ -45,13 +45,13 @@ export class LoginService {
   }
 
   logout(): void {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('token');
     this.authenticatedSource.next(false); // Emitir nuevo estado de autenticación
   }
 
   isAuthenticated(): boolean {
     if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem('authToken');
+      const token = localStorage.getItem('token');
       return !!token; // Devuelve true si hay un token
     }
     return false; // No estamos en el navegador

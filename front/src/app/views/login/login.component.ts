@@ -30,7 +30,7 @@ export class LoginComponent {
       this.loginService.loginUser(userData).subscribe({
         next: (response) => {
           console.log('Inicio de sesión exitoso:', response);
-          localStorage.setItem('authToken', response.token); // Guarda el token en localStorage
+          localStorage.setItem('token', response.token); // Guarda el token en localStorage
 
           Swal.fire({
             icon: 'success',

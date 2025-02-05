@@ -23,14 +23,12 @@
         </ul>
       </div>
   
-      
       <input type="text" placeholder="Buscar cursos..." class="search-bar" />
   
-     
-      <div class="auth-buttons">
-        <a class="btn login-btn" href="/login">Iniciar Sesión</a>
-        <a class="btn register-btn" href="/register">Registrarse</a>
-      </div>
+        <div class="auth-buttons" *ngFor="let menuItem of menuItems">
+          <a class="{{menuItem.class}}" *ngIf="!menuItem.event" [routerLink]="menuItem.route" routerLinkActive="active">{{ menuItem.text }}</a>
+          <a class="{{menuItem.class}}" *ngIf="menuItem.event" (click)="menuItem.event()" >{{ menuItem.text }}</a>
+        </div>
     </nav>
   </header>
   
