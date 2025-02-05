@@ -27,4 +27,23 @@ const createRole = async (name) => {
     }
 }
 
-module.exports = {getRoleById, createRole}
+const getRoleByName = async (name) => {
+    try {
+        const findRole = await roleModel.findOne({
+            where: {
+                name: name
+            }
+        })
+        if (!findRole) {
+            const error = new Error()
+            error.message = `Error al encontrar rol con nombre=${name}`
+            error.statusCode = 404
+            throw error
+        }
+        return findRole
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {getRoleById, createRole, getRoleByName}

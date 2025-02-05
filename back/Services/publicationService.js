@@ -31,4 +31,19 @@ const createPublication = async (type, title, description, issue_date, owner_id)
     }
 }
 
-module.exports = {getPublicationById, createPublication}
+const getAllPublications = async () => {
+    try {
+        const publications = await publicationModel.findAll()
+        if (publications.length === 0) {
+            const error = new Error()
+            error.message = `No hay publicaciones.`
+            error.statusCode = 404
+            throw error
+        }
+        return publications
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {getPublicationById, createPublication, getAllPublications}

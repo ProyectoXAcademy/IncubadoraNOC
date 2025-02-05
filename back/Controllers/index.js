@@ -7,5 +7,8 @@ const noteController = require('./noteController')
 const paymentController = require('./paymentController')
 const assistanceController = require('./assistanceController')
 const publicationController = require('./publicationController')
+const loginController = require('./loginControlller')
 
-module.exports = {userController, roleController, userRoleController, courseController, registrationController, noteController, paymentController, assistanceController, publicationController}
+module.exports = {userController, roleController, userRoleController, courseController, 
+    registrationController, noteController, paymentController, assistanceController, publicationController, 
+    loginController}

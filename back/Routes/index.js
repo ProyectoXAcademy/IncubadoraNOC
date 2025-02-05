@@ -7,5 +7,7 @@ const noteRouter = require('./noteRouter')
 const paymentRouter = require('./paymentRouter')
 const assistanceRouter = require('./assistanceRouter')
 const publicationRouter = require('./publicationRouter')
+const loginRouter = require('./loginRouter')
 
-module.exports = {userRouter, roleRouter, userRoleRouter, courseRouter, registrationRouter, noteRouter, paymentRouter, assistanceRouter, publicationRouter}
+module.exports = {userRouter, roleRouter, userRoleRouter, courseRouter, registrationRouter, noteRouter, paymentRouter, 
+    assistanceRouter, publicationRouter, loginRouter}

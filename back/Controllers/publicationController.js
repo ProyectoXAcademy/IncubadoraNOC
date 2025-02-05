@@ -20,4 +20,13 @@ const createPublication = async (req, res, next) => {
     }
 }
 
-module.exports = {getPublicationById, createPublication}
+const getAllPublications = async (req, res, next) => {
+    try {
+        const publications = await publicationService.getAllPublications()
+        res.status(200).json(publications)
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {getPublicationById, createPublication, getAllPublications}

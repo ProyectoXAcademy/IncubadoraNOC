@@ -3,6 +3,7 @@ const router = express.Router()
 
 const {publicationController} = require('../Controllers')
 
+router.get('/', publicationController.getAllPublications)
 router.get('/:id', publicationController.getPublicationById)
 router.post('/create', publicationController.createPublication)
 

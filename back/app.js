@@ -4,7 +4,8 @@ const app = express()
 const PORT = 3000
 const cors = require('cors')
 const {dbConfig} = require('./Config')
-const {userRouter, roleRouter, userRoleRouter, courseRouter, registrationRouter, noteRouter, paymentRouter, assistanceRouter, publicationRouter} = require('./Routes')
+const {userRouter, roleRouter, userRoleRouter, courseRouter, registrationRouter, noteRouter, paymentRouter, 
+    assistanceRouter, publicationRouter, loginRouter} = require('./Routes')
 const {errorMiddleware} = require('./Middlewares')
 
 app.use(express.json())
@@ -19,6 +20,8 @@ app.use('/api/note', noteRouter)
 app.use('/api/payment', paymentRouter)
 app.use('/api/assistance', assistanceRouter)
 app.use('/api/publication', publicationRouter)
+
+app.use('/api/login', loginRouter)
 
 app.use(errorMiddleware)
 

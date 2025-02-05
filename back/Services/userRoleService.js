@@ -28,4 +28,23 @@ const createUserRole = async (user_id, role_id) => {
     }
 }
 
-module.exports = {getUserRoleById, createUserRole}
+const getUserRoleByUserId = async (UserUserId) => {
+    try {
+        const findUserRole = await userRoleModel.findOne({
+            where: {
+                UserUserId: UserUserId
+            }
+        })
+        if (!findUserRole) {
+            const error = new Error()
+            error.message = `Error al encontrar usuarioRol con id de usuario=${UserUserId}`
+            error.statusCode = 404
+            throw error
+        }
+        return findUserRole
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {getUserRoleById, createUserRole, getUserRoleByUserId}
