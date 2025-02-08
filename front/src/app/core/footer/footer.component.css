@@ -10,17 +10,25 @@ footer {
 /* 🏗️ Contenedor principal */
 .footer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px 150px;
   max-width: 1000px;
   margin: auto;
   padding-bottom: 20px;
 }
 
+
+
+
 /* 📌 Secciones del footer */
 .footer-container section {
   padding: 10px;
+  margin-top: 10px;
   text-align: left;
+}
+
+.footer-container section h3{
+  margin-bottom: 10px;
 }
 
 /* 🔗 Estilos para enlaces */
@@ -59,6 +67,8 @@ footer {
   outline: none;
   font-size: 1rem;
 }
+
+
 
 .footer-newsletter button {
   padding: 8px;

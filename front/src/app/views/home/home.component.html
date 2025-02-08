@@ -1,58 +1,72 @@
-<section>
-  <div class="carousel-container">
-    <!-- Lista de imágenes definidas directamente en HTML -->
-    <div class="carousel-slide" *ngFor="let img of ['assets/IMG_6426.jpg', 'assets/IMG_6427.jpg', 'assets/IMG_6425.jpg']; let i = index"
-         [ngClass]="{'active': i === currentIndex}">
-      <img [src]="img" alt="Imagen {{ i + 1 }}">
+<div class="inicio">
+  <div>
+    <section class="presentation">
+    
+      <div class="presentation-img "></div>
+      <div class="presentation-tit ">
+        <h1>Somos una empresa que apoya a emprendedores, brindándoles herramientas para alcanzar el éxito </h1>
+      </div>
+  
+    </section>
+   </div>
+   <div>
+    <section class="caract">
+
       
-    </div>
   
-    <!-- Botones de navegación -->
-    <button class="prev" (click)="prevSlide()">&#10094;</button>
-    <button class="next" (click)="nextSlide()">&#10095;</button>
+      <div class="caract-cont">
+        <h2>¿Qué hacemos?</h2>
+        <p>Acompañamos a personas para que conviertan sus emprendimientos en negocios sustentables.</p>
+      </div>
   
-    <!-- Indicadores (dots) -->
-    <div class="carousel-dots">
-      <span *ngFor="let img of ['assets/IMG_6426.jpg', 'assets/IMG_6427.jpg', 'assets/IMG_6425.jpg']; let i = index"
-            class="dot" 
-            [ngClass]="{'active': i === currentIndex}"
-            (click)="goToSlide(i)">
-      </span>
+      <div class="caract-cont">
+        <h2>¿Qué ofrecemos?</h2>
+        <p>Además de acompañarte para que tu negocio alcance el éxito, ofrecemos cursos, seminarios y talleres; prácticos, teóricos y presenciales.</p>
+      </div>
+    
+
+      <div class="caract-cont">
+        <h2>Aprende con los mejores cursos online</h2>
+        <p>Descubre nuestra oferta de formación y mejora tus habilidades.</p>
+        <button  [routerLink]="['/courses']" class="cta">Explorar Cursos</button>
     </div>
+      
+      
+    </section>  
   </div>
-</section>  
-  
-  
-  <!-- Sección Principal -->
-  <section class="presentation">
-    <div class="presentation-img "></div>
-    <div class="presentation-tit ">
-      <h1>Somos una empresa que apoya a emprendedores, brindándoles herramientas para alcanzar el éxito </h1>
+</div>
+    
+     <div class="carousel-container">
+      <!-- Lista de imágenes definidas directamente en HTML -->
+      <div class="carousel-slide" *ngFor="let img of ['assets/IMG_6426.jpg', 'assets/IMG_6427.jpg', 'assets/IMG_6425.jpg']; let i = index"
+           [ngClass]="{'active': i === currentIndex}">
+        <img [src]="img" alt="Imagen {{ i + 1 }}">
+        
+      </div>
+    
+      <!-- Botones de navegación -->
+      <button class="prev" (click)="prevSlide()">&#10094;</button>
+      <button class="next" (click)="nextSlide()">&#10095;</button>
+    
+      <!-- Indicadores (dots) -->
+      <div class="carousel-dots">
+        <span *ngFor="let img of ['assets/IMG_6426.jpg', 'assets/IMG_6427.jpg', 'assets/IMG_6425.jpg']; let i = index"
+              class="dot" 
+              [ngClass]="{'active': i === currentIndex}"
+              (click)="goToSlide(i)">
+        </span>
+      </div>
     </div>
 
-  </section>
 
-  <section class="caract">
-    <div class="caract-cont">
-      <h2>¿Qué hacemos?</h2>
-      <p>Acompañamos a personas para que conviertan sus emprendimientos en negocios sustentables.</p>
-    </div>
-
-    <div class="caract-cont">
-      <h2>¿Qué ofrecemos?</h2>
-      <p>Además de acompañarte para que tu negocio alcance el éxito, ofrecemos cursos, seminarios y talleres; prácticos, teóricos y presenciales.</p>
-    </div>
-  
-  </section>  
+    
     
   
+    
 
   
-  <section class="courses">
-    <h1>Aprende con los mejores cursos online</h1>
-    <p>Descubre nuestra oferta de formación y mejora tus habilidades.</p>
-    <button class="cta">Explorar Cursos</button>
-  </section>
+  
+ 
 
 
 <!-- PUBLICACIONES -->
@@ -63,23 +77,53 @@
 
 
   <!-- Cursos Destacados -->
-  <section class="cursos-destacados">
-    <h2>Cursos Destacados</h2>
-    <div class="cursos-grid">
-      <div class="curso">🖥 Desarrollo Web</div>
-      <div class="curso">📊 Análisis de Datos</div>
-      <div class="curso">🎨 Diseño UX/UI</div>
-    </div>
-  </section>
+
+
+  <div>
+    <section class="cursos-destacados">
+      <h2>Cursos Destacados</h2>
+      <div class="cursos-grid">
+        <div class="curso">🖥 Desarrollo Web</div>
+        <div class="curso">📊 Análisis de Datos</div>
+        <div class="curso">🎨 Diseño UX/UI</div>
+      </div>
+    </section>
+  </div>
 
   <!-- Beneficios -->
   <section class="beneficios">
-    <h2>¿Por qué elegirnos?</h2>
+    <div class="benef">
+      
+      <div>
+        <h2>¿Por qué elegirnos?</h2>
     <ul>
       <li>✅ Acceso 24/7</li>
       <li>✅ Certificación al finalizar</li>
       <li>✅ Clases en vivo y grabadas</li>
     </ul>
+    
+      </div>
+      <div >
+        <h2>Nuestros sevicios</h2>
+          <ul>
+            <li>✅ Espacios de coworking equipados.</li>
+            <li>✅ Asesoramiento en desarrollo de negocios.</li>
+            <li>✅ Programas de formación y capacitación.</li>
+          </ul>
+      </div>
+
+      <div>
+        <h2>Nuestros valores</h2>
+  <ul>
+    <li>🤝 Compromiso con la innovación</li>
+    <li>🌱 Desarrollo sostenible</li>
+    <li>📚 Educación continua</li>
+  </ul>
+
+      </div>
+      
+    </div>
+    
     
   </section>
 

@@ -7,6 +7,7 @@ import { ContentComponent } from "./content/content.component";
 @Component({
   selector: 'app-root',
   imports: [HeaderComponent, FooterComponent, ContentComponent],
+  standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
