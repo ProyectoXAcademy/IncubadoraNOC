@@ -1,34 +1,37 @@
 <header>
-    <div class="logo">
-      <a href="/">Incubadora del NOC</a>
-    </div>
-  
-    <nav class="nav-bar">
+  <div class="logo">
+    <a href="/">Incubadora del NOC</a>
+  </div>
 
-      <label class="switch">
-        <input type="checkbox" (click)="toggleDarkMode()" id="modo-desktop">
-        <span class="slider"></span>
-      </label>
-    
-      <div class="dropdown">
-        <button class="dropdown-btn">Cursos ▼</button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Curso Aleatorio </a></li>
-          <li><a href="#">Curso Aleatorio </a></li>
-          <li><a href="#">Curso Aleatorio </a></li>
-          <li><a href="#">Curso Aleatorio </a></li>
-          <li><a href="#">Curso Aleatorio </a></li>
-          <li><a href="#">Curso Aleatorio </a></li>
-          <li><a href="#">Curso Aleatorio </a></li>
-        </ul>
-      </div>
-  
-      <input type="text" placeholder="Buscar cursos..." class="search-bar" />
-  
-        <div class="auth-buttons" *ngFor="let menuItem of menuItems">
-          <a class="{{menuItem.class}}" *ngIf="!menuItem.event" [routerLink]="menuItem.route" routerLinkActive="active">{{ menuItem.text }}</a>
-          <a class="{{menuItem.class}}" *ngIf="menuItem.event" (click)="menuItem.event()" >{{ menuItem.text }}</a>
-        </div>
-    </nav>
-  </header>
-  
+  <nav class="nav-bar">
+
+    <label class="switch">
+      <input type="checkbox" (click)="toggleDarkMode()" id="modo-desktop">
+      <span class="slider"></span>
+    </label>
+
+    <div class="dropdown">
+      <button class="dropdown-btn">Cursos ▼</button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Curso Aleatorio </a></li>
+        <li><a href="#">Curso Aleatorio </a></li>
+        <li><a href="#">Curso Aleatorio </a></li>
+        <li><a href="#">Curso Aleatorio </a></li>
+        <li><a href="#">Curso Aleatorio </a></li>
+        <li><a href="#">Curso Aleatorio </a></li>
+        <li><a href="#">Curso Aleatorio </a></li>
+      </ul>
+    </div>
+
+    <input type="text" placeholder="Buscar cursos..." class="search-bar" />
+
+    <div class="auth-buttons" *ngFor="let menuItem of menuItems">
+      <a [ngClass]="menuItem.class" *ngIf="!menuItem.event" [routerLink]="menuItem.route" routerLinkActive="active">
+        {{ menuItem.text }}
+      </a>
+      <a [ngClass]="menuItem.class" *ngIf="menuItem.event" (click)="menuItem.event()">
+        {{ menuItem.text }}
+      </a>
+    </div>
+  </nav>
+</header>

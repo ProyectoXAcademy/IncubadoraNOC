@@ -10,7 +10,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class LoginService {
   private apiUrl = 'http://localhost:3000/api/login'; 
-  private authenticatedSource = new BehaviorSubject<boolean>(this.isAuthenticated());
+  private authenticatedSource = new BehaviorSubject<boolean>(this.isAuthenticated()); // Establece el estado inicial del BehaviorSubject
   authenticated$ = this.authenticatedSource.asObservable();
 
   constructor(
@@ -26,7 +26,7 @@ export class LoginService {
 
     // Verifica que 'window' esté definido (solo en el navegador)
     if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem('token') || '';
+      const token = localStorage.getItem('token') || ''; // Recupera el token de localStorage
       httpHeaders = httpHeaders.set('Authorization', `Bearer ${token}`);
     }
 
@@ -36,25 +36,26 @@ export class LoginService {
   loginUser(userData: Auth): Observable<any> {
     return this.http.post<{ token: string }>(this.apiUrl, userData).pipe(
       tap(response => {
+        console.log('Token recibido:', response.token); // Verifica el token recibido
         if (response && response.token) {
-          localStorage.setItem('token', response.token);
-          this.authenticatedSource.next(true); // Emitir nuevo estado de autenticación
+          localStorage.setItem('token', response.token); // Guarda el token en localStorage
+          this.authenticatedSource.next(true); // Emite un estado de autenticación exitoso
         }
       })
     );
   }
 
   logout(): void {
-    localStorage.removeItem('token');
-    this.authenticatedSource.next(false); // Emitir nuevo estado de autenticación
+    localStorage.removeItem('token'); // Elimina el token de localStorage
+    this.authenticatedSource.next(false); // Emite un estado de no autenticación
   }
 
   isAuthenticated(): boolean {
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
+      console.log('Token en localStorage:', token); // Verifica si el token está guardado correctamente
       return !!token; // Devuelve true si hay un token
     }
     return false; // No estamos en el navegador
   }
-  
 }
