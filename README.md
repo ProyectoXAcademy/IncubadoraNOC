@@ -3,8 +3,8 @@
 - *Gonzalo Miranda* 🇦🇷 - 🐣 [Mi Github](https://github.com/gonzalomiranda97)
 - *Franco Gabrielleschi* 🇦🇷 - 🐣 [Mi Github](https://github.com/franmarg92)
 - *Martín Nicolás Delhugo* 🇦🇷 - 🐣 [Mi Github](https://github.com/delhugo-martin)
-<figure><img src="./front/src/app/assets/Santex.png" alt="logo" style="height: 100px;"></figure>
-<figure><img src="./front/src/app/assets/xAcademy.png" alt="logo" style="height: 100px;"></figure>
+<figure><img src="./front/src/assets/Santex.png" alt="logo" style="height: 100px;"></figure>
+<figure><img src="./front/src/assets/xAcademy.png" alt="logo" style="height: 100px;"></figure>
 
 # Proyecto: Portal Web Incubadora NOC y Web Centro Comercial Cruz del Eje
 
