@@ -51,11 +51,14 @@ export class LoginService {
   }
 
   isAuthenticated(): boolean {
-    if (isPlatformBrowser(this.platformId)) {
+    //if (isPlatformBrowser(this.platformId)) {
+    if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
       console.log('Token en localStorage:', token); // Verifica si el token está guardado correctamente
-      return !!token; // Devuelve true si hay un token
+      //return !!token; // Devuelve true si hay un token
+      return true;
     }
     return false; // No estamos en el navegador
   }
+  
 }
