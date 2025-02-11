@@ -28,6 +28,14 @@ Además, se propone un segundo proyecto opcional: la creación de un sitio web p
 - **Gestión de pagos**: Administración de matrícula y cuotas de cursos arancelados.
 - **Gestión de docentes**: Inscripción y administración de especialidades de los docentes.
 
+5. **EndPoints Get, Post, Put, Deleted**:
+- IMPORTANTE CREAR USUARIO. USAR TOKEN AL LOGEARSE PARA USAR LAS DEMAS FUNCIONALIDADES 
+
+- *Swagger:* http://localhost:3000/api-docs/#/
+
+- *Post:* http://localhost:3000/api/login
+- *Post:* http://localhost:3000/api/user/create
+
 ### 2. Web Centro Comercial Cruz del Eje (Opcional)
 
 #### Funcionalidades requeridas:
