@@ -8,9 +8,16 @@ Cypress.Commands.add('login', (email, password) => {
 });
 
 Cypress.Commands.add('logout', () => {
-    cy.get('.btn logout-btn').click();
-    cy.url().should('include', '/'); // Validar que regresa a la página de login
+    cy.get('body').then($body => {
+        if ($body.find('.logout-btn').length > 0) {
+            cy.get('.logout-btn').click();
+            cy.url().should('include', '/'); // Validar que regresa a la página de login
+        } else {
+            cy.log('El usuario no inició sesión, no es necesario hacer logout.');
+        }
+    });
 });
+
 
 Cypress.Commands.add('register', (name, lastName, dni, date_of_birth, email, password, role) => {
     cy.visit('http://localhost:4200/register');

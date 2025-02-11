@@ -7,6 +7,15 @@
         "email": "usuarioprueba1@gmail.com",
         "password": 12345,
         "role":"Estudiante"
+    },
+    {
+        "name": "",
+        "lastName": "",
+        "dni": "",
+        "date_of_birth": "",
+        "email": "",
+        "password": "",
+        "role":""
     }
 
 ]
