@@ -3,8 +3,8 @@
 - *Gonzalo Miranda* 🇦🇷 - 🐣 [Mi Github](https://github.com/gonzalomiranda97)
 - *Franco Gabrielleschi* 🇦🇷 - 🐣 [Mi Github](https://github.com/franmarg92)
 - *Martín Nicolás Delhugo* 🇦🇷 - 🐣 [Mi Github](https://github.com/delhugo-martin)
-<figure><img src="./front/src/app/assets/Santex.png" alt="logo" style="height: 100px;"></figure>
-<figure><img src="./front/src/app/assets/xAcademy.png" alt="logo" style="height: 100px;"></figure>
+<figure><img src="./front/src/assets/Santex.png" alt="logo" style="height: 100px;"></figure>
+<figure><img src="./front/src/assets/xAcademy.png" alt="logo" style="height: 100px;"></figure>
 
 # Proyecto: Portal Web Incubadora NOC y Web Centro Comercial Cruz del Eje
 
@@ -27,6 +27,14 @@ Además, se propone un segundo proyecto opcional: la creación de un sitio web p
 - **Gestión de asistencia y condiciones de aprobación**: Registro de asistencia y criterios de finalización.
 - **Gestión de pagos**: Administración de matrícula y cuotas de cursos arancelados.
 - **Gestión de docentes**: Inscripción y administración de especialidades de los docentes.
+
+5. **EndPoints Get, Post, Put, Deleted**:
+- IMPORTANTE CREAR USUARIO. USAR TOKEN AL LOGEARSE PARA USAR LAS DEMAS FUNCIONALIDADES 
+
+- *Swagger:* http://localhost:3000/api-docs/#/
+
+- *Post:* http://localhost:3000/api/login
+- *Post:* http://localhost:3000/api/user/create
 
 ### 2. Web Centro Comercial Cruz del Eje (Opcional)
 

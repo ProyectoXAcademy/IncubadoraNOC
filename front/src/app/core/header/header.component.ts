@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { DarkModeService } from '../../services/dark-mode/dark-mode.service'; // Importa el servicio
+import { DarkModeService } from '../../services/dark-mode/dark-mode.service';
 import { LoginService } from '../../services/login/login.service';
 import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
@@ -28,21 +28,23 @@ export class HeaderComponent implements AfterViewInit, OnInit {
     private darkModeService: DarkModeService,
     private loginService: LoginService,
     private router: Router,
-    private cdr: ChangeDetectorRef
   ) {
     this.platformId = platformId;
     this.resizeListener = this.onResize.bind(this);
   }
 
-ngOnInit(): void {
-  this.darkModeService.darkMode$.subscribe((mode) => {
-    this.isDarkMode = mode;
-  })
-}
+  ngOnInit(): void {
+    this.darkModeService.darkMode$.subscribe((mode) => {
+      this.isDarkMode = mode;
+    });
+
+    // Verifica el estado de autenticación al iniciar el componente
+    this.checkAuthentication();
+  }
+
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       window.addEventListener('resize', this.resizeListener);
-      this.checkAuthentication();
     }
   }
 
@@ -52,7 +54,6 @@ ngOnInit(): void {
     }
     this.authSubscription.unsubscribe();
   }
-
 
   private onResize() {
     if (isPlatformBrowser(this.platformId)) {
@@ -70,22 +71,20 @@ ngOnInit(): void {
   updateMenuItems() {
     if (this.isAuthenticated) {
       this.menuItems = [
-    
-        { text: 'Logout', event: () => this.logout(), class: 'btn logout-btn'}
+        { text: 'Logout', event: () => this.logout(), class: 'btn logout-btn' }
       ];
     } else {
       this.menuItems = [
-        { text: 'Iniciar Sesión', route: '/login', class: 'btn login-btn'},
-        { text: 'Registrarse', route: '/register', class: 'btn register-btn'},
+        { text: 'Iniciar Sesión', route: '/login', class: 'btn login-btn' },
+        { text: 'Registrarse', route: '/register', class: 'btn register-btn' },
       ];
     }
-    this.cdr.detectChanges();
   }
 
   checkAuthentication() {
     this.authSubscription = this.loginService.authenticated$.subscribe(isAuthenticated => {
       this.isAuthenticated = isAuthenticated;
-      this.updateMenuItems();
+      this.updateMenuItems(); // Llama a la función para actualizar el menú cuando el estado cambia
     });
   }
 
@@ -101,8 +100,7 @@ ngOnInit(): void {
       timer: 1000,
       timerProgressBar: true,
     }).then(() => {
-      this.router.navigate(['/login']); // Redirige al usuario a la página de login u otra ruta que prefieras
+      this.router.navigate(['/login']); // Redirige al usuario a la página de login
     });
   }
 }
-
