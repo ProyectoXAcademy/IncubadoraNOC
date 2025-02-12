@@ -26,7 +26,7 @@ export class LoginComponent {
   manejarEnvio() {
     if (this.loginForm.valid) {
       const userData: Auth = this.loginForm.value;
-
+      console.log('Datos del formulario:', userData); // Verifica los datos antes de enviarlos
       this.loginService.loginUser(userData).subscribe({
         next: (response) => {
           console.log('Inicio de sesión exitoso:', response);
