@@ -1,6 +1,8 @@
 <header>
   <div class="logo">
-    <a href="/">Incubadora del NOC</a>
+    <a  href="/"><img src="../../../assets/logo-header.png" alt="logo"></a>
+
+
   </div>
 
   <nav class="nav-bar">
@@ -10,8 +12,8 @@
       <span class="slider"></span>
     </label>
 
-    <button ><a [routerLink]="['/dashboard']">Ir al Dashboard</a></button>
 
+    <!--
     <div class="dropdown">
       <button class="dropdown-btn">Cursos ▼</button>
       <ul class="dropdown-menu">
@@ -24,16 +26,22 @@
         <li><a href="#">Curso Aleatorio </a></li>
       </ul>
     </div>
-
+-->
     <input type="text" placeholder="Buscar cursos..." class="search-bar" />
 
     <div class="auth-buttons" *ngFor="let menuItem of menuItems">
       <a [ngClass]="menuItem.class" *ngIf="!menuItem.event" [routerLink]="menuItem.route" routerLinkActive="active">
         {{ menuItem.text }}
       </a>
-      <a [ngClass]="menuItem.class" *ngIf="menuItem.event" (click)="menuItem.event()">
-        {{ menuItem.text }}
-      </a>
+
+      <div class="dropdown" *ngIf="menuItem.event"  >
+        <button class="dropdown-btn">Nombre ▼</button>
+        <ul class="dropdown-menu">
+          <li> <a [routerLink]="['/dashboard']">Ir al Dashboard</a>  </li>
+          <li>  <a *ngIf="menuItem.event" (click)="menuItem.event()">{{ menuItem.text }}</a></li>
+
+        </ul>
+      </div>
     </div>
   </nav>
 </header>
