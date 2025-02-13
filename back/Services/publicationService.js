@@ -36,7 +36,7 @@ const getAllPublications = async () => {
         const publications = await publicationModel.findAll()
         if (publications.length === 0) {
             const error = new Error()
-            error.message = `No hay publicaciones.`
+            error.message = 'No hay publicaciones.'
             error.statusCode = 404
             throw error
         }
