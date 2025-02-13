@@ -23,7 +23,7 @@
       </a>
 
       <div class="dropdown" *ngIf="menuItem.event"  >
-        <button class="dropdown-btn">Nombre ▼</button>
+        <button class="dropdown-btn">{{loggedUser?.name}}▼</button>
         <ul class="dropdown-menu">
           <li> <a [routerLink]="['/dashboard']">Ir al Dashboard</a>  </li>
           <li>  <a *ngIf="menuItem.event" (click)="menuItem.event()">{{ menuItem.text }}</a></li>
