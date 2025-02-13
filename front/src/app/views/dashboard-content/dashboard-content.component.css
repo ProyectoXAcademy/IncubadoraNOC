@@ -1,0 +1,19 @@
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  
+  app-side-bar {
+    flex: 0 0 250px; 
+    background-color: #f4f4f4; 
+  }
+  
+  
+  .main-content {
+    flex: 1; 
+    padding: 20px; 
+    overflow-y: auto; 
+  }
+  

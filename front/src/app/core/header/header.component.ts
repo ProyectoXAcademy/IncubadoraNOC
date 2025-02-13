@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { MenuItem } from '../../models/menu-item.model';
+import { LoggedUser } from '../../models/registeredUser.model';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +23,10 @@ export class HeaderComponent implements AfterViewInit, OnInit {
   
   isAuthenticated: boolean = false;
   menuItems: MenuItem[] = [];
+
+  loggedUserString: string | null = null
+  loggedUser: LoggedUser| null = null
+
 
   constructor(
     @Inject(PLATFORM_ID) platformId: Object,
@@ -40,6 +45,8 @@ export class HeaderComponent implements AfterViewInit, OnInit {
 
     // Verifica el estado de autenticación al iniciar el componente
     this.checkAuthentication();
+    this.getRegisteredUser()
+
   }
 
   ngAfterViewInit() {
@@ -63,6 +70,12 @@ export class HeaderComponent implements AfterViewInit, OnInit {
       }
     }
   }
+ 
+  getRegisteredUser(){
+    this.loggedUserString=localStorage.getItem('loggedUser')
+    this.loggedUser = JSON.parse(this.loggedUserString!)
+  }
+
 
   toggleDarkMode() {
     this.darkModeService.toggleDarkMode();

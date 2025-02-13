@@ -1,3 +1,6 @@
+body{
+  height: 100hv;
+}
 .courses-intro {
   text-align: center;
   margin: 40px 20px;
@@ -84,5 +87,40 @@
   
   .course-card-button:hover {
     background-color: #e08e0b; /* Color del botón al pasar el cursor */
+  }
+  
+
+  .course-detail {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    max-width: 500px;
+    z-index: 1000;
+  }
+  
+  .course-detail button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .course-detail img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .course-detail p {
+    margin: 10px 0;
   }
   

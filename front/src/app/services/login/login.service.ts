@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
+import { LoggedUser } from '../../models/registeredUser.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,10 +35,12 @@ export class LoginService {
   }
 
   loginUser(userData: Auth): Observable<any> {
-    return this.http.post<{ token: string }>(this.apiUrl, userData).pipe(
+                                        // hacer interfaz de findUser
+    return this.http.post<{ token: string, findUser:LoggedUser }>(this.apiUrl, userData).pipe(
       tap(response => {
         console.log('Token recibido:', response.token); // Verifica el token recibido
         if (response && response.token) {
+          localStorage.setItem('loggedUser', JSON.stringify(response.findUser));
           localStorage.setItem('token', response.token); // Guarda el token en localStorage
           this.authenticatedSource.next(true); // Emite un estado de autenticación exitoso
         }
@@ -47,6 +50,8 @@ export class LoginService {
 
   logout(): void {
     localStorage.removeItem('token'); // Elimina el token de localStorage
+    localStorage.removeItem('loggedUser'); // Elimina el user de localStorage
+
     this.authenticatedSource.next(false); // Emite un estado de no autenticación
   }
 
