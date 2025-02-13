@@ -30,7 +30,7 @@ export class CoursesComponent {
   ];
 
   selectedCourse: any = null;
-  eRef: any;
+  
 
   selectCourse(course: any) {
     this.selectedCourse = course;
@@ -39,14 +39,10 @@ export class CoursesComponent {
   deselectCourse() {
     this.selectedCourse = null;
   }
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: MouseEvent) {
-    setTimeout(() => {
-      if (this.selectedCourse && !this.eRef.nativeElement.contains(event.target)) {
-        this.deselectCourse();
-      }
-    }, 0);
-  }
+  
+
+
+  
   
   
   enroll(courseId: number) {
