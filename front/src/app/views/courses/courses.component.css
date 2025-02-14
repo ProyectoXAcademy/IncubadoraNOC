@@ -1,12 +1,63 @@
 
 .courses-intro {
-  height: 100vh;
+  
   text-align: center;
   margin: 40px 20px;
   padding: 20px;
-  background-color: #f9f9f9; /* Color de fondo suave */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  
+}
+.styled-divider {
+  border: none;
+  height: 4px;
+  background: linear-gradient(to right, #6564CC, #00339E, #010163, #FC6A07);
+  margin: 20px 0;
+  background-size: 300% 100%;
+  animation: moveGradient 6s ease-in-out infinite alternate;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  padding-top: 20px;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+  
+
+.courses-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.categories-list {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+}
+
+.categories-list li {
+  background-color: #00339E;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 14px;
+}
+
+.categories-list li:hover {
+  background-color: #6564CC;
+}
+.courses-container{
+  display: flex;
+  flex-direction: row;
+  padding-top: 50px;
 }
 
 /* Estilos para el título de los cursos */
@@ -31,7 +82,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
     overflow: hidden;
     transition: transform 0.3s ease;
-    width: 300px;
+    width: 350px;
     margin: 16px;
   }
   
@@ -139,4 +190,13 @@
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .courses-container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+  }
 }

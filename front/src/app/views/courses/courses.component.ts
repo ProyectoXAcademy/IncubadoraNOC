@@ -1,36 +1,36 @@
-import { Component, HostListener } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-courses',
-  imports: [CommonModule, RouterModule],
   standalone: true,
+  imports: [CommonModule, RouterModule, HttpClientModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
-export class CoursesComponent {
-
-
-
-  courses = [
-    {
-      id: 1,
-      title: 'Curso de Angular',
-      image: 'ruta-de-la-imagen-angular.jpg',
-      shortDescription: 'Aprende Angular desde cero.',
-      longDescription:
-        'Este curso te enseñará los fundamentos de Angular y cómo construir aplicaciones web robustas.',
-      startDate: '10 de marzo de 2025',
-      duration: '8 semanas',
-      price: 200,
-    },
-    // Otros cursos...
-  ];
-
+export class CoursesComponent implements OnInit {
+  courses: any[] = [];
   selectedCourse: any = null;
-  
+
+  constructor(private courseService: CourseService) {}
+
+  ngOnInit(): void {
+    this.loadCourses();
+  }
+
+  loadCourses(): void {
+    this.courseService.getCourses().subscribe(
+      (data) => {
+        this.courses = data;
+      },
+      (error) => {
+        console.error('Error al cargar los cursos:', error);
+      }
+    );
+  }
 
   selectCourse(course: any) {
     this.selectedCourse = course;
@@ -39,14 +39,16 @@ export class CoursesComponent {
   deselectCourse() {
     this.selectedCourse = null;
   }
-  
 
-
-  
-  
-  
   enroll(courseId: number) {
-    
     console.log(`Inscribirse en el curso con ID: ${courseId}`);
   }
+
+  categories: string[] = ['Programación', 'Diseño', 'Marketing', 'Negocios', 'Idiomas'];
+
+filterByCategory(category: string) {
+  console.log('Filtrando por:', category);
+  
+}
+
 }
