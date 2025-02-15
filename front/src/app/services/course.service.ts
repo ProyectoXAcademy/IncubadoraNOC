@@ -14,4 +14,7 @@ export class CourseService {
   getCourses(): Observable<any[]> {
     return this.http.get<any[]>(this.API_URL);
   }
+
 }
+ 
+

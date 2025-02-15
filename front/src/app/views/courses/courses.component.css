@@ -54,12 +54,18 @@
 .categories-list li:hover {
   background-color: #6564CC;
 }
-.courses-container{
+.courses-container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea */
+  justify-content: space-evenly;
+  gap: 20px;
   padding-top: 50px;
 }
 
+.course-card {
+  width: calc(16.66% - 20px); /* 6 tarjetas por fila (100% / 6 = 16.66%) */
+  max-width: 250px; /* Evita que las tarjetas sean demasiado grandes */
+}
 /* Estilos para el título de los cursos */
 .courses-title {
   font-size: 2.5rem;
@@ -81,13 +87,13 @@
     border-radius: 8px; /* Esquinas redondeadas */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
     overflow: hidden;
-    transition: transform 0.3s ease;
-    width: 350px;
+    transition: transform 0.6s ease;
+    width: 300px;
     margin: 16px;
   }
   
   .course-card:hover {
-    transform: translateY(-5px); /* Efecto al pasar el cursor */
+    transform: translateY(-10px); /* Efecto al pasar el cursor */
   }
   
   .course-card img {
@@ -145,7 +151,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(101, 100, 204, 0.5);
+    background: rgba(101, 100, 204, 0.9);
     
     padding: 20px;
     border-radius: 8px;
@@ -200,3 +206,4 @@
     padding-top: 50px;
   }
 }
+

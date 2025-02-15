@@ -10,4 +10,7 @@ const getCourseById = async (req, res, next) => {
     }
 }
 
+
+
+
 module.exports = {getCourseById}

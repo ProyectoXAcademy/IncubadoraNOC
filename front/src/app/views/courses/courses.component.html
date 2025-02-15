@@ -1,46 +1,49 @@
-<main>
-  <section class="courses-intro">
-    <h2 class="courses-title">Impulsa tu Futuro con Nuestros Cursos Especializados</h2>
-    <p class="courses-description">
-      En nuestra plataforma, ofrecemos una variedad de cursos diseñados para potenciar tus habilidades y conocimientos en diversas áreas. Ya sea que busques avanzar en tu carrera profesional o explorar nuevas pasiones, nuestros programas están estructurados para brindarte una experiencia de aprendizaje integral y efectiva.
-    </p>
-    <hr class="styled-divider">
 
-    <nav class="courses-nav">
-      <ul class="categories-list">
-        <li *ngFor="let category of categories" (click)="filterByCategory(category)">
-          {{ category }}
-        </li>
-      </ul>
-    </nav>
-
-    <div class="courses-container">
-      <div
-        class="course-card"
-        *ngFor="let course of courses"
-        (click)="selectCourse(course)"
-      >
-        <img [src]="course.image || 'assets/default-course.jpg'" alt="Imagen del curso" />
-        <div class="course-card-body">
-          <h5 class="course-card-title">{{ course.name }}</h5>
-          <p class="course-card-text">{{ course.description }}</p>
+  <main>
+    <section class="courses-intro">
+      <h2 class="courses-title">Impulsa tu Futuro con Nuestros Cursos Especializados</h2>
+      <h4 class="courses-description">
+        En nuestra plataforma, ofrecemos una variedad de cursos diseñados para potenciar tus habilidades y conocimientos en diversas áreas. Ya sea que busques avanzar en tu carrera profesional o explorar nuevas pasiones, nuestros programas están estructurados para brindarte una experiencia de aprendizaje integral y efectiva.
+      </h4>
+      <hr class="styled-divider">
+  
+      <nav class="courses-nav">
+        <ul class="categories-list">
+          <li *ngFor="let category of categories" (click)="filterByCategory(category)">
+            {{ category }}
+          </li>
+        </ul>
+      </nav>
+  
+      <div class="courses-container">
+        <div
+          class="course-card"
+          *ngFor="let course of courses"
+          (click)="selectCourse(course)"
+        >
+          <img [src]="course.image || 'assets/default-course.jpg'" alt="Imagen del curso" />
+          <div class="course-card-body">
+            <h5 class="course-card-title">{{ course.name }}</h5>
+            <p class="course-card-text">{{ course.description }}</p>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <div *ngIf="selectedCourse" class="course-detail">
-      <button class="close-btn" (click)="deselectCourse()">Cerrar</button>
-      <h3>{{ selectedCourse.name }}</h3>
-      <img
-        [src]="selectedCourse.image || 'assets/default-course.jpg'"
-        alt="{{ selectedCourse.name }}"
-        class="course-image"
-      />
-      <p>{{ selectedCourse.description }}</p>
-      <p><strong>Categoría:</strong> {{ selectedCourse.category }}</p>
-      <p><strong>Requisitos:</strong> {{ selectedCourse.inscription_requeriments || 'N/A' }}</p>
-      <p><strong>Condiciones de aprobación:</strong> {{ selectedCourse.approval_conditions || 'N/A' }}</p>
-      <button (click)="enroll(selectedCourse.course_id)">Inscribirse Ahora</button>
-    </div>
-  </section>
-</main>
+      
+      <div *ngIf="selectedCourse" class="course-detail">
+        <button class="close-btn" (click)="deselectCourse()">Cerrar</button>
+        <h3>{{ selectedCourse.name }}</h3>
+        <img
+          [src]="selectedCourse.image || 'assets/default-course.jpg'"
+          alt="{{ selectedCourse.name }}"
+          class="course-image"
+        />
+        <p>{{ selectedCourse.description }}</p>
+        <p><strong>Categoría:</strong> {{ selectedCourse.category }}</p>
+        <p><strong>Requisitos:</strong> {{ selectedCourse.inscription_requeriments || 'N/A' }}</p>
+        <p><strong>Condiciones de aprobación:</strong> {{ selectedCourse.approval_conditions || 'N/A' }}</p>
+        <button (click)="enroll(selectedCourse.course_id)">Inscribirse Ahora</button>
+      </div>
+    </section>
+  </main>
+
+
