@@ -1,1 +1,77 @@
-<p>create-course works!</p>
+<section>
+    <h2 class="title">Ingresa los datos del nuevo curso:</h2>
+    <form [formGroup]="formPOST" (ngSubmit)="createCourseSUBMIT()"  >    
+
+        <!--    /////////////////////////   -->
+        <div class="formCamp">
+            <label for="">Nombre</label>
+            <div *ngIf="name_GET.invalid && (name_GET.dirty || name_GET.touched)"  class="control" >
+                <p *ngIf="name_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Introducción a la IA" formControlName="name">
+        </div>
+        
+         <!--    /////////////////////////   -->
+         <div class="formCamp">
+            <label for="">Descripción</label>
+            <div *ngIf="description_GET.invalid && (description_GET.dirty || description_GET.touched)"  class="control" >
+                <p *ngIf="description_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Una breve descripcion sobre el curso" formControlName="description">
+        </div>
+
+         <!--    /////////////////////////   -->
+        <div class="formCamp">
+            <label for="">Categoría</label>
+            <div *ngIf="category_GET.invalid && (category_GET.dirty || category_GET.touched)"  class="control" >
+                <p *ngIf="category_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="A que categoría partenece el curso" formControlName="category">
+        </div>
+
+          <!--    /////////////////////////   -->
+          <div class="formCamp">
+            <label for="">Condiciones de inscripción</label>
+            <div *ngIf="inscription_requeriments_GET.invalid && (inscription_requeriments_GET.dirty || inscription_requeriments_GET.touched)"  class="control" >
+                <p *ngIf="inscription_requeriments_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Indique las condiciones de inscripción" formControlName="inscription_requeriments">
+        </div>
+
+          <!--    /////////////////////////   -->
+          <div class="formCamp">
+            <label for="">Condiciones de aprobación</label>
+            <div *ngIf="approval_conditions_GET.invalid && (approval_conditions_GET.dirty || approval_conditions_GET.touched)"  class="control" >
+                <p *ngIf="approval_conditions_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Indique las condiciones de aprobación" formControlName="approval_conditions">
+        </div>
+
+
+          <!--    /////////////////////////   -->
+          <div class="formCamp">
+            <label class="">Habilitar curso</label>
+            <div *ngIf="active_GET.invalid && (active_GET.dirty || active_GET.touched)"  class="control" >
+                <p *ngIf="active_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <label class="checkbox" for="">Si 
+                <input class="checkbox" type="radio" formControlName="active" value=true>
+            </label>
+            <label class="checkbox" for="">No
+                <input class="checkbox" type="radio" formControlName="active" value=false>
+            </label>
+
+        </div>
+
+
+
+        <div class="button">
+            <button type="submit" >Crear curso</button>
+        </div>
+        
+
+
+    </form>
+
+
+</section>

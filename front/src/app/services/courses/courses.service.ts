@@ -8,8 +8,8 @@ import { Courses } from '../../models/courses.model';
 })
 export class CoursesService {
 
- // agregar endpoint
- endpoint_create_courses:string = "agregar_endpoint"
+ // consultar si el endpoint es el correcto
+ endpoint_create_courses:string = "http://localhost:3000/courses/create"
 
 
  constructor( private http:HttpClient) { }
