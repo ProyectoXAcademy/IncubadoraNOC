@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -7,19 +6,23 @@ import { CourseService } from '../../services/course.service';
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CommonModule, RouterModule, HttpClientModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
 export class CoursesComponent implements OnInit {
   courses: any[] = [];
   selectedCourse: any = null;
+  categories: string[] = ['Programación', 'Diseño', 'Marketing', 'Negocios', 'Idiomas'];
+
 
   constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {
     this.loadCourses();
+   
   }
+
 
   loadCourses(): void {
     this.courseService.getCourses().subscribe(
@@ -44,7 +47,7 @@ export class CoursesComponent implements OnInit {
     console.log(`Inscribirse en el curso con ID: ${courseId}`);
   }
 
-  categories: string[] = ['Programación', 'Diseño', 'Marketing', 'Negocios', 'Idiomas'];
+  
 
 filterByCategory(category: string) {
   console.log('Filtrando por:', category);

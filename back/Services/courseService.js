@@ -15,8 +15,6 @@ const getCourseById = async (course_id) => {
     }
 }
 
-
-
 const createCourse = async (name, description, category, teacher_id) => {
     try {
         const newCourse = {
@@ -54,4 +52,12 @@ const getAllCourses = async () => {
 
 
 
-module.exports = {getCourseById, createCourse}
+module.exports = {getCourseById, createCourse, getAllCourses}
+
+
+
+
+
+
+
+
