@@ -1,5 +1,6 @@
 const {courseService} = require('../Services')
 
+
 const getCourseById = async (req, res, next) => {
     try {
         const id = req.params.id
@@ -28,5 +29,11 @@ const getAllCourses = async (req, res, next) => {
         next(error)
     }
 }
+
+
+
+
+
+
 
 module.exports = {getCourseById, createCourse, getAllCourses}

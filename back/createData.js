@@ -1,5 +1,5 @@
 const {dbConfig} = require('./Config')
-const {roleService, userService, publicationService, courseService} = require('./Services')
+const {roleService, userService, publicationService, courseService, courseService} = require('./Services')
 
 const createData = async () => {
     await dbConfig.sequelize.sync({force: true})
@@ -19,10 +19,13 @@ const createData = async () => {
     await publicationService.createPublication("Programa de crédito", "Noticia de ejemplo 2", "Descripción 2", "2025-05-02", null)
     await publicationService.createPublication("Noticia", "Noticia de ejemplo 3", "Esto es otra descripción", "2022-10-25", null)
 
-    //Curso de ejemplo
-    await courseService.createCourse("Curso de prueba 1", "Descripcion curso 1", "Categoria de ejemplo", 1)
-    await courseService.createCourse("Curso 2", "Descripcion curso 2", "Categoria 2", 2)
+   //Curso de ejemplo
+   await courseService.createCourse("Curso de prueba 1", "Descripcion curso 1", "Categoria de ejemplo", 1)
+   await courseService.createCourse("Curso de prueba 1", "Descripcion curso 1", "Categoria de ejemplo", 1)
+   await courseService.createCourse("Curso de prueba 1", "Descripcion curso 1", "Categoria de ejemplo", 1)
+   await courseService.createCourse("Curso de prueba 1", "Descripcion curso 1", "Categoria de ejemplo", 1)
+   await courseService.createCourse("Curso de prueba 1", "Descripcion curso 1", "Categoria de ejemplo", 1)
 
-    console.log("Se crearon los datos de prueba en la Base de datos!")
+    console.log("Se crearon los datos en la Base de datos!")
 }
 createData()

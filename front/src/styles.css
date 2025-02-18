@@ -24,6 +24,8 @@
   background-color: #121212 !important;
 }
 
+
+
 .dark-mode .title,
 .dark-mode .input-group label,
 .dark-mode .checkbox-group label,
@@ -32,7 +34,10 @@
 .dark-mode .courses p,
 .dark-mode .notices h1,
 .dark-mode .cursos-destacados h2,
-.dark-mode .container marquee span {
+.dark-mode .container marquee span,
+.dark-mode .courses-intro h2,
+.dark-mode .courses-intro h4
+{
   color: white;
 }
 

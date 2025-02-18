@@ -178,6 +178,11 @@ Incluye diseño responsive
   margin-top: 10px;
 }
 
+.cta:hover{
+  background: #dc5c07;
+  transition: 1s;
+}
+
 /* Cursos Destacados */
 .cursos-destacados {
   padding: 50px 20px;
