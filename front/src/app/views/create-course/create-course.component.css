@@ -18,14 +18,15 @@
  } 
 
 .title{
-    margin: 3rem .2rem 4rem .2rem;
+    margin: 2rem .2rem;
+
 }   
 section{
-    margin: 2rem;
+    margin: 2rem ;
 }
 form{
     padding: 1rem;
-background-color: #6564cc50;
+background-color: #00339e50 ;
 }
 .formCamp{
     margin: 2rem .2rem;
@@ -46,7 +47,7 @@ label,p{
 }
 
 .control{
-    display: inline;
+    display: inline-block;
     color: red;
 }
 
@@ -56,9 +57,10 @@ label,p{
 }
 
 button{
-    padding: .5rem 1rem;
-    background-color: #fc6a07;
-    border: 1px solid #fc6a07;
+    margin:.5rem;
+    padding: .8rem 1.5rem;
+    background-color: var(--color-azul);
+    border: 1px solid var(--color-azul);
     border-radius: 5px;
     color: white;
     font-weight: 500;

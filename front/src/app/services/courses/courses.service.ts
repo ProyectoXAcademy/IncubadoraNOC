@@ -9,8 +9,7 @@ import { Courses } from '../../models/courses.model';
 export class CoursesService {
 
  // consultar si el endpoint es el correcto
- endpoint_create_courses:string = "http://localhost:3000/courses/create"
-
+ endpoint_create_courses:string = "http://localhost:3000/api/course/create"
 
  constructor( private http:HttpClient) { }
 
