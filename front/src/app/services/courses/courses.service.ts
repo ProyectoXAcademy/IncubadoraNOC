@@ -9,8 +9,8 @@ import { Courses } from '../../models/courses.model';
 export class CoursesService {
 
  // agregar endpoint
- endpoint_create_courses:string = "agregar_endpoint"
- endpoint_get_courses: string = "agregar_endpoint_obtener";
+ endpoint_create_courses:string = "http://localhost:3000/api/course/create"
+ endpoint_get_courses: string =  "http://localhost:3000/api/course"
 
 
  constructor( private http:HttpClient) { }

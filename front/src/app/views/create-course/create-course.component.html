@@ -1,0 +1,45 @@
+<section>
+    <h2 class="title">Ingresa los datos del nuevo curso:</h2>
+    <form [formGroup]="formPOST" (ngSubmit)="createCourseSUBMIT()"  >    
+
+        <!--    /////////////////////////   -->
+        <div class="formCamp">
+            <label for="">Nombre</label>
+            <div *ngIf="name_GET.invalid && (name_GET.dirty || name_GET.touched)"  class="control" >
+                <p *ngIf="name_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Introducción a la IA" formControlName="name">
+        </div>
+        
+         <!--    /////////////////////////   -->
+         <div class="formCamp">
+            <label for="">Descripción</label>
+            <div *ngIf="description_GET.invalid && (description_GET.dirty || description_GET.touched)"  class="control" >
+                <p *ngIf="description_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Una breve descripcion sobre el curso" formControlName="description">
+        </div>
+
+         <!--    /////////////////////////   -->
+        <div class="formCamp">
+            <label for="">Categoría</label>
+            <div *ngIf="category_GET.invalid && (category_GET.dirty || category_GET.touched)"  class="control" >
+                <p *ngIf="category_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="A que categoría partenece el curso" formControlName="category">
+        </div>
+
+         
+
+       
+
+        <div class="button">
+            <button type="submit" >Crear curso</button>
+        </div>
+        
+
+
+    </form>
+
+
+</section>

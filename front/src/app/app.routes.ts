@@ -11,7 +11,7 @@ import { MyCoursesComponent } from './views/my-courses/my-courses.component';
 import { MyGradesComponent } from './views/my-grades/my-grades.component';
 import { MyEnrollmentsComponent } from './views/my-enrollments/my-enrollments.component';
 import { MyPaymentsComponent } from './views/my-payments/my-payments.component';
-import { CreateCourseComponent } from './views/create-course/create-course/create-course.component';
+import { CreateCourseComponent } from './views/create-course/create-course.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },

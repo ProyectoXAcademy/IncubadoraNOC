@@ -1,1 +1,19 @@
-<p>my-grades works!</p>
+<section>
+    
+    <h2 class="title">Notas:</h2>
+    <div class="cont">
+
+        <div class="head-table">
+            <p>Materia</p>
+            <p class="number">1er parcial</p>
+        </div>
+        <div *ngFor="let g of myGrades" >
+            <p>{{g.type}}</p>
+            <p class="number">{{g.value}}</p>
+            
+            
+            
+        </div>
+        
+    </div>
+</section>

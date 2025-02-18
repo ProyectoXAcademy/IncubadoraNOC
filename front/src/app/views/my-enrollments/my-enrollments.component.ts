@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { Enrollment } from '../../models/enrollment.model';
+import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service';
 @Component({
   selector: 'app-my-enrollments',
   imports: [],
@@ -8,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrl: './my-enrollments.component.css'
 })
 export class MyEnrollmentsComponent {
+
+  constructor(private serv:MyEnrollmentsService){}
+
+  enrollments:Enrollment | null = null
+
+  ngOnInit(){
+    this.getEnrollments()
+  }
+
+  getEnrollments(){
+    this.serv.enrollmentsGET().subscribe(
+      d => this.enrollments = d
+    )
+  }
 
 }
