@@ -1,5 +1,5 @@
 const {dbConfig} = require('./Config')
-const {roleService, userService, publicationService, courseService, courseService} = require('./Services')
+const {roleService, userService, publicationService, courseService} = require('./Services')
 
 const createData = async () => {
     await dbConfig.sequelize.sync({force: true})
