@@ -1,1 +1,11 @@
-<p>profile works!</p>
+<div *ngIf="user" class="profile-card">
+  <h2 class="profile-title">Perfil de Usuario</h2>
+  
+  <div class="profile-info">
+    <p><strong>👤 Nombre:</strong> {{ user.name }} {{ user.lastName }}</p>
+    <p><strong>🆔 DNI:</strong> {{ user.dni }}</p>
+    <p><strong>🎂 Fecha de Nacimiento:</strong> {{ user.date_of_birth | date: 'dd/MM/yyyy' }}</p>
+    <p><strong>📧 Email:</strong> {{ user.email }}</p>
+    
+  </div>
+</div>

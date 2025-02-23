@@ -5,6 +5,7 @@ const {userController} = require('../Controllers')
 
 router.get('/:id', userController.getUserById)
 
+
 /**
  * @swagger
  * /api/user/create:
