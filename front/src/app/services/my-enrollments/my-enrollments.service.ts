@@ -10,6 +10,7 @@ import { Registration } from '../../models/registration.model';
 })
 export class MyEnrollmentsService {
   private apiUrl = 'http://localhost:3000/api/registration/create'; // URL del backend
+  private apiGetCourses = 'http://localhost:3000/api/registration'
 
   private registrations: Registration[] | null = null
 
@@ -27,20 +28,10 @@ export class MyEnrollmentsService {
     return this.http.get(`${this.apiUrl}/usuario/${student_id}`);
   }
 
-  getRegistrations() {
-    this.getUserRegistrationsFromLS()
-    return this.registrations
-  }
+ 
 
-  async getUserRegistrationsFromLS() {
-    const loggedUser = localStorage.getItem('loggedUser')
-    if (loggedUser) {
-      const user = JSON.parse(loggedUser)
-      this.http.get<Registration[]>(`http://localhost:3000/api/registration/user/${user.user_id}`, {}).subscribe( (data) => {
-        this.registrations = data
-      })
-    }
-    console.log(this.registrations)
+  getUserRegistrations(user_id: number): Observable<Registration[]> {
+    return this.http.get<Registration[]>(`${this.apiGetCourses}/user/${user_id}`);
   }
 
 }
