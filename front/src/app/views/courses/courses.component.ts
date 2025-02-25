@@ -34,9 +34,7 @@ export class CoursesComponent implements OnInit {
     const storedUser = localStorage.getItem('loggedUser');
     this.student_id = storedUser ? JSON.parse(storedUser).user_id : null;
   
-    if (!this.student_id) {
-      Swal.fire('Error', 'No se pudo obtener el usuario logueado.', 'error');
-    }
+   
   }
 
   loadCourses(): void {
@@ -61,9 +59,24 @@ export class CoursesComponent implements OnInit {
 
   enroll(course_id: number) {
     if (!this.student_id) {
-      Swal.fire('Error', 'Usuario no autenticado.', 'error');
+      Swal.fire({
+        title: 'Usuario no autenticado',
+        text: 'Parece que no has iniciado sesión. ¿Quieres ir al login?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, ir al Login',
+        cancelButtonText: 'No, cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/login']);
+        }
+      });
+      
       return;
     }
+    
   
     this.myEnrollmentsService.inscribirUsuario(this.student_id, course_id).subscribe({
       next: (response) => {

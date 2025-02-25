@@ -1,11 +1,46 @@
-<div *ngIf="user" class="profile-card">
+<div class="profile-card" *ngIf="user">
   <h2 class="profile-title">Perfil de Usuario</h2>
-  
-  <div class="profile-info">
+
+  <!-- Vista Estática -->
+  <div *ngIf="!isEditing" class="profile-info">
     <p><strong>👤 Nombre:</strong> {{ user.name }} {{ user.lastName }}</p>
     <p><strong>🆔 DNI:</strong> {{ user.dni }}</p>
     <p><strong>🎂 Fecha de Nacimiento:</strong> {{ user.date_of_birth | date: 'dd/MM/yyyy' }}</p>
     <p><strong>📧 Email:</strong> {{ user.email }}</p>
-    
+
+    <button (click)="enableEdit()" class="btn btn-edit">✏️ Editar</button>
   </div>
+
+  <!-- Modo Edición -->
+  <form *ngIf="isEditing" (ngSubmit)="saveChanges()" class="profile-info">
+    <p>
+      <strong>👤 Nombre:</strong>
+      <input type="text" [(ngModel)]="editedUser!.name" name="name" required />
+    </p>
+
+    <p>
+      <strong>👤 Apellido:</strong>
+      <input type="text" [(ngModel)]="editedUser!.lastName" name="lastName" required />
+    </p>
+
+    <p>
+      <strong>🆔 DNI:</strong>
+      <input type="number" [(ngModel)]="editedUser!.dni" name="dni" required />
+    </p>
+
+    <p>
+      <strong>🎂 Fecha de Nacimiento:</strong>
+      <input type="date" [(ngModel)]="editedUser!.date_of_birth" name="date_of_birth" required />
+    </p>
+
+    <p>
+      <strong>📧 Email:</strong>
+      <input type="email" [(ngModel)]="editedUser!.email" name="email" required />
+    </p>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-save">💾 Guardar</button>
+      <button type="button" (click)="cancel()" class="btn btn-cancel">❌ Cancelar</button>
+    </div>
+  </form>
 </div>
