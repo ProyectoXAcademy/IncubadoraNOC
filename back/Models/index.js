@@ -15,8 +15,8 @@ userModel.belongsToMany(roleModel, {through: 'UserRoles'})
 roleModel.belongsToMany(userModel, {through: 'UserRoles'})
 
 // Un usuario puede tener una o varias inscripciones y/o asistencias
-userModel.hasMany(assistanceModel)
-userModel.hasMany(registrationModel)
+userModel.hasMany(assistanceModel, {foreignKey: 'student_id'})
+userModel.hasMany(registrationModel, {foreignKey: 'student_id'})
 
 // Un curso tiene un docente asignado
 courseModel.belongsTo(userModel, {foreignKey: 'teacher_id'})
@@ -33,7 +33,7 @@ noteModel.belongsTo(courseModel, {foreignKey: 'course_id'})
 paymentModel.belongsTo(userModel, {foreignKey: 'student_id'})
 paymentModel.belongsTo(courseModel, {foreignKey: 'course_id'})
 
-// Una inscripción tiene asignado un estudiante y un curso
+//Una inscripción tiene asignado un estudiante y un curso
 registrationModel.belongsTo(userModel, {foreignKey: 'student_id'})
 registrationModel.belongsTo(courseModel, {foreignKey: 'course_id'})
 

@@ -43,7 +43,23 @@ const createRegistration = async (student_id, course_id) => {
     console.error('Error en createRegistration:', error.message);
     throw error;
   }
-};
+}
+
+const getUserRegistrations = async (user_id) => {
+  try {
+    const registrations = await registrationModel.findAll({
+      where: {
+        student_id: user_id
+      }
+    })
+    if (registrations.length === 0) {
+      return "No hay registros."
+    }
+    return registrations
+  } catch (error) {
+    throw error
+  }
+}
 
 
-module.exports = {getRegistrationById, createRegistration}
+module.exports = {getRegistrationById, createRegistration, getUserRegistrations}

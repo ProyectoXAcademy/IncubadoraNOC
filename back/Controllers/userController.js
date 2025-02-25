@@ -1,11 +1,6 @@
 const {userService} = require('../Services')
 
 
-
-    
-
-    
-
 const getUserById = async (req, res, next) => {
     try {
         const id = req.params.id
@@ -36,6 +31,15 @@ const getUserByEmail = async (req, res, next) => {
     }
 }
 
+const editUser = async (req, res, next) => {
+    try {
+        const editedUser = req.body.user
+        console.log(editedUser)
+        await userService.editUser(editedUser.user_id, editedUser)
+        res.status(200).json(editedUser)
+    } catch (error) {
+        next(error)
+    }
+}
 
-
-module.exports = {getUserById, createUser, getUserByEmail}
+module.exports = {getUserById, createUser, getUserByEmail, editUser}

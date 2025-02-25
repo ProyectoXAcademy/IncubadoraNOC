@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Enrollment } from '../../models/enrollment.model';
+import { Component, OnInit } from '@angular/core';
+import { Registration} from '../../models/registration.model';
 import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service';
 
 
@@ -10,13 +10,17 @@ import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollmen
   templateUrl: './my-enrollments.component.html',
   styleUrl: './my-enrollments.component.css'
 })
-export class MyEnrollmentsComponent {
+export class MyEnrollmentsComponent implements OnInit {
 
-  constructor(private serv:MyEnrollmentsService){}
+  private registrations: Registration[] | null = null
 
-  enrollments:Enrollment | null = null
+  constructor(private serv: MyEnrollmentsService){}
 
- 
+  ngOnInit(): void {
+    this.registrations = this.serv.getRegistrations()
+    console.log(this.registrations)
+    
+  }
  
 
 }

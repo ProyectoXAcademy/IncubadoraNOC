@@ -27,6 +27,16 @@ const createRegistration = async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-};
+}
 
-module.exports = {getRegistrationById, createRegistration}
+const getUserRegistrations = async (req, res, next) => {
+  try {
+    const user_id = req.params.id
+    const registrations = await registrationService.getUserRegistrations(user_id)
+    res.status(200).json(registrations)
+  } catch (error) {
+    next(error)
+  }
+}
+
+module.exports = {getRegistrationById, createRegistration, getUserRegistrations}
