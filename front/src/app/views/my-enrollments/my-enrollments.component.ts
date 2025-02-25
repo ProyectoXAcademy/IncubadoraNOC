@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Enrollment } from '../../models/enrollment.model';
 import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service';
+
+
 @Component({
   selector: 'app-my-enrollments',
   imports: [],
@@ -14,14 +16,7 @@ export class MyEnrollmentsComponent {
 
   enrollments:Enrollment | null = null
 
-  ngOnInit(){
-    this.getEnrollments()
-  }
-
-  getEnrollments(){
-    this.serv.enrollmentsGET().subscribe(
-      d => this.enrollments = d
-    )
-  }
+ 
+ 
 
 }

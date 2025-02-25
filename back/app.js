@@ -38,7 +38,8 @@ app.use('/api/user', userRouter);
 app.use('/api/role', roleRouter);
 app.use('/api/userRole', userRoleRouter);
 app.use('/api/course', courseRouter);
-app.use('/api/registration', registrationRouter);
+
+app.use('/api/inscripciones', registrationRouter);
 app.use('/api/note', noteRouter);
 app.use('/api/payment', paymentRouter);
 app.use('/api/assistance', assistanceRouter);
