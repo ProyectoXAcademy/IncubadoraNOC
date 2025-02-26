@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoggedUser } from '../../models/registeredUser.model';
 import { UserService } from '../../services/users/user.service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 
@@ -31,18 +32,19 @@ export class ProfileComponent implements OnInit {
   enableEdit(): void {
     this.isEditing = true;
     this.editedUser = { ...this.user! }; // Clona el usuario para editar
+    
   }
 
-  //Guarda los cambios (envía petición put al servidor)
+  // Guarda los cambios
   saveChanges(): void {
     if (this.editedUser) {
-      this.userService.editUser(this.editedUser).subscribe({
+      this.userService.editUser (this.editedUser).subscribe({
         next: (response) => {
-          console.log(response)
           this.user = response;
           localStorage.setItem('loggedUser', JSON.stringify(response));
           this.isEditing = false;
           alert('Perfil actualizado exitosamente.');
+          console.log(this.user)
         },
         error: (error) => {
           console.error('Error al actualizar:', error);
@@ -51,6 +53,8 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
+
+  
 
   // Cancela la edición
   cancel(): void {

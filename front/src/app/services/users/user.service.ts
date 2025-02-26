@@ -12,6 +12,8 @@ export class UserService {
 
   constructor( private http: HttpClient) { }
 
+  
+
   editUser(userData: any): Observable<any> {
     const tokenJWT = localStorage.getItem('token')
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${tokenJWT}` });
