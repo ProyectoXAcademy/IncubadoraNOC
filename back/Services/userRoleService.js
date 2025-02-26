@@ -30,14 +30,14 @@ const createUserRole = async (user_id, role_id) => {
 
 const getUserRoleByUserId = async (UserUserId) => {
     try {
-        const findUserRole = await userRoleModel.findOne({
+        const findUserRole = await userRoleModel.findAll({
             where: {
                 UserUserId: UserUserId
             }
         })
         if (!findUserRole) {
             const error = new Error()
-            error.message = `Error al encontrar usuarioRol con id de usuario=${UserUserId}`
+            error.message = `Error al encontrar los roles del usuario con user_id=${UserUserId}`
             error.statusCode = 404
             throw error
         }

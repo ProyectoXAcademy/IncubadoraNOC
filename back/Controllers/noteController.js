@@ -10,4 +10,15 @@ const getNoteById = async (req, res, next) => {
     }
 }
 
-module.exports = {getNoteById}
+const getNoteByIdStudent = async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const findNotes = await noteService.getNoteByIdStudent(id)
+        res.status(200).json(findNotes)
+    } catch (error) {
+        next(error)
+    }
+}
+
+
+module.exports = {getNoteById,getNoteByIdStudent}

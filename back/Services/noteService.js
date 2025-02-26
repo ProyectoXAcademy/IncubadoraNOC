@@ -15,4 +15,22 @@ const getNoteById = async (note_id) => {
     }
 }
 
-module.exports = {getNoteById}
+const getNoteByIdStudent = async (id_student) => {
+    try {
+        const findNote = await noteModel.findAll(
+            {where: {student_id: id_student}}
+        )
+        if (!findNote) {
+            const error = new Error()
+            error.message = `Error al encontrar las notas de estudiante con id=${id_student}`
+            error.statusCode = 404
+            throw error
+        }
+        return findNote
+    } catch (error) {
+        throw error
+    }
+}
+
+
+module.exports = {getNoteById,getNoteByIdStudent}

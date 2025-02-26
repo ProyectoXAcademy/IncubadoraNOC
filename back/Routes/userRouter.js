@@ -55,4 +55,6 @@ router.post('/create', userController.createUser)
 /** router.put('/edit', authMiddleware.userIsAuth, userController.editUser)*/
 router.put('/edit', userController.editUser)
 
+router.post('/mail',userController.getUserByEmail)
+
 module.exports = router

@@ -1,0 +1,59 @@
+
+/*PALETA DE COLORES*/
+:root {
+    --color-violeta: #6564cc;
+    --color-azul: #00339e;
+    --color-azul-oscuro: #010163;
+    --color-naranja: #fc6a07;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+select{
+    margin: .5rem 1rem ;
+    padding: .5rem;
+    font-weight: 600;
+
+}
+section{
+    margin: 1rem;
+    border: 1px solid #00339e50;
+}
+div{
+    margin: 2rem 1rem;
+}
+h2{
+    margin: 2rem 1rem;
+    text-align: center;
+    display: inline-block;
+}
+h3,p{
+    margin:1rem;
+}
+input, textarea{
+    margin:.2rem 1rem;
+    padding: .5rem;
+
+}
+
+.category{
+    display: inline-block;
+    background-color: #fc6a07;
+    padding: .5rem;
+    color: white;
+}
+
+button{
+    margin:.5rem;
+    padding: .8rem 1.5rem;
+    background-color: var(--color-azul);
+    border: 1px solid var(--color-azul);
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+}

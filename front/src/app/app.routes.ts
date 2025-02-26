@@ -12,6 +12,10 @@ import { MyGradesComponent } from './views/my-grades/my-grades.component';
 import { MyEnrollmentsComponent } from './views/my-enrollments/my-enrollments.component';
 import { MyPaymentsComponent } from './views/my-payments/my-payments.component';
 import { CreateCourseComponent } from './views/create-course/create-course.component';
+import { CreateUserRoleComponent } from './views/createUserRole/create-user-role.component';
+import { CourseViewComponent } from './views/course-view/course-view.component';
+
+
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +35,10 @@ export const routes: Routes = [
       { path: 'myenrollments', component: MyEnrollmentsComponent },
       { path: 'mypayments', component: MyPaymentsComponent },
       { path: 'create-course', component: CreateCourseComponent },
+      { path: 'create-user-role', component: CreateUserRoleComponent },
+      { path: 'view-course', component: CourseViewComponent},
+
+
 
       // Redirigir a 'profile' si no se selecciona ninguna ruta hija
       { path: '', redirectTo: 'profile', pathMatch: 'full' },
