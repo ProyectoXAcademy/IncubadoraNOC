@@ -33,11 +33,12 @@ export class ProfileComponent implements OnInit {
     this.editedUser = { ...this.user! }; // Clona el usuario para editar
   }
 
-  // Guarda los cambios
+  //Guarda los cambios (envía petición put al servidor)
   saveChanges(): void {
     if (this.editedUser) {
-      this.userService.editUser(Number(this.editedUser!.user_id), this.editedUser).subscribe({
+      this.userService.editUser(this.editedUser).subscribe({
         next: (response) => {
+          console.log(response)
           this.user = response;
           localStorage.setItem('loggedUser', JSON.stringify(response));
           this.isEditing = false;
