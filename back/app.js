@@ -6,6 +6,7 @@ const { dbConfig } = require('./Config');
 const { userRouter, roleRouter, userRoleRouter, courseRouter, registrationRouter, noteRouter, paymentRouter, 
     assistanceRouter, publicationRouter, loginRouter } = require('./Routes');
 const { errorMiddleware } = require('./Middlewares');
+const passport = require('passport')
 
 const app = express();
 const PORT = 3000;
@@ -33,6 +34,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(express.json());
 app.use(cors());
+app.use(passport.initialize())
 
 app.use('/api/user', userRouter);
 app.use('/api/role', roleRouter);

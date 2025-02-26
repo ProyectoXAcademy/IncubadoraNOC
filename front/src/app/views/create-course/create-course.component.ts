@@ -7,9 +7,11 @@ import Swal from 'sweetalert2';
 
 
 
+
 @Component({
   selector: 'app-create-course',
   imports: [ReactiveFormsModule, NgIf],
+  standalone: true,
   templateUrl: './create-course.component.html',
   styleUrl: './create-course.component.css'
 })

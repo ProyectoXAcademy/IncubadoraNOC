@@ -1,3 +1,102 @@
-body{
-    background-color: red;
+/* Tarjeta de Perfil */
+.profile-card {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animación al pasar el mouse */
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(252, 106, 7, 0.3);
+}
+
+/* Título */
+.profile-title {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #00339e;
+  padding-bottom: 10px;
+}
+
+/* Información del perfil */
+.profile-info p {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Iconos y texto */
+.profile-info strong {
+  width: 150px;
+  color: #010163;
+}
+
+/* Efecto al pasar el mouse sobre los datos */
+.profile-info p:hover {
+  background-color: #fc6a07;
+  border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilos para los inputs en modo edición */
+.profile-info input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Botones */
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+  background-color: #00339e;
+}
+
+.btn-edit:hover {
+  background-color: #0056b3;
+}
+
+.btn-save {
+  background-color: #00339e;
+}
+
+.btn-save:hover {
+  background-color: #0056b3;
+}
+
+.btn-cancel {
+  background-color: #00339e;
+  margin-left: 10px;
+}
+
+.btn-cancel:hover {
+  background-color: #0056b3;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }

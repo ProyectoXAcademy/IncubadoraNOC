@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { CourseService } from '../../services/course.service';
+import { Router, RouterModule } from '@angular/router';
+import { CoursesService } from '../../services/courses/courses.service';
+import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-courses',
@@ -12,22 +14,34 @@ import { CourseService } from '../../services/course.service';
 })
 export class CoursesComponent implements OnInit {
   courses: any[] = [];
+  filteredCourses: any[] = []; // Cursos filtrados
   selectedCourse: any = null;
-  categories: string[] = ['Programación', 'Diseño', 'Marketing', 'Negocios', 'Idiomas'];
+  categories: string[] = ['Todos', 'Programación', 'Diseño', 'Marketing', 'Negocios', 'Idiomas'];
+  student_id!: number;
 
-
-  constructor(private courseService: CourseService) {}
-
+  constructor(
+    private coursesService: CoursesService,
+    private myEnrollmentsService: MyEnrollmentsService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
+    this.loadStudentId();
     this.loadCourses();
-   
   }
 
 
+  loadStudentId() {
+    const storedUser = localStorage.getItem('loggedUser');
+    this.student_id = storedUser ? JSON.parse(storedUser).user_id : null;
+  
+   
+  }
+
   loadCourses(): void {
-    this.courseService.getCourses().subscribe(
+    this.coursesService.getCoursesGET().subscribe(
       (data) => {
         this.courses = data;
+        this.filteredCourses = data; // Inicializamos filteredCourses
       },
       (error) => {
         console.error('Error al cargar los cursos:', error);
@@ -43,16 +57,58 @@ export class CoursesComponent implements OnInit {
     this.selectedCourse = null;
   }
 
-  enroll(courseId: number) {
-    console.log(`Inscribirse en el curso con ID: ${courseId}`);
+  enroll(course_id: number) {
+    if (!this.student_id) {
+      Swal.fire({
+        title: 'Usuario no autenticado',
+        text: 'Parece que no has iniciado sesión. ¿Quieres ir al login?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, ir al Login',
+        cancelButtonText: 'No, cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/login']);
+        }
+      });
+      
+      return;
+    }
+    
+  
+    this.myEnrollmentsService.inscribirUsuario(this.student_id, course_id).subscribe({
+      next: (response) => {
+        Swal.fire('¡Inscripción exitosa!', 'Te has inscrito correctamente al curso.', 'success');
+      },
+      error: (error) => {
+        console.error('Error al inscribirse:', error);
+  
+        const errorMessage = error.error?.message || 'No se pudo realizar la inscripción.';
+        Swal.fire('Error al inscribirse', errorMessage, 'error');
+      }
+    });
   }
 
+
+  filterByCategory(category: string) {
+    console.log('Filtrando por:', category);
+  
+    if (category === 'Todos') {
+      this.filteredCourses = this.courses;
+    } else {
+      this.filteredCourses = this.courses.filter(course => 
+        this.normalizeString(course.category) === this.normalizeString(category)
+      );
+    }
+  }
   
 
-filterByCategory(category: string) {
-  console.log('Filtrando por:', category);
-  
-}
-
-
+  normalizeString(text: string): string {
+    return text
+      .toLowerCase()
+      .normalize('NFD') // Descompone los caracteres con tilde
+      .replace(/[\u0300-\u036f]/g, ''); // Elimina las marcas de acento
+  }
 }

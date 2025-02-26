@@ -2,6 +2,7 @@ const {userModel} = require('../Models')
 const {hashPassword} = require('./hashPasswordService')
 const {createUserRole} = require('./userRoleService')
 const {getRoleByName} = require('./roleService')
+const {sequelize} = require('../Config/dbConfig')
 
 const getUserById = async (user_id) => {
     try {
@@ -59,4 +60,20 @@ const getUserByEmail = async (email) => {
     }
 }
 
-module.exports = {getUserById, createUser, getUserByEmail}
+const editUser = async (id, user) => {
+    const transaction = await sequelize.transaction()
+    try {
+        await userModel.update(user, {
+            where: {
+                user_id: id
+            }
+        })
+        await transaction.commit()
+    } catch (error) {
+        await transaction.rollback()
+        throw error
+    }
+}
+
+
+module.exports = {getUserById, createUser, getUserByEmail, editUser}

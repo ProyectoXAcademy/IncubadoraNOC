@@ -1,1 +1,13 @@
-<p>my-enrollments works!</p>
+<h2>Mis Cursos Registrados</h2>
+
+<ul *ngIf="userCourses && userCourses.length > 0; else noCourses">
+  <li *ngFor="let registration of userCourses">
+    <h3>Inscripción #{{ registration.registration_id }}</h3>
+    <p><strong>ID del Curso:</strong> {{ registration.course_id }}</p>
+    <p><strong>Fecha de Inscripción:</strong> {{ registration.registration_date | date: 'medium' }}</p>
+  </li>
+</ul>
+
+<ng-template #noCourses>
+  <p>No estás inscrito en ningún curso aún.</p>
+</ng-template>

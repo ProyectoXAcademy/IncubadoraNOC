@@ -40,10 +40,15 @@ const getAllCourses = async (req, res, next) => {
     }
 }
 
-
-
-
-
-
+const editCourse = async (req, res, next) => {
+    try {
+        const editedCourse = req.body.course
+        console.log(editedCourse)
+        await courseService.editCourse(editedCourse.course_id, editedCourse)
+        res.status(200).json(editedCourse)
+    } catch (error) {
+        next(error)
+    }
+}
 
 module.exports = {getCourseById, createCourse, getAllCourses,putCourseById}

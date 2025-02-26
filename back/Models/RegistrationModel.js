@@ -1,5 +1,5 @@
 const {DataTypes} = require('sequelize')
-const {dbConfig} = require('../Config')
+const {dbConfig} = require('../Config');
 
 //Es el modelo de la entidad Inscripción
 const registrationModel = dbConfig.sequelize.define("Registrations", {
@@ -31,7 +31,8 @@ const registrationModel = dbConfig.sequelize.define("Registrations", {
         }
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    
 })
 
 module.exports = registrationModel

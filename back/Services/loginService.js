@@ -15,7 +15,7 @@ const login = async (email, password) => {
                     const token = jwt.sign({
                         user: `${findUser.name} ${findUser.lastName}`,
                         role: 'Admin'
-                    }, secretKey, {})
+                    }, secretKey, {expiresIn: '1h'})
                     console.log('Se creó token de administrador!')
                     return {
                         findUser,
@@ -26,7 +26,7 @@ const login = async (email, password) => {
                     const token = jwt.sign({
                         user: `${findUser.name} ${findUser.lastName}`,
                         role: 'Teacher'
-                    }, secretKey, {})
+                    }, secretKey, {expiresIn: '1h'})
                     console.log('Se creó token de Docente!')
                     return {
                         findUser,
@@ -37,7 +37,7 @@ const login = async (email, password) => {
                     const token = jwt.sign({
                         user: `${findUser.name} ${findUser.lastName}`,
                         role: 'Student'
-                    }, secretKey, {})
+                    }, secretKey, {expiresIn: '1h'})
                     console.log('Se creó token de Alumno!')
                     return {
                         findUser,

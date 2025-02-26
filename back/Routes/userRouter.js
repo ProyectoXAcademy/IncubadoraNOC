@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const {userController} = require('../Controllers')
+const {authMiddleware} = require('../Middlewares')
 
 router.get('/:id', userController.getUserById)
 
@@ -51,6 +52,7 @@ router.get('/:id', userController.getUserById)
  *         description: Error en la solicitud
  */
 router.post('/create', userController.createUser)
+router.put('/edit', authMiddleware.userIsAuth, userController.editUser)
 
 router.post('/mail',userController.getUserByEmail)
 

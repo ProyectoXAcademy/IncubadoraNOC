@@ -1,4 +1,5 @@
 const {courseModel} = require('../Models')
+const {sequelize} = require('../Config/dbConfig')
 
 const getCourseById = async (course_id) => {
     try {
@@ -49,6 +50,21 @@ const getAllCourses = async () => {
     }
 }
 
+const editCourse = async (id, course) => {
+    const transaction = await sequelize.transaction()
+    try {
+        await courseModel.update(course, {
+            where: {
+                course_id: id
+            }
+        })
+        await transaction.commit()
+    } catch (error) {
+        await transaction.rollback()
+        throw error
+    }
+}
+
 
 const putCourseById = async (course_id,name, description, category, teacher_id,inscription_requeriments,approval_conditions,active) => {
     try {
@@ -77,8 +93,7 @@ const putCourseById = async (course_id,name, description, category, teacher_id,i
 }
 
 
-
-module.exports = {getCourseById, createCourse, getAllCourses,putCourseById}
+module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById}
 
 
 

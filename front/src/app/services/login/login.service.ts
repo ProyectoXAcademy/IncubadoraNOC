@@ -65,5 +65,15 @@ export class LoginService {
     }
     return false; // No estamos en el navegador
   }
+
+  getLoggedUser(): Observable<LoggedUser> {
+    const token = localStorage.getItem('token'); 
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.get<LoggedUser>(this.apiUrl, { headers });
+  }
   
 }
