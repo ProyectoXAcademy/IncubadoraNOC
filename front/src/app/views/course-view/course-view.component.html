@@ -1,20 +1,20 @@
-
 <section *ngIf="!editarDescripcion" >
 
     <div>
         <h2>{{course?.name}}</h2>
         <p class="category">{{course?.category}}</p>
-        <div>
-
     </div>
     
+    <div>
         <h3>Descripción de curso</h3>
         <p>{{course?.description}}</p>
     </div>
+
     <div>
         <h3>Condiciones de aprobación</h3>
         <p>{{course?.approval_conditions}}</p>
     </div>
+
     <div>
         <h3>Requisitos de inscripción</h3>
         <p>{{course?.inscription_requeriments}}</p>
@@ -29,6 +29,7 @@
         <h3>Profesor</h3>
         <p>{{course?.teacher_id}}</p>
     </div>
+
     <div *ngIf="esDocente">
         <button (click)="editarDescripcionTrue()" >Editar descripcion del curso</button>
     </div>
@@ -40,29 +41,36 @@
 <!--    EDITAAAR    -->
 <section *ngIf="editarDescripcion" >
     <div>
-        <h2>{{course?.name}}</h2>
-        <p class="category">{{course?.category}}</p>
-        <div>
-
+        <h3>Titulo del curso</h3>
+        <input type="input"  [(ngModel)]="course!.name">
     </div>
-    
+
+    <div>
+        <h3>Selecione una categoria</h3>
+
+        <select  [(ngModel)]="course!.category" >
+            <option value="">-- Selecione una opción --</option>
+            <option value="Programación">Programación</option>
+            <option value="Diseño">Diseño</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Negocios">Negocios</option>
+            <option value="Idiomas">Idiomas</option>
+        </select>
+    </div>
+
+    <div>  
         <h3>Descripción de curso</h3>
         <textarea name="" id="" rows="4" cols="50" [(ngModel)]="course!.description"  ></textarea>
-
     </div>
+
     <div>
         <h3>Condiciones de aprobación</h3>
         <textarea name="" id="" rows="4" cols="50" [(ngModel)]="course!.approval_conditions"  ></textarea>
-
     </div>
+
     <div>
         <h3>Requisitos de inscripción</h3>
         <textarea name="" id="" rows="4" cols="50" [(ngModel)]="course!.inscription_requeriments"  ></textarea>
-    </div>
-
-    <div>
-        <h3>Activar curso</h3>
-        <input type="text" [(ngModel)]="course!.active"  >
     </div>
 
 
