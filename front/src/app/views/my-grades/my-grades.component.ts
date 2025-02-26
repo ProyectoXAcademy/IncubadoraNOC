@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Grade } from '../../models/grades.model';
 import { MyGradesService } from '../../services/my-grades/my-grades.service';
 import { NgFor } from '@angular/common';
+import { of } from 'rxjs';
 @Component({
   selector: 'app-my-grades',
   imports: [NgFor],
@@ -13,44 +14,24 @@ export class MyGradesComponent {
 
   constructor(private serv:MyGradesService){}
 
-  grades:Grade | null = null
-
-  myGrades: Grade[]=
-  [
-    {
-    note_id: 1,
-    value: 6,
-    type: "intro a los algoritmos",
-    student_id: 2,
-    course_id:1
-    },
-
-    {
-      note_id: 1,
-      value: 8,
-      type: "intro a los algoritmos 2",
-      student_id: 2,
-      course_id:2
-      },
-
-      {
-        note_id: 1,
-        value: 10,
-        type: "analisis matematico 2",
-        student_id: 2,
-        course_id:3
-        },
-
-  ]
+  grades:any|null = null
 
   ngOnInit(){
-    this,this.getGrades()
+  this.gets()
   }
 
-  getGrades(){
-    this.serv.gradesGET().subscribe(
-      d => this.grades = d
+  gets(){
+    this.serv.gradesGET(JSON.parse(localStorage.getItem('loggedUser')!).user_id).subscribe( G => {
+      this.grades = G
+      for (let gs of G) {this.serv.courseIdGET(gs.course_id).subscribe(c =>{
+          gs.name = c.name;
+          this.grades.sort((a:any,b:any) => a.name.localeCompare(b.name))
+          }
+       )}
+      } 
     )
   }
 
-}
+
+
+}//

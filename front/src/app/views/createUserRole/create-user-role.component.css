@@ -1,3 +1,4 @@
+
 /*PALETA DE COLORES*/
 :root {
     --color-violeta: #6564cc;
@@ -26,7 +27,7 @@ section{
 }
 form{
     padding: 1rem;
-background-color: #00339e50 ;
+    background-color: #00339e50 ;
 }
 .formCamp{
     margin: 2rem .2rem;
@@ -81,4 +82,41 @@ select{
 }
 option{
     font-weight: 600;
+}
+/*//////////////////////*/
+
+.second-form{
+    border: #00339e50 1px solid;
+}
+.second-div h3{
+    margin: 1rem;
+}
+.second-div{
+    padding:2rem 1rem;
+}
+
+/*/////////////////////////////*/
+.user-info{
+    overflow-x: auto;
+}
+.user-info div{
+    display: flex;
+    flex-direction: row;
+}
+
+.user-info p{
+    display: inline-block;
+    padding: .5rem;
+    margin: .5rem;
+    width: 150px;
+}
+
+.p-email{
+    overflow: auto;
+    width: 200px;
+
+}
+
+.div-line{
+    display: inline-block;
 }

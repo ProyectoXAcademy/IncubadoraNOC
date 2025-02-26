@@ -1,0 +1,83 @@
+
+<section *ngIf="!editarDescripcion" >
+
+    <div>
+        <h2>{{course?.name}}</h2>
+        <p class="category">{{course?.category}}</p>
+        <div>
+
+    </div>
+    
+        <h3>Descripción de curso</h3>
+        <p>{{course?.description}}</p>
+    </div>
+    <div>
+        <h3>Condiciones de aprobación</h3>
+        <p>{{course?.approval_conditions}}</p>
+    </div>
+    <div>
+        <h3>Requisitos de inscripción</h3>
+        <p>{{course?.inscription_requeriments}}</p>
+    </div>
+
+    <div>
+        <h3>Habilitar curso</h3>
+        <p>{{course?.active}}</p>
+    </div>
+
+    <div>
+        <h3>Profesor</h3>
+        <p>{{course?.teacher_id}}</p>
+    </div>
+    <div *ngIf="esDocente">
+        <button (click)="editarDescripcionTrue()" >Editar descripcion del curso</button>
+    </div>
+
+
+</section>
+
+
+<!--    EDITAAAR    -->
+<section *ngIf="editarDescripcion" >
+    <div>
+        <h2>{{course?.name}}</h2>
+        <p class="category">{{course?.category}}</p>
+        <div>
+
+    </div>
+    
+        <h3>Descripción de curso</h3>
+        <textarea name="" id="" rows="4" cols="50" [(ngModel)]="course!.description"  ></textarea>
+
+    </div>
+    <div>
+        <h3>Condiciones de aprobación</h3>
+        <textarea name="" id="" rows="4" cols="50" [(ngModel)]="course!.approval_conditions"  ></textarea>
+
+    </div>
+    <div>
+        <h3>Requisitos de inscripción</h3>
+        <textarea name="" id="" rows="4" cols="50" [(ngModel)]="course!.inscription_requeriments"  ></textarea>
+    </div>
+
+    <div>
+        <h3>Activar curso</h3>
+        <input type="text" [(ngModel)]="course!.active"  >
+    </div>
+
+
+    <div>
+        <h3>Profesor</h3>
+        <p>{{course?.teacher_id}}</p>
+    </div>
+
+    <div>
+        <button (click)="descriptionCoursePUT()" >Guardar cambios</button>
+        <button (click)="descriptionCancelar()" >Cancelar</button>
+
+    </div>
+   
+</section>
+
+
+

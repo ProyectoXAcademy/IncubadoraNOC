@@ -3,6 +3,7 @@ import { CoursesService } from '../../services/courses/courses.service';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Courses } from '../../models/courses.model';
 import { NgIf } from '@angular/common';
+import Swal from 'sweetalert2';
 
 
 
@@ -22,15 +23,14 @@ export class CreateCourseComponent {
 
   ngOnInit(){
     this.formPOST = this.formBuilder.group({
-      name : new FormControl(null, Validators.required),
+      name : new FormControl<Courses|null>(null, Validators.required),
       description : new FormControl<Courses|null>(null, Validators.required),
-      category : new FormControl<Courses|null>(null, Validators.required),
+      category : new FormControl<Courses|null>(null,[ Validators.required, Validators.pattern(/^(?!Seleccione).+/)]  ),
       })//
     }//
     
   // GETTERS DE LOS CAMPOS DEL FORMULARIO
   
-  //get course_id_GET(){return this.formPOST.controls['course_id']}
   get name_GET(){return this.formPOST.controls['name']}
   get description_GET(){return this.formPOST.controls['description'];}
   get category_GET(){return this.formPOST.controls['category'];}
@@ -38,7 +38,9 @@ export class CreateCourseComponent {
 
   // metodo post del formulario, antes valida
   createCourseSUBMIT(){
+    console.log(JSON.parse(localStorage.getItem('loggedUser')!).user_id)
     this.teacher_id = JSON.parse(localStorage.getItem('loggedUser')!).user_id
+    console.log(this.formPOST.value)
     if(this.formPOST.valid){
       this.serv.createCoursePOST({
         name: this.formPOST.value.name,
@@ -46,10 +48,13 @@ export class CreateCourseComponent {
         category: this.formPOST.value.category,
         teacher_id: this.teacher_id!,
       }).subscribe({
-        next: (n) =>console.log(n),
         error: (e) =>console.log(e),
         complete: () => {
-          alert("Nuevo curso creado")
+         Swal.fire({
+                  icon: 'success',
+                  title: 'Registro exitoso',
+                  text: 'Nuevo curso creado',
+                });
           this.formPOST.reset()
         }
         })

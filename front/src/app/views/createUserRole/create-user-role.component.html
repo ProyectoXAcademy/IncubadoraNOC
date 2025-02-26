@@ -1,0 +1,61 @@
+<section>
+    <h2 class="title">Ingresa el mail del usuario buscado</h2>
+    <form [formGroup]="formPOST" (ngSubmit)="getRolesSUBMIT()"  >    
+
+
+         <!--    /////////////////////////   -->
+         <div class="formCamp">
+            <label for="">Email</label>
+            <div *ngIf="email_GET.invalid && (email_GET.dirty || email_GET.touched)"  class="control" >
+                <p *ngIf="email_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+                <p *ngIf="email_GET.hasError('email')" class="control" > (Ingrese un formato correcto)</p>
+            </div>
+            <input type="text" placeholder="ejemplo@mail.com" formControlName="email">
+        </div>
+       
+
+        <div class="button">
+            <button type="submit" >Buscar usuario</button>
+        </div>
+    </form>
+</section>
+
+<section *ngIf="user" class="second-form">
+
+    <div class="second-div">
+        <h3>Información del usuario</h3>
+
+        <div class="user-info">
+            <div >
+                <p>User ID</p>
+                <p>Nombre</p>
+                <p>Apellido</p>
+                <p>Email</p>
+
+                <div class="div-line" *ngFor = "let r of roles">
+                    <p *ngIf="r.RoleRoleId==3">Rol Alumno</p>
+                    <p *ngIf="r.RoleRoleId==2">Rol Docente</p>
+                </div>
+            </div>
+            <div>
+                <p>{{user.user_id}}</p>
+                <p>{{user.name}}</p>
+                <p>{{user.lastName}}</p>
+                <p class="p-email">{{user.email}}</p>
+                <div class="div-line" *ngFor = "let r of roles">
+                    <p *ngIf="r.RoleRoleId==3">Si</p>
+                    <p *ngIf="r.RoleRoleId==2">Si</p>
+                </div>
+
+            </div>
+
+            <div>
+                <button (click)="addRole(user.user_id)">Asignar rol de docente</button>
+            </div>
+
+
+        </div>
+    </div>
+    
+
+</section>
