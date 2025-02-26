@@ -52,6 +52,7 @@ router.get('/:id', userController.getUserById)
  *         description: Error en la solicitud
  */
 router.post('/create', userController.createUser)
-router.put('/edit', authMiddleware.userIsAuth, userController.editUser)
+/** router.put('/edit', authMiddleware.userIsAuth, userController.editUser)*/
+router.put('/edit', userController.editUser)
 
 module.exports = router

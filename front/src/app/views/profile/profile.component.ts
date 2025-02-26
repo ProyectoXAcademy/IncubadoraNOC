@@ -31,17 +31,19 @@ export class ProfileComponent implements OnInit {
   enableEdit(): void {
     this.isEditing = true;
     this.editedUser = { ...this.user! }; // Clona el usuario para editar
+    
   }
 
   // Guarda los cambios
   saveChanges(): void {
     if (this.editedUser) {
-      this.userService.editUser(Number(this.editedUser!.user_id), this.editedUser).subscribe({
+      this.userService.editUser (this.editedUser).subscribe({
         next: (response) => {
           this.user = response;
           localStorage.setItem('loggedUser', JSON.stringify(response));
           this.isEditing = false;
           alert('Perfil actualizado exitosamente.');
+          console.log(this.user)
         },
         error: (error) => {
           console.error('Error al actualizar:', error);
@@ -50,6 +52,8 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
+
+  
 
   // Cancela la edición
   cancel(): void {
