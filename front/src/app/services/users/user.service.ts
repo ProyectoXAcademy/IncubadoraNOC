@@ -12,10 +12,13 @@ export class UserService {
 
   constructor( private http: HttpClient) { }
 
-  editUser(user_id: number, userData: any): Observable<LoggedUser> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  editUser(userData: any): Observable<any> {
+    const tokenJWT = localStorage.getItem('token')
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${tokenJWT}` });
 
-    return this.http.put<LoggedUser>(`${this.apiUrl}/edit/${user_id}`, { user: userData }, { headers });
+    console.log(userData)
+
+    return this.http.put<any>(`${this.apiUrl}/edit`, { user: userData }, { headers });
   }
 }
 
