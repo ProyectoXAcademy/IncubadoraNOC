@@ -52,4 +52,6 @@ router.get('/:id', userController.getUserById)
  */
 router.post('/create', userController.createUser)
 
+router.post('/mail',userController.getUserByEmail)
+
 module.exports = router

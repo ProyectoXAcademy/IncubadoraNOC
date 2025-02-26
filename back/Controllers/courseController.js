@@ -21,6 +21,16 @@ const createCourse = async (req, res, next) => {
     }
 }
 
+const putCourseById = async (req, res, next) => {
+    try {
+        const {course_id,name, description, category, teacher_id,inscription_requeriments,approval_conditions,active} = req.body
+        const putCourse = await courseService.putCourseById(course_id,name, description, category, teacher_id,inscription_requeriments,approval_conditions,active)
+        res.status(200).json(putCourse)
+    } catch (error) {
+        next(error)
+    }
+}
+
 const getAllCourses = async (req, res, next) => {
     try {
         const allCourses = await courseService.getAllCourses()
@@ -36,4 +46,4 @@ const getAllCourses = async (req, res, next) => {
 
 
 
-module.exports = {getCourseById, createCourse, getAllCourses}
+module.exports = {getCourseById, createCourse, getAllCourses,putCourseById}

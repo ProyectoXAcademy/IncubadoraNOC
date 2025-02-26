@@ -10,6 +10,17 @@ const getUserRoleById = async (req, res, next) => {
     }
 }
 
+const getUserRoleByUserId = async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const findUserRole = await userRoleService.getUserRoleByUserId(id)
+        res.status(200).json(findUserRole)
+    } catch (error) {
+        next(error)
+    }
+}
+
+
 const createUserRole = async (req, res, next) => {
     try {
         const {UserUserId, RoleRoleId} = req.body
@@ -20,4 +31,4 @@ const createUserRole = async (req, res, next) => {
     }
 }
 
-module.exports = {getUserRoleById, createUserRole}
+module.exports = {getUserRoleById, createUserRole,getUserRoleByUserId}

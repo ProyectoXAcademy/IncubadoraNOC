@@ -50,9 +50,35 @@ const getAllCourses = async () => {
 }
 
 
+const putCourseById = async (course_id,name, description, category, teacher_id,inscription_requeriments,approval_conditions,active) => {
+    try {
+        const courses = await courseModel.update(
+            {   
+            name:name,
+            description:description,
+            category:category,
+            teacher_id:teacher_id,
+            inscription_requeriments:inscription_requeriments,
+            approval_conditions:approval_conditions,
+            active:active
+            },{where:{course_id: course_id}}
+
+        )
+        if (courses.length === 0) {
+            const error = new Error()
+            error.message = 'No se pudo editar la informacion del curso'
+            error.statusCode = 404
+            throw error
+        }
+        return courses
+    } catch (error) {
+        throw error
+    }
+}
 
 
-module.exports = {getCourseById, createCourse, getAllCourses}
+
+module.exports = {getCourseById, createCourse, getAllCourses,putCourseById}
 
 
 
