@@ -8,3 +8,6 @@ export interface Courses {
     teacher_id:number;
     active?:boolean;
 }
+
+
+

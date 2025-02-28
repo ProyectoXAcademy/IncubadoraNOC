@@ -4,11 +4,13 @@ import { CoursesService } from '../../services/courses/courses.service';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { CreateUserRoleService } from '../../services/createUserRole/create-user-role.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-course-view',
-  imports: [FormsModule, NgIf, NgFor],
+  imports: [FormsModule, CommonModule],
+  standalone :true,
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css'
 })

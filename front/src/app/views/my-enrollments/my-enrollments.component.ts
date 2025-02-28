@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service';
 import { CommonModule } from '@angular/common';
+import { CoursesService } from '../../services/courses/courses.service';
 
 
 @Component({
@@ -12,14 +13,34 @@ import { CommonModule } from '@angular/common';
 })
 export class MyEnrollmentsComponent implements OnInit {
   userCourses: any[] = [];
+  courses: any[] = [];
 
-  constructor(private enrollmentsService: MyEnrollmentsService) {}
+  constructor(
+    private enrollmentsService: MyEnrollmentsService,
+    private coursesService: CoursesService,
+  
+  ) {}
 
   ngOnInit(): void {
-    this.getUserRegistrations();
+    
+    this.loadCourses();
   }
 
   
+  loadCourses(): void {
+    this.coursesService.getCoursesGET().subscribe(
+      (data) => {
+        this.courses = data;
+        this.getUserRegistrations();
+        
+      },
+      (error) => {
+        console.error('Error al cargar los cursos:', error);
+      }
+    );
+  }
+
+
   getUserRegistrations(): void {
     const loggedUser = localStorage.getItem('loggedUser');
   
@@ -34,6 +55,8 @@ export class MyEnrollmentsComponent implements OnInit {
   
             
             this.userCourses = registrations;
+            
+            
           },
           error: (error) => {
             console.error('Error al obtener las inscripciones:', error);
@@ -46,5 +69,19 @@ export class MyEnrollmentsComponent implements OnInit {
       console.error('No se encontró el usuario logueado en localStorage.');
     }
   }
+
+  getCourseName(course_id: any): string {
+   
+    const course = this.courses.find(c => Number(c.course_id) === Number(course_id));
+  
+    if (!course) {
+      console.warn(`Curso con ID ${course_id} no encontrado en la lista.`);
+    }
+  
+    return course ? course.name : 'Curso no encontrado';
+  }
+  
+  
+  
 
 }

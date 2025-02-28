@@ -22,7 +22,7 @@
         *ngFor="let course of filteredCourses"
         (click)="selectCourse(course)"
       >
-        <img [src]="course.image || 'assets/default-course.jpg'" alt="Imagen del curso" />
+       <!-- <img [src]="course.image || 'assets/default-course.jpg'" alt="Imagen del curso" /> --> 
         <div class="course-card-body">
           <h5 class="course-card-title">{{ course.name }}</h5>
           <p class="course-card-text">{{ course.description }}</p>

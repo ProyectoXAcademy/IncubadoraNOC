@@ -20,11 +20,11 @@ const createData = async () => {
     await publicationService.createPublication("Noticia", "Noticia de ejemplo 3", "Esto es otra descripción", "2022-10-25", null)
 
    //Curso de ejemplo
-   await courseService.createCourse("Angular", "Programacion", "Programacion", 1)
-   await courseService.createCourse("UX-UI", "Diseño", "Diseño", 1)
-   await courseService.createCourse("Ingles avanzado", "Idiomas", "Idiomas", 1)
-   await courseService.createCourse("Comunity manager", "Marketing", "Marketing", 1)
-   await courseService.createCourse("Ser tu porpio jefe", "Negocios", "Negocios", 1)
+   await courseService.createCourse("Angular", "Angular desde 0 a experto", "Programacion", 1)
+   await courseService.createCourse("UX-UI", "Diseño utilizando la herramienta figma", "Diseño", 1)
+   await courseService.createCourse("Ingles avanzado", "Nivel 3 de ingles", "Idiomas", 1)
+   await courseService.createCourse("Comunity manager", "Aprenderas con las mejores herramientas para marketin", "Marketing", 1)
+   await courseService.createCourse("Ser tu porpio jefe", "Como generar tus propios ingresos desde casa ", "Negocios", 1)
 
     console.log("Se crearon los datos en la Base de datos!")
 }

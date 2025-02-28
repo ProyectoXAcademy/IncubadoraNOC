@@ -8,6 +8,7 @@ import { User } from "../../models/user.model";
 @Component({
   selector: "app-create-user-role",
   imports: [ReactiveFormsModule, NgIf, NgFor],
+  standalone: true,
   templateUrl: "./create-user-role.component.html",
   styleUrl: "./create-user-role.component.css",
 })
