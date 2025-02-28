@@ -6,14 +6,16 @@ import { MyAttendanceService} from '../../services/my-attendance/my-attendance.s
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { CreateUserRoleService } from '../../services/createUserRole/create-user-role.service';
+import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-course-view',
-  imports: [FormsModule, NgIf
-  ],
+  imports: [FormsModule, NgIf],
+  standalone :true,
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css'
 })

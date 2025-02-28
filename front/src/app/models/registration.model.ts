@@ -1,6 +1,10 @@
+
+import { Courses } from "./courses.model";
+
 export interface Registration {
-    registration_id: number,
-    registration_date: Date,
-    student_id: number,
-    course_id: number
+  registration_id: number;
+  registration_date: Date;
+  student_id: number;
+  course_id: number;
+  Courses?: Courses; 
 }

@@ -1,0 +1,54 @@
+/* Estilos generales */
+h2 {
+    text-align: center;
+    color: #010163; /* Azul oscuro */
+  }
+  
+  /* Contenedor de los cursos */
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Cada curso en una tarjeta */
+  li {
+    background: linear-gradient(135deg, #6564cc, #00339e); /* Violeta a Azul */
+    color: white;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  li:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Título de cada inscripción */
+  h3 {
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    color: #fc6a07; /* Naranja */
+  }
+  
+  /* Párrafos dentro de cada tarjeta */
+  p {
+    margin: 5px 0;
+    font-size: 1em;
+  }
+  
+  /* Mensaje cuando no hay cursos */
+  p.no-courses {
+    text-align: center;
+    font-size: 1.2em;
+    color: #010163; /* Azul oscuro */
+  }
+  
