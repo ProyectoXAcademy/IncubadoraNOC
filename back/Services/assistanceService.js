@@ -15,4 +15,18 @@ const getAssistanceById = async (assistance_id) => {
     }
 }
 
-module.exports = {getAssistanceById}
+const createAssistance = async (course_id, student_id) => {
+    try {
+        const newAssistance = {
+            course_id: course_id,
+            student_id: student_id
+        }
+        console.log(newAssistance)
+        const createAssistance = await assistanceModel.create(newAssistance)
+        return createAssistance
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {getAssistanceById,createAssistance}

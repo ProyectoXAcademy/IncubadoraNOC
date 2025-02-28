@@ -61,5 +61,21 @@ const getUserRegistrations = async (user_id) => {
   }
 }
 
+const getUsersRegistrationsByCourseId = async (course_id) => {
+  try {
+    const registrations = await registrationModel.findAll({
+      where: {
+        course_id: course_id
+      }
+    })
+    if (registrations.length === 0) {
+      return "No hay registros."
+    }
+    return registrations
+  } catch (error) {
+    throw error
+  }
+}
 
-module.exports = {getRegistrationById, createRegistration, getUserRegistrations}
+
+module.exports = {getRegistrationById, createRegistration, getUserRegistrations,getUsersRegistrationsByCourseId}

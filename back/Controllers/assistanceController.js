@@ -10,4 +10,14 @@ const getAssistanceById = async (req, res, next) => {
     }
 }
 
-module.exports = {getAssistanceById}
+const createAssistance = async (req, res, next) => {
+    try {
+        const {course_id, student_id} = req.body
+        const newAssistance = await assistanceService.createAssistance(course_id, student_id)
+        res.status(200).json(newAssistance)
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {getAssistanceById,createAssistance}

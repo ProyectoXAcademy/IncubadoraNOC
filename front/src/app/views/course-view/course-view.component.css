@@ -48,7 +48,7 @@ input, textarea{
     color: white;
 }
 
-button{
+button,summary{
     margin:.5rem;
     padding: .8rem 1.5rem;
     background-color: var(--color-azul);
@@ -56,4 +56,13 @@ button{
     border-radius: 5px;
     color: white;
     font-weight: 500;
+}
+
+.sec_attendance{
+    background-color: #fc6a0750;
+    border: 1px solid  #fc6a0750;
+}
+.sec_notes{
+    background-color: #00339e50;
+    border: 1px solid #00339e50;
 }

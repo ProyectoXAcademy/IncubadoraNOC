@@ -39,4 +39,15 @@ const getUserRegistrations = async (req, res, next) => {
   }
 }
 
-module.exports = {getRegistrationById, createRegistration, getUserRegistrations}
+
+const getUsersRegistrationsByCourseId = async (req, res, next) => {
+  try {
+    const course_id = req.params.id
+    const registrations = await registrationService.getUsersRegistrationsByCourseId(course_id)
+    res.status(200).json(registrations)
+  } catch (error) {
+    next(error)
+  }
+}
+
+module.exports = {getRegistrationById, createRegistration, getUserRegistrations, getUsersRegistrationsByCourseId}

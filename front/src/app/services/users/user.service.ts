@@ -9,6 +9,8 @@ import { LoggedUser } from '../../models/registeredUser.model';
 export class UserService {
 
   private apiUrl = 'http://localhost:3000/api/user'
+  private endpointGetUserById = 'http://localhost:3000/api/user/'
+
 
   constructor( private http: HttpClient) { }
 
@@ -19,6 +21,12 @@ export class UserService {
     console.log(userData)
 
     return this.http.put<any>(`${this.apiUrl}/edit`, { user: userData }, { headers });
+  }
+
+
+  getUserById(user_id:number):Observable<any[]>{
+  return this.http.get<any[]>(this.endpointGetUserById+user_id)
+
   }
 }
 
