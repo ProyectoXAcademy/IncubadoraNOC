@@ -27,6 +27,7 @@ body {
 
 .inicio{
   display: flex;
+  
 }
 
 
@@ -69,7 +70,7 @@ body {
 .presentation-tit h1 {
   font-size: 2rem;
   background-image: linear-gradient(to right, #010163, #00339e, #6564cc);
-  -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 
@@ -106,61 +107,7 @@ body {
   padding: 0 0 8px 0;
 }
 
-@media (max-width: 600px) {
-  .presentation-tit h1 {
-    font-size: 1.4rem;
-  }
-  .caract-cont {
-    height: 200px;
-  }
-  .courses .cta{
-    font-size: 12px;
-  }
-  /* Cursos Destacados */
-.cursos-grid {
-  padding: 50px 20px;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-}
-@media (min-width: 768px) {
-  .presentation {
-    flex-direction: row;
-    margin: 8px;
-    padding: 8px;
-  }
-}
 
-@media (min-width: 1024px) {
-  .presentation-img {
-    width: 500px;
-    height: 500px;
-  }
-
-  .presentation-tit {
-    height: 500px;
-    width: 500px;
-    align-content: center;
-    padding: 24px;
-  }
-  .presentation-tit h1 {
-    font-size: 2.5rem;
-  }
-  .caract-cont:hover {
-    transform: scale(1.02);
-  }
-
-  .caract {
-    flex-direction: row;
-  }
-}
-/*
-hasta acá llega el desarrollo de los estilos
-de la presentacion de la incubadora.
-Incluye diseño responsive
-*/
 
 /* Hero */
 .courses {
@@ -329,8 +276,19 @@ Incluye diseño responsive
 .dot.active {
   background-color: #00339E; /* Azul */
 }
+.notices {
+  padding: 20px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 /* 🔹 Responsividad */
+
+
+
+
 @media (max-width: 600px) {
   .carousel-container {
     max-width: 100%;
@@ -340,12 +298,93 @@ Incluye diseño responsive
     font-size: 1rem;
     padding: 8px;
   }
-}
 
-.notices {
-  padding: 20px;
+  .benef{
+    display: flex;
+    flex-direction: column;
+    padding:10px 30px 10px 10px;
+    max-width: 260px ;
+    margin: 10px 20px 10px 20px;
+    
+  }
+}
+@media (max-width: 600px) {
+  .presentation-tit h1 {
+    font-size: 1.4rem;
+  }
+  .caract-cont {
+    height: 200px;
+  }
+  .courses .cta{
+    font-size: 12px;
+  }
+  /* Cursos Destacados */
+.cursos-grid {
+  padding: 50px 20px;
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+
+}
+
+
+@media (max-width: 768px) {
+
+.inicio{
+  flex-direction: column;
+}
+
+  .presentation {
+    flex-direction: row;
+    margin: 8px;
+    padding: 8px;
+  }
+
+  
+}
+
+@media (min-width: 768px) {
+
+
+
+  .presentation {
+    flex-direction: row;
+    margin: 8px;
+    padding: 8px;
+  }
+
+  
+}
+
+@media (min-width: 1024px) {
+  .presentation-img {
+    width: 500px;
+    height: 500px;
+  }
+
+  .presentation-tit {
+    height: 500px;
+    width: 500px;
+    align-content: center;
+    padding: 24px;
+  }
+  .presentation-tit h1 {
+    font-size: 2.5rem;
+  }
+  .caract-cont:hover {
+    transform: scale(1.02);
+  }
+
+  .caract {
+    flex-direction: row;
+  }
+}
+/*
+hasta acá llega el desarrollo de los estilos
+de la presentacion de la incubadora.
+Incluye diseño responsive
+*/
+
