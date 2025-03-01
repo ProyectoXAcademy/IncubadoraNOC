@@ -36,12 +36,4 @@ Además, se propone un segundo proyecto opcional: la creación de un sitio web p
 - *Post:* http://localhost:3000/api/login
 - *Post:* http://localhost:3000/api/user/create
 
-### 2. Web Centro Comercial Cruz del Eje (Opcional)
 
-#### Funcionalidades requeridas:
-- **Gestión de publicaciones**: Información sobre eventos y servicios del centro.
-- **Gestión de disposiciones comerciales**: Publicaciones sobre normativas y regulaciones comerciales.
-- **Gestión de información de socios**: Administración de datos de los miembros del centro.
-- **Gestión de servicios**: Información sobre los servicios ofrecidos.
-- **Gestión de alquiler de espacios**: Administración del alquiler del salón de fiestas y sala de reuniones.
-- **Gestión de estados de cuenta**: Consulta de cuotas societarias por parte de los socios.
