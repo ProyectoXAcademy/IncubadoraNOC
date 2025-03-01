@@ -1,21 +1,14 @@
 <div class="dashboard-container">
-    
+  <!-- Botón para abrir/cerrar Sidebar -->
+  <button class="menu-toggle" [ngClass]="{'movimiento': sidebarOpen}" (click)="toggleSidebar()">
+    {{ sidebarOpen ? '▼' : '▲' }}
+  </button>
 
-  <button  class="menu-toggle" [ngClass]="{'movimiento': sidebarOpen}" (click)="toggleSidebar()">        {{ sidebarOpen ? '▼' : '▲' }}
-  </button> 
-  <!-- Sidebar con clase dinámica para responsivo -->
-  <app-side-bar [ngClass]="{'active': sidebarOpen}" >
-
-      <!-- Botón de menú hamburguesa para móviles -->
-  
-  </app-side-bar>
+  <!-- Sidebar con evento para cerrar -->
+  <app-side-bar [ngClass]="{'active': sidebarOpen}" (closeSidebar)="closeSidebar()"></app-side-bar>
 
   <!-- Contenido principal -->
   <div class="main-content">
     <router-outlet></router-outlet>
   </div>
-
 </div>
-
-
-

@@ -19,5 +19,7 @@ export class DashboardContentComponent {
     this.sidebarOpen = !this.sidebarOpen;
   }
 
-  
+  closeSidebar() {
+    this.sidebarOpen = false;
+  }
 }

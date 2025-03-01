@@ -11,4 +11,9 @@ import { RouterLink } from '@angular/router';
 })
 export class SideBarComponent {
  
+  @Output() closeSidebar = new EventEmitter<void>(); // Evento para cerrar el sidebar
+
+  onItemClick() {
+    this.closeSidebar.emit(); // Emite el evento cuando un ítem es seleccionado
+  }
 }

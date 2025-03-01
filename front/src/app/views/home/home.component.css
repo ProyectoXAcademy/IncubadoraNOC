@@ -287,7 +287,15 @@ body {
 /* 🔹 Responsividad */
 
 
+@media (max-width : 430px) {
+  .caract-cont{
+    max-width: 300px;
+  }
 
+  .benef-art{
+    margin-top: 10px;
+  }
+}
 
 @media (max-width: 600px) {
   .carousel-container {
