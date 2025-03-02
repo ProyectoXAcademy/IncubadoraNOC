@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service';
 import { CommonModule } from '@angular/common';
 import { CoursesService } from '../../services/courses/courses.service';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
 
 
 @Component({
@@ -14,10 +17,13 @@ import { CoursesService } from '../../services/courses/courses.service';
 export class MyEnrollmentsComponent implements OnInit {
   userCourses: any[] = [];
   courses: any[] = [];
+  
+
 
   constructor(
     private enrollmentsService: MyEnrollmentsService,
     private coursesService: CoursesService,
+    private router :Router
   
   ) {}
 
@@ -81,7 +87,8 @@ export class MyEnrollmentsComponent implements OnInit {
     return course ? course.name : 'Curso no encontrado';
   }
   
-  
-  
+  goToCourse(course_id: number): void {
+    this.router.navigate(['/dashboard/view-course', course_id]); // ✅ Navega con ID dinámico
+  }
 
 }

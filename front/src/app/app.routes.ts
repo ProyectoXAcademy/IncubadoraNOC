@@ -14,6 +14,7 @@ import { MyPaymentsComponent } from './views/my-payments/my-payments.component';
 import { CreateCourseComponent } from './views/create-course/create-course.component';
 import { CreateUserRoleComponent } from './views/createUserRole/create-user-role.component';
 import { CourseViewComponent } from './views/course-view/course-view.component';
+import { AdminGradesComponent } from './views/admin-grades/admin-grades.component';
 
 
 
@@ -36,7 +37,9 @@ export const routes: Routes = [
       { path: 'mypayments', component: MyPaymentsComponent },
       { path: 'create-course', component: CreateCourseComponent },
       { path: 'create-user-role', component: CreateUserRoleComponent },
-      { path: 'view-course', component: CourseViewComponent},
+      { path: 'view-course/:course_id', component: CourseViewComponent},
+      { path: 'admin-grades/:id', component: AdminGradesComponent},
+
 
 
 

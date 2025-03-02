@@ -14,7 +14,7 @@ export class CoursesService {
  endpoint_get_courses: string =  "http://localhost:3000/api/course"
  endpoint_get_course_by_id: string =  "http://localhost:3000/api/course/"
  endpoint_put_course_by_id: string =  "http://localhost:3000/api/course/put"
-
+private apiUrl = 'http://localhost:3000/api/course'
 
 
 
@@ -33,6 +33,11 @@ export class CoursesService {
   getCourseByIdGET(id:number): Observable<Courses> {
     return this.http.get<Courses>(this.endpoint_get_course_by_id+id);
   }
+
+  getCourseById(id: number): Observable<Courses>{
+    return this.http.get<Courses>(`${this.apiUrl}/${id}`)
+  }
+
 
   putCourseById(body:Courses):Observable<Courses>{
     return this.http.put<Courses>(this.endpoint_put_course_by_id,body)

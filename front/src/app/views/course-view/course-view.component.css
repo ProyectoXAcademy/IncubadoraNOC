@@ -48,7 +48,7 @@ input, textarea{
     color: white;
 }
 
-button{
+button,summary{
     margin:.5rem;
     padding: .8rem 1.5rem;
     background-color: var(--color-azul);
@@ -56,4 +56,85 @@ button{
     border-radius: 5px;
     color: white;
     font-weight: 500;
+}
+
+.sec_attendance{
+    background-color: #fc6a0750;
+    border: 1px solid  #fc6a0750;
+}
+.sec_notes{
+    background-color: #00339e50;
+    border: 1px solid #00339e50;
+}
+
+/* Estilos generales */
+h2, h3 {
+    color: #00339e; /* Azul oscuro */
+    text-align: center;
+    font-weight: bold;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    text-align: center;
+}
+
+/* Contenedor del curso */
+section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones */
+button {
+    background: #fc6a07;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #00339e;
+}
+
+/* Inputs y Textareas */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    section {
+        max-width: 95%;
+    }
+
+    input, select, textarea {
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
 }

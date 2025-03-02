@@ -20,11 +20,12 @@
         <p>{{course?.inscription_requeriments}}</p>
     </div>
 
+   <!--  
     <div>
         <h3>Habilitar curso</h3>
         <p>{{course?.active}}</p>
     </div>
-
+    -->
     <div>
         <h3>Profesor</h3>
         <p>{{course?.teacher_id}}</p>
@@ -46,7 +47,7 @@
     </div>
 
     <div>
-        <h3>Selecione una categoria</h3>
+        <h3>Selecione la categoria del curso</h3>
 
         <select  [(ngModel)]="course!.category" >
             <option value="">-- Selecione una opción --</option>
@@ -82,10 +83,52 @@
     <div>
         <button (click)="descriptionCoursePUT()" >Guardar cambios</button>
         <button (click)="descriptionCancelar()" >Cancelar</button>
+    </div>
+</section>
+
+
+<section class="sec_notes" *ngIf="esDocente">
+    <div>
+        <h3>Administrar calificaciones</h3>
+        <button type="submit" (click)="toGrades()" >Asignar calificaciones</button>
+        <button >Consultar calificaciones del curso</button>
+    </div>
+</section>
+
+
+<section class="sec_notes" *ngIf="!esDocente">
+    <div>
+        <h3>Calificaciones</h3>
+        <p>A continuacion se listan las calificaciones del curso.</p>
+
 
     </div>
-   
 </section>
+
+
+<section class="sec_attendance"  *ngIf="esDocente">
+    <div>
+        <h3>Administrar asistencias</h3>
+        <button >Habilitar asistencia</button>
+        <button >Consultar asistencias del curso</button>
+    </div>
+</section>
+
+
+<section class="sec_attendance" *ngIf="!esDocente" >
+    <div>
+        <h3 *ngIf="!esDocente">Asistencias</h3>
+        <p>Esperar a que el profesor habilite la asistencia de la clase</p>
+        <button >Dar asistencia</button>
+        <button >Ver mis asistencias del curso</button>
+    </div>
+
+</section>
+
+
+
+
+
 
 
 

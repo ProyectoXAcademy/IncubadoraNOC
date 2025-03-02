@@ -11,7 +11,7 @@ import { Registration } from '../../models/registration.model';
 export class MyEnrollmentsService {
   private apiUrl = 'http://localhost:3000/api/registration/create'; // URL del backend
   private apiGetCourses = 'http://localhost:3000/api/registration'
-
+  private endpointRegistrationByCourseId= " http://localhost:3000/api/registration/course/ "
   private registrations: Registration[] | null = null
 
   constructor(private http: HttpClient) {}
@@ -32,6 +32,10 @@ export class MyEnrollmentsService {
 
   getUserRegistrations(user_id: number): Observable<Registration[]> {
     return this.http.get<Registration[]>(`${this.apiGetCourses}/user/${user_id}`);
+  }
+
+  getUsersByIdCourse(course_id:number): Observable<Registration[]>{
+    return this.http.get<Registration[]>(this.endpointRegistrationByCourseId+course_id)
   }
 
 }
