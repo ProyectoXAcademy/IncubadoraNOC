@@ -6,7 +6,10 @@
     <p><strong>ID del Curso:</strong> {{ registration.course_id }}</p>
     <p><strong>Nombre:</strong> {{ getCourseName(registration.course_id) }}</p>
     <p><strong>Fecha de Inscripción:</strong> {{ registration.registration_date | date: 'medium' }}</p>
+    <button class="btn-curso" (click)="goToCourse(registration.course_id)">Ver curso</button>
+
   </li>
+  
 </ul>
 
 <ng-template #noCourses>

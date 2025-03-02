@@ -9,12 +9,15 @@ import { CreateUserRoleService } from '../../services/createUserRole/create-user
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
+
 
 
 
 @Component({
   selector: 'app-course-view',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf,RouterModule],
   standalone :true,
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css'
@@ -46,12 +49,24 @@ export class CourseViewComponent {
   ///////////  DESCRIPCION /////////////
   ///////////  DESCRIPCION /////////////
 
-  getInfoCourse(){
-    // pasar el id del curso por ruta
-    this.serv.getCourseByIdGET(1).subscribe({
-      next: (c) => { this.course = c}
-    })
-  }//
+  getInfoCourse(): void {
+    const course_id = Number(this.routerActive.snapshot.paramMap.get('course_id')); // ✅ Obtiene el ID de la ruta
+  
+    if (!course_id) {
+      console.error('ID del curso no encontrado.');
+      return;
+    }
+  
+    this.serv.getCourseByIdGET(course_id).subscribe({
+      next: (c) => {
+        this.course = c;
+        console.log('Curso cargado:', this.course);
+      },
+      error: (error) => {
+        console.error('Error al cargar el curso:', error);
+      }
+    });
+  }
 
   editarDescripcionTrue(){this.editarDescripcion = true}
 

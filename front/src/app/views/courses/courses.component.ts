@@ -81,6 +81,7 @@ export class CoursesComponent implements OnInit {
     this.myEnrollmentsService.inscribirUsuario(this.student_id, course_id).subscribe({
       next: (response) => {
         Swal.fire('¡Inscripción exitosa!', 'Te has inscrito correctamente al curso.', 'success');
+        this.deselectCourse();
       },
       error: (error) => {
         console.error('Error al inscribirse:', error);

@@ -37,7 +37,7 @@ export const routes: Routes = [
       { path: 'mypayments', component: MyPaymentsComponent },
       { path: 'create-course', component: CreateCourseComponent },
       { path: 'create-user-role', component: CreateUserRoleComponent },
-      { path: 'view-course', component: CourseViewComponent},
+      { path: 'view-course/:course_id', component: CourseViewComponent},
       { path: 'admin-grades/:id', component: AdminGradesComponent},
 
 

@@ -28,7 +28,7 @@ export class RegisterComponent {
       date_of_birth: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      role: ['', Validators.required],
+      role: ['estudiante'],
     });
   }
 

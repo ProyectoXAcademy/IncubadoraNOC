@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 
@@ -10,5 +10,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './side-bar.component.css'
 })
 export class SideBarComponent {
+ 
+  @Output() closeSidebar = new EventEmitter<void>(); // Evento para cerrar el sidebar
 
+  onItemClick() {
+    this.closeSidebar.emit(); // Emite el evento cuando un ítem es seleccionado
+  }
 }

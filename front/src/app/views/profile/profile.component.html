@@ -44,3 +44,19 @@
     </div>
   </form>
 </div>
+
+
+
+
+<div class="password-container">
+  <label>Contraseña Actual</label>
+  <input type="password" [(ngModel)]="oldPassword" placeholder="Ingresa tu contraseña actual">
+
+  <label>Nueva Contraseña</label>
+  <input type="password" [(ngModel)]="newPassword" placeholder="Nueva contraseña">
+
+  <label>Confirmar Nueva Contraseña</label>
+  <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirma la nueva contraseña">
+
+  <button (click)="changePassword()">Actualizar Contraseña</button>
+</div>

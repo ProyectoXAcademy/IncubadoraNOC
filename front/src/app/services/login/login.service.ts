@@ -14,6 +14,9 @@ export class LoginService {
   private authenticatedSource = new BehaviorSubject<boolean>(this.isAuthenticated()); // Establece el estado inicial del BehaviorSubject
   authenticated$ = this.authenticatedSource.asObservable();
 
+  private userSubject = new BehaviorSubject<LoggedUser | null>(this.getUserFromLocalStorage());
+  user$ = this.userSubject.asObservable(); // Observable para suscribirse en otros componentes
+
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object // Inyecta PLATFORM_ID
@@ -43,6 +46,9 @@ export class LoginService {
           localStorage.setItem('loggedUser', JSON.stringify(response.findUser));
           localStorage.setItem('token', response.token); // Guarda el token en localStorage
           this.authenticatedSource.next(true); // Emite un estado de autenticación exitoso
+
+          this.userSubject.next(response.findUser);
+          this.authenticatedSource.next(true);
         }
       })
     );
@@ -74,6 +80,18 @@ export class LoginService {
     });
 
     return this.http.get<LoggedUser>(this.apiUrl, { headers });
+  }
+
+
+  private getUserFromLocalStorage(): LoggedUser | null {
+    const storedUser = localStorage.getItem('loggedUser');
+    return storedUser ? JSON.parse(storedUser) : null;
+  }
+
+   // ✅ Método para actualizar el usuario sin hacer una nueva petición
+   updateUser(user: LoggedUser): void {
+    localStorage.setItem('loggedUser', JSON.stringify(user));
+    this.userSubject.next(user);
   }
   
 }
