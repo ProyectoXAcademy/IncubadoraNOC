@@ -1,3 +1,5 @@
+
+
 /*PALETA DE COLORES*/
 :root {
     --color-violeta: #6564cc;
@@ -5,37 +7,56 @@
     --color-azul-oscuro: #010163;
     --color-naranja: #fc6a07;
   }
-  
-  * {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
-section{
-    margin: 1rem;
 }
+
+section{
+    margin: 2rem;
+}
+
+
+.title{
+    margin: 2rem .2rem;
+}
+
+.cont{
+    background-color:  #00339e50 ;
+    padding: .5rem;
+    margin: 2rem 0;
+}
+
+div{
+    margin: .5rem;
+
+}
+
+.head-table p{
+    background-color:  #00339e;
+    border: none;
+    color: white;
+}
+
 
 p{
     display: inline-block;
     padding: .5rem;
+    margin: .5rem;
+    text-align: start;
+    border: #fff 1px solid;
+    width: 100px;
+
+}
+
+.number{
+    width: 100px;
     text-align: center;
-    margin: 0 .5rem;
-    width: 120px;
-}
-input{
-    width: 6rem;
-    height: 1rem;
-    padding: 1rem;
 
 }
 
-.borde{
-    border: 1px solid  #01016350;
-
-}
 .div_notas{
     display: inline-block;
-    padding: .5rem;
-
 }

@@ -8,8 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { CreateUserRoleService } from '../../services/createUserRole/create-user-role.service';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
-import { ActivatedRoute, Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router ,RouterModule} from '@angular/router';
 
 
 
@@ -30,7 +29,6 @@ export class CourseViewComponent {
       private router:Router,
       private routerActive:ActivatedRoute
     ){}
-
   course:Courses | null = null
   editarDescripcion:Boolean = false
   esDocente: boolean = false
@@ -43,6 +41,9 @@ export class CourseViewComponent {
     this.attendance
     this.getInfoCourse()
     this.controlRole()
+
+
+ 
   }
 
 
@@ -90,9 +91,10 @@ export class CourseViewComponent {
   id:string | null = null
 
   toGrades(){
-    // el id está hardcodeado, hay que desarrollarlo
-    this.id="1"
-    this.router.navigate(['/dashboard/admin-grades', this.id]);
+    
+    const idToGrades = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+
+    this.router.navigate(['/dashboard/admin-grades', idToGrades]);
   }
 
 
