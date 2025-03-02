@@ -3,6 +3,7 @@ const {hashPassword} = require('./hashPasswordService')
 const {createUserRole} = require('./userRoleService')
 const {getRoleByName} = require('./roleService')
 const {sequelize} = require('../Config/dbConfig')
+const bcrypt = require ('bcrypt')
 
 const getUserById = async (user_id) => {
     try {
@@ -76,4 +77,34 @@ const editUser = async (id, user) => {
 }
 
 
-module.exports = {getUserById, createUser, getUserByEmail, editUser}
+
+const changePassword = async (user_id, oldPassword, newPassword) => {
+    try {
+        
+        const user = await userModel.findByPk(user_id);
+
+        if (!user) {
+            throw new Error('Usuario no encontrado');
+        }
+
+        
+        const isMatch = await bcrypt.compare(oldPassword, user.password);
+        if (!isMatch) {
+            throw new Error('Contraseña actual incorrecta');
+        }
+
+        
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+        
+        await user.update({ password: hashedPassword });
+
+        return { message: 'Contraseña actualizada correctamente' };
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
+
+
+module.exports = {getUserById, createUser, getUserByEmail, editUser, changePassword}

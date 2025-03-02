@@ -42,4 +42,24 @@ const editUser = async (req, res, next) => {
     }
 }
 
-module.exports = {getUserById, createUser, getUserByEmail, editUser}
+
+const changePassword = async (req, res) => {
+    try {
+        const { user_id, oldPassword, newPassword } = req.body;
+
+        if (!user_id || !oldPassword || !newPassword) {
+            return res.status(400).json({ message: 'Todos los campos son obligatorios' });
+        }
+
+        const response = await userService.changePassword(user_id, oldPassword, newPassword);
+
+        res.status(200).json(response);
+    } catch (error) {
+        console.error('Error en changePassword:', error.message);
+        res.status(400).json({ message: error.message });
+    }
+};
+
+
+
+module.exports = {getUserById, createUser, getUserByEmail, editUser, changePassword}

@@ -18,6 +18,9 @@ export class ProfileComponent implements OnInit {
   user: LoggedUser | null = null;
   isEditing: boolean = false; // Controla el modo edición
   editedUser: LoggedUser | null = null; // Para editar sin modificar el original
+  oldPassword: string = '';
+  newPassword: string = '';
+  confirmPassword: string = '';
 
   constructor(private userService: UserService) {}
 
@@ -92,6 +95,33 @@ export class ProfileComponent implements OnInit {
   cancel(): void {
     this.isEditing = false;
     this.editedUser = null;
+  }
+
+  changePassword(): void {
+    const storedUser = localStorage.getItem('loggedUser');
+    if (!storedUser) {
+      Swal.fire('Error', 'No se encontró el usuario.', 'error');
+      return;
+    }
+
+    const user = JSON.parse(storedUser);
+
+    if (this.newPassword !== this.confirmPassword) {
+      Swal.fire('Error', 'Las contraseñas no coinciden.', 'error');
+      return;
+    }
+
+    this.userService.changePassword(user.user_id, this.oldPassword, this.newPassword).subscribe({
+      next: () => {
+        Swal.fire('Éxito', 'Contraseña actualizada correctamente.', 'success');
+        this.oldPassword = '';
+        this.newPassword = '';
+        this.confirmPassword = '';
+      },
+      error: (err) => {
+        Swal.fire('Error', err.error.message || 'Hubo un problema al cambiar la contraseña.', 'error');
+      }
+    });
   }
 }
 

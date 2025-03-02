@@ -57,4 +57,5 @@ router.put('/edit', userController.editUser)
 
 router.post('/mail',userController.getUserByEmail)
 
+router.put('/change-password', userController.changePassword); 
 module.exports = router
