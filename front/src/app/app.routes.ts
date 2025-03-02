@@ -15,11 +15,18 @@ import { CreateCourseComponent } from './views/create-course/create-course.compo
 import { CreateUserRoleComponent } from './views/createUserRole/create-user-role.component';
 import { CourseViewComponent } from './views/course-view/course-view.component';
 import { AdminGradesComponent } from './views/admin-grades/admin-grades.component';
+import { FAQComponent } from './views/faq/faq.component';
+import { ContactComponent } from './views/contact/contact.component';
+import { AboutUsComponent } from './views/about-us/about-us.component';
+
 
 
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path:'faq', component:FAQComponent},
+  { path:'contact', component:ContactComponent},
+  {path:'about-us', component:AboutUsComponent},
   // Rutas de autenticación
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
