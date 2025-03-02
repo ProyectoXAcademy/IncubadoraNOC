@@ -20,5 +20,24 @@ const getNoteByIdStudent = async (req, res, next) => {
     }
 }
 
+const getNoteByIdStudentANDIdCourse = async (req, res, next) => {
+    try {
+        const {student_id,course_id} = req.body
+        const findNotes = await noteService.getNoteByIdStudentANDIdCourse(student_id,course_id)
+        res.status(200).json(findNotes)
+    } catch (error) {
+        next(error)
+    }
+}
 
-module.exports = {getNoteById,getNoteByIdStudent}
+const createGrade= async (req, res, next) => {
+    try {
+        const {student_id,course_id,value,type} = req.body
+        const findNotes = await noteService.createGrade(student_id,course_id,value,type)
+        res.status(200).json(findNotes)
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {getNoteById,getNoteByIdStudent,getNoteByIdStudentANDIdCourse,createGrade}

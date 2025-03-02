@@ -34,7 +34,7 @@ export class MyEnrollmentsService {
     return this.http.get<Registration[]>(`${this.apiGetCourses}/user/${user_id}`);
   }
 
-  getUsersByIdCourse(course_id:number): Observable<Registration[]>{
+  getInscriptionsByIdCourse(course_id:number): Observable<Registration[]>{
     return this.http.get<Registration[]>(this.endpointRegistrationByCourseId+course_id)
   }
 
