@@ -9,12 +9,15 @@ import { CreateUserRoleService } from '../../services/createUserRole/create-user
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
+
 
 
 
 @Component({
   selector: 'app-course-view',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf,RouterModule],
   standalone :true,
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css'

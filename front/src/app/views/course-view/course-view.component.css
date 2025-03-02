@@ -44,6 +44,7 @@ input, textarea{
 .category{
     display: inline-block;
     background-color: #fc6a07;
+    border-radius: 5px;
     padding: .5rem;
     color: white;
 }

@@ -47,6 +47,10 @@ export class HeaderComponent implements AfterViewInit, OnInit {
     this.checkAuthentication();
     this.getRegisteredUser()
 
+    this.loginService.user$.subscribe(user => {
+      this.loggedUser = user; 
+    });
+  
   }
 
   ngAfterViewInit() {
