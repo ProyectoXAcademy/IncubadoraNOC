@@ -1,9 +1,12 @@
-
+main{
+  height: 100vh;
+}
 .courses-intro {
   
   text-align: center;
   margin: 40px 20px;
   padding: 20px;
+  
   
 }
 .styled-divider {

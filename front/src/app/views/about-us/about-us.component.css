@@ -1,83 +1,69 @@
-/* Contenedor principal */
+/* 🌟 Contenedor General */
 .about-container {
     max-width: 900px;
     margin: 40px auto;
     padding: 20px;
-    text-align: center;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
     font-family: 'Arial', sans-serif;
+    text-align: center;
 }
 
-/* Título principal */
-.about-container h2 {
+/* 📌 Título */
+h2 {
     color: #00339e;
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 26px;
+    margin-bottom: 15px;
 }
 
-/* Descripción */
+/* 📌 Descripción */
 .about-description {
-    font-size: 16px;
+    font-size: 18px;
     color: #555;
     margin-bottom: 20px;
 }
 
-/* Secciones */
+/* 📌 Secciones */
 .about-sections {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 30px;
+    justify-content: center;
+    gap: 20px;
+    text-align: left;
 }
 
+/* 📌 Cajas de Información */
 .about-box {
-    flex: 1;
-    min-width: 250px;
-    margin: 10px;
+    background: linear-gradient(135deg, #00339e, #6564cc);
+    color: white;
     padding: 15px;
     border-radius: 8px;
-    background: linear-gradient(135deg, #6564cc, #00339e);
-    color: white;
-    text-align: center;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 280px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-box:hover {
     transform: translateY(-5px);
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3);
 }
 
-.about-box h3 {
-    margin-bottom: 10px;
-    font-size: 20px;
+/* 📌 Listas */
+ul {
+    padding-left: 20px;
 }
 
-/* Lista de valores */
-.about-box ul {
-    list-style: none;
-    padding: 0;
-}
-
-.about-box li {
-    font-size: 14px;
+ul li {
+    font-size: 16px;
     margin: 5px 0;
 }
 
-/* Equipo */
+/* 📌 Equipo */
 .about-team {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
-.about-team h2 {
-    color: #fc6a07;
-    font-size: 26px;
-    margin-bottom: 20px;
-}
-
-/* Diseño del equipo */
 .team-grid {
     display: flex;
     flex-wrap: wrap;
@@ -85,35 +71,44 @@
     gap: 20px;
 }
 
+/* 📌 Tarjetas del Equipo */
 .team-member {
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 180px;
-    transition: transform 0.3s ease;
-}
-
-.team-member:hover {
-    transform: scale(1.05);
+    width: 200px;
 }
 
 .team-member img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin-bottom: 10px;
-    border: 3px solid #00339e;
+    border: 3px solid #fc6a07;
 }
 
 .team-member h4 {
-    margin: 5px 0;
-    font-size: 16px;
+    margin: 10px 0;
+    font-size: 18px;
     color: #00339e;
 }
 
 .team-member p {
-    font-size: 14px;
-    color: #777;
+    font-size: 16px;
+    color: #555;
+}
+
+/* 📌 RESPONSIVE */
+@media (max-width: 768px) {
+    .about-sections {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-box {
+        width: 100%;
+        max-width: 320px;
+    }
 }
