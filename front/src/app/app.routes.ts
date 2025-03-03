@@ -15,6 +15,7 @@ import { CreateCourseComponent } from './views/create-course/create-course.compo
 import { CreateUserRoleComponent } from './views/createUserRole/create-user-role.component';
 import { CourseViewComponent } from './views/course-view/course-view.component';
 import { AdminGradesComponent } from './views/admin-grades/admin-grades.component';
+import { AdminAttendanceComponent} from './views/admin-attendance/admin-attendance.component';
 
 
 
@@ -39,6 +40,8 @@ export const routes: Routes = [
       { path: 'create-user-role', component: CreateUserRoleComponent },
       { path: 'view-course/:course_id', component: CourseViewComponent},
       { path: 'admin-grades/:course_id', component: AdminGradesComponent},
+      { path: 'admin-attendance/:course_id', component: AdminAttendanceComponent},
+
 
 
 

@@ -76,3 +76,7 @@ button {
 .student{
     border: 1px solid white;
 }
+
+.no-inline{
+    width: 400px;
+}

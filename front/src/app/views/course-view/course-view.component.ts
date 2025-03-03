@@ -9,14 +9,12 @@ import { CreateUserRoleService } from '../../services/createUserRole/create-user
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router ,RouterModule} from '@angular/router';
-
-
-
-
+import { MyGradesService } from '../../services/my-grades/my-grades.service';
+import { Grade } from '../../models/grades.model';
 
 @Component({
   selector: 'app-course-view',
-  imports: [FormsModule, NgIf,RouterModule],
+  imports: [FormsModule, NgIf,RouterModule,NgFor],
   standalone :true,
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css'
@@ -27,23 +25,26 @@ export class CourseViewComponent {
     private servRole:CreateUserRoleService,
      private servAttendance:MyAttendanceService,
       private router:Router,
-      private routerActive:ActivatedRoute
+      private routerActive:ActivatedRoute,
+      private servGrades:MyGradesService
+
     ){}
   course:Courses | null = null
   editarDescripcion:Boolean = false
   esDocente: boolean = false
-  attendance:Attendance|null = null
-  habilitacionDeAsistencia:boolean = true // está hardcodeado. La idea es que cuando esta variable venga del back
+  attendance:Attendance[]|null = null
+  grades:Grade[]|null=null
 
   ngOnInit(){
     this.editarDescripcion
     this.esDocente
     this.attendance
+    this.grades
     this.getInfoCourse()
     this.controlRole()
+    this.getGradesAlumno()
+    this.getAttendanceAlumno()
 
-
- 
   }
 
 
@@ -51,8 +52,7 @@ export class CourseViewComponent {
   ///////////  DESCRIPCION /////////////
 
   getInfoCourse(): void {
-    const course_id = Number(this.routerActive.snapshot.paramMap.get('course_id')); // ✅ Obtiene el ID de la ruta
-  
+    const course_id = Number(this.routerActive.snapshot.paramMap.get('course_id')); 
     if (!course_id) {
       console.error('ID del curso no encontrado.');
       return;
@@ -87,73 +87,46 @@ export class CourseViewComponent {
 
   ///////////  CALIFICACIONES /////////////
   ///////////  CALIFICACIONES /////////////
-    
-  id:string | null = null
+  //id:string | null = null
 
   toGrades(){
-    
     const idToGrades = Number(this.routerActive.snapshot.paramMap.get('course_id'));
-
     this.router.navigate(['/dashboard/admin-grades', idToGrades]);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  ///////////  ASISTENCIA /////////////
-  ///////////  ASISTENCIA /////////////
-  // Faltantes. 
-  // Boton que habilite las asistencias para que los alumnos puedan darlas ("Habilitar asistencias").
-  // Boton que lleve a ver asistencias de los alumnos ("Consultar asistencias del curso").
-  // Boton que lleve a ver asistencias del alumno ("Ver mis asistencias del curso").
- /* addAttendance(){
-    this.servAttendance.attendancePOST({
-        student_id: JSON.parse(localStorage.getItem('loggedUser')!).user_id,
-        // ESTA HARDCODEADO. Falta traer en id del curso, que vendria por ruta
-        course_id: 1
+  getGradesAlumno(){
+    const idToGrades = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+    const id_user = JSON.parse(localStorage.getItem('loggedUser')!).user_id
+    this.servGrades.gradesByIdCourseANDIdStudent({
+        course_id:idToGrades,
+        student_id:id_user
     }).subscribe({
       next:(r)=> {
-      console.log(r)
-      Swal.fire({
-                icon: 'success',
-                title: 'Registro exitoso',
-                text: 'La asistencia de registro con exito',
-                });
-      this.habilitacionDeAsistencia = false
-
+        this.grades = r
       }
     })
   }
 
-*/
+  ///////////  ASISTENCIA /////////////
+  ///////////  ASISTENCIA /////////////
+  toAttendance(){
+    const idToGrades = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+    this.router.navigate(['/dashboard/admin-attendance', idToGrades]);
+  }
 
-
-
-
-
-
-
-
-
+  getAttendanceAlumno(){
+    const idToGrades = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+    const id_user = JSON.parse(localStorage.getItem('loggedUser')!).user_id
+    this.servAttendance.attendancesByIdCourseANDIdStudent({
+        course_id:idToGrades,
+        student_id:id_user
+    }).subscribe({
+      next:(a)=> {
+        this.attendance = a
+        console.log(a)
+      }
+    })
+  }
 
 
 

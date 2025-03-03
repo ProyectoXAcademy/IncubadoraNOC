@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import { MyEnrollmentsComponent } from '../my-enrollments/my-enrollments.component';
-import { Registration } from '../../models/registration.model';
 import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service';
-import { User } from '../../models/user.model';
 import { UserService } from '../../services/users/user.service';
-import { LoggedUser } from '../../models/registeredUser.model';
-import { Grade } from '../../models/grades.model';
 import { MyGradesService } from '../../services/my-grades/my-grades.service';
 import {FormBuilder,Validator,FormGroup,FormControl,ReactiveFormsModule,Validators,} from "@angular/forms";
 import { NgIf , NgFor} from "@angular/common";
@@ -27,7 +22,6 @@ export class AdminGradesComponent {
     private formBuilder:FormBuilder,
     private routerActivate:ActivatedRoute
   ){}
-    id:number=1
     students:any = []
     student:any
 
@@ -39,13 +33,10 @@ export class AdminGradesComponent {
 
     ngOnInit(){
       this.idToGrade = Number(this.routerActivate.snapshot.paramMap.get('course_id'));
-
       this.getRegistrations(this.idToGrade)
-
       this.formPOST = this.formBuilder.group({
         value: new FormControl<number|null>(null, Validators.required)
       });
-
     }
 
 
@@ -63,9 +54,10 @@ export class AdminGradesComponent {
                   }).subscribe({
                     next:(notas)=>{
                       this.student= {alumno,notas}
-                      this.students!.push(this.student)                
-      
-        }})}})}}})}///
+                      this.students!.push(this.student)
+                      this.students.sort((a:any,b:any) => a.alumno.lastName.localeCompare(b.alumno.lastName))
+                    }})}})}
+      }})}///
     
     
     addGrade(id_student:number){

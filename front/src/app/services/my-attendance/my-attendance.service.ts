@@ -11,13 +11,18 @@ export class MyAttendanceService {
   constructor(private http:HttpClient) { }
 
   endpointAtendanceGET = "http://localhost:3000/api/assistance/"
-  endpointAtendancePOST = "http://localhost:3000/api/assistance/"
+  endpointAtendancePOST = "http://localhost:3000/api/assistance"
+  endpointAttendanceByCourseANDStudentGET = "http://localhost:3000/api/assistance/student"
 
   attendancesGET():Observable<Attendance>{
     return this.http.get<Attendance>(this.endpointAtendanceGET)
   }
 
-  attendancePOST(body:Attendance):Observable<Attendance>{
+  attendancesByIdCourseANDIdStudent(body:any):Observable<Attendance[]>{
+    return this.http.post<Attendance[]>(this.endpointAttendanceByCourseANDStudentGET,body)
+  }
+
+  attendanceADD(body:Attendance):Observable<Attendance>{
     return this.http.post<Attendance>(this.endpointAtendancePOST,body)
   }
 }
