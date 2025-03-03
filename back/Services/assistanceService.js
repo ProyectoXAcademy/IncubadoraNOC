@@ -29,4 +29,28 @@ const createAssistance = async (course_id, student_id) => {
     }
 }
 
-module.exports = {getAssistanceById,createAssistance}
+
+const getAssistanceByIdStudentANDIdCourse = async (student_id,course_id) => {
+    try {
+        const findAssistance = await assistanceModel.findAll(
+            {
+                where: {
+                    student_id:student_id,
+                    course_id:course_id
+                  }            
+            }
+        )
+        if (!findAssistance) {
+            const error = new Error()
+            error.message = `Error al encontrar las asistencias de estudiante con id=${id_student} en el curso con id=${id_course}`
+            error.statusCode = 404
+            throw error
+        }
+        return findAssistance
+    } catch (error) {
+        throw error
+    }
+}
+
+
+module.exports = {getAssistanceById,createAssistance, getAssistanceByIdStudentANDIdCourse}

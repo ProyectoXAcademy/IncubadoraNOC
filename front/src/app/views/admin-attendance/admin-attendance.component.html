@@ -1,0 +1,35 @@
+<section>
+    <h2 class="title">Asistencias de los alumnos</h2>
+    <div class="cont" >
+
+        <div class="head-table">
+            <p>Apellido</p>
+            <p>DNI</p>
+            <p class="no-inline">Dias en los que el alumno estuvo presente</p>
+        </div>
+    
+        <div class="student"  *ngFor="let s of students" >
+            <p>{{s.alumno.lastName}}</p>
+            <p>{{s.alumno.dni}}</p>
+    
+            <div class="div_notas" *ngFor="let s of s.asistencias" >
+                <p>O</p>
+            </div>
+    
+                <div class="div_notas">
+                    <form [formGroup]="formPOST" (ngSubmit)="addAssistance(s.alumno.user_id)"  >    
+                        <button type="submit" >Agregar asistencia</button>  
+                    </form>
+                </div>        
+                
+           
+        </div>
+    
+
+    </div>
+
+   
+
+
+
+</section>

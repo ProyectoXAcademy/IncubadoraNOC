@@ -5,6 +5,8 @@ const {assistanceController} = require('../Controllers')
 
 router.get('/:id', assistanceController.getAssistanceById)
 router.post('/', assistanceController.createAssistance)
+router.post('/student', assistanceController.getAssistanceByIdStudentANDIdCourse)
+
 
 
 module.exports = router

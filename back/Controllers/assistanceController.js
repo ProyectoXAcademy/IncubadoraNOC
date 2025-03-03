@@ -20,4 +20,16 @@ const createAssistance = async (req, res, next) => {
     }
 }
 
-module.exports = {getAssistanceById,createAssistance}
+const getAssistanceByIdStudentANDIdCourse = async (req, res, next) => {
+    try {
+        const {student_id,course_id} = req.body
+        const findAssistance = await assistanceService.getAssistanceByIdStudentANDIdCourse(student_id,course_id)
+        res.status(200).json(findAssistance)
+    } catch (error) {
+        next(error)
+    }
+}
+
+
+
+module.exports = {getAssistanceById,createAssistance,getAssistanceByIdStudentANDIdCourse}

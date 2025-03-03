@@ -99,8 +99,16 @@
     <div>
         <h3>Calificaciones</h3>
         <p>A continuacion se listan las calificaciones del curso.</p>
-
-
+        <div class="cont_grades">
+            <div class="cont_grade_tit">
+                <p class="grade_tit">Nota 1</p>
+                <p class="grade_tit">Nota 2</p>
+                <p class="grade_tit">Nota 3</p>
+            </div>
+            <div class="grade_value" *ngFor="let g of grades">
+                <p class="grade_value" >{{g.value}}</p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -108,8 +116,8 @@
 <section class="sec_attendance"  *ngIf="esDocente">
     <div>
         <h3>Administrar asistencias</h3>
-        <button >Habilitar asistencia</button>
-        <button >Consultar asistencias del curso</button>
+        <button type="submit" (click)="toAttendance()" >Asignar y consultar asistencias</button>
+
     </div>
 </section>
 
@@ -117,9 +125,17 @@
 <section class="sec_attendance" *ngIf="!esDocente" >
     <div>
         <h3 *ngIf="!esDocente">Asistencias</h3>
-        <p>Esperar a que el profesor habilite la asistencia de la clase</p>
-        <button >Dar asistencia</button>
-        <button >Ver mis asistencias del curso</button>
+        <p>A continuacion se listan las calificaciones del curso.</p>
+
+        <div class="cont_grades">
+            <div class="cont_grade_tit">
+                <p class="grade_tit">Presencias</p>
+
+            </div>
+            <div class="grade_value" *ngFor="let g of attendance">
+                <p class="grade_value" >o</p>
+            </div>
+        </div>
     </div>
 
 </section>
