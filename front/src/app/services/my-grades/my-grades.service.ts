@@ -10,14 +10,19 @@ export class MyGradesService {
 
   constructor(private http:HttpClient) { }
   
-  endpointGradeGET = "http://localhost:3000/api/note/user/"
+  endpointGradeByUserGET = "http://localhost:3000/api/note/user/"
   endpointCourseIdGET = "http://localhost:3000/api/course/"
   endpointGradesByCourseGET = "http://localhost:3000/api/note/course/"
+  endpointGradesByCourseANDStudentGET = "http://localhost:3000/api/note/student"
+  endpointGradesPOST = "http://localhost:3000/api/note"
+  
+
+  
 
 
   
   gradesGET(id:number):Observable<any>{
-    return this.http.get<any>(this.endpointGradeGET+id)
+    return this.http.get<any>(this.endpointGradeByUserGET+id)
   }
 
   courseIdGET(id:number):Observable<Courses>{
@@ -26,6 +31,14 @@ export class MyGradesService {
 
   gradesByIdCourseGET(id:number):Observable<Grade>{
     return this.http.get<Grade>(this.endpointGradesByCourseGET+id)
+  }
+
+  gradesByIdCourseANDIdStudent(body:any):Observable<Grade[]>{
+    return this.http.post<Grade[]>(this.endpointGradesByCourseANDStudentGET,body)
+  }
+
+  gradesADD(body:any):Observable<Grade[]>{
+    return this.http.post<Grade[]>(this.endpointGradesPOST,body)
   }
 
   

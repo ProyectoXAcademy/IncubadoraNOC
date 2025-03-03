@@ -32,5 +32,43 @@ const getNoteByIdStudent = async (id_student) => {
     }
 }
 
+const getNoteByIdStudentANDIdCourse = async (student_id,course_id) => {
+    try {
+        const findNote = await noteModel.findAll(
+            {
+                where: {
+                    student_id:student_id,
+                    course_id:course_id
+                  }            
+            }
+        )
+        if (!findNote) {
+            const error = new Error()
+            error.message = `Error al encontrar las notas de estudiante con id=${id_student} en el curso con id=${id_course}`
+            error.statusCode = 404
+            throw error
+        }
+        return findNote
+    } catch (error) {
+        throw error
+    }
+}
 
-module.exports = {getNoteById,getNoteByIdStudent}
+
+const createGrade = async (student_id,course_id,value,type) => {
+    try {
+        const newGrade = {
+            type:type,
+            student_id: student_id,
+            course_id: course_id,
+            value:value
+        }
+        console.log(newGrade)
+        const createGrade = await noteModel.create(newGrade)
+        return createGrade
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {getNoteById,getNoteByIdStudent,getNoteByIdStudentANDIdCourse,createGrade}

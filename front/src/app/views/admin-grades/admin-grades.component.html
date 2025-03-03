@@ -1,1 +1,34 @@
-<p>admin-grades works!</p>
+<section>
+    <h2 class="title">Notas de los alumnos</h2>
+    <div class="cont" >
+
+        <div class="head-title">
+            <p>Nombre</p>
+            <p>DNI</p>
+            <p>Nota 1</p>
+            <p>Nota 2</p>
+        </div>
+    
+        <div  *ngFor="let s of students" >
+            <p>{{s.alumno.name}} {{s.alumno.lastName}}</p>
+            <p>{{s.alumno.dni}}</p>
+    
+            <div class="div_notas" *ngFor="let n of s.notas" >
+                <p>{{n.value}}</p>
+            </div>
+            <div>
+                <form [formGroup]="formPOST" (ngSubmit)="addGrade(s.alumno.user_id)"  >    
+                    <input formControlName="value" type="number">
+                    <button type="submit" >Agregar nota</button>  
+                </form>
+            </div>        
+        </div>
+    
+
+    </div>
+
+   
+
+
+
+</section>

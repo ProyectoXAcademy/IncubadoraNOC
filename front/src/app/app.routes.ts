@@ -45,7 +45,7 @@ export const routes: Routes = [
       { path: 'create-course', component: CreateCourseComponent },
       { path: 'create-user-role', component: CreateUserRoleComponent },
       { path: 'view-course/:course_id', component: CourseViewComponent},
-      { path: 'admin-grades/:id', component: AdminGradesComponent},
+      { path: 'admin-grades/:course_id', component: AdminGradesComponent},
 
 
 

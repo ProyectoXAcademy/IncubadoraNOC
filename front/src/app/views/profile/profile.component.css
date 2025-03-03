@@ -104,12 +104,13 @@
 
 
 .password-container {
-  max-width: 400px;
-  margin: auto;
+  width: 400px;
+  margin: 50px auto;
   padding: 20px;
-  background: #f9f9f9;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
