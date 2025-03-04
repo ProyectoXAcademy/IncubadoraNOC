@@ -30,7 +30,10 @@ export class AdminAttendanceComponent {
   ngOnInit(){
     this.idToAttendance = Number(this.routerActivate.snapshot.paramMap.get('course_id'))
     this.getRegistrations(this.idToAttendance)
-    this.formPOST = this.formBuilder.group({});
+    this.formPOST = this.formBuilder.group({
+      date: new FormControl<Date|null>(null, Validators.required)
+      
+    });
 
 
   }//
@@ -56,13 +59,15 @@ export class AdminAttendanceComponent {
 
     addAssistance(id_student:number){
        const id_course = Number(this.routerActivate.snapshot.paramMap.get('course_id'));      
-            if(this.formPOST.value.value !==null){
+            if(this.formPOST.value.date !==null){
               this.servAttendance.attendanceADD({
                 student_id: id_student,
                 course_id:id_course,
+                date:this.formPOST.value.date
               }).subscribe({
         
                 next:(r)=> {
+                  console.log(r)
                   this.formPOST.reset()
                   Swal.fire({
                     icon: 'success',
@@ -73,6 +78,13 @@ export class AdminAttendanceComponent {
         
               }
             )
+            }else{
+              Swal.fire({
+                icon: 'error',
+                title: 'Ingrese una fecha',
+                text: 'Por favor ingrese una fecha en el campo correspondiente',
+                });
+
             }
     }
 }////////////////////

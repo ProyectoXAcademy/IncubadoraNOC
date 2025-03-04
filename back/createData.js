@@ -10,14 +10,24 @@ const createData = async () => {
     await roleService.createRole("Estudiante")
 
     //Usuarios de prueba, se crea un administrador, docente y alumno
-    await userService.createUser("Usuario", "de prueba", 9999, "2025-01-01", "usuarioprueba@gmail.com", "12345", "Administrador")
-    await userService.createUser("Docente", "de prueba", 12345, "2022-12-18", "docentedeprueba@gmail.com", "12345", "Docente" )
-    await userService.createUser("Alumno", "de prueba", 1111, "2018-12-09", "alumnodeprueba@gmail.com", "12345", "Estudiante")
+    await userService.createUser("Admin", "istrador", 9999, "2025-01-01", "usuarioprueba@gmail.com", "12345", "Administrador")
+    await userService.createUser("Docente", "Perez", 12345, "2022-12-18", "docentedeprueba@gmail.com", "12345", "Docente" )
+    await userService.createUser("Alumno", "Gonzalez", 1111, "2018-12-09", "alumnodeprueba@gmail.com", "12345", "Estudiante")
+    await userService.createUser("Jose", "Lopeez", 1234, "2018-12-09", "jose@gmail.com", "12345", "Estudiante")
+    await userService.createUser("Thiago", "Motta", 1345, "2018-12-09", "thiago@gmail.com", "12345", "Estudiante")
+    await userService.createUser("Juana", "De Arco", 4567, "2018-12-09", "juana@gmail.com", "12345", "Estudiante")
 
     //Publicaciones de ejemplo
-    await publicationService.createPublication("Noticia", "Noticia de ejemplo 1", "Descripción 1", "2025-01-02", null)
-    await publicationService.createPublication("Programa de crédito", "Noticia de ejemplo 2", "Descripción 2", "2025-05-02", null)
-    await publicationService.createPublication("Noticia", "Noticia de ejemplo 3", "Esto es otra descripción", "2022-10-25", null)
+    await publicationService.createPublication("Noticia", "IA revoluciona la medicina", "La inteligencia artificial está transformando la medicina al mejorar diagnósticos y tratamientos personalizados.", "2025-03-04", null);
+    await publicationService.createPublication("Noticia", "Computación cuántica: la próxima revolución", "La computación cuántica promete resolver problemas complejos rápidamente, con grandes inversiones de empresas tecnológicas.", "2025-03-04", null);        
+    await publicationService.createPublication("Noticia", "Trabajo remoto: nuevas herramientas digitales", "El trabajo remoto crece gracias a plataformas como Zoom y Slack, mejorando la eficiencia laboral global.", "2025-03-04", null);    
+    await publicationService.createPublication("Noticia", "Inflación global alcanza niveles récord", "La inflación mundial está afectando el poder adquisitivo y la estabilidad económica en varios países.", "2025-03-04", null);    
+    await publicationService.createPublication("Noticia", "Criptomonedas: impacto financiero global", "Las criptomonedas están ganando popularidad, pero las autoridades siguen cautelosas por su volatilidad.", "2025-03-04", null);
+    await publicationService.createPublication("Noticia", "Inversión verde: un nuevo motor económico", "La transición a energías renovables está creando nuevas oportunidades de negocio en sectores sostenibles.", "2025-03-04", null);
+    await publicationService.createPublication("Noticia", "Crédito para Innovación Tecnológica", "Crédito de hasta $500,000 para PyMEs tecnológicas con tasas fijas y plazos flexibles.", "2025-03-04", null);
+    await publicationService.createPublication("Noticia", "Crédito de Consumo para Educación", "Crédito de hasta $30,000 para financiar estudios, con tasas accesibles y plazos flexibles.", "2025-03-04", null);
+
+
 
    //Curso de ejemplo
    await courseService.createCourse("Angular", "Angular desde 0 a experto", "Programacion", 1)
@@ -26,6 +36,6 @@ const createData = async () => {
    await courseService.createCourse("Comunity manager", "Aprenderas con las mejores herramientas para marketin", "Marketing", 1)
    await courseService.createCourse("Ser tu porpio jefe", "Como generar tus propios ingresos desde casa ", "Negocios", 1)
 
-    console.log("Se crearon los datos en la Base de datos!")
+console.log("Se crearon los datos en la Base de datos!")
 }
 createData()

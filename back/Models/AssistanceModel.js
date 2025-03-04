@@ -9,6 +9,10 @@ const assistanceModel = dbConfig.sequelize.define("Assistances", {
         unique: true,
         autoIncrement: true
     },
+    date: {
+        type: DataTypes.DATEONLY,
+        allowNull: true
+    },
     course_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
