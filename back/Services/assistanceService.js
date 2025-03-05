@@ -15,11 +15,12 @@ const getAssistanceById = async (assistance_id) => {
     }
 }
 
-const createAssistance = async (course_id, student_id) => {
+const createAssistance = async (course_id, student_id,date) => {
     try {
         const newAssistance = {
             course_id: course_id,
-            student_id: student_id
+            student_id: student_id,
+            date:date
         }
         console.log(newAssistance)
         const createAssistance = await assistanceModel.create(newAssistance)

@@ -1,3 +1,6 @@
+
+<!--
+
 <nav class="sidebar">
   <ul>
     <li><a routerLink="profile" (click)="onItemClick()">Mi Perfil</a></li>
@@ -7,5 +10,15 @@
     <li><a routerLink="myenrollments" (click)="onItemClick()">Mis Inscripciones</a></li>
     <li><a routerLink="create-course" (click)="onItemClick()">Crear Curso</a></li>
     <li><a routerLink="create-user-role" (click)="onItemClick()">Asignar Docente</a></li>
+  </ul>
+</nav>
+
+-->
+
+<nav class="sidebar">
+  <ul>
+    <li *ngFor="let item of filteredSidebarItems">
+      <a [routerLink]="item.path" (click)="onItemClick()">{{ item.label }}</a>
+    </li>
   </ul>
 </nav>

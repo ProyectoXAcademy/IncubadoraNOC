@@ -54,17 +54,17 @@ export class CourseViewComponent {
   getInfoCourse(): void {
     const course_id = Number(this.routerActive.snapshot.paramMap.get('course_id')); 
     if (!course_id) {
-      console.error('ID del curso no encontrado.');
+      //console.error('ID del curso no encontrado.');
       return;
     }
   
     this.serv.getCourseByIdGET(course_id).subscribe({
       next: (c) => {
         this.course = c;
-        console.log('Curso cargado:', this.course);
+        //console.log('Curso cargado:', this.course);
       },
       error: (error) => {
-        console.error('Error al cargar el curso:', error);
+        //console.error('Error al cargar el curso:', error);
       }
     });
   }
@@ -82,7 +82,15 @@ export class CourseViewComponent {
 
   controlRole(){
     this.servRole.getRolesByUserIdGET(JSON.parse(localStorage.getItem('loggedUser')!).user_id).subscribe({
-      next:(r) => {if(r.length === 2){this.esDocente = true}}})
+      next:(r) => {
+        for(let rs of r){
+          console.log(r)
+          if(rs.RoleRoleId==2){
+            this.esDocente = true
+          }
+        }
+
+      }})
       }
 
   ///////////  CALIFICACIONES /////////////
@@ -123,7 +131,6 @@ export class CourseViewComponent {
     }).subscribe({
       next:(a)=> {
         this.attendance = a
-        console.log(a)
       }
     })
   }

@@ -16,8 +16,8 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent implements OnInit {
   user: LoggedUser | null = null;
-  isEditing: boolean = false; // Controla el modo edición
-  editedUser: LoggedUser | null = null; // Para editar sin modificar el original
+  isEditing: boolean = false; 
+  editedUser: LoggedUser | null = null; 
   oldPassword: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit {
 
 
   loadUser(): void {
-    // Suponiendo que tienes el ID del usuario autenticado en algún lugar (ej. localStorage)
     const storedUser = localStorage.getItem('loggedUser');
     if (!storedUser) {
       console.error('No hay usuario autenticado.');
@@ -39,17 +38,23 @@ export class ProfileComponent implements OnInit {
     }
   
     const parsedUser = JSON.parse(storedUser);
-    const userId = Number(parsedUser.user_id); // Asegurar que el ID sea un número
+    const userId = Number(parsedUser.user_id); 
   
     console.log('Obteniendo usuario desde el backend, ID:', userId);
   
-    // Llamar al servicio para obtener el usuario actualizado desde el backend
+    
     this.userService.getUserById(userId).subscribe({
       next: (response) => {
         console.log('Usuario actualizado desde el backend:', response);
         this.user = response;
   
-        // Opcional: Guardar en localStorage la versión más reciente
+       
+        if (response.Roles && response.Roles.length > 0) {
+          const userRole = response.Roles[0].name; 
+          localStorage.setItem('role', userRole);
+        }
+  
+        
         localStorage.setItem('loggedUser', JSON.stringify(this.user));
       },
       error: (err) => {
@@ -57,6 +62,7 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+  
 
   // Cambia a modo edición
   enableEdit(): void {

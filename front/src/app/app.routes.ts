@@ -15,6 +15,13 @@ import { CreateCourseComponent } from './views/create-course/create-course.compo
 import { CreateUserRoleComponent } from './views/createUserRole/create-user-role.component';
 import { CourseViewComponent } from './views/course-view/course-view.component';
 import { AdminGradesComponent } from './views/admin-grades/admin-grades.component';
+import { FAQComponent } from './views/faq/faq.component';
+import { ContactComponent } from './views/contact/contact.component';
+import { AboutUsComponent } from './views/about-us/about-us.component';
+import { PoliciesComponent } from './views/policies/policies.component';
+import { TermsComponent } from './views/terms/terms.component';
+import { CookiePoliciesComponent } from './views/cookie-policies/cookie-policies.component';
+import { AdminAttendanceComponent } from './views/admin-attendance/admin-attendance.component';
 
 
 
