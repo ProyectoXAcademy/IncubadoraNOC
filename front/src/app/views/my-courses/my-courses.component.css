@@ -227,3 +227,144 @@ div.attribution {
     grid-template-columns: 1fr;
   }
 }
+
+/* 🌟 Contenedor General */
+.card-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+/* 📌 Tarjeta de Curso */
+.card-container {
+  background: linear-gradient(135deg, #00339e, #6564cc, #010163); /* Azul Incubadora */
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 320px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 15px rgba(252, 106, 7, 0.7);
+}
+
+/* 📌 Imagen Principal */
+.hero-image-container {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.05);
+}
+
+/* 📌 Título del Curso */
+.course-title a {
+  color: #fc6a07;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.course-title a:hover {
+  color: #fc6a07; /* Naranja Incubadora */
+}
+
+/* 📌 Descripción */
+.course-description {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #ddd;
+}
+
+/* 📌 Flex para Categoría y Estado */
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* 📌 Categoría del Curso */
+.course-category {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.course-category h2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+/* 📌 Estado del Curso */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.active-status {
+  color: #00ff99; /* Verde Activo */
+  font-weight: bold;
+}
+
+.inactive-status {
+  color: #ff4040; /* Rojo Inactivo */
+  font-weight: bold;
+}
+
+/* 📌 Información del Profesor */
+.card-attribute {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-attribute p {
+  margin: 0;
+  font-size: 14px;
+  color: white;
+}
+
+.card-attribute span {
+  font-weight: bold;
+  color: #fc6a07;
+}
+
+/* 📌 Imágenes Pequeñas */
+.small-image {
+  width: 20px;
+  height: 20px;
+}
+
+.small-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* 📌 RESPONSIVE */
+@media (max-width: 768px) {
+  .card-container {
+      width: 90%;
+  }
+}

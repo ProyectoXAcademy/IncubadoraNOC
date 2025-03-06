@@ -1,26 +1,28 @@
 <body class="card-flex">
-  <div *ngFor="let course of courses" class="card-container">
+  <div *ngFor="let course of courses" class="card-container incubator-theme">
     <a href="/" class="hero-image-container">
       <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg" alt="Course Image"/>
     </a>
     <main class="main-content">
-      <h1><a href="#">{{ course.name }}</a></h1>
-      <p>{{ course.description }}</p>
+      <h1 class="course-title"><a href="#">{{ course.name }}</a></h1>
+      <p class="course-description">{{ course.description }}</p>
+
       <div class="flex-row">
-        <div class="coin-base">
-          <img src="https://i.postimg.cc/T1F1K0bW/Ethereum.png" alt="Ethereum" class="small-image"/>
+        <div class="course-category">
+          <img src="https://i.postimg.cc/T1F1K0bW/Ethereum.png" alt="category" class="small-image"/>
           <h2>{{ course.category }}</h2>
         </div>
-        <div class="time-left">
+        <div class="status">
           <img src="https://i.postimg.cc/prpyV4mH/clock-selection-no-bg.png" alt="clock" class="small-image"/>
-          <p *ngIf="course.active; else inactive">Activo</p>
-          <ng-template #inactive><p>Inactivo</p></ng-template>
+          <p *ngIf="course.active; else inactive" class="active-status">Activo</p>
+          <ng-template #inactive><p class="inactive-status">Inactivo</p></ng-template>
         </div>
       </div>
     </main>
+
     <div class="card-attribute">
       <img src="https://i.postimg.cc/SQBzNQf1/image-avatar.png" alt="avatar" class="small-avatar"/>
-      <p>Profesor ID: <span>{{ course.teacher_id }}</span></p>
+      <p>Profesor: <span>{{ course.teacher_id }}</span></p>
     </div>
   </div>
 </body>
