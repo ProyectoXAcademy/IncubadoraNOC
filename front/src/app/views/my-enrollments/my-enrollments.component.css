@@ -68,3 +68,94 @@ h2 {
     color: #010163; /* Azul oscuro */
   }
   
+
+  /* 📌 Sección de Cursos Registrados */
+.courses-title {
+  font-size: 2.5rem;
+  color: #010163;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* 📌 Contenedor de Cursos */
+.courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+/* 📌 Tarjeta del Curso Inscrito */
+.course-card {
+  background: linear-gradient(135deg, #6564cc, #00339e);
+  border: 2px solid #010163;
+  border-radius: 12px;
+  box-shadow: 6px 6px 15px rgba(252, 106, 7, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 20px rgba(252, 106, 7, 0.7);
+}
+
+.course-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* 📌 Cuerpo de la Tarjeta */
+.course-card-body {
+  padding: 16px;
+}
+
+.course-card-title {
+  font-size: 1.5rem;
+  color: #FC6A07;
+  margin-bottom: 8px;
+}
+
+.course-card-text {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+/* 📌 Botón */
+.course-card-button {
+  background: #fc6a07;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.course-card-button:hover {
+  background-color: #00339E;
+}
+
+/* 📌 Mensaje si no hay cursos */
+.no-courses {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #010163;
+  margin-top: 20px;
+}
+
+/* 📌 Responsividad */
+@media (max-width: 768px) {
+  .courses-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .course-card {
+    width: 90%;
+  }
+}
