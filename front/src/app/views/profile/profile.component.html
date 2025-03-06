@@ -1,62 +1,68 @@
-<div class="profile-card" *ngIf="user">
-  <h2 class="profile-title">Perfil de Usuario</h2>
+<div class="container">
 
-  <!-- Vista Estática -->
-  <div *ngIf="!isEditing" class="profile-info">
-    <p><strong>👤 Nombre:</strong> {{ user.name }} {{ user.lastName }}</p>
-    <p><strong>🆔 DNI:</strong> {{ user.dni }}</p>
-    <p><strong>🎂 Fecha de Nacimiento:</strong> {{ user.date_of_birth | date: 'dd/MM/yyyy' }}</p>
-    <p><strong>📧 Email:</strong> {{ user.email }}</p>
+  <div class="profile-card" *ngIf="user">
+    <h2 class="profile-title">Perfil de Usuario</h2>
+    <!-- Foto de perfil -->
+    <div class="profile-image">
+      <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg" alt="Course Image" />
+    </div>
+    <!-- Vista Estática -->
+    <div *ngIf="!isEditing" class="profile-info">
+      <p><strong>👤 Nombre:</strong> {{ user.name }} {{ user.lastName }}</p>
+      <p><strong>🆔 DNI:</strong> {{ user.dni }}</p>
+      <p><strong>🎂 Fecha de Nacimiento:</strong> {{ user.date_of_birth | date: 'dd/MM/yyyy' }}</p>
+      <p><strong>📧 Email:</strong> {{ user.email }}</p>
 
-    <button (click)="enableEdit()" class="btn btn-edit">✏️ Editar</button>
+      <button (click)="enableEdit()" class="btn btn-edit">✏️ Editar</button>
+    </div>
+
+    <!-- Modo Edición -->
+    <form *ngIf="isEditing" (ngSubmit)="saveChanges()" class="profile-info">
+      <p>
+        <strong>👤 Nombre:</strong>
+        <input type="text" [(ngModel)]="editedUser!.name" name="name" required />
+      </p>
+
+      <p>
+        <strong>👤 Apellido:</strong>
+        <input type="text" [(ngModel)]="editedUser!.lastName" name="lastName" required />
+      </p>
+
+      <p>
+        <strong>🆔 DNI:</strong>
+        <input type="number" [(ngModel)]="editedUser!.dni" name="dni" required />
+      </p>
+
+      <p>
+        <strong>🎂 Fecha de Nacimiento:</strong>
+        <input type="date" [(ngModel)]="editedUser!.date_of_birth" name="date_of_birth" required />
+      </p>
+
+      <p>
+        <strong>📧 Email:</strong>
+        <input type="email" [(ngModel)]="editedUser!.email" name="email" required />
+      </p>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-save">💾 Guardar</button>
+        <button type="button" (click)="cancel()" class="btn btn-cancel">❌ Cancelar</button>
+      </div>
+    </form>
   </div>
 
-  <!-- Modo Edición -->
-  <form *ngIf="isEditing" (ngSubmit)="saveChanges()" class="profile-info">
-    <p>
-      <strong>👤 Nombre:</strong>
-      <input type="text" [(ngModel)]="editedUser!.name" name="name" required />
-    </p>
-
-    <p>
-      <strong>👤 Apellido:</strong>
-      <input type="text" [(ngModel)]="editedUser!.lastName" name="lastName" required />
-    </p>
-
-    <p>
-      <strong>🆔 DNI:</strong>
-      <input type="number" [(ngModel)]="editedUser!.dni" name="dni" required />
-    </p>
-
-    <p>
-      <strong>🎂 Fecha de Nacimiento:</strong>
-      <input type="date" [(ngModel)]="editedUser!.date_of_birth" name="date_of_birth" required />
-    </p>
-
-    <p>
-      <strong>📧 Email:</strong>
-      <input type="email" [(ngModel)]="editedUser!.email" name="email" required />
-    </p>
-
-    <div class="form-actions">
-      <button type="submit" class="btn btn-save">💾 Guardar</button>
-      <button type="button" (click)="cancel()" class="btn btn-cancel">❌ Cancelar</button>
-    </div>
-  </form>
-</div>
 
 
 
+  <div class="password-container">
+    <label>Contraseña Actual</label>
+    <input type="password" [(ngModel)]="oldPassword" placeholder="Ingresa tu contraseña actual">
 
-<div class="password-container">
-  <label>Contraseña Actual</label>
-  <input type="password" [(ngModel)]="oldPassword" placeholder="Ingresa tu contraseña actual">
+    <label>Nueva Contraseña</label>
+    <input type="password" [(ngModel)]="newPassword" placeholder="Nueva contraseña">
 
-  <label>Nueva Contraseña</label>
-  <input type="password" [(ngModel)]="newPassword" placeholder="Nueva contraseña">
+    <label>Confirmar Nueva Contraseña</label>
+    <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirma la nueva contraseña">
 
-  <label>Confirmar Nueva Contraseña</label>
-  <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirma la nueva contraseña">
-
-  <button (click)="changePassword()">Actualizar Contraseña</button>
+    <button (click)="changePassword()">Actualizar Contraseña</button>
+  </div>
 </div>
