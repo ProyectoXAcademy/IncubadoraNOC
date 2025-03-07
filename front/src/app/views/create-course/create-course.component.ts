@@ -40,9 +40,7 @@ export class CreateCourseComponent {
 
   // metodo post del formulario, antes valida
   createCourseSUBMIT(){
-    console.log(JSON.parse(localStorage.getItem('loggedUser')!).user_id)
     this.teacher_id = JSON.parse(localStorage.getItem('loggedUser')!).user_id
-    console.log(this.formPOST.value)
     if(this.formPOST.valid){
       this.serv.createCoursePOST({
         name: this.formPOST.value.name,
@@ -50,7 +48,16 @@ export class CreateCourseComponent {
         category: this.formPOST.value.category,
         teacher_id: this.teacher_id!,
       }).subscribe({
-        error: (e) =>console.log(e),
+        error: (e) =>{
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al crear el curso',
+          });
+    this.formPOST.reset()
+
+          
+        },
         complete: () => {
          Swal.fire({
                   icon: 'success',

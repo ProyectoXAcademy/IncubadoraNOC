@@ -3,7 +3,7 @@ import { Courses } from '../../models/courses.model';
 import { CoursesService } from '../../services/courses/courses.service';
 import { Attendance } from '../../models/attendance.model';
 import { MyAttendanceService} from '../../services/my-attendance/my-attendance.service';
-import { FormsModule } from '@angular/forms';
+import { Form, FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { CreateUserRoleService } from '../../services/createUserRole/create-user-role.service';
 import { CommonModule } from '@angular/common';
@@ -11,10 +11,12 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute, Router ,RouterModule} from '@angular/router';
 import { MyGradesService } from '../../services/my-grades/my-grades.service';
 import { Grade } from '../../models/grades.model';
-
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Content } from '../../models/content.model';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-course-view',
-  imports: [FormsModule, NgIf,RouterModule,NgFor],
+  imports: [FormsModule, NgIf,RouterModule,NgFor,ReactiveFormsModule],
   standalone :true,
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css'
@@ -26,24 +28,40 @@ export class CourseViewComponent {
      private servAttendance:MyAttendanceService,
       private router:Router,
       private routerActive:ActivatedRoute,
-      private servGrades:MyGradesService
+      private servGrades:MyGradesService,
+      private servCourse:CoursesService,
+      private formBuilder:FormBuilder
 
     ){}
   course:Courses | null = null
   editarDescripcion:Boolean = false
+  agregarContenido:Boolean = false
   esDocente: boolean = false
   attendance:Attendance[]|null = null
   grades:Grade[]|null=null
+  contents:Content[]|null=null
+
+
+  formPOST:FormGroup | any
+
 
   ngOnInit(){
     this.editarDescripcion
+    this.agregarContenido
     this.esDocente
     this.attendance
     this.grades
+    this.contents
     this.getInfoCourse()
     this.controlRole()
     this.getGradesAlumno()
     this.getAttendanceAlumno()
+
+    this.formPOST = this.formBuilder.group({
+      title : new FormControl<Content|null>(null, Validators.required),
+      description : new FormControl<Content|null>(null, Validators.required),
+      link : new FormControl<Content|null>(null, Validators.required ),
+      })//
 
   }
 
@@ -87,6 +105,8 @@ export class CourseViewComponent {
           console.log(r)
           if(rs.RoleRoleId==2){
             this.esDocente = true
+          console.log(this.esDocente)
+
           }
         }
 
@@ -95,7 +115,6 @@ export class CourseViewComponent {
 
   ///////////  CALIFICACIONES /////////////
   ///////////  CALIFICACIONES /////////////
-  //id:string | null = null
 
   toGrades(){
     const idToGrades = Number(this.routerActive.snapshot.paramMap.get('course_id'));
@@ -135,9 +154,72 @@ export class CourseViewComponent {
     })
   }
 
+  ///////////  GET CONTENT /////////////
+  ///////////  GET CONTENT ///////////// 
+
+
+getContents(){
+  const id_course = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+  this.servCourse.getContentsGET(id_course).subscribe({
+    next:(r)=>{
+      this.contents=r
+    }
+  })
+
+}
 
 
 
+
+
+
+
+
+
+
+  ///////////  FORM CONTENT /////////////
+  ///////////  FORM CONTENT /////////////  
+habilitarFormContenido(){this.agregarContenido = true}
+formCancelar(){this.agregarContenido = false}
+
+
+get title_GET(){return this.formPOST.controls['title']}
+get description_GET(){return this.formPOST.controls['description'];}
+get link_GET(){return this.formPOST.controls['link'];}
+
+createContentSUBMIT(){
+  const id_course = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+  if(this.formPOST.valid){
+    this.servCourse.createContentPOST({
+        id_course:id_course,
+        title:this.formPOST.value.title,
+        description:this.formPOST.value.description,
+        link: this.formPOST.value.link,
+    }).subscribe({
+        error: (e) =>{
+ 
+          Swal.fire({
+                      icon: 'error',
+                      title: 'Error',
+                      text: 'Error al crear el curso',
+                    });
+              this.formPOST.reset()     
+        },  
+        complete: () => {
+         Swal.fire({
+                  icon: 'success',
+                  title: 'Registro exitoso',
+                  text: 'Nuevo curso creado',
+                });
+          this.formPOST.reset()
+        }
+    })
+  }
+  else{
+    this.formPOST.markAllAsTouched();
+  }
+
+}
 
 
 

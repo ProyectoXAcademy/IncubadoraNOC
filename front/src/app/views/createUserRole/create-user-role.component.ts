@@ -4,7 +4,8 @@ import {FormBuilder,Validator,FormGroup,FormControl,ReactiveFormsModule,Validato
 import Swal from "sweetalert2";
 import { NgIf , NgFor} from "@angular/common";
 import { User } from "../../models/user.model";
-
+import { MyEnrollmentsService } from "../../services/my-enrollments/my-enrollments.service";
+import { CoursesService } from "../../services/courses/courses.service";
 @Component({
   selector: "app-create-user-role",
   imports: [ReactiveFormsModule, NgIf, NgFor],
@@ -15,17 +16,26 @@ import { User } from "../../models/user.model";
 export class CreateUserRoleComponent {
   constructor(
     private serv: CreateUserRoleService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private coursesService: CoursesService,
+    
   ) {}
 
   formPOST: FormGroup | any;
   user: any|undefined;
   roles: any|null = null // hacer modelo en el front de 
+  insripcionCurso:Boolean = false
+  courses:any[] = []
 
   ngOnInit() {
+    this.insripcionCurso
+
     this.formPOST = this.formBuilder.group({
       email: new FormControl<string|null>(null, [Validators.required,Validators.email])
     });
+
+    this.loadCourses()
+
   } //
 
   // GETTERS
@@ -103,8 +113,22 @@ export class CreateUserRoleComponent {
 
                   }
                 })}}})}})}//////
-   
-        
+
+   /////// FORM INSCRIBIR EN CURSO /////////
+   /////// FORM INSCRIBIR EN CURSO /////////
+  verCursos(){ this.insripcionCurso=true}
+  cancelar(){ this.insripcionCurso=false}
+
+  
+  loadCourses(): void {
+    this.coursesService.getCoursesGET().subscribe({
+      next:(r)=>{
+        console.log(r)
+        this.courses = r;        
+      }
+  });
+  }
+
       
     }//
 

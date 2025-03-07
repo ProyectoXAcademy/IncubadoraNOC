@@ -118,5 +118,13 @@ option{
 }
 
 .div-line{
+    display: inline;
+}
+
+.course-card{
     display: inline-block;
+    margin: 8px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid  #00339e50;
 }

@@ -35,7 +35,10 @@
         <button (click)="editarDescripcionTrue()" >Editar descripcion del curso</button>
     </div>
 
-    <button [routerLink]="['/dashboard/myenrollments']">Volver a inscripción</button>
+        <div>
+            <button [routerLink]="['/dashboard/myenrollments']">Volver a inscripción</button>
+
+        </div>
 </section>
 
 
@@ -124,7 +127,7 @@
 
 <section class="sec_attendance" *ngIf="!esDocente" >
     <div>
-        <h3 *ngIf="!esDocente">Asistencias</h3>
+        <h3>Asistencias</h3>
         <p>A continuacion se listan las calificaciones del curso.</p>
 
         <div class="cont_grades">
@@ -132,14 +135,79 @@
                 <p class="grade_tit">Presencias</p>
 
             </div>
-            <div class="grade_value" *ngFor="let g of attendance">
-                <p class="grade_value" >o</p>
+            <div class="grade_value" *ngFor="let a of attendance">
+                <p class="grade_value" >{{a.date}}</p>
             </div>
         </div>
     </div>
 
 </section>
 
+<section >
+    <h3>Contenidos</h3>
+
+    <div *ngFor="let c of contents" >
+
+        <h4>{{c.title}}</h4>
+        <p>{{c.description}}</p>
+        <p>{{c.link}}</p>
+
+
+    </div>
+</section>
+
+<section *ngIf="!agregarContenido">
+    <div>
+
+        <h3>Agregar contenido</h3>
+        <button (click)="habilitarFormContenido()" >Agregar Nuevo Contenido</button>
+
+    </div>
+</section>
+
+<section *ngIf="agregarContenido" >
+        <h3 >Ingresa los nuevos datos del curso</h3>
+    <form [formGroup]="formPOST" (ngSubmit)="createContentSUBMIT()"  >    
+
+        <!--    /////////////////////////   -->
+        <div class="formCamp">
+            <label for="">Titulo del Tema del nuevo contenido</label>
+            <div *ngIf="title_GET.invalid && (title_GET.dirty || title_GET.touched)"  class="control" >
+                <p *ngIf="title_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Tema 2: Condicionales" formControlName="title">
+        </div>
+        
+         <!--    /////////////////////////   -->
+         <div class="formCamp">
+            <label for="">Descripción</label>
+            <div *ngIf="description_GET.invalid && (description_GET.dirty || description_GET.touched)"  class="control" >
+                <p *ngIf="description_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Una breve descripcion sobre el contenido" formControlName="description">
+        </div>
+
+ <!--    /////////////////////////   -->
+ <div class="formCamp">
+    <label for="">Link al recurso</label>
+    <div *ngIf="link_GET.invalid && (link_GET.dirty || link_GET.touched)"  class="control" >
+        <p *ngIf="link_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+    </div>
+    <input type="text" placeholder="https://www.youtube.com/. . . ." formControlName="link">
+</div>
+
+ <!--    /////////////////////////   -->
+        <div class="button">
+            <button type="submit" >Crear curso</button>
+            <button (click)="formCancelar()" >Cancelar</button>
+
+        </div>
+        
+
+
+    </form>
+
+</section>
 
 
 
