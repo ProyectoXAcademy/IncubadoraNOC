@@ -51,4 +51,14 @@ const editCourse = async (req, res, next) => {
     }
 }
 
-module.exports = {getCourseById, createCourse, getAllCourses,putCourseById}
+const getCoursesByTeacherId = async (req, res, next) => {
+    try {
+        const teacher_id = req.params.id
+        const findCourses = courseService.getCoursesByTeacherId(teacher_id)
+        res.status(200).json(findCourses)
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {getCourseById, createCourse, getAllCourses,putCourseById, getCoursesByTeacherId}

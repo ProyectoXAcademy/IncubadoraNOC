@@ -92,8 +92,26 @@ const putCourseById = async (course_id,name, description, category, teacher_id,i
     }
 }
 
+const getCoursesByTeacherId = async (teacher_id) => {
+    try {
+        const courses = await courseModel.findAll({
+            where: {
+                teacher_id: teacher_id
+            }
+        })
+        if (courses.length === 0) {
+            const error = new Error()
+            error.message = `No hay cursos dictados por el docente con id=${teacher_id}`
+            error.statusCode = 404
+            throw error
+        }
+        return courses
+    } catch (error) {
+        throw error
+    }
+}
 
-module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById}
+module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById, getCoursesByTeacherId}
 
 
 

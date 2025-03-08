@@ -14,7 +14,7 @@ const publicationModel = require('./PublicationModel')
 userModel.belongsToMany(roleModel, {through: 'UserRoles'})
 roleModel.belongsToMany(userModel, {through: 'UserRoles'})
 
-// Un usuario puede tener una o varias inscripciones y/o asistencias
+// Un usuario puede tener una o varias inscripciones y/o asistencias. También varios dictados (Si es docente)
 userModel.hasMany(assistanceModel, {foreignKey: 'student_id'})
 userModel.hasMany(registrationModel, {foreignKey: 'student_id'})
 
@@ -41,4 +41,5 @@ registrationModel.belongsTo(courseModel, {foreignKey: 'course_id'})
 publicationModel.belongsTo(userModel, {foreignKey: 'owner_id'})
 
 
-module.exports = {userModel, roleModel, userRoleModel, courseModel, noteModel, paymentModel, assistanceModel, registrationModel, publicationModel}
+module.exports = {userModel, roleModel, userRoleModel, courseModel, noteModel, paymentModel, 
+    assistanceModel, registrationModel, publicationModel}

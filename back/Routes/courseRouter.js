@@ -8,8 +8,7 @@ router.get('/', courseController.getAllCourses)
 router.post('/create', courseController.createCourse)
 router.put('/put', courseController.putCourseById)
 //router.put('/edit', courseController.editCourse)
-
-
+router.get('/teacher/:id', courseController.getCoursesByTeacherId)
 
 
 

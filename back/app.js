@@ -4,7 +4,8 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const { dbConfig } = require('./Config');
 const { userRouter, roleRouter, userRoleRouter, courseRouter, registrationRouter, noteRouter, paymentRouter, 
-    assistanceRouter, publicationRouter, loginRouter } = require('./Routes');
+    assistanceRouter, publicationRouter, loginRouter, 
+    dictationRouter} = require('./Routes');
 const { errorMiddleware } = require('./Middlewares');
 const passport = require('passport')
 
