@@ -9,4 +9,6 @@ Cypress.Commands.add('cambiarContraseña', (oldPassword, newPassword, passwordCo
   
     // Verifica que haya un mensaje de confirmación o que los inputs estén vacíos tras la actualización
     cy.contains('Contraseña actualizada correctamente').should('be.visible');
+    cy.reload(); // Recarga la página para aplicar los cambios
+
   });

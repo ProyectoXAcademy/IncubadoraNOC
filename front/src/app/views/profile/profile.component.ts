@@ -133,29 +133,66 @@ export class ProfileComponent implements OnInit {
   changePassword(): void {
     const storedUser = localStorage.getItem('loggedUser');
     if (!storedUser) {
-      Swal.fire('Error', 'No se encontró el usuario.', 'error');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se encontró el usuario.',
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      });
       return;
     }
-
+  
     const user = JSON.parse(storedUser);
-
+  
     if (this.newPassword !== this.confirmPassword) {
-      Swal.fire('Error', 'Las contraseñas no coinciden.', 'error');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Las contraseñas no coinciden.',
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      });
       return;
     }
-
+  
     this.userService.changePassword(user.user_id, this.oldPassword, this.newPassword).subscribe({
       next: () => {
-        Swal.fire('Éxito', 'Contraseña actualizada correctamente.', 'success');
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: 'Contraseña actualizada correctamente.',
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+        });
         this.oldPassword = '';
         this.newPassword = '';
         this.confirmPassword = '';
       },
       error: (err) => {
-        Swal.fire('Error', err.error.message || 'Hubo un problema al cambiar la contraseña.', 'error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.error.message || 'Hubo un problema al cambiar la contraseña.',
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+        });
       }
     });
   }
+  
 }
 
 
