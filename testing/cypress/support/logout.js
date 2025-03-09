@@ -1,6 +1,5 @@
-// <- HERE IS THE OTHER CLICKS -> 
-// GO TO DASHBOARD
-Cypress.Commands.add('goToDashboard', () => {
+// LOGOUT
+Cypress.Commands.add('logout', () => {
     cy.get('body').then($body => {
         // Verificar si el botón de logout existe dentro del dropdown
         if ($body.find('.dropdown-btn').length > 0) {
@@ -10,13 +9,13 @@ Cypress.Commands.add('goToDashboard', () => {
             // Asegurar que el menú se muestre
             cy.get('.dropdown-menu').invoke('show');
 
-            // Ahora hacer clic en la opción "Ir al Dashboard"
-            cy.contains('a', 'Ir al Dashboard').should('be.visible').click();
+            // Buscar el botón de logout dentro del menú
+            cy.get('.logout-btn').should('be.visible').click();
 
             // Validar que la URL cambia a la página de login
-            cy.url().should('include', '/dashboard');
+            cy.url().should('include', '/');
         } else {
-            cy.log('El usuario no inició sesión, no es necesario ir al dashboard.');
+            cy.log('El usuario no inició sesión, no es necesario hacer logout.');
         }
     });
 });

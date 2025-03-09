@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Nahuel",
+        "lastName": "Argandoña",
+        "dni": 37732587,
+        "date_of_birth": "1993-07-06",
+        "email": "usuarioprueba1@gmail.com"
+    },
+    {
+        "name": "Rocio",
+        "lastName": "Argandoña",
+        "dni": 78532773,
+        "date_of_birth": "1993-07-06",
+        "email": "usuarioprueba2@gmail.com"
+    }
+
+]

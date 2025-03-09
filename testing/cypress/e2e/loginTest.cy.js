@@ -1,6 +1,6 @@
-const usersLogin = require('../fixtures/login.json'); // Asegúrate de que la ruta sea correcta
+const usersLogin = require('../fixtures/loginEditado.json'); // Asegúrate de que la ruta sea correcta
 
-describe('incubadoraNoc Test demo', { testIsolation: false }, () => {
+describe('incubadoraNoc Test demo login', { testIsolation: false }, () => {
     usersLogin.forEach(user => {
         it(`Login con ${user.email}`, () => {
             cy.login(user.email, user.password);
