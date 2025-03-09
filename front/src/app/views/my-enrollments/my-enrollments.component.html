@@ -1,16 +1,18 @@
-<h2>Mis Cursos Registrados</h2>
+<h2 class="courses-title">Mis Cursos Registrados</h2>
 
-<ul *ngIf="userCourses && userCourses.length > 0; else noCourses">
-  <li *ngFor="let registration of userCourses">
-    <h3>Inscripción {{ registration.registration_id }}</h3>
-    <p><strong>ID del Curso:</strong> {{ registration.course_id }}</p>
-    <p><strong>Nombre:</strong> {{ getCourseName(registration.course_id) }}</p>
-    <p><strong>Fecha de Inscripción:</strong> {{ registration.registration_date | date: 'medium' }}</p>
-    <button class="btn-curso" (click)="goToCourse(registration.course_id)">Ver curso</button>
+<div class="courses-container">
+  <div *ngFor="let registration of userCourses" class="course-card">
+    <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg" alt="Imagen del Curso"/>
 
-  </li>
-  
-</ul>
+    <div class="course-card-body">
+      <h5 class="course-card-title">Inscripción #{{ registration.registration_id }}</h5>
+      <p class="course-card-text"><strong>Curso:</strong> {{ getCourseName(registration.course_id) }}</p>
+      <p class="course-card-text"><strong>Fecha de Inscripción:</strong> {{ registration.registration_date | date: 'medium' }}</p>
+      
+      <button class="course-card-button" (click)="goToCourse(registration.course_id)">Ver Curso</button>
+    </div>
+  </div>
+</div>
 
 <ng-template #noCourses>
   <p class="no-courses">No estás inscrito en ningún curso aún.</p>

@@ -8,6 +8,7 @@ const paymentRouter = require('./paymentRouter')
 const assistanceRouter = require('./assistanceRouter')
 const publicationRouter = require('./publicationRouter')
 const loginRouter = require('./loginRouter')
+const contentRouter = require('./contentRouter')
 
 module.exports = {userRouter, roleRouter, userRoleRouter, courseRouter, registrationRouter, noteRouter, paymentRouter, 
-    assistanceRouter, publicationRouter, loginRouter}
+    assistanceRouter, publicationRouter, loginRouter, contentRouter}

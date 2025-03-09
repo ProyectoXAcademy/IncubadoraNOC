@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-admin-attendance',
   imports: [NgFor,ReactiveFormsModule,RouterModule],
+  standalone: true,
   templateUrl: './admin-attendance.component.html',
   styleUrl: './admin-attendance.component.css'
 })

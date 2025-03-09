@@ -15,30 +15,40 @@
       </ul>
     </nav>
 
-    <!-- Cursos Filtrados -->
+    <!-- 📌 NUEVO - Tarjetas de Cursos -->
     <div class="courses-container">
-      <div
-        class="course-card"
-        *ngFor="let course of filteredCourses"
-        (click)="selectCourse(course)"
-      >
-       <!-- <img [src]="course.image || 'assets/default-course.jpg'" alt="Imagen del curso" /> --> 
-        <div class="course-card-body">
-          <h5 class="course-card-title">{{ course.name }}</h5>
-          <p class="course-card-text">{{ course.description }}</p>
+      <div *ngFor="let course of filteredCourses" class="card-container incubator-theme" (click)="selectCourse(course)">
+        <a href="/" class="hero-image-container">
+          <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg" alt="Course Image"/>
+        </a>
+        <main class="main-content">
+          <h1 class="course-title"><a href="#">{{ course.name }}</a></h1>
+          <p class="course-description">{{ course.description }}</p>
+
+          <div class="flex-row">
+            <div class="course-category">
+              <img src="https://i.postimg.cc/T1F1K0bW/Ethereum.png" alt="category" class="small-image"/>
+              <h2>{{ course.category }}</h2>
+            </div>
+            <div class="status">
+              <img src="https://i.postimg.cc/prpyV4mH/clock-selection-no-bg.png" alt="clock" class="small-image"/>
+              <p *ngIf="course.active; else inactive" class="active-status">Activo</p>
+              <ng-template #inactive><p class="inactive-status">Inactivo</p></ng-template>
+            </div>
+          </div>
+        </main>
+
+        <div class="card-attribute">
+          <img src="https://i.postimg.cc/SQBzNQf1/image-avatar.png" alt="avatar" class="small-avatar"/>
+          <p>Profesor: <span>{{ course.teacher_id }}</span></p>
         </div>
       </div>
     </div>
 
-    <!-- Detalle del Curso Seleccionado -->
+    <!-- 📌 Detalle del Curso Seleccionado -->
     <div *ngIf="selectedCourse" class="course-detail">
       <button class="close-btn" (click)="deselectCourse()">Cerrar</button>
       <h3>{{ selectedCourse.name }}</h3>
-      <img
-        [src]="selectedCourse.image || 'assets/default-course.jpg'"
-        alt="{{ selectedCourse.name }}"
-        class="course-image"
-      />
       <p>{{ selectedCourse.description }}</p>
       <p><strong>Categoría:</strong> {{ selectedCourse.category }}</p>
       <p><strong>Requisitos:</strong> {{ selectedCourse.inscription_requeriments || 'N/A' }}</p>

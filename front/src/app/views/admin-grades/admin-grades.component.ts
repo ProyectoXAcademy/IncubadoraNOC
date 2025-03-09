@@ -11,6 +11,7 @@ import { RouterModule,ActivatedRoute } from '@angular/router';
 
   selector: 'app-admin-grades',
   imports: [NgFor,ReactiveFormsModule,RouterModule],
+  standalone: true,
   templateUrl: './admin-grades.component.html',
   styleUrl: './admin-grades.component.css'
 })

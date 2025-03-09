@@ -1,3 +1,39 @@
+:root {
+  /* Primary */
+  --var-soft-blue: hsl(215, 51%, 70%);
+  --var-cyan: hsl(178, 100%, 50%);
+  /* Neutral */
+  --var-main-darkest: hsl(217, 54%, 11%);
+  --var-card-dark: hsl(216, 50%, 16%);
+  --var-line-dark: hsl(215, 32%, 27%);
+  --var-lightest: white;
+
+  /* Fonts */
+
+  --var-heading: normal normal 600 1.5em/1.6em "Outfit", sans-serif;
+
+  --var-small-heading: normal normal 400 1em/1em "Outfit", sans-serif;
+
+  --var-para: normal normal 300 1em/1.55em "Outfit", sans-serif;
+}
+
+/* Contenedor de la imagen de perfil */
+.profile-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Imagen de perfil */
+.hero-image {
+  width: 120px; /* Ajusta el tamaño base */
+  height: 120px;
+  border-radius: 50%; /* Hace la imagen redonda */
+  object-fit: cover; /* Evita distorsiones */
+  border: 3px solid #00339e; /* Agrega un borde */
+}
+
 /* Tarjeta de Perfil */
 .profile-card {
   width: 400px;
@@ -104,12 +140,13 @@
 
 
 .password-container {
-  max-width: 400px;
-  margin: auto;
+  width: 400px;
+  margin: 50px auto;
   padding: 20px;
-  background: #f9f9f9;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -146,4 +183,27 @@
 
 .password-container button:hover {
   background: #00339e;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .hero-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image {
+    width: 80px;
+    height: 80px;
+  }
 }

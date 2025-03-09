@@ -14,101 +14,142 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
-.borde{
-    border: 1px solid var(--color-azul);
- } 
-
-.title{
-    margin: 2rem .2rem;
-
-}   
-section{
-    margin: 2rem ;
-}
-form{
-    padding: 1rem;
-    background-color: #00339e50 ;
-}
-.formCamp{
-    margin: 2rem .2rem;
-
+/* 🌟 Contenedor Principal */
+section {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
 }
 
-
-input{
-    display: block;
-    width: 70%;
-    padding: .5rem;
-    margin:  .5rem .2rem;
+/* 📌 Títulos */
+.title {
+    text-align: center;
+    font-size: 24px;
+    color: #00339e;
+    margin-bottom: 15px;
 }
 
-label,p{
-    margin:.2rem;
-    padding:.2rem;
+/* 🎯 Estilo para Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.control{
-    display: inline;
+/* 📝 Campos de Entrada */
+.formCamp {
+    display: flex;
+    flex-direction: column;
+}
+
+.formCamp label {
+    font-weight: bold;
+    color: #010163;
+    margin-bottom: 5px;
+}
+
+.formCamp input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.formCamp input:focus {
+    border-color: #00339e;
+    outline: none;
+}
+
+/* ⚠️ Mensajes de Error */
+.control {
     color: red;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-.button{
-    display: flex;
-    justify-content: center;
+/* 🎯 Botón Principal */
+.button {
+    text-align: center;
+    margin-top: 15px;
 }
 
-button{
-    margin:.5rem;
-    padding: .8rem 1.5rem;
-    background-color: var(--color-azul);
-    border: 1px solid var(--color-azul);
-    border-radius: 5px;
+.button button {
+    background: linear-gradient(135deg, #6564cc, #00339e);
     color: white;
-    font-weight: 500;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.checkbox{
+.button button:hover {
+    background: #fc6a07;
+    transform: scale(1.05);
+}
+
+/* 🔍 Información del Usuario */
+.second-form {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00339e, #6564cc);
+    color: white;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 🎯 Información dentro de la segunda sección */
+.second-div {
+    text-align: center;
+}
+
+.second-div h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #fc6a07;
+}
+
+/* 📝 Datos del Usuario */
+.user-info {
     display: flex;
-    justify-content: start;
-    width: 360px;
-    margin: .2rem;
-    padding: .2rem;
+    justify-content: space-between;
+    text-align: left;
 }
 
-select{
-    padding: .5rem;
-    font-weight: 600;
-
-}
-option{
-    font-weight: 600;
-}
-/*//////////////////////*/
-
-.second-form{
-    border: #00339e50 1px solid;
-}
-.second-div h3{
-    margin: 1rem;
-}
-.second-div{
-    padding:2rem 1rem;
+.user-info p {
+    font-size: 16px;
+    margin: 5px 0;
 }
 
-/*/////////////////////////////*/
-.user-info{
-    overflow-x: auto;
-}
-.user-info div{
-    display: flex;
-    flex-direction: row;
+/* 📌 Línea separadora */
+.div-line {
+    border-bottom: 1px solid white;
+    margin: 5px 0;
+    padding-bottom: 5px;
 }
 
-.user-info p{
-    display: inline-block;
-    padding: .5rem;
-    margin: .5rem;
-    width: 150px;
+/* 🎯 Botón Asignar Rol */
+.user-info button {
+    background: #fc6a07;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.user-info button:hover {
+    background: #00339e;
+    transform: scale(1.05);
 }
 
 .p-email{
@@ -118,13 +159,26 @@ option{
 }
 
 .div-line{
-    display: inline;
+    display: inline-block;
 }
 
-.course-card{
-    display: inline-block;
-    margin: 8px;
-    width: 200px;
-    height: 200px;
-    border: 1px solid  #00339e50;
+@media (max-width : 430px) {
+
+
+    .user-info {
+        grid-template-columns: 1fr 1fr; /* Mantiene la estructura en dos columnas */
+        gap: 8px;
+        text-align: left;
+    }
+
+    .user-info p, .user-info .user-value {
+        font-size: 14px; /* Reduce el tamaño en pantallas pequeñas */
+    }
+
+    .user-info button {
+        grid-column: span 2;
+        width: 100%;
+    }
+
+
 }

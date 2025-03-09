@@ -17,6 +17,9 @@ export class LoginService {
   private userSubject = new BehaviorSubject<LoggedUser | null>(this.getUserFromLocalStorage());
   user$ = this.userSubject.asObservable(); // Observable para suscribirse en otros componentes
 
+  private userRoleSubject = new BehaviorSubject<string | null>(localStorage.getItem('userRole') || 'user');
+  userRole$ = this.userRoleSubject.asObservable();
+
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object // Inyecta PLATFORM_ID
@@ -38,28 +41,35 @@ export class LoginService {
   }
 
   loginUser(userData: Auth): Observable<any> {
-                                        // hacer interfaz de findUser
-    return this.http.post<{ token: string, findUser:LoggedUser }>(this.apiUrl, userData).pipe(
+    return this.http.post<{ token: string, findUser: LoggedUser }>(this.apiUrl, userData).pipe(
       tap(response => {
-        console.log('Token recibido:', response.token); // Verifica el token recibido
         if (response && response.token) {
           localStorage.setItem('loggedUser', JSON.stringify(response.findUser));
-          localStorage.setItem('token', response.token); // Guarda el token en localStorage
-          this.authenticatedSource.next(true); // Emite un estado de autenticación exitoso
-
-          this.userSubject.next(response.findUser);
+          localStorage.setItem('token', response.token);
+  
+          if (response.findUser.Roles && response.findUser.Roles.length > 0) {
+            const userRole = response.findUser.Roles[0].name;
+            localStorage.setItem('userRole', userRole);
+            this.userRoleSubject.next(userRole); // ✅ Actualizar el rol en el servicio
+          }
+  
           this.authenticatedSource.next(true);
+          this.userSubject.next(response.findUser);
         }
       })
     );
   }
 
   logout(): void {
-    localStorage.removeItem('token'); // Elimina el token de localStorage
-    localStorage.removeItem('loggedUser'); // Elimina el user de localStorage
-
-    this.authenticatedSource.next(false); // Emite un estado de no autenticación
+    localStorage.removeItem('token');
+    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('userRole'); // Asegurar que eliminamos el rol del usuario
+  
+    this.authenticatedSource.next(false);
+    this.userSubject.next(null);
+    this.userRoleSubject.next(null); // Emitir el cambio para actualizar la vista
   }
+  
 
   isAuthenticated(): boolean {
     //if (isPlatformBrowser(this.platformId)) {
@@ -88,10 +98,23 @@ export class LoginService {
     return storedUser ? JSON.parse(storedUser) : null;
   }
 
-   // ✅ Método para actualizar el usuario sin hacer una nueva petición
-   updateUser(user: LoggedUser): void {
+  updateUser(user: LoggedUser | null): void {
+    if (!user) {
+      console.warn('Intento de actualizar usuario con valor nulo.');
+      return;
+    }
+  
     localStorage.setItem('loggedUser', JSON.stringify(user));
     this.userSubject.next(user);
+  
+    
+    if (user.Roles && user.Roles.length > 0) {
+      const userRole = user.Roles[0].name;
+      localStorage.setItem('userRole', userRole);
+      this.userRoleSubject.next(userRole);
+    } else {
+      console.warn('El usuario actualizado no tiene roles.');
+    }
   }
   
 }

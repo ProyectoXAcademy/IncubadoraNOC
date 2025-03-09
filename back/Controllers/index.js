@@ -8,7 +8,8 @@ const paymentController = require('./paymentController')
 const assistanceController = require('./assistanceController')
 const publicationController = require('./publicationController')
 const loginController = require('./loginControlller')
+const contentController = require('./contentController')
 
 module.exports = {userController, roleController, userRoleController, courseController, 
     registrationController, noteController, paymentController, assistanceController, publicationController, 
-    loginController}
+    loginController, contentController}

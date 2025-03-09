@@ -40,6 +40,14 @@ const courseModel = dbConfig.sequelize.define("Courses", {
     active: {
         type: DataTypes.BOOLEAN,
         allowNull: false
+    },
+    price: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    img: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 }, {
     timestamps: false
