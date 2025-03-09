@@ -9,6 +9,7 @@ const assistanceService = require('./assistanceService')
 const publicationService = require('./publicationService')
 const hashPasswordService = require('./hashPasswordService')
 const loginService = require('./loginService')
+const contentService = require('./contentService')
 
 module.exports = {userService, roleService, userRoleService, courseService, registrationService, noteService,
-     paymentService, assistanceService, publicationService, hashPasswordService, loginService}
+     paymentService, assistanceService, publicationService, hashPasswordService, loginService, contentService}
