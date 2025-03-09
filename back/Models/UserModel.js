@@ -36,6 +36,10 @@ const userModel = dbConfig.sequelize.define("Users", {
         type: DataTypes.STRING,
         allowNull: false
     },
+    img: {
+        type: DataTypes.STRING,
+        allowNull: true
+    }
 }, {
     timestamps: false
 })
