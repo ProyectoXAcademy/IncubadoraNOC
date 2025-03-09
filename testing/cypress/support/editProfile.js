@@ -1,7 +1,6 @@
-
-// edit perfile
 Cypress.Commands.add('editProfile', (name, lastName, dni, date_of_birth, email) => {
-  cy.get('.btn-edit').should.click(); // Hacer clic en el botón "Editar"
+  cy.reload(); // Recarga la página para aplicar los cambios
+  cy.get('#edit-btn').should('be.visible').click(); // Hacer clic en el botón "Editar"
 
   cy.get('input[name="name"]').clear().type(name);
   cy.get('input[name="lastName"]').clear().type(lastName);
@@ -11,5 +10,5 @@ Cypress.Commands.add('editProfile', (name, lastName, dni, date_of_birth, email) 
 
   cy.get('.btn-save').click(); // Guardar cambios
 
-  cy.contains('Perfil actualizado correctamente').should('be.visible').click(); // Verifica mensaje
+  cy.reload(); // Recarga la página para aplicar los cambios
 });

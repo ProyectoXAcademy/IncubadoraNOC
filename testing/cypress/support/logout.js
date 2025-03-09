@@ -10,7 +10,7 @@ Cypress.Commands.add('logout', () => {
             cy.get('.dropdown-menu').invoke('show');
 
             // Buscar el botón de logout dentro del menú
-            cy.get('.logout-btn').should('be.visible').click();
+            cy.get('#Logout').should('be.visible').click();
 
             // Validar que la URL cambia a la página de login
             cy.url().should('include', '/');

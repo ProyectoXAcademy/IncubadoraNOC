@@ -26,7 +26,7 @@
         <button class="dropdown-btn">{{loggedUser?.name}}, {{loggedUser?.lastName}} ▼</button>
         <ul class="dropdown-menu">
           <li> <a id="dashboard-btn" class="dashboard" (click)="dashboard()">Ir al Dashboard</a> </li>
-          <li> <a [ngClass]="menuItem.class" *ngIf="menuItem.event" (click)="menuItem.event()">{{ menuItem.text }}</a></li>
+          <li> <a [ngClass]="menuItem.class" id="Logout" *ngIf="menuItem.event" (click)="menuItem.event()">{{ menuItem.text }}</a></li>
 
         </ul>
       </div>

@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   oldPassword: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
+  router: any;
 
   constructor(private userService: UserService) {}
 
@@ -74,7 +75,7 @@ export class ProfileComponent implements OnInit {
   // Guarda los cambios
   saveChanges(): void {
     if (this.editedUser) {
-      this.userService.editUser (this.editedUser).subscribe({
+      this.userService.editUser(this.editedUser).subscribe({
         next: (response) => {
           console.log('Usuario actualizado desde backend:', response);
   
@@ -85,15 +86,41 @@ export class ProfileComponent implements OnInit {
           localStorage.setItem('loggedUser', JSON.stringify(response));
   
           this.isEditing = false;
-          alert('Perfil actualizado exitosamente.');
+  
+          // Mostrar la notificación de éxito con SweetAlert2
+          Swal.fire({
+            icon: 'success',
+            title: 'Perfil actualizado',
+            text: 'Los cambios se han guardado correctamente.',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 800,
+            timerProgressBar: true,
+          }).then(() => {
+            // Redirigir al usuario a la página de perfil o donde corresponda
+            window.location.reload();  
+          });
         },
         error: (error) => {
           console.error('Error al actualizar:', error);
-          alert('Error al actualizar el perfil.');
+  
+          // Mostrar la notificación de error con SweetAlert2
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al actualizar',
+            text: 'Hubo un error al intentar actualizar el perfil.',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+          });
         }
       });
     }
   }
+  
   
   
 
