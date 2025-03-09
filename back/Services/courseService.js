@@ -111,7 +111,20 @@ const getCoursesByTeacherId = async (teacher_id) => {
     }
 }
 
-module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById, getCoursesByTeacherId}
+const setImgUrl = async (course_id, url) => {
+    try {
+        await courseModel.update({img: url}, {
+            where: {
+                course_id: course_id
+            }
+        })
+        console.log(`Url de imagen del curso con id=${course_id} actualizada`)
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById, getCoursesByTeacherId, setImgUrl}
 
 
 

@@ -39,6 +39,12 @@ const createData = async () => {
    await contentService.createContent("Video", "Angular completo", "https://www.youtube.com/watch?v=f7unUpshmpA", 1)
    await contentService.createContent("PDF", "UX-UI Primera parte", "https://course.ccs.neu.edu/cs5500sp17/09-UX.pdf", 2)
 
+   // Se le asigna una imagen de perfil al administrador (Usuario con user_id=1)
+   await userService.setImgUrl(1, "https://static.vecteezy.com/system/resources/thumbnails/019/194/935/small_2x/global-admin-icon-color-outline-vector.jpg")
+   // Se le asigna una imagen al curso de Angular
+   await courseService.setImgUrl(1, "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png")
+   
+
 console.log("Se crearon los datos en la Base de datos!")
 }
 createData()

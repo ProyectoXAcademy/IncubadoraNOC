@@ -62,14 +62,12 @@ const getUserByEmail = async (email) => {
 }
 
 const editUser = async (id, user) => {
-    const transaction = await sequelize.transaction()
     try {
         await userModel.update(user, {
             where: {
                 user_id: id
-            }
+            },
         })
-        await transaction.commit()
     } catch (error) {
         await transaction.rollback()
         throw error
@@ -106,5 +104,17 @@ const changePassword = async (user_id, oldPassword, newPassword) => {
     }
 };
 
+const setImgUrl = async (user_id, url) => {
+    try {
+        await userModel.update({img: url}, {
+            where: {
+                user_id: user_id
+            }
+        })
+        console.log(`Url de imagen del usuario con id=${user_id} actualizada`)
+    } catch (error) {
+        throw error
+    }
+}
 
-module.exports = {getUserById, createUser, getUserByEmail, editUser, changePassword}
+module.exports = {getUserById, createUser, getUserByEmail, editUser, changePassword, setImgUrl}
