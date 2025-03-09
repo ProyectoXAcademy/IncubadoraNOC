@@ -7,15 +7,6 @@
         "email": "usuarioprueba1@gmail.com",
         "password": 12345,
         "role":"Estudiante"
-    },
-    {
-        "name": "usuario2",
-        "lastName": "prueba2",
-        "dni": 37732587,
-        "date_of_birth": "1993-07-06",
-        "email": "usuarioprueba2@gmail.com",
-        "password": 12345,
-        "role":"Docente"
     }
 
 ]
