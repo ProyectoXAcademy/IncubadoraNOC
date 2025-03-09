@@ -18,6 +18,6 @@ import './commands'
 import './register'
 import './login'
 import './logout'
-import './editPerfile'
+import './editProfile'
 import './changePassword'
 import 'cypress-mochawesome-reporter/register'; // En el archivo e2e.js
