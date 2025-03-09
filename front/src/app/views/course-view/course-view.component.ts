@@ -56,10 +56,11 @@ export class CourseViewComponent {
     this.controlRole()
     this.getGradesAlumno()
     this.getAttendanceAlumno()
+    this.getContents()
 
     this.formPOST = this.formBuilder.group({
       title : new FormControl<Content|null>(null, Validators.required),
-      description : new FormControl<Content|null>(null, Validators.required),
+      type : new FormControl<Content|null>(null, Validators.required),
       link : new FormControl<Content|null>(null, Validators.required ),
       })//
 
@@ -163,20 +164,14 @@ getContents(){
   this.servCourse.getContentsGET(id_course).subscribe({
     next:(r)=>{
       this.contents=r
-    }
+      console.log("los contenidososs")
+      console.log(r)
+
+    },
+    error:(e)=> {console.log("el error es:");console.log(e)}
   })
 
 }
-
-
-
-
-
-
-
-
-
-
   ///////////  FORM CONTENT /////////////
   ///////////  FORM CONTENT /////////////  
 habilitarFormContenido(){this.agregarContenido = true}
@@ -184,26 +179,25 @@ formCancelar(){this.agregarContenido = false}
 
 
 get title_GET(){return this.formPOST.controls['title']}
-get description_GET(){return this.formPOST.controls['description'];}
+get type_GET(){return this.formPOST.controls['type'];}
 get link_GET(){return this.formPOST.controls['link'];}
 
 createContentSUBMIT(){
   const id_course = Number(this.routerActive.snapshot.paramMap.get('course_id'));
   if(this.formPOST.valid){
     this.servCourse.createContentPOST({
-        id_course:id_course,
-        title:this.formPOST.value.title,
-        description:this.formPOST.value.description,
-        link: this.formPOST.value.link,
+        course_id:id_course,
+        name:this.formPOST.value.title,
+        type:this.formPOST.value.type,
+        url: this.formPOST.value.link
     }).subscribe({
+      next:(r)=>console.log(r),
         error: (e) =>{
- 
           Swal.fire({
                       icon: 'error',
                       title: 'Error',
                       text: 'Error al crear el curso',
                     });
-              this.formPOST.reset()     
         },  
         complete: () => {
          Swal.fire({
@@ -212,6 +206,8 @@ createContentSUBMIT(){
                   text: 'Nuevo curso creado',
                 });
           this.formPOST.reset()
+          this.getContents()
+
         }
     })
   }

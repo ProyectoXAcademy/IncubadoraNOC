@@ -147,21 +147,19 @@
     <h3>Contenidos</h3>
 
     <div *ngFor="let c of contents" >
-
-        <h4>{{c.title}}</h4>
-        <p>{{c.description}}</p>
-        <p>{{c.link}}</p>
-
+        <h4>{{c.name}}</h4>
+        <div>
+            <a [href]="c.url"  target="_blank" >link al recurso</a>
+        </div>
+        <iframe [src]="c.url" width="600" height="400"></iframe>
 
     </div>
 </section>
 
 <section *ngIf="!agregarContenido">
     <div>
-
         <h3>Agregar contenido</h3>
         <button (click)="habilitarFormContenido()" >Agregar Nuevo Contenido</button>
-
     </div>
 </section>
 
@@ -180,11 +178,15 @@
         
          <!--    /////////////////////////   -->
          <div class="formCamp">
-            <label for="">Descripción</label>
-            <div *ngIf="description_GET.invalid && (description_GET.dirty || description_GET.touched)"  class="control" >
-                <p *ngIf="description_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            <label for="">Tipo</label>
+            <div *ngIf="type_GET.invalid && (type_GET.dirty || type_GET.touched)"  class="control" >
+                <p *ngIf="type_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
             </div>
-            <input type="text" placeholder="Una breve descripcion sobre el contenido" formControlName="description">
+            <select formControlName="type" >
+                <option value="">-- Selecione una opción --</option>
+                <option value="Video">Video</option>
+                <option value="PDF">PDF</option>
+            </select>
         </div>
 
  <!--    /////////////////////////   -->

@@ -1,6 +1,7 @@
 export interface Content {
-    id_course?:number;
-    title: string;
-    description: string;
-    link: string;
+    content_id?:number;
+    course_id?:number;
+    type:string;
+    name: string;
+    url: string;
   }
