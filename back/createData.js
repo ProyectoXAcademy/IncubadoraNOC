@@ -1,5 +1,5 @@
 const {dbConfig} = require('./Config')
-const {roleService, userService, publicationService, courseService} = require('./Services')
+const {roleService, userService, publicationService, courseService, contentService} = require('./Services')
 
 const createData = async () => {
     await dbConfig.sequelize.sync({force: true})
@@ -28,13 +28,22 @@ const createData = async () => {
     await publicationService.createPublication("Noticia", "Crédito de Consumo para Educación", "Crédito de hasta $30,000 para financiar estudios, con tasas accesibles y plazos flexibles.", "2025-03-04", null);
 
 
-
    //Curso de ejemplo
    await courseService.createCourse("Angular", "Angular desde 0 a experto", "Programacion", 1)
    await courseService.createCourse("UX-UI", "Diseño utilizando la herramienta figma", "Diseño", 1)
    await courseService.createCourse("Ingles avanzado", "Nivel 3 de ingles", "Idiomas", 1)
    await courseService.createCourse("Comunity manager", "Aprenderas con las mejores herramientas para marketin", "Marketing", 1)
    await courseService.createCourse("Ser tu porpio jefe", "Como generar tus propios ingresos desde casa ", "Negocios", 1)
+
+   // Contenido de ejemplo
+   await contentService.createContent("Video", "Angular completo", "https://www.youtube.com/watch?v=f7unUpshmpA", 1)
+   await contentService.createContent("PDF", "UX-UI Primera parte", "https://course.ccs.neu.edu/cs5500sp17/09-UX.pdf", 2)
+
+   // Se le asigna una imagen de perfil al administrador (Usuario con user_id=1)
+   await userService.setImgUrl(1, "https://static.vecteezy.com/system/resources/thumbnails/019/194/935/small_2x/global-admin-icon-color-outline-vector.jpg")
+   // Se le asigna una imagen al curso de Angular
+   await courseService.setImgUrl(1, "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png")
+   
 
 console.log("Se crearon los datos en la Base de datos!")
 }

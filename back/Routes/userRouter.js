@@ -102,4 +102,9 @@ router.post('/mail', userController.getUserByEmail)
 
 router.put('/change-password', userController.changePassword)
 
+router.put('/change-password', userController.changePassword)
+
+router.put('/img', userController.setImgUrl)
+
+
 module.exports = router

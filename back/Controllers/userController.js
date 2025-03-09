@@ -56,10 +56,21 @@ const changePassword = async (req, res) => {
         res.status(200).json(response);
     } catch (error) {
         console.error('Error en changePassword:', error.message);
-        res.status(400).json({ message: error.message });
+        //res.status(400).json({ message: error.message });
+        next(error)
     }
 };
 
+const setImgUrl = async (req, res, next) => {
+    try {
+        const {user_id, img} = req.body
+        await userService.setImgUrl(user_id, img)
+        res.status(200).json({
+            message: 'Foto de perfil de usuario establecida'
+        })
+    } catch (error) {
+        next(error)
+    }
+}
 
-
-module.exports = {getUserById, createUser, getUserByEmail, editUser, changePassword}
+module.exports = {getUserById, createUser, getUserByEmail, editUser, changePassword, setImgUrl}

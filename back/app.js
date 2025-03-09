@@ -4,7 +4,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const { dbConfig } = require('./Config');
 const { userRouter, roleRouter, userRoleRouter, courseRouter, registrationRouter, noteRouter, paymentRouter, 
-    assistanceRouter, publicationRouter, loginRouter } = require('./Routes');
+    assistanceRouter, publicationRouter, loginRouter, contentRouter} = require('./Routes');
 const { errorMiddleware } = require('./Middlewares');
 const passport = require('passport')
 
@@ -46,6 +46,7 @@ app.use('/api/payment', paymentRouter);
 app.use('/api/assistance', assistanceRouter);
 app.use('/api/publication', publicationRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/content', contentRouter)
 
 app.use(errorMiddleware);
 
