@@ -13,4 +13,6 @@ Cypress.Commands.add('register', (name, lastName, dni, date_of_birth, email, pas
     cy.get('form').find('#btn-formRegister').click();
     
     cy.url().should('include', '/'); // Validar que el registro fue exitoso
+    cy.wait(1000); // Espera 2 segundos
+
 });

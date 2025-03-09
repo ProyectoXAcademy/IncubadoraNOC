@@ -14,6 +14,7 @@ Cypress.Commands.add('logout', () => {
 
             // Validar que la URL cambia a la página de login
             cy.url().should('include', '/');
+            cy.wait(2000); // Espera 2 segundos
         } else {
             cy.log('El usuario no inició sesión, no es necesario hacer logout.');
         }

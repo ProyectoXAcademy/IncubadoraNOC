@@ -9,6 +9,7 @@ Cypress.Commands.add('editProfile', (name, lastName, dni, date_of_birth, email) 
   cy.get('input[name="email"]').clear().type(email);
 
   cy.get('.btn-save').click(); // Guardar cambios
-
   cy.reload(); // Recarga la página para aplicar los cambios
+  cy.wait(1000); // Espera 2 segundos
+
 });

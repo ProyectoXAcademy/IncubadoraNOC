@@ -6,5 +6,7 @@ Cypress.Commands.add('login', (email, password) => {
     cy.get('[data-test="remember-button"]').click();
     cy.get('[data-test="login-button"]').click();
     cy.url().should('include', '/'); // Validar login
+    cy.wait(1000); // Espera 2 segundos
+
 });
 
