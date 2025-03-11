@@ -1,8 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const {loginController} = require('../Controllers')
-
+const { loginController } = require('../Controllers')
 
 /**
  * @swagger
@@ -30,10 +29,50 @@ const {loginController} = require('../Controllers')
  *           application/json:
  *             schema:
  *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   example: "eyJhbGciOiJIUzI1..."
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: integer
+ *                       example: 1
+ *                     email:
+ *                       type: string
+ *                       example: "usuarioprueba@gmail.com"
+ *       400:
+ *         description: Solicitud incorrecta (faltan datos o formato incorrecto)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "El email y la contraseña son obligatorios."
  *       401:
  *         description: Credenciales inválidas
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Correo o contraseña incorrectos."
+ *       500:
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Ocurrió un error inesperado, inténtelo más tarde."
  */
-
 
 router.post('/', loginController.login)
 

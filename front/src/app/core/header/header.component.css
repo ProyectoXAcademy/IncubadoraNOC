@@ -189,10 +189,7 @@ header {
   color: #ffffff;
 }
 
-.logout-btn {
-  background-color: #640e24; /* Rojo oscuro */
-  color: #ffffff;
-}
+
 
 .btn:hover {
   opacity: 0.8;

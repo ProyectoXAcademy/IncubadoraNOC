@@ -1,6 +1,6 @@
 <header>
   <div class="logo">
-    <a  href="/"><img src="../../../assets/logo-header.png" alt="logo"></a>
+    <a href="/"><img src="../../../assets/logo-header.png" alt="logo"></a>
 
 
   </div>
@@ -13,20 +13,20 @@
     </label>
 
 
-    
 
-    
+
+
 
     <div class="auth-buttons" *ngFor="let menuItem of menuItems">
       <a [ngClass]="menuItem.class" *ngIf="!menuItem.event" [routerLink]="menuItem.route" routerLinkActive="active">
         {{ menuItem.text }}
       </a>
 
-      <div class="dropdown" *ngIf="menuItem.event"  >
-        <button class="dropdown-btn">{{loggedUser?.name}}, {{loggedUser?.lastName}}  ▼</button>
+      <div class="dropdown" *ngIf="menuItem.event">
+        <button class="dropdown-btn">{{loggedUser?.name}}, {{loggedUser?.lastName}} ▼</button>
         <ul class="dropdown-menu">
-          <li> <a [routerLink]="['/dashboard']">Ir al Dashboard</a>  </li>
-          <li>  <a *ngIf="menuItem.event" (click)="menuItem.event()">{{ menuItem.text }}</a></li>
+          <li> <a id="dashboard-btn" class="dashboard" (click)="dashboard()">Ir al Dashboard</a> </li>
+          <li> <a [ngClass]="menuItem.class" id="Logout" *ngIf="menuItem.event" (click)="menuItem.event()">{{ menuItem.text }}</a></li>
 
         </ul>
       </div>

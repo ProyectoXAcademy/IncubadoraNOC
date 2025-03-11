@@ -88,7 +88,7 @@ export class HeaderComponent implements AfterViewInit, OnInit {
   updateMenuItems() {
     if (this.isAuthenticated) {
       this.menuItems = [
-        { text: 'Logout', event: () => this.logout(), class: 'btn logout-btn' }
+        { text: 'Logout', event: () => this.logout(), class: 'logout-btn' },
       ];
     } else {
       this.menuItems = [
@@ -114,10 +114,24 @@ export class HeaderComponent implements AfterViewInit, OnInit {
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
-      timer: 1000,
+      timer: 800,
       timerProgressBar: true,
     }).then(() => {
       this.router.navigate(['/login']); // Redirige al usuario a la página de login
+    });
+  }
+
+  dashboard() {
+    Swal.fire({
+      icon: 'success',
+      title: 'GO TO THE DASHBOARD',
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 800,
+      timerProgressBar: true,
+    }).then(() => {
+      this.router.navigate(['/dashboard/profile']); // Redirige al usuario a la página de login
     });
   }
 }

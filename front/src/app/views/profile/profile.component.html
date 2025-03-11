@@ -13,7 +13,7 @@
       <p><strong>🎂 Fecha de Nacimiento:</strong> {{ user.date_of_birth | date: 'dd/MM/yyyy' }}</p>
       <p><strong>📧 Email:</strong> {{ user.email }}</p>
 
-      <button (click)="enableEdit()" class="btn btn-edit">✏️ Editar</button>
+      <button (click)="enableEdit()" id="edit-btn" class="btn btn-edit">✏️ Editar</button>
     </div>
 
     <!-- Modo Edición -->

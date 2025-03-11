@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   oldPassword: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
+  router: any;
 
   constructor(private userService: UserService) {}
 
@@ -74,7 +75,7 @@ export class ProfileComponent implements OnInit {
   // Guarda los cambios
   saveChanges(): void {
     if (this.editedUser) {
-      this.userService.editUser (this.editedUser).subscribe({
+      this.userService.editUser(this.editedUser).subscribe({
         next: (response) => {
           console.log('Usuario actualizado desde backend:', response);
   
@@ -85,15 +86,41 @@ export class ProfileComponent implements OnInit {
           localStorage.setItem('loggedUser', JSON.stringify(response));
   
           this.isEditing = false;
-          alert('Perfil actualizado exitosamente.');
+  
+          // Mostrar la notificación de éxito con SweetAlert2
+          Swal.fire({
+            icon: 'success',
+            title: 'Perfil actualizado',
+            text: 'Los cambios se han guardado correctamente.',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 800,
+            timerProgressBar: true,
+          }).then(() => {
+            // Redirigir al usuario a la página de perfil o donde corresponda
+            window.location.reload();  
+          });
         },
         error: (error) => {
           console.error('Error al actualizar:', error);
-          alert('Error al actualizar el perfil.');
+  
+          // Mostrar la notificación de error con SweetAlert2
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al actualizar',
+            text: 'Hubo un error al intentar actualizar el perfil.',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+          });
         }
       });
     }
   }
+  
   
   
 
@@ -106,29 +133,66 @@ export class ProfileComponent implements OnInit {
   changePassword(): void {
     const storedUser = localStorage.getItem('loggedUser');
     if (!storedUser) {
-      Swal.fire('Error', 'No se encontró el usuario.', 'error');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se encontró el usuario.',
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      });
       return;
     }
-
+  
     const user = JSON.parse(storedUser);
-
+  
     if (this.newPassword !== this.confirmPassword) {
-      Swal.fire('Error', 'Las contraseñas no coinciden.', 'error');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Las contraseñas no coinciden.',
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      });
       return;
     }
-
+  
     this.userService.changePassword(user.user_id, this.oldPassword, this.newPassword).subscribe({
       next: () => {
-        Swal.fire('Éxito', 'Contraseña actualizada correctamente.', 'success');
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: 'Contraseña actualizada correctamente.',
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+        });
         this.oldPassword = '';
         this.newPassword = '';
         this.confirmPassword = '';
       },
       error: (err) => {
-        Swal.fire('Error', err.error.message || 'Hubo un problema al cambiar la contraseña.', 'error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.error.message || 'Hubo un problema al cambiar la contraseña.',
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+        });
       }
     });
   }
+  
 }
 
 
