@@ -86,17 +86,21 @@ export class CreateUserRoleComponent {
         this.serv.getRolesByUserIdGET(r.user_id).subscribe(
           {
             next:(r)=>{
-              if(r.length == 2){
-                Swal.fire({
-                  icon: "error",
-                  title: "Este usuario ya es docente",
-                  toast: true,
-                  position: "top-end",
-                  showConfirmButton: false,
-                  timer: 1500,
-                  timerProgressBar: true,
-                }); 
-              }else{
+              // ordenamos el array por si el usuario tiene dos roles
+                const rolesOrdenados = r
+                rolesOrdenados.sort((a:any,b:any) => a.RoleRoleId - b.RoleRoleId)
+                if(rolesOrdenados[0].RoleRoleId==2){
+                  Swal.fire({
+                    icon: "error",
+                    title: "Este usuario ya es docente",
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                  }); 
+                }
+              else{
                 this.serv.addTeacherRole({
                   UserUserId: user_id,
                   RoleRoleId: 2
@@ -124,9 +128,13 @@ export class CreateUserRoleComponent {
     this.coursesService.getCoursesGET().subscribe({
       next:(r)=>{
         console.log(r)
-        this.courses = r;        
+        this.courses = r;    
       }
   });
+  }//
+
+  addTeacherToCourse(id_course:number){
+    console.log(id_course)
   }
 
       

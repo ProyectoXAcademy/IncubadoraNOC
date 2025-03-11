@@ -63,12 +63,14 @@
             <div class="course-card" *ngFor="let c of courses" >
                 <h3>{{c.name}}</h3>
                 <p>{{c.description}}</p>
-                <button type="submit" >Asignar rol docente</button>
+                <p>{{c.course_id}}</p>
+
+                <button type="submit" (click)="addTeacherToCourse(c.course_id)">Asignar rol docente</button>
 
 
             </div>
         </div>
-        <button type="submit" (click)="cancelar()" >Cancelar</button>
+        <button type="submit" (click)="cancelar()">Cancelar</button>
         
   
 
