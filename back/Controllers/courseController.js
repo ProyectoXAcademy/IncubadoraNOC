@@ -11,6 +11,16 @@ const getCourseById = async (req, res, next) => {
     }
 }
 
+const getCoursesByTeacherId = async (req, res, next) => {
+    try {
+        const teacher_id = req.params.id
+        const findCourses = await courseService.getCoursesByTeacherId(teacher_id)
+        res.status(200).json(findCourses)
+    } catch (error) {
+        next(error)
+    }
+}
+
 const createCourse = async (req, res, next) => {
     try {
         const {name, description, category, teacher_id} = req.body
@@ -23,8 +33,18 @@ const createCourse = async (req, res, next) => {
 
 const putCourseById = async (req, res, next) => {
     try {
-        const {course_id,name, description, category, teacher_id,inscription_requeriments,approval_conditions,active} = req.body
+        const {course_id,name, description, category,inscription_requeriments,approval_conditions,active} = req.body
         const putCourse = await courseService.putCourseById(course_id,name, description, category, teacher_id,inscription_requeriments,approval_conditions,active)
+        res.status(200).json(putCourse)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const putTeacherCourseById = async (req, res, next) => {
+    try {
+        const {course_id,teacher_id} = req.body
+        const putCourse = await courseService.putTeacherCourseById(course_id,teacher_id)
         res.status(200).json(putCourse)
     } catch (error) {
         next(error)
@@ -51,15 +71,7 @@ const editCourse = async (req, res, next) => {
     }
 }
 
-const getCoursesByTeacherId = async (req, res, next) => {
-    try {
-        const teacher_id = req.params.id
-        const findCourses = courseService.getCoursesByTeacherId(teacher_id)
-        res.status(200).json(findCourses)
-    } catch (error) {
-        next(error)
-    }
-}
+
 
 const setImgUrl = async (req, res, next) => {
     try {
@@ -73,4 +85,4 @@ const setImgUrl = async (req, res, next) => {
     }
 }
 
-module.exports = {getCourseById, createCourse, getAllCourses,putCourseById, getCoursesByTeacherId, setImgUrl}
+module.exports = {getCourseById, createCourse, getAllCourses,putCourseById, getCoursesByTeacherId, setImgUrl,putTeacherCourseById}

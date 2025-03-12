@@ -3,8 +3,6 @@ import { CreateUserRoleService } from "../../services/createUserRole/create-user
 import {FormBuilder,Validator,FormGroup,FormControl,ReactiveFormsModule,Validators,} from "@angular/forms";
 import Swal from "sweetalert2";
 import { NgIf , NgFor} from "@angular/common";
-import { User } from "../../models/user.model";
-import { MyEnrollmentsService } from "../../services/my-enrollments/my-enrollments.service";
 import { CoursesService } from "../../services/courses/courses.service";
 @Component({
   selector: "app-create-user-role",
@@ -134,7 +132,25 @@ export class CreateUserRoleComponent {
   }//
 
   addTeacherToCourse(id_course:number){
-    console.log(id_course)
+    this.coursesService.putTeacherIdCourseById({
+      course_id:id_course,
+      teacher_id:this.user.user_id
+    }).subscribe({ 
+      
+      next:(r)=> {
+        console.log(r)
+        Swal.fire({
+          icon: "success",
+          title: "Docente asignado al curso",
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,}); 
+      }
+    
+    })
+
   }
 
       

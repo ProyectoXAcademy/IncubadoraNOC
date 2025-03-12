@@ -16,6 +16,27 @@ const getCourseById = async (course_id) => {
     }
 }
 
+const getCoursesByTeacherId = async (teacher_id) => {
+    try {
+        const courses = await courseModel.findAll({
+            where: {
+              teacher_id: teacher_id,
+            },
+          })
+        if (courses.length === 0) {
+            const error = new Error()
+            error.message = `No hay cursos dictados por el docente con id=${teacher_id}`
+            error.statusCode = 404
+            throw error
+        }
+        return courses
+    } catch (error) {
+        throw error
+    }
+}
+
+
+
 const createCourse = async (name, description, category, teacher_id) => {
     try {
         const newCourse = {
@@ -66,14 +87,13 @@ const editCourse = async (id, course) => {
 }
 
 
-const putCourseById = async (course_id,name, description, category, teacher_id,inscription_requeriments,approval_conditions,active) => {
+const putCourseById = async (course_id,name, description, category,inscription_requeriments,approval_conditions,active) => {
     try {
         const courses = await courseModel.update(
             {   
             name:name,
             description:description,
             category:category,
-            teacher_id:teacher_id,
             inscription_requeriments:inscription_requeriments,
             approval_conditions:approval_conditions,
             active:active
@@ -92,16 +112,17 @@ const putCourseById = async (course_id,name, description, category, teacher_id,i
     }
 }
 
-const getCoursesByTeacherId = async (teacher_id) => {
+const putTeacherCourseById = async (course_id,teacher_id) => {
     try {
-        const courses = await courseModel.findAll({
-            where: {
-                teacher_id: teacher_id
-            }
-        })
+        const courses = await courseModel.update(
+            {   
+            teacher_id:teacher_id,
+            },{where:{course_id: course_id}}
+
+        )
         if (courses.length === 0) {
             const error = new Error()
-            error.message = `No hay cursos dictados por el docente con id=${teacher_id}`
+            error.message = 'No se pudo asignar un profesor al curso'
             error.statusCode = 404
             throw error
         }
@@ -110,6 +131,8 @@ const getCoursesByTeacherId = async (teacher_id) => {
         throw error
     }
 }
+
+
 
 const setImgUrl = async (course_id, url) => {
     try {
@@ -124,7 +147,7 @@ const setImgUrl = async (course_id, url) => {
     }
 }
 
-module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById, getCoursesByTeacherId, setImgUrl}
+module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById, getCoursesByTeacherId, setImgUrl, putTeacherCourseById}
 
 
 

@@ -110,28 +110,21 @@ export class CourseViewComponent {
 
   controlRole(){
     const idCourse = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+
     // traemos las inscripciones como docente
-    this.servEnrollments.getInscriptionsHowTeacher(JSON.parse(localStorage.getItem('loggedUser')!).user_id)
+    const teacher_id =JSON.parse(localStorage.getItem('loggedUser')!).user_id
+    this.servCourse.getCoursesTeacher(teacher_id)
     .subscribe({
-      next:(r)=>{
-        for (let rs of r){
-          if(rs.course_id === idCourse){
-            this.esDocente = true
+      next:(r)=> {
+        console.log(r)
+        for(let rs of r){
+          if(rs.teacher_id == teacher_id){
+            this.esDocente=true
           }
         }
+      
       }
     })
-
-
-/*
-    this.servRole.getRolesByUserIdGET(JSON.parse(localStorage.getItem('loggedUser')!).user_id).subscribe({
-      next:(r) => {
-        for(let rs of r){
-          console.log(r)
-          if(rs.RoleRoleId==2){
-            this.esDocente = true
-          console.log(this.esDocente)}}}})
-      */
      }
   ///////////  CALIFICACIONES /////////////
   ///////////  CALIFICACIONES /////////////
@@ -183,11 +176,8 @@ getContents(){
   this.servCourse.getContentsGET(id_course).subscribe({
     next:(r)=>{
       this.contents=r
-      console.log("los contenidososs")
-      console.log(r)
-
     },
-    error:(e)=> {console.log("el error es:");console.log(e)}
+    //error:(e)=> {console.log("el error es:");console.log(e)}
   })
 
 }
@@ -210,7 +200,6 @@ createContentSUBMIT(){
         type:this.formPOST.value.type,
         url: this.formPOST.value.link
     }).subscribe({
-      next:(r)=>console.log(r),
         error: (e) =>{
           Swal.fire({
                       icon: 'error',

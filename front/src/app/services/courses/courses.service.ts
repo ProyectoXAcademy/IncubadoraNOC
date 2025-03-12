@@ -15,6 +15,8 @@ export class CoursesService {
   private endpoint_get_courses: string =  "http://localhost:3000/api/course"
   private endpoint_get_course_by_id: string =  "http://localhost:3000/api/course/"
   private endpoint_put_course_by_id: string =  "http://localhost:3000/api/course/put"
+  private endpoint_put_teacher_id_course_by_id: string =  "http://localhost:3000/api/course/putTeacherId"
+  private endpoint_get_courses_teacher: string =  "http://localhost:3000/api/course/teacher_id/"
   private apiUrl = 'http://localhost:3000/api/course'
   private endpoint_create_content:string = "http://localhost:3000/api/content/create"
   private endpoint_get_contents_by_course_id:string = "http://localhost:3000/api/content/course/"
@@ -43,10 +45,18 @@ export class CoursesService {
     return this.http.get<Courses>(`${this.apiUrl}/${id}`)
   }
 
+  getCoursesTeacher(id:number):Observable<Courses[]>{
+    return this.http.get<Courses[]>(this.endpoint_get_courses_teacher+id)
+  }
 
   putCourseById(body:Courses):Observable<Courses>{
     return this.http.put<Courses>(this.endpoint_put_course_by_id,body)
   }
+
+  putTeacherIdCourseById(body:any):Observable<Courses>{
+    return this.http.put<Courses>(this.endpoint_put_teacher_id_course_by_id,body)
+  }
+
   // content
   createContentPOST(content:Content):Observable<Content>{
     return this.http.post<Content>(this.endpoint_create_content,content)
