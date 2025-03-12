@@ -14,6 +14,9 @@ import { Grade } from '../../models/grades.model';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Content } from '../../models/content.model';
 import { Title } from '@angular/platform-browser';
+import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service';
+import { UserService } from '../../services/users/user.service';
+import { User } from '../../models/user.model';
 @Component({
   selector: 'app-course-view',
   imports: [FormsModule, NgIf,RouterModule,NgFor,ReactiveFormsModule],
@@ -24,7 +27,9 @@ import { Title } from '@angular/platform-browser';
 export class CourseViewComponent {
 
   constructor(private serv:CoursesService, 
+    private servEnrollments:MyEnrollmentsService,
     private servRole:CreateUserRoleService,
+    private servUser:UserService,
      private servAttendance:MyAttendanceService,
       private router:Router,
       private routerActive:ActivatedRoute,
@@ -39,6 +44,7 @@ export class CourseViewComponent {
   esDocente: boolean = false
   attendance:Attendance[]|null = null
   grades:Grade[]|null=null
+  docente:User |null = null
   contents:Content[]|null=null
 
 
@@ -80,6 +86,9 @@ export class CourseViewComponent {
     this.serv.getCourseByIdGET(course_id).subscribe({
       next: (c) => {
         this.course = c;
+        this.servUser.getUserById(this.course.teacher_id).subscribe({
+          next:(r) => this.docente = r
+        })
         //console.log('Curso cargado:', this.course);
       },
       error: (error) => {
@@ -100,20 +109,30 @@ export class CourseViewComponent {
   descriptionCancelar(){this.editarDescripcion = false ;this.getInfoCourse()}
 
   controlRole(){
+    const idCourse = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+    // traemos las inscripciones como docente
+    this.servEnrollments.getInscriptionsHowTeacher(JSON.parse(localStorage.getItem('loggedUser')!).user_id)
+    .subscribe({
+      next:(r)=>{
+        for (let rs of r){
+          if(rs.course_id === idCourse){
+            this.esDocente = true
+          }
+        }
+      }
+    })
+
+
+/*
     this.servRole.getRolesByUserIdGET(JSON.parse(localStorage.getItem('loggedUser')!).user_id).subscribe({
       next:(r) => {
         for(let rs of r){
           console.log(r)
           if(rs.RoleRoleId==2){
             this.esDocente = true
-          console.log(this.esDocente)
-
-          }
-        }
-
-      }})
-      }
-
+          console.log(this.esDocente)}}}})
+      */
+     }
   ///////////  CALIFICACIONES /////////////
   ///////////  CALIFICACIONES /////////////
 

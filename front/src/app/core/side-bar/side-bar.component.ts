@@ -19,8 +19,9 @@ export class SideBarComponent {
     { label: 'Mis Asistencias', path: 'attendance', roles: ['Estudiante'] },
     { label: 'Mis Notas', path: 'mygrades', roles: ['Estudiante'] },
     { label: 'Mis Inscripciones', path: 'myenrollments', roles: ['Estudiante', 'Administrador', 'Docente'] },
-    { label: 'Crear Curso', path: 'create-course', roles: ['Administrador', 'Docente'] },
-    { label: 'Asignar Docente', path: 'create-user-role', roles: ['Administrador', 'Docente'] }
+    { label: 'Crear Curso', path: 'create-course', roles: ['Administrador'] },
+    { label: 'Crear Noticia', path: 'create-notice', roles: ['Administrador'] },
+    { label: 'Asignar Docente', path: 'create-user-role', roles: ['Administrador'] }
   ];
 
   filteredSidebarItems: any[] = [];

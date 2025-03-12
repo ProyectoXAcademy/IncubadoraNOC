@@ -28,7 +28,7 @@
     -->
     <div>
         <h3>Profesor</h3>
-        <p>{{course?.teacher_id}}</p>
+        <p>{{docente?.name}} {{docente?.lastName}}</p>
     </div>
 
     <div *ngIf="esDocente">
@@ -156,7 +156,7 @@
     </div>
 </section>
 
-<section *ngIf="!agregarContenido">
+<section *ngIf="!agregarContenido && esDocente">
     <div>
         <h3>Agregar contenido</h3>
         <button (click)="habilitarFormContenido()" >Agregar Nuevo Contenido</button>
