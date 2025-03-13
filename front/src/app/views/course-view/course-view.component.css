@@ -157,3 +157,9 @@ input, select, textarea {
 .cont_grade_tit{
     margin: 0;
 }
+
+
+.control{
+    display: inline;
+    color: red;
+}

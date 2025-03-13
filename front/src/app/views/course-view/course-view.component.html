@@ -28,14 +28,17 @@
     -->
     <div>
         <h3>Profesor</h3>
-        <p>{{course?.teacher_id}}</p>
+        <p>{{docente?.name}} {{docente?.lastName}}</p>
     </div>
 
     <div *ngIf="esDocente">
         <button (click)="editarDescripcionTrue()" >Editar descripcion del curso</button>
     </div>
 
-    <button [routerLink]="['/dashboard/myenrollments']">Volver a inscripción</button>
+        <div>
+            <button [routerLink]="['/dashboard/myenrollments']">Volver a inscripción</button>
+
+        </div>
 </section>
 
 
@@ -124,22 +127,89 @@
 
 <section class="sec_attendance" *ngIf="!esDocente" >
     <div>
-        <h3 *ngIf="!esDocente">Asistencias</h3>
-        <p>A continuacion se listan las Asistencias del curso.</p>
+        <h3>Asistencias</h3>
+        <p>A continuacion se listan las calificaciones del curso.</p>
 
         <div class="cont_grades">
             <div class="cont_grade_tit">
                 <p class="grade_tit">Presencias</p>
 
             </div>
-            <div class="grade_value" *ngFor="let g of attendance">
-                <p class="grade_value" >o</p>
+            <div class="grade_value" *ngFor="let a of attendance">
+                <p class="grade_value" >{{a.date}}</p>
             </div>
         </div>
     </div>
 
 </section>
 
+<section >
+    <h3>Contenidos</h3>
+
+    <div *ngFor="let c of contents">
+        <h4>{{c.name}}</h4>
+        <div>
+            <a [href]="c.url"  target="_blank" >link al recurso</a>
+        </div>
+        <iframe [src]="c.url" width="600" height="400"></iframe>
+
+    </div>
+</section>
+
+<section *ngIf="!agregarContenido && esDocente">
+    <div>
+        <h3>Agregar contenido</h3>
+        <button (click)="habilitarFormContenido()" >Agregar Nuevo Contenido</button>
+    </div>
+</section>
+
+<section *ngIf="agregarContenido" >
+        <h3 >Ingresa los nuevos datos del curso</h3>
+    <form [formGroup]="formPOST" (ngSubmit)="createContentSUBMIT()"  >    
+
+        <!--    /////////////////////////   -->
+        <div class="formCamp">
+            <label for="">Titulo del Tema del nuevo contenido</label>
+            <div *ngIf="title_GET.invalid && (title_GET.dirty || title_GET.touched)"  class="control" >
+                <p *ngIf="title_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Tema 2: Condicionales" formControlName="title">
+        </div>
+        
+         <!--    /////////////////////////   -->
+         <div class="formCamp">
+            <label for="">Tipo</label>
+            <div *ngIf="type_GET.invalid && (type_GET.dirty || type_GET.touched)"  class="control" >
+                <p *ngIf="type_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <select formControlName="type" >
+                <option value="">-- Selecione una opción --</option>
+                <option value="Video">Video</option>
+                <option value="PDF">PDF</option>
+            </select>
+        </div>
+
+ <!--    /////////////////////////   -->
+ <div class="formCamp">
+    <label for="">Link al recurso</label>
+    <div *ngIf="link_GET.invalid && (link_GET.dirty || link_GET.touched)"  class="control" >
+        <p *ngIf="link_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+    </div>
+    <input type="text" placeholder="https://www.youtube.com/. . . ." formControlName="link">
+</div>
+
+ <!--    /////////////////////////   -->
+        <div class="button">
+            <button type="submit" >Crear curso</button>
+            <button (click)="formCancelar()" >Cancelar</button>
+
+        </div>
+        
+
+
+    </form>
+
+</section>
 
 
 

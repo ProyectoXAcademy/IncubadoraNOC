@@ -3,8 +3,7 @@ import { CreateUserRoleService } from "../../services/createUserRole/create-user
 import {FormBuilder,Validator,FormGroup,FormControl,ReactiveFormsModule,Validators,} from "@angular/forms";
 import Swal from "sweetalert2";
 import { NgIf , NgFor} from "@angular/common";
-import { User } from "../../models/user.model";
-
+import { CoursesService } from "../../services/courses/courses.service";
 @Component({
   selector: "app-create-user-role",
   imports: [ReactiveFormsModule, NgIf, NgFor],
@@ -15,17 +14,26 @@ import { User } from "../../models/user.model";
 export class CreateUserRoleComponent {
   constructor(
     private serv: CreateUserRoleService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private coursesService: CoursesService,
+    
   ) {}
 
   formPOST: FormGroup | any;
   user: any|undefined;
   roles: any|null = null // hacer modelo en el front de 
+  insripcionCurso:Boolean = false
+  courses:any[] = []
 
   ngOnInit() {
+    this.insripcionCurso
+
     this.formPOST = this.formBuilder.group({
       email: new FormControl<string|null>(null, [Validators.required,Validators.email])
     });
+
+    this.loadCourses()
+
   } //
 
   // GETTERS
@@ -76,17 +84,21 @@ export class CreateUserRoleComponent {
         this.serv.getRolesByUserIdGET(r.user_id).subscribe(
           {
             next:(r)=>{
-              if(r.length == 2){
-                Swal.fire({
-                  icon: "error",
-                  title: "Este usuario ya es docente",
-                  toast: true,
-                  position: "top-end",
-                  showConfirmButton: false,
-                  timer: 1500,
-                  timerProgressBar: true,
-                }); 
-              }else{
+              // ordenamos el array por si el usuario tiene dos roles
+                const rolesOrdenados = r
+                rolesOrdenados.sort((a:any,b:any) => a.RoleRoleId - b.RoleRoleId)
+                if(rolesOrdenados[0].RoleRoleId==2){
+                  Swal.fire({
+                    icon: "error",
+                    title: "Este usuario ya es docente",
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                  }); 
+                }
+              else{
                 this.serv.addTeacherRole({
                   UserUserId: user_id,
                   RoleRoleId: 2
@@ -103,8 +115,44 @@ export class CreateUserRoleComponent {
 
                   }
                 })}}})}})}//////
-   
-        
+
+   /////// FORM INSCRIBIR EN CURSO /////////
+   /////// FORM INSCRIBIR EN CURSO /////////
+  verCursos(){ this.insripcionCurso=true}
+  cancelar(){ this.insripcionCurso=false}
+
+  
+  loadCourses(): void {
+    this.coursesService.getCoursesGET().subscribe({
+      next:(r)=>{
+        console.log(r)
+        this.courses = r;    
+      }
+  });
+  }//
+
+  addTeacherToCourse(id_course:number){
+    this.coursesService.putTeacherIdCourseById({
+      course_id:id_course,
+      teacher_id:this.user.user_id
+    }).subscribe({ 
+      
+      next:(r)=> {
+        console.log(r)
+        Swal.fire({
+          icon: "success",
+          title: "Docente asignado al curso",
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,}); 
+      }
+    
+    })
+
+  }
+
       
     }//
 

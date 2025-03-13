@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Courses } from '../../models/courses.model';
+import { Content } from '../../models/content.model';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
@@ -9,12 +10,18 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 })
 export class CoursesService {
 
- // agregar endpoint
- endpoint_create_courses:string = "http://localhost:3000/api/course/create"
- endpoint_get_courses: string =  "http://localhost:3000/api/course"
- endpoint_get_course_by_id: string =  "http://localhost:3000/api/course/"
- endpoint_put_course_by_id: string =  "http://localhost:3000/api/course/put"
-private apiUrl = 'http://localhost:3000/api/course'
+  // agregar endpoint
+  private endpoint_create_courses:string = "http://localhost:3000/api/course/create"
+  private endpoint_get_courses: string =  "http://localhost:3000/api/course"
+  private endpoint_get_course_by_id: string =  "http://localhost:3000/api/course/"
+  private endpoint_put_course_by_id: string =  "http://localhost:3000/api/course/put"
+  private endpoint_put_teacher_id_course_by_id: string =  "http://localhost:3000/api/course/putTeacherId"
+  private endpoint_get_courses_teacher: string =  "http://localhost:3000/api/course/teacher_id/"
+  private apiUrl = 'http://localhost:3000/api/course'
+  private endpoint_create_content:string = "http://localhost:3000/api/content/create"
+  private endpoint_get_contents_by_course_id:string = "http://localhost:3000/api/content/course/"
+
+
 
 
 
@@ -38,6 +45,9 @@ private apiUrl = 'http://localhost:3000/api/course'
     return this.http.get<Courses>(`${this.apiUrl}/${id}`)
   }
 
+  getCoursesTeacher(id:number):Observable<Courses[]>{
+    return this.http.get<Courses[]>(this.endpoint_get_courses_teacher+id)
+  }
 
   putCourseById(body:Courses):Observable<Courses>{
     return this.http.put<Courses>(this.endpoint_put_course_by_id,body)
@@ -47,6 +57,18 @@ private apiUrl = 'http://localhost:3000/api/course'
     return this.http.get<Courses[]>(`${this.apiUrl}/teacher/${teacher_id}`);
   }
 
+  putTeacherIdCourseById(body:any):Observable<Courses>{
+    return this.http.put<Courses>(this.endpoint_put_teacher_id_course_by_id,body)
+  }
+
+  // content
+  createContentPOST(content:Content):Observable<Content>{
+    return this.http.post<Content>(this.endpoint_create_content,content)
+}
+
+getContentsGET(id_course:any):Observable<Content[]>{
+  return this.http.get<Content[]>(this.endpoint_get_contents_by_course_id+ id_course)
+}
 
 }///
 
