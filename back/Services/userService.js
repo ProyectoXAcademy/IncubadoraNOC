@@ -1,9 +1,19 @@
-const {userModel} = require('../Models')
+const {userModel, roleModel} = require('../Models')
 const {hashPassword} = require('./hashPasswordService')
 const {createUserRole} = require('./userRoleService')
 const {getRoleByName} = require('./roleService')
 const {sequelize} = require('../Config/dbConfig')
 const bcrypt = require ('bcrypt')
+
+const getAllUsers = async () => {
+    try {
+        const users = await userModel.findAll({ include: { all: true } });
+        return users;
+    } catch (error) {
+        throw error;
+    }
+};
+
 
 const getUserById = async (user_id) => {
     try {
@@ -117,4 +127,8 @@ const setImgUrl = async (user_id, url) => {
     }
 }
 
-module.exports = {getUserById, createUser, getUserByEmail, editUser, changePassword, setImgUrl}
+
+
+
+
+module.exports = {getAllUsers ,getUserById, createUser, getUserByEmail, editUser, changePassword, setImgUrl}

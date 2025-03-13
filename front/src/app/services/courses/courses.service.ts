@@ -43,5 +43,10 @@ private apiUrl = 'http://localhost:3000/api/course'
     return this.http.put<Courses>(this.endpoint_put_course_by_id,body)
   }
 
+  getCoursesByTeacher(teacher_id: number): Observable<Courses[]> {
+    return this.http.get<Courses[]>(`${this.apiUrl}/teacher/${teacher_id}`);
+  }
+
+
 }///
 

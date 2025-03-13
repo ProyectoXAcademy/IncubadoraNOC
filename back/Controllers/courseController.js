@@ -73,4 +73,19 @@ const setImgUrl = async (req, res, next) => {
     }
 }
 
-module.exports = {getCourseById, createCourse, getAllCourses,putCourseById, getCoursesByTeacherId, setImgUrl}
+const getCoursesByTeacher = async (req, res, next) => {
+    try {
+      const { teacher_id } = req.params; 
+      const courses = await courseService.getCoursesByTeacher(teacher_id); 
+  
+      if (!courses.length) {
+        return res.status(404).json({ message: 'No hay cursos asignados a este profesor' });
+      }
+  
+      res.status(200).json(courses);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+module.exports = {getCourseById, createCourse, getAllCourses, putCourseById, getCoursesByTeacherId, setImgUrl, getCoursesByTeacher}

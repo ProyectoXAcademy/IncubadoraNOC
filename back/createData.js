@@ -11,7 +11,11 @@ const createData = async () => {
 
     //Usuarios de prueba, se crea un administrador, docente y alumno
     await userService.createUser("Admin", "istrador", 9999, "2025-01-01", "usuarioprueba@gmail.com", "12345", "Administrador")
-    await userService.createUser("Docente", "Perez", 12345, "2022-12-18", "docentedeprueba@gmail.com", "12345", "Docente" )
+    await userService.createUser("Lisandro", "Perez", 12345, "2022-12-18", "lisandro@gmail.com", "12345", "Docente" )
+    await userService.createUser("Lance", "Stroll", 12345, "2022-12-18", "lance@gmail.com", "12345", "Docente" )
+
+    await userService.createUser("Leo", "Messi", 12345, "2022-12-18", "messi@gmail.com", "12345", "Docente" )
+
     await userService.createUser("Alumno", "Gonzalez", 1111, "2018-12-09", "alumnodeprueba@gmail.com", "12345", "Estudiante")
     await userService.createUser("Jose", "Lopeez", 1234, "2018-12-09", "jose@gmail.com", "12345", "Estudiante")
     await userService.createUser("Thiago", "Motta", 1345, "2018-12-09", "thiago@gmail.com", "12345", "Estudiante")

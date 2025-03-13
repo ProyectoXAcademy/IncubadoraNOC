@@ -4,7 +4,11 @@ const router = express.Router()
 const { userController } = require('../Controllers')
 const { authMiddleware } = require('../Middlewares')
 
-router.get('/:id', userController.getUserById)
+
+router.get('/', userController.getAllUsers);
+
+
+ router.get('/:id', userController.getUserById)  
 
 /**
  * @swagger
@@ -105,6 +109,7 @@ router.put('/change-password', userController.changePassword)
 router.put('/change-password', userController.changePassword)
 
 router.put('/img', userController.setImgUrl)
+
 
 
 module.exports = router

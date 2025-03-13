@@ -1,68 +1,78 @@
-import { Component } from '@angular/core';
-import { CoursesService } from '../../services/courses/courses.service';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Courses } from '../../models/courses.model';
-import { NgIf } from '@angular/common';
+import { UserService } from '../../services/users/user.service';
+import { CoursesService } from '../../services/courses/courses.service';
 import Swal from 'sweetalert2';
-
-
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-course',
-  imports: [ReactiveFormsModule, NgIf],
   standalone: true,
+  imports: [ReactiveFormsModule, CommonModule], // ✅ IMPORTA `ReactiveFormsModule`
   templateUrl: './create-course.component.html',
   styleUrl: './create-course.component.css'
 })
-export class CreateCourseComponent {
+export class CreateCourseComponent implements OnInit {
+  formPOST: FormGroup;
+  teachers: any[] = []; // ✅ Lista de docentes extraída del backend
 
-  constructor(private serv:CoursesService, private formBuilder:FormBuilder){}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private coursesService: CoursesService
+  ) {
+    this.formPOST = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      category: ['', Validators.required],
+      teacher_id: ['', Validators.required]
+    });
+  }
 
-  formPOST:FormGroup | any
-  teacher_id:number|null = null
-  
+  ngOnInit(): void {
+    this.loadTeachers();
+  }
 
-  ngOnInit(){
-    this.formPOST = this.formBuilder.group({
-      name : new FormControl<Courses|null>(null, Validators.required),
-      description : new FormControl<Courses|null>(null, Validators.required),
-      category : new FormControl<Courses|null>(null,[ Validators.required, Validators.pattern(/^(?!Seleccione).+/)]  ),
-      })//
-    }//
-    
-  // GETTERS DE LOS CAMPOS DEL FORMULARIO
-  
-  get name_GET(){return this.formPOST.controls['name']}
-  get description_GET(){return this.formPOST.controls['description'];}
-  get category_GET(){return this.formPOST.controls['category'];}
+  private loadTeachers(): void {
+    this.userService.getAllUsers().subscribe({
+      next: (users) => {
+        this.teachers = users.filter(user => 
+          user.Roles.some((role: { name: string; }) => role.name === 'Docente') // ✅ Filtramos docentes
+        );
+      },
+      error: (err) => {
+        console.error('Error al obtener docentes:', err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se pudo cargar la lista de docentes.',
+        });
+      }
+    });
+  }
 
-
-  // metodo post del formulario, antes valida
-  createCourseSUBMIT(){
-    console.log(JSON.parse(localStorage.getItem('loggedUser')!).user_id)
-    this.teacher_id = JSON.parse(localStorage.getItem('loggedUser')!).user_id
-    console.log(this.formPOST.value)
-    if(this.formPOST.valid){
-      this.serv.createCoursePOST({
-        name: this.formPOST.value.name,
-        description:this.formPOST.value.description,
-        category: this.formPOST.value.category,
-        teacher_id: this.teacher_id!,
-      }).subscribe({
-        error: (e) =>console.log(e),
+  createCourseSUBMIT(): void {
+    if (this.formPOST.valid) {
+      this.coursesService.createCoursePOST(this.formPOST.value).subscribe({
         complete: () => {
-         Swal.fire({
-                  icon: 'success',
-                  title: 'Registro exitoso',
-                  text: 'Nuevo curso creado',
-                });
-          this.formPOST.reset()
+          Swal.fire({
+            icon: 'success',
+            title: 'Curso Creado',
+            text: 'El curso ha sido creado exitosamente',
+          });
+          this.formPOST.reset();
+        },
+        error: (err) => {
+          console.error('Error al crear curso:', err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al crear el curso. Inténtalo de nuevo.',
+          });
         }
-        })
-    }else{
+      });
+    } else {
       this.formPOST.markAllAsTouched();
     }
-  }//
-
-}///////////
+  }
+}

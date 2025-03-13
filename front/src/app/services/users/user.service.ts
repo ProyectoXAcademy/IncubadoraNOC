@@ -30,6 +30,13 @@ export class UserService {
   }
 
 
+  getAllUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/`);
+  }
+
+
+  
+
   }
 
 

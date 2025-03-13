@@ -124,7 +124,19 @@ const setImgUrl = async (course_id, url) => {
     }
 }
 
-module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById, getCoursesByTeacherId, setImgUrl}
+const getCoursesByTeacher = async (teacher_id) => {
+    try {
+      const courses = await courseModel.findAll({
+        where: { teacher_id }
+      });
+      return courses;
+    } catch (error) {
+      throw error;
+    }
+  };
+  
+
+module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById, getCoursesByTeacherId, setImgUrl, getCoursesByTeacher}
 
 
 
