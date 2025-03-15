@@ -16,9 +16,9 @@ const getRegistrationById = async (registration_id) => {
 }
 
 
-const createRegistration = async (student_id, course_id, is_teacher = false) => {
+const createRegistration = async (student_id, course_id) => {
   try {
-    console.log('Creando inscripción con:', { student_id, course_id, is_teacher });
+    console.log('Creando inscripción con:', { student_id, course_id });
 
     // Verificar si ya está inscrito
     const existingRegistration = await registrationModel.findOne({
@@ -30,12 +30,11 @@ const createRegistration = async (student_id, course_id, is_teacher = false) => 
       throw new Error('El usuario ya está inscrito en este curso.');
     }
 
-    // Crear inscripción con is_teacher
+    // Crear inscripción directamente
     const newRegistration = await registrationModel.create({
       student_id,
       course_id,
-      registration_date: new Date(),
-      is_teacher
+      registration_date: new Date()
     });
 
     console.log('Inscripción creada con éxito:', newRegistration);
@@ -44,36 +43,23 @@ const createRegistration = async (student_id, course_id, is_teacher = false) => 
     console.error('Error en createRegistration:', error.message);
     throw error;
   }
-};
+}
 
 const getUserRegistrations = async (user_id) => {
   try {
-    // 1️⃣ Obtener el rol del usuario
-    const user = await userModel.findByPk(user_id);
-    if (!user) {
-      throw new Error('Usuario no encontrado.');
-    }
-
-    let whereCondition = { student_id: user_id }; // Por defecto, buscar como estudiante
-
-    if (user.role === 'Docente') {
-      whereCondition = { student_id: user_id, is_teacher: true }; // Si es docente, filtrar cursos que dicta
-    }
-
-    // 2️⃣ Obtener las inscripciones del usuario
     const registrations = await registrationModel.findAll({
-      where: whereCondition
-    });
-
+      where: {
+        student_id: user_id
+      }
+    })
     if (registrations.length === 0) {
-      return "No hay registros.";
+      return "No hay registros."
     }
-
-    return registrations;
+    return registrations
   } catch (error) {
-    throw error;
+    throw error
   }
-};
+}
 
 const getUsersRegistrationsByCourseId = async (course_id) => {
   try {
@@ -90,6 +76,9 @@ const getUsersRegistrationsByCourseId = async (course_id) => {
     throw error
   }
 }
+
+
+module.exports = {getRegistrationById, createRegistration, getUserRegistrations,getUsersRegistrationsByCourseId}
 
 
 module.exports = {getRegistrationById, createRegistration, getUserRegistrations,getUsersRegistrationsByCourseId}

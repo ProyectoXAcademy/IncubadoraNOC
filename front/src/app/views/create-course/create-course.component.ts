@@ -51,27 +51,9 @@ export class CreateCourseComponent implements OnInit {
     });
   }
 
-
-  // metodo post del formulario, antes valida
-  createCourseSUBMIT(){
-    this.teacher_id = JSON.parse(localStorage.getItem('loggedUser')!).user_id
-    if(this.formPOST.valid){
-      this.serv.createCoursePOST({
-        name: this.formPOST.value.name,
-        description:this.formPOST.value.description,
-        category: this.formPOST.value.category,
-        teacher_id: this.teacher_id!,
-      }).subscribe({
-        error: (e) =>{
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Error al crear el curso',
-          });
-    this.formPOST.reset()
-
-          
-        },
+  createCourseSUBMIT(): void {
+    if (this.formPOST.valid) {
+      this.coursesService.createCoursePOST(this.formPOST.value).subscribe({
         complete: () => {
           Swal.fire({
             icon: 'success',

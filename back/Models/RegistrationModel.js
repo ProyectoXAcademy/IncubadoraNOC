@@ -1,6 +1,7 @@
 const {DataTypes} = require('sequelize')
 const {dbConfig} = require('../Config');
 
+//Es el modelo de la entidad Inscripción
 const registrationModel = dbConfig.sequelize.define("Registrations", {
     registration_id: {
         type: DataTypes.INTEGER,
@@ -28,13 +29,10 @@ const registrationModel = dbConfig.sequelize.define("Registrations", {
             model: 'Courses',
             key: 'course_id'
         }
-    },
-    is_teacher: { // ✅ Nueva columna para identificar si el usuario es profesor
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
     }
 }, {
     timestamps: false,
-});
+    
+})
 
-module.exports = registrationModel;
+module.exports = registrationModel

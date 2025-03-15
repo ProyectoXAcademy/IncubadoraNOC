@@ -159,7 +159,7 @@ const getCoursesByTeacher = async (teacher_id) => {
   };
   
 
-module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById, getCoursesByTeacherId, setImgUrl, getCoursesByTeacher}
+module.exports = {getCourseById, createCourse, getAllCourses,editCourse,putCourseById, getCoursesByTeacherId, setImgUrl, getCoursesByTeacher, putTeacherCourseById}
 
 
 

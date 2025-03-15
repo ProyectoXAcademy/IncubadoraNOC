@@ -100,4 +100,4 @@ const getCoursesByTeacher = async (req, res, next) => {
     }
   };
 
-module.exports = {getCourseById, createCourse, getAllCourses, putCourseById, getCoursesByTeacherId, setImgUrl, getCoursesByTeacher}
+module.exports = {getCourseById, createCourse, getAllCourses, putCourseById, getCoursesByTeacherId, setImgUrl, getCoursesByTeacher, editCourse}
