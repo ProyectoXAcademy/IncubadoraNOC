@@ -63,7 +63,7 @@ export class LoginService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('loggedUser');
-    localStorage.removeItem('userRole'); // Asegurar que eliminamos el rol del usuario
+    localStorage.removeItem('role'); // Asegurar que eliminamos el rol del usuario
   
     this.authenticatedSource.next(false);
     this.userSubject.next(null);
