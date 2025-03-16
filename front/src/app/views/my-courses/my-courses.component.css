@@ -350,6 +350,21 @@ div.attribution {
   color: #fc6a07;
 }
 
+.course-card-button {
+  
+  background: #fc6a07;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  
+}
+
+.course-card-button:hover{
+  background-color: #00339e;
+}
+
 /* 📌 Imágenes Pequeñas */
 .small-image {
   width: 20px;

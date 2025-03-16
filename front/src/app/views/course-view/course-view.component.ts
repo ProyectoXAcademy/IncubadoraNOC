@@ -108,24 +108,22 @@ export class CourseViewComponent {
 
   descriptionCancelar(){this.editarDescripcion = false ;this.getInfoCourse()}
 
-  controlRole(){
+  controlRole() {
     const idCourse = Number(this.routerActive.snapshot.paramMap.get('course_id'));
-
-    // traemos las inscripciones como docente
-    const teacher_id =JSON.parse(localStorage.getItem('loggedUser')!).user_id
-    this.servCourse.getCoursesTeacher(teacher_id)
-    .subscribe({
-      next:(r)=> {
-        console.log(r)
-        for(let rs of r){
-          if(rs.teacher_id == teacher_id){
-            this.esDocente=true
-          }
-        }
-      
+  
+    // Obtiene el ID del usuario logueado
+    const teacher_id = JSON.parse(localStorage.getItem('loggedUser')!).user_id;
+  
+    // Obtiene la info del curso actual
+    this.serv.getCourseByIdGET(idCourse).subscribe({
+      next: (course) => {
+        this.course = course;
+        // Compara si el usuario es el docente de este curso
+        this.esDocente = this.course.teacher_id === teacher_id;
       }
-    })
-     }
+    });
+  }
+  
   ///////////  CALIFICACIONES /////////////
   ///////////  CALIFICACIONES /////////////
 
