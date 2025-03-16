@@ -1,0 +1,55 @@
+<section class="contenedor">
+    <h2 class="title">Ingresa los datos de la nueva noticia:</h2>
+    <form [formGroup]="formPOST" (ngSubmit)="createNoticeSUBMIT()"  >    
+
+        <!--    /////////////////////////   -->
+        <div class="formCamp">
+            <label for="">Título</label>
+            <div *ngIf="title_GET.invalid && (title_GET.dirty || title_GET.touched)"  class="control" >
+                <p *ngIf="title_GET.hasError('required')" class="contitle" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Crece la demanda en el sector..." formControlName="title">
+        </div>
+        
+         <!--    /////////////////////////   -->
+         <div class="formCamp">
+            <label for="">Descripción</label>
+            <div *ngIf="description_GET.invalid && (description_GET.dirty || description_GET.touched)"  class="control" >
+                <p *ngIf="description_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            <input type="text" placeholder="Startups locales demandan mas empleo con respecto al mes anterior..." formControlName="description">
+        </div>
+
+
+
+          <!--    /////////////////////////  --> 
+        <div class="formCamp">
+            <label for="">Tipo</label>
+            <select formControlName="type" >
+                <option value="">-- Selecione una opción --</option>
+                <option value="Noticia">Noticia</option>
+                <option value="Programa de credito">Programa de crédito</option>
+                <option value="Tecnología">Tecnología</option>
+
+            </select>
+           <div *ngIf="type_GET.invalid && (type_GET.dirty || type_GET.touched)"  class="control" >
+                <p *ngIf="type_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+            </div>
+            </div>
+
+            <div class="formCamp">
+                <label for="">Fecha de la noticia:</label>
+                <input class="input_date" type="date" formControlName="issue_date">
+
+            </div>
+
+        <div class="button">
+            <button type="submit" >Crear noticia</button>
+        </div>
+        
+
+
+    </form>
+
+
+</section>

@@ -36,7 +36,7 @@ export class MyEnrollmentsComponent implements OnInit {
   loadCourses(): void {
     this.coursesService.getCoursesGET().subscribe(
       (data) => {
-        this.courses = data;
+        this.courses = data
         this.getUserRegistrations();
         
       },
@@ -61,6 +61,9 @@ export class MyEnrollmentsComponent implements OnInit {
   
             
             this.userCourses = registrations;
+            console.log("regggg")
+
+            console.log(registrations)
             
             
           },

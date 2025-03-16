@@ -31,14 +31,13 @@ const createRegistration = async (req, res) => {
 
 const getUserRegistrations = async (req, res, next) => {
   try {
-    const user_id = req.params.id;
-    const registrations = await registrationService.getUserRegistrations(user_id);
-    
-    res.status(200).json(registrations);
+    const user_id = req.params.id
+    const registrations = await registrationService.getUserRegistrations(user_id)
+    res.status(200).json(registrations)
   } catch (error) {
-    next(error);
+    next(error)
   }
-};
+}
 
 
 const getUsersRegistrationsByCourseId = async (req, res, next) => {

@@ -14,8 +14,6 @@ export class MyEnrollmentsService {
   private endpointRegistrationByCourseId= " http://localhost:3000/api/registration/course/ "
   private endpointTeacherRegistration= " http://localhost:3000/api/registration/course/ "
 
-  private registrations: Registration[] | null = null
-
   constructor(private http: HttpClient) {}
 
   // Método para inscribir al usuario
@@ -39,10 +37,5 @@ export class MyEnrollmentsService {
   getInscriptionsByIdCourse(course_id:number): Observable<Registration[]>{
     return this.http.get<Registration[]>(this.endpointRegistrationByCourseId+course_id)
   }
-
-  // este metodo trae las inscripciones del docente
-  getInscriptionsHowTeacher(teacher_id:number):Observable<Registration[]>{
-    return this.http.get<Registration[]>(this.endpointTeacherRegistration+teacher_id)
-  }
-
 }
+

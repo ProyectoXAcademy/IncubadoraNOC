@@ -22,7 +22,7 @@ import { PoliciesComponent } from './views/policies/policies.component';
 import { TermsComponent } from './views/terms/terms.component';
 import { CookiePoliciesComponent } from './views/cookie-policies/cookie-policies.component';
 import { AdminAttendanceComponent } from './views/admin-attendance/admin-attendance.component';
-
+import { CreateNoticeComponent } from './views/create-notice/create-notice.component';
 
 
 export const routes: Routes = [
@@ -51,9 +51,11 @@ export const routes: Routes = [
       { path: 'mypayments', component: MyPaymentsComponent },
       { path: 'create-course', component: CreateCourseComponent },
       { path: 'create-user-role', component: CreateUserRoleComponent },
+      { path: 'create-notice', component: CreateNoticeComponent},
       { path: 'view-course/:course_id', component: CourseViewComponent},
       { path: 'admin-grades/:course_id', component: AdminGradesComponent},
       { path: 'admin-attendance/:course_id', component: AdminAttendanceComponent},
+
 
 
 
