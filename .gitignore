@@ -5,3 +5,4 @@ back/.env
 front/.vscode/
 front/.angular/
 front/.editorconfig
+.qodo
