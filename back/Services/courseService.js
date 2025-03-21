@@ -37,7 +37,7 @@ const getCoursesByTeacherId = async (teacher_id) => {
 
 
 
-const createCourse = async (name, description, category, teacher_id) => {
+const createCourse = async (name, description, category, teacher_id,img) => {
     try {
         const newCourse = {
             name: name,
@@ -46,7 +46,8 @@ const createCourse = async (name, description, category, teacher_id) => {
             teacher_id: teacher_id,
             inscription_requirements: null,
             approval_conditions: null,
-            active: true
+            active: true,
+            img:img
         }
         console.log(newCourse)
         const createdCourse = await courseModel.create(newCourse)
@@ -87,7 +88,7 @@ const editCourse = async (id, course) => {
 }
 
 
-const putCourseById = async (course_id,name, description, category,inscription_requeriments,approval_conditions,active) => {
+const putCourseById = async (course_id,name, description, category,inscription_requeriments,approval_conditions,active,img) => {
     try {
         const courses = await courseModel.update(
             {   
@@ -96,7 +97,8 @@ const putCourseById = async (course_id,name, description, category,inscription_r
             category:category,
             inscription_requeriments:inscription_requeriments,
             approval_conditions:approval_conditions,
-            active:active
+            active:active,
+            img:img
             },{where:{course_id: course_id}}
 
         )
@@ -115,10 +117,7 @@ const putCourseById = async (course_id,name, description, category,inscription_r
 const putTeacherCourseById = async (course_id,teacher_id) => {
     try {
         const courses = await courseModel.update(
-            {   
-            teacher_id:teacher_id,
-            },{where:{course_id: course_id}}
-
+            {teacher_id:teacher_id},{where:{course_id: course_id}}
         )
         if (courses.length === 0) {
             const error = new Error()

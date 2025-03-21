@@ -1,12 +1,14 @@
 <h2 class="courses-title">Mis Cursos Registrados</h2>
 
+<div *ngIf="userCourses===noHayRegistros" >
+  <h2>No hay registros a cursos</h2>
+</div>
+
 <div class="courses-container">
   <div *ngFor="let registration of userCourses" class="course-card">
-    <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg" alt="Imagen del Curso"/>
-
+  
     <div class="course-card-body">
-      <h5 class="course-card-title">Inscripción #{{ registration.registration_id }}</h5>
-      <p class="course-card-text"><strong>Curso:</strong> {{ getCourseName(registration.course_id) }}</p>
+      <h5 class="course-card-title">{{ getCourseName(registration.course_id) }}</h5>
       <p class="course-card-text"><strong>Fecha de Inscripción:</strong> {{ registration.registration_date | date: 'medium' }}</p>
       
       <button class="course-card-button" (click)="goToCourse(registration.course_id)">Ver Curso</button>

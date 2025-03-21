@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, numberAttribute, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { CoursesService } from '../../services/courses/courses.service';
 import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service'
 import Swal from 'sweetalert2';
+import { UserService } from '../../services/users/user.service';
 
 @Component({
   selector: 'app-courses',
@@ -14,14 +15,18 @@ import Swal from 'sweetalert2';
 })
 export class CoursesComponent implements OnInit {
   courses: any[] = [];
+  teacherName:string|null = null
   filteredCourses: any[] = []; 
   selectedCourse: any = null;
   categories: string[] = ['Todos', 'Programación', 'Diseño', 'Marketing', 'Negocios', 'Idiomas'];
   student_id!: number;
   
+  imageUrl:string = "https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg"
+
   constructor(
     private coursesService: CoursesService,
     private myEnrollmentsService: MyEnrollmentsService,
+    private servUser:UserService,
     
     private router: Router
   ) {}
@@ -29,6 +34,7 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.loadStudentId();
     this.loadCourses();
+    console.log(this.imageUrl)
      
   }
 
@@ -41,17 +47,22 @@ export class CoursesComponent implements OnInit {
     this.coursesService.getCoursesGET().subscribe(
       (data) => {
         this.courses = data;
-        this.filteredCourses = data; 
+        console.log(data)
+        this.filteredCourses = data;
+        for(let d of data){
+          this.servUser.getUserById(d.teacher_id).subscribe({
+            next:(r) => {
+              d.teacherName = r.name + " " + r.lastName
+              console.log(d.teacherName)
+            }
+          })
+        }
       },
       (error) => {
         console.error('Error al cargar los cursos:', error);
       }
     );
   }
-
-  
- 
-
 
   selectCourse(course: any) {
     this.selectedCourse = course;

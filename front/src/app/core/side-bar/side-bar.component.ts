@@ -16,7 +16,7 @@ export class SideBarComponent implements DoCheck {
     { label: 'Mis Cursos Dictados', path: 'mycourses', roles: ['Docente','Administrador'] },
     { label: 'Mis Inscripciones', path: 'myenrollments', roles: ['Estudiante', 'Administrador', 'Docente'] },
     { label: 'Mis Notas', path: 'mygrades', roles: ['Estudiante'] },
-    { label: 'Mis Asistencias', path: 'attendance', roles: ['Estudiante'] },
+    //{ label: 'Mis Asistencias', path: 'attendance', roles: ['Estudiante'] },
     { label: 'Crear Curso', path: 'create-course', roles: ['Administrador'] },
     { label: 'Crear Noticia', path: 'create-notice', roles: ['Administrador'] },
     { label: 'Asignar Docente', path: 'create-user-role', roles: ['Administrador'] }

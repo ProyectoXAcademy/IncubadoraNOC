@@ -7,7 +7,7 @@ router.get('/:id', courseController.getCourseById)
 router.get('/', courseController.getAllCourses)
 router.post('/create', courseController.createCourse)
 router.put('/put', courseController.putCourseById)
-//router.put('/putTeacherId', courseController.putTeacherCourseById)
+router.put('/putTeacherId', courseController.putTeacherCourseById)
 
 router.put('/edit', courseController.editCourse)
 router.get('/teacher/:id', courseController.getCoursesByTeacherId)

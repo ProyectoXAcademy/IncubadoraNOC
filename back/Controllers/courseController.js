@@ -23,8 +23,8 @@ const getCoursesByTeacherId = async (req, res, next) => {
 
 const createCourse = async (req, res, next) => {
     try {
-        const {name, description, category, teacher_id} = req.body
-        const newCourse = await courseService.createCourse(name, description, category, teacher_id)
+        const {name, description, category, teacher_id,img} = req.body
+        const newCourse = await courseService.createCourse(name, description, category, teacher_id,img)
         res.status(200).json(newCourse)
     } catch (error) {
         next(error)
@@ -33,8 +33,8 @@ const createCourse = async (req, res, next) => {
 
 const putCourseById = async (req, res, next) => {
     try {
-        const {course_id,name, description, category,inscription_requeriments,approval_conditions,active} = req.body
-        const putCourse = await courseService.putCourseById(course_id,name, description, category, teacher_id,inscription_requeriments,approval_conditions,active)
+        const {course_id,name, description, category,inscription_requeriments,approval_conditions,active,img} = req.body
+        const putCourse = await courseService.putCourseById(course_id,name, description, category,inscription_requeriments,approval_conditions,active,img)
         res.status(200).json(putCourse)
     } catch (error) {
         next(error)
@@ -100,4 +100,4 @@ const getCoursesByTeacher = async (req, res, next) => {
     }
   };
 
-module.exports = {getCourseById, createCourse, getAllCourses, putCourseById, getCoursesByTeacherId, setImgUrl, getCoursesByTeacher, editCourse}
+module.exports = {getCourseById, createCourse, getAllCourses, putCourseById, getCoursesByTeacherId, setImgUrl, getCoursesByTeacher, editCourse,putTeacherCourseById}

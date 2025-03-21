@@ -18,18 +18,21 @@
     <!-- 📌 NUEVO - Tarjetas de Cursos -->
     <div class="courses-container">
       <div *ngFor="let course of filteredCourses" class="card-container incubator-theme" (click)="selectCourse(course)">
-        <a href="/" class="hero-image-container">
-          <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg" alt="Course Image"/>
-        </a>
+        <div class="hero-image-container">
+            <img *ngIf="course.img != null" class="hero-image img" src={{course.img}} alt={{course.name}} />
+            <img *ngIf="course.img == null" class="hero-image img"  [src]=imageUrl alt={{imageUrl}} />
+        </div>
+
         <main class="main-content">
-          <h1 class="course-title"><a href="#">{{ course.name }}</a></h1>
+          <h1 class="course-title">{{course.name}}</h1>
           <p class="course-description">{{ course.description }}</p>
 
           <div class="flex-row">
             <div class="course-category">
-              <img src="https://i.postimg.cc/T1F1K0bW/Ethereum.png" alt="category" class="small-image"/>
+              <img src="../../../assets/category-card.png" alt="category" class="small-image"/>
               <h2>{{ course.category }}</h2>
             </div>
+            
             <div class="status">
               <img src="https://i.postimg.cc/prpyV4mH/clock-selection-no-bg.png" alt="clock" class="small-image"/>
               <p *ngIf="course.active; else inactive" class="active-status">Activo</p>
@@ -39,10 +42,11 @@
         </main>
 
         <div class="card-attribute">
-          <img src="https://i.postimg.cc/SQBzNQf1/image-avatar.png" alt="avatar" class="small-avatar"/>
-          <p>Profesor: <span>{{ course.teacher_id }}</span></p>
+          <img src="../../../assets/teacher-card.png" alt="avatar" class="small-avatar"/>
+          <h4>Profesor:  <span>{{ course.teacherName }}</span></h4>
 
         </div>
+
       </div>
     </div>
 

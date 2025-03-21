@@ -10,12 +10,10 @@ const createData = async () => {
     await roleService.createRole("Estudiante")
 
     //Usuarios de prueba, se crea un administrador, docente y alumno
-    await userService.createUser("Admin", "istrador", 9999, "2025-01-01", "usuarioprueba@gmail.com", "12345", "Administrador")
+    await userService.createUser("Sergio", "Gonzalez", 9999, "2025-01-01", "usuarioprueba@gmail.com", "12345", "Administrador")
     await userService.createUser("Lisandro", "Perez", 12345, "2022-12-18", "lisandro@gmail.com", "12345", "Docente" )
     await userService.createUser("Lance", "Stroll", 12345, "2022-12-18", "lance@gmail.com", "12345", "Docente" )
-
     await userService.createUser("Leo", "Messi", 12345, "2022-12-18", "messi@gmail.com", "12345", "Docente" )
-
     await userService.createUser("Alumno", "Gonzalez", 1111, "2018-12-09", "alumnodeprueba@gmail.com", "12345", "Estudiante")
     await userService.createUser("Jose", "Lopeez", 1234, "2018-12-09", "jose@gmail.com", "12345", "Estudiante")
     await userService.createUser("Thiago", "Motta", 1345, "2018-12-09", "thiago@gmail.com", "12345", "Estudiante")
@@ -33,11 +31,11 @@ const createData = async () => {
 
 
    //Curso de ejemplo
-   await courseService.createCourse("Angular", "Angular desde 0 a experto", "Programacion", 1)
-   await courseService.createCourse("UX-UI", "Diseño utilizando la herramienta figma", "Diseño", 1)
-   await courseService.createCourse("Ingles avanzado", "Nivel 3 de ingles", "Idiomas", 1)
-   await courseService.createCourse("Comunity manager", "Aprenderas con las mejores herramientas para marketin", "Marketing", 1)
-   await courseService.createCourse("Ser tu porpio jefe", "Como generar tus propios ingresos desde casa ", "Negocios", 1)
+   await courseService.createCourse("Angular", "Angular desde 0 a experto", "Programación", 1,"https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg")
+   await courseService.createCourse("UX-UI", "Diseño utilizando la herramienta figma", "Diseño", 1,"https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg")
+   await courseService.createCourse("Ingles avanzado", "Nivel 3 de ingles", "Idiomas", 1,"https://images.pexels.com/photos/5676740/pexels-photo-5676740.jpeg")
+   await courseService.createCourse("Comunity manager", "Aprenderas con las mejores herramientas para marketin", "Marketing", 1,"https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg")
+   await courseService.createCourse("Ser tu porpio jefe", "Como generar tus propios ingresos desde casa ", "Negocios", 1,"https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg")
 
    // Contenido de ejemplo
    await contentService.createContent("Video", "Angular completo", "https://www.youtube.com/watch?v=f7unUpshmpA", 1)

@@ -15,9 +15,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './my-enrollments.component.css'
 })
 export class MyEnrollmentsComponent implements OnInit {
-  userCourses: any[] = [];
+  userCourses: any[]=[];
   courses: any[] = [];
-  
+  noHayRegistros:any[]|string = "No hay registros."
 
 
   constructor(
@@ -28,20 +28,17 @@ export class MyEnrollmentsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
+    this.userCourses
     this.loadCourses();
   }
 
   
   loadCourses(): void {
-    this.coursesService.getCoursesGET().subscribe(
-      (data) => {
-        this.courses = data
-        this.getUserRegistrations();
-        
-      },
-      (error) => {
-        console.error('Error al cargar los cursos:', error);
+    this.coursesService.getCoursesGET().subscribe({
+        next:(r)=>{
+          this.courses = r
+          this.getUserRegistrations();
+        },
       }
     );
   }
@@ -57,18 +54,13 @@ export class MyEnrollmentsComponent implements OnInit {
       if (user && user.user_id) {
         this.enrollmentsService.getUserRegistrations(user.user_id).subscribe({
           next: (registrations) => {
-           
-  
-            
             this.userCourses = registrations;
-            console.log("regggg")
-
-            console.log(registrations)
-            
-            
+            console.log("registro:")
+            console.log(this.userCourses)
+            //console.log(registrations)
           },
           error: (error) => {
-            console.error('Error al obtener las inscripciones:', error);
+            console.log('Error al obtener las inscripciones:', error);
           }
         });
       } else {

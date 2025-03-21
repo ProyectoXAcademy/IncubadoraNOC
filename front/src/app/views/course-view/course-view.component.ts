@@ -101,7 +101,7 @@ export class CourseViewComponent {
 
   descriptionCoursePUT(){
     this.serv.putCourseById(this.course!).subscribe({
-      next:(r)=> {}
+      next:(r)=> {console.log(r)}
     })
     this.editarDescripcion = false
   }
@@ -116,10 +116,10 @@ export class CourseViewComponent {
   
     // Obtiene la info del curso actual
     this.serv.getCourseByIdGET(idCourse).subscribe({
-      next: (course) => {
-        this.course = course;
+      next: (c) => {
+        this.course = c;
         // Compara si el usuario es el docente de este curso
-        this.esDocente = this.course.teacher_id === teacher_id;
+        if (teacher_id == c.teacher_id){this.esDocente = true}
       }
     });
   }
