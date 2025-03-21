@@ -4,64 +4,108 @@
     <h2 class="profile-title">Perfil de Usuario</h2>
     <!-- Foto de perfil -->
     <div class="profile-image">
-      <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg" alt="Course Image" />
+      <img class="hero-image" src="../../../assets/info-profile.png" alt="Course Image" />
     </div>
     <!-- Vista Estática -->
     <div *ngIf="!isEditing" class="profile-info">
-      <p><strong>👤 Nombre:</strong> {{ user.name }} {{ user.lastName }}</p>
-      <p><strong>🆔 DNI:</strong> {{ user.dni }}</p>
-      <p><strong>🎂 Fecha de Nacimiento:</strong> {{ user.date_of_birth | date: 'dd/MM/yyyy' }}</p>
-      <p><strong>📧 Email:</strong> {{ user.email }}</p>
+     
+      <div class="profile-info-div">
+        <img class="icon-image" src="../../../assets/profile.png" alt="Course Image" />
+        <p class=""><strong>Nombre:</strong> {{ user.name }} {{ user.lastName }}</p>
+      </div>
 
-      <button (click)="enableEdit()" id="edit-btn" class="btn btn-edit">✏️ Editar</button>
+      <div class="profile-info-div">
+        <img class="icon-image" src="../../../assets/dni.png" alt="Course Image" />
+        <p class=""><strong>DNI:</strong> {{ user.dni }}</p>
+      </div>
+
+
+      <div class="profile-info-div">
+        <img class="icon-image" src="../../../assets/birth.png" alt="Course Image" />
+        <p class=""><strong>Fecha de nacimiento:</strong> {{ user.date_of_birth | date: 'dd/MM/yyyy' }}</p>
+      </div>
+
+   
+      <div class="profile-info-div">
+        <img class="icon-image" src="../../../assets/email.png" alt="Course Image" />
+        <p class=""><strong>Email:</strong> {{ user.email}}</p>
+      </div>
+
+
+      <button (click)="enableEdit()" id="edit-btn" class="btn btn-edit">Editar</button>
     </div>
 
     <!-- Modo Edición -->
     <form *ngIf="isEditing" (ngSubmit)="saveChanges()" class="profile-info">
-      <p>
-        <strong>👤 Nombre:</strong>
+
+      <div class="profile-info-div-sh">
+        <img class="icon-image" src="../../../assets/profile.png" alt="Course Image" />
+        <p class=""><strong>Nombre:</strong> </p>
         <input type="text" [(ngModel)]="editedUser!.name" name="name" required />
-      </p>
+      </div>
 
-      <p>
-        <strong>👤 Apellido:</strong>
+      <div class="profile-info-div-sh">
+        <img class="icon-image" src="../../../assets/profile.png" alt="Course Image" />
+        <p class=""><strong>Apellido:</strong> </p>
         <input type="text" [(ngModel)]="editedUser!.lastName" name="lastName" required />
-      </p>
+      </div>
 
-      <p>
-        <strong>🆔 DNI:</strong>
+      <div class="profile-info-div-sh">
+        <img class="icon-image" src="../../../assets/dni.png" alt="Course Image" />
+        <p class=""><strong>DNI:</strong> </p>
         <input type="number" [(ngModel)]="editedUser!.dni" name="dni" required />
-      </p>
+      </div>
 
-      <p>
-        <strong>🎂 Fecha de Nacimiento:</strong>
+
+      <div class="profile-info-div-sh">
+        <img class="icon-image" src="../../../assets/birth.png" alt="Course Image" />
+        <p class=""><strong>Fecha de Nacimiento:</strong></p>
         <input type="date" [(ngModel)]="editedUser!.date_of_birth" name="date_of_birth" required />
-      </p>
+      </div>
 
-      <p>
-        <strong>📧 Email:</strong>
+   
+      <div class="profile-info-div-sh">
+        <img class="icon-image" src="../../../assets/email.png" alt="Course Image" />
+        <p class=""><strong>Email:</strong></p>
         <input type="email" [(ngModel)]="editedUser!.email" name="email" required />
-      </p>
+
+      </div>
 
       <div class="form-actions">
-        <button type="submit" class="btn btn-save">💾 Guardar</button>
-        <button type="button" (click)="cancel()" class="btn btn-cancel">❌ Cancelar</button>
+        <button type="submit" class="btn btn-save">Guardar</button>
+        <button type="button" (click)="cancel()" class="btn btn-cancel">Cancelar</button>
       </div>
     </form>
   </div>
 
 
-
+<!--  CAMBIO DE CONTRASEÑA -->
 
   <div class="password-container">
-    <label>Contraseña Actual</label>
+
+    <h2 class="profile-title">Cambio de contraseña</h2>
+    <!-- Foto de perfil -->
+    <div class="profile-image">
+      <img class="hero-image" src="../../../assets/hero-pass.png" alt="Course Image" />
+    </div>
+
+    <div class="profile-info-div-sh">
+      <p ><strong>Contraseña Actual</strong></p>
+    </div>
     <input type="password" [(ngModel)]="oldPassword" placeholder="Ingresa tu contraseña actual">
 
-    <label>Nueva Contraseña</label>
-    <input type="password" [(ngModel)]="newPassword" placeholder="Nueva contraseña">
+    <div class="profile-info-div-sh">
+      <p ><strong>Nueva Contraseña</strong></p>
+    </div>
+    <input  [(ngModel)]="newPassword" placeholder="Nueva contraseña">
 
-    <label>Confirmar Nueva Contraseña</label>
-    <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirma la nueva contraseña">
+    <div class="profile-info-div-sh">
+      <p ><strong>Repetir Nueva Contraseña</strong></p>
+    </div>
+    <input  [(ngModel)]="confirmPassword" placeholder="Confirma la nueva contraseña">
+
+
+
 
     <button (click)="changePassword()">Actualizar Contraseña</button>
   </div>

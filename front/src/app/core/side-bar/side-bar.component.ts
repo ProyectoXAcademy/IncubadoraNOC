@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, DoCheck } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 
 @Component({
   selector: 'app-side-bar',
@@ -10,51 +9,42 @@ import { CommonModule } from '@angular/common';
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
-export class SideBarComponent {
-
+export class SideBarComponent implements DoCheck {
 
   sidebarItems = [
     { label: 'Mi Perfil', path: 'profile', roles: ['Estudiante', 'Administrador', 'Docente'] },
-    { label: 'Mis Cursos', path: 'mycourses', roles: ['Estudiante', 'Docente'] },
-    { label: 'Mis Asistencias', path: 'attendance', roles: ['Estudiante'] },
-    { label: 'Mis Notas', path: 'mygrades', roles: ['Estudiante'] },
+    { label: 'Mis Cursos Dictados', path: 'mycourses', roles: ['Docente','Administrador'] },
     { label: 'Mis Inscripciones', path: 'myenrollments', roles: ['Estudiante', 'Administrador', 'Docente'] },
-    { label: 'Crear Curso', path: 'create-course', roles: ['Administrador', 'Docente'] },
-    { label: 'Asignar Docente', path: 'create-user-role', roles: ['Administrador', 'Docente'] }
+    { label: 'Mis Notas', path: 'mygrades', roles: ['Estudiante'] },
+    //{ label: 'Mis Asistencias', path: 'attendance', roles: ['Estudiante'] },
+    { label: 'Crear Curso', path: 'create-course', roles: ['Administrador'] },
+    { label: 'Crear Noticia', path: 'create-notice', roles: ['Administrador'] },
+    { label: 'Asignar Docente', path: 'create-user-role', roles: ['Administrador'] }
   ];
 
   filteredSidebarItems: any[] = [];
   userRole: string = '';
 
-  ngOnInit(): void {
+  ngDoCheck(): void {
     const storedUser = localStorage.getItem('loggedUser'); 
 
-    
-  
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser); 
-  
-      
-      if (parsedUser.Roles && parsedUser.Roles.length > 0) {
-        this.userRole = parsedUser.Roles[0].name; 
-      } else {
-        this.userRole = 'user'; 
+      const newRole = parsedUser.Roles?.[0]?.name || 'user';
+
+      if (this.userRole !== newRole) {
+        this.userRole = newRole;
+        this.updateSidebarItems();
       }
-    } else {
-      this.userRole = 'user'; 
     }
-  
-    
-  
-    
+  }
+
+  updateSidebarItems() {
     this.filteredSidebarItems = this.sidebarItems.filter(item =>
       item.roles.includes(this.userRole)
     );
   }
 
-  
-  
- 
   @Output() closeSidebar = new EventEmitter<void>(); 
 
   onItemClick() {

@@ -24,5 +24,7 @@
       <img src="https://i.postimg.cc/SQBzNQf1/image-avatar.png" alt="avatar" class="small-avatar"/>
       <p>Profesor: <span>{{ course.teacher_id }}</span></p>
     </div>
+
+    <button class="course-card-button"  (click)="goToCourse(course.course_id)">Ver Curso</button>
   </div>
 </body>

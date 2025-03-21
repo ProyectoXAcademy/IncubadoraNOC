@@ -7,6 +7,8 @@ export interface Courses {
     approval_conditions?:string;
     teacher_id:number;
     active?:boolean;
+    teacherName?:string,
+    img:string
 }
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../../services/courses/courses.service';
 import { Courses } from '../../models/courses.model';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-courses',
@@ -14,7 +15,11 @@ export class MyCoursesComponent implements OnInit {
   courses: Courses[] = [];
   teacher_id: number = 0; 
 
-  constructor(private coursesService: CoursesService) {}
+  constructor(
+    private coursesService: CoursesService,
+    private router :Router
+
+  ) {}
 
   ngOnInit() {
     this.getLoggedUser();
@@ -31,6 +36,8 @@ export class MyCoursesComponent implements OnInit {
   }
 
   
+
+  
   loadTeacherCourses() {
     this.coursesService.getCoursesByTeacher(this.teacher_id).subscribe({
       next: (data) => {
@@ -41,4 +48,13 @@ export class MyCoursesComponent implements OnInit {
       }
     });
   }
+
+  goToCourse(course_id?: number): void {
+    if (course_id !== undefined) {
+      this.router.navigate(['/dashboard/view-course', course_id]); 
+    } else {
+      console.error('El curso no tiene un ID válido.');
+    }
+  }
+  
 }

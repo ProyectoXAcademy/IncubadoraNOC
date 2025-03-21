@@ -1,56 +1,50 @@
-<section *ngIf="!editarDescripcion" >
+<section *ngIf="!editarDescripcion">
+    <div>
+        <h2>{{ course?.name }}</h2>
+        <p class="category">{{ course?.category }}</p>
+    </div>
 
     <div>
-        <h2>{{course?.name}}</h2>
-        <p class="category">{{course?.category}}</p>
-    </div>
-    
-    <div>
-        <h3>Descripción de curso</h3>
-        <p>{{course?.description}}</p>
+        <h3>Descripción del curso</h3>
+        <p>{{ course?.description }}</p>
     </div>
 
     <div>
         <h3>Condiciones de aprobación</h3>
-        <p>{{course?.approval_conditions}}</p>
+        <p>{{ course?.approval_conditions }}</p>
     </div>
 
     <div>
         <h3>Requisitos de inscripción</h3>
-        <p>{{course?.inscription_requeriments}}</p>
+        <p>{{ course?.inscription_requeriments }}</p>
     </div>
 
-   <!--  
-    <div>
-        <h3>Habilitar curso</h3>
-        <p>{{course?.active}}</p>
-    </div>
-    -->
     <div>
         <h3>Profesor</h3>
-        <p>{{course?.teacher_id}}</p>
+        <p>{{ docente?.name }} {{ docente?.lastName }}</p>
     </div>
 
+    <!-- Botón de edición solo visible si el usuario es el docente de este curso -->
     <div *ngIf="esDocente">
-        <button (click)="editarDescripcionTrue()" >Editar descripcion del curso</button>
+        <button (click)="editarDescripcionTrue()">Editar descripción del curso</button>
     </div>
 
-    <button [routerLink]="['/dashboard/myenrollments']">Volver a inscripción</button>
+    <div>
+        <button [routerLink]="['/dashboard/myenrollments']">Volver a inscripción</button>
+    </div>
 </section>
 
-
-<!--    EDITAAAR    -->
-<section *ngIf="editarDescripcion" >
+<!-- Sección de edición del curso -->
+<section *ngIf="editarDescripcion">
     <div>
-        <h3>Titulo del curso</h3>
-        <input type="input"  [(ngModel)]="course!.name">
+        <h3>Título del curso</h3>
+        <input type="text" [(ngModel)]="course!.name">
     </div>
 
     <div>
-        <h3>Selecione la categoria del curso</h3>
-
-        <select  [(ngModel)]="course!.category" >
-            <option value="">-- Selecione una opción --</option>
+        <h3>Seleccione la categoría del curso</h3>
+        <select [(ngModel)]="course!.category">
+            <option value="">-- Seleccione una opción --</option>
             <option value="Programación">Programación</option>
             <option value="Diseño">Diseño</option>
             <option value="Marketing">Marketing</option>
@@ -59,46 +53,46 @@
         </select>
     </div>
 
-    <div>  
-        <h3>Descripción de curso</h3>
-        <textarea name="" id="" rows="4" cols="50" [(ngModel)]="course!.description"  ></textarea>
+    <div>
+        <h3>Descripción del curso</h3>
+        <textarea rows="4" cols="50" [(ngModel)]="course!.description"></textarea>
     </div>
 
     <div>
         <h3>Condiciones de aprobación</h3>
-        <textarea name="" id="" rows="4" cols="50" [(ngModel)]="course!.approval_conditions"  ></textarea>
+        <textarea rows="4" cols="50" [(ngModel)]="course!.approval_conditions"></textarea>
     </div>
 
     <div>
         <h3>Requisitos de inscripción</h3>
-        <textarea name="" id="" rows="4" cols="50" [(ngModel)]="course!.inscription_requeriments"  ></textarea>
-    </div>
-
-
-    <div>
-        <h3>Profesor</h3>
-        <p>{{course?.teacher_id}}</p>
+        <textarea rows="4" cols="50" [(ngModel)]="course!.inscription_requeriments"></textarea>
     </div>
 
     <div>
-        <button (click)="descriptionCoursePUT()" >Guardar cambios</button>
-        <button (click)="descriptionCancelar()" >Cancelar</button>
+        <h3>Url de la imagen</h3>
+        <input type="text" [(ngModel)]="course!.img">
+
+    </div>
+
+    <div>
+        <button (click)="descriptionCoursePUT()">Guardar cambios</button>
+        <button (click)="descriptionCancelar()">Cancelar</button>
     </div>
 </section>
 
-
+<!-- Sección de calificaciones (solo visible para docentes) -->
 <section class="sec_notes" *ngIf="esDocente">
     <div>
         <h3>Administrar calificaciones</h3>
-        <button type="submit" (click)="toGrades()" >Asignar y consultar calificaciones</button>
+        <button type="submit" (click)="toGrades()">Asignar y consultar calificaciones</button>
     </div>
 </section>
 
-
+<!-- Sección de calificaciones para alumnos -->
 <section class="sec_notes" *ngIf="!esDocente">
     <div>
         <h3>Calificaciones</h3>
-        <p>A continuacion se listan las calificaciones del curso.</p>
+        <p>A continuación se listan las calificaciones del curso.</p>
         <div class="cont_grades">
             <div class="cont_grade_tit">
                 <p class="grade_tit">Nota 1</p>
@@ -106,44 +100,92 @@
                 <p class="grade_tit">Nota 3</p>
             </div>
             <div class="grade_value" *ngFor="let g of grades">
-                <p class="grade_value" >{{g.value}}</p>
+                <p class="grade_value">{{ g.value }}</p>
             </div>
         </div>
     </div>
 </section>
 
-
-<section class="sec_attendance"  *ngIf="esDocente">
+<!-- Sección de asistencia (solo visible para docentes) -->
+<section class="sec_attendance" *ngIf="esDocente">
     <div>
         <h3>Administrar asistencias</h3>
-        <button type="submit" (click)="toAttendance()" >Asignar y consultar asistencias</button>
-
+        <button type="submit" (click)="toAttendance()">Asignar y consultar asistencias</button>
     </div>
 </section>
 
-
-<section class="sec_attendance" *ngIf="!esDocente" >
+<!-- Sección de asistencia para alumnos -->
+<section class="sec_attendance" *ngIf="!esDocente">
     <div>
-        <h3 *ngIf="!esDocente">Asistencias</h3>
-        <p>A continuacion se listan las Asistencias del curso.</p>
-
+        <h3>Asistencias</h3>
+        <p>A continuación se listan las asistencias del curso.</p>
         <div class="cont_grades">
             <div class="cont_grade_tit">
                 <p class="grade_tit">Presencias</p>
-
             </div>
-            <div class="grade_value" *ngFor="let g of attendance">
-                <p class="grade_value" >o</p>
+            <div class="grade_value" *ngFor="let a of attendance">
+                <p class="grade_value">{{ a.date }}</p>
             </div>
         </div>
     </div>
-
 </section>
 
+<!-- Sección de contenidos -->
+<section>
+    <h3>Contenidos</h3>
+    <div *ngFor="let c of contents">
+        <h4>{{ c.name }}</h4>
+        <div>
+            <a [href]="c.url" target="_blank">Ver recurso</a>
+        </div>
+        <iframe [src]="c.url" width="600" height="400"></iframe>
+    </div>
+</section>
 
+<!-- Sección para agregar contenido (solo visible para docentes) -->
+<section *ngIf="!agregarContenido && esDocente">
+    <div>
+        <h3>Agregar contenido</h3>
+        <button (click)="habilitarFormContenido()">Agregar Nuevo Contenido</button>
+    </div>
+</section>
 
+<!-- Formulario para agregar nuevo contenido -->
+<section *ngIf="agregarContenido">
+    <h3>Ingresa los nuevos datos del curso</h3>
+    <form [formGroup]="formPOST" (ngSubmit)="createContentSUBMIT()">
+        
+        <div class="formCamp">
+            <label>Título del tema del nuevo contenido</label>
+            <div *ngIf="title_GET.invalid && (title_GET.dirty || title_GET.touched)" class="control">
+                <p *ngIf="title_GET.hasError('required')">Este campo es requerido</p>
+            </div>
+            <input type="text" placeholder="Tema 2: Condicionales" formControlName="title">
+        </div>
 
+        <div class="formCamp">
+            <label>Tipo</label>
+            <div *ngIf="type_GET.invalid && (type_GET.dirty || type_GET.touched)" class="control">
+                <p *ngIf="type_GET.hasError('required')">Este campo es requerido</p>
+            </div>
+            <select formControlName="type">
+                <option value="">-- Seleccione una opción --</option>
+                <option value="Video">Video</option>
+                <option value="PDF">PDF</option>
+            </select>
+        </div>
 
+        <div class="formCamp">
+            <label>Link al recurso</label>
+            <div *ngIf="link_GET.invalid && (link_GET.dirty || link_GET.touched)" class="control">
+                <p *ngIf="link_GET.hasError('required')">Este campo es requerido</p>
+            </div>
+            <input type="text" placeholder="https://www.youtube.com/. . ." formControlName="link">
+        </div>
 
-
-
+        <div class="button">
+            <button type="submit">Crear contenido</button>
+            <button type="button" (click)="formCancelar()">Cancelar</button>
+        </div>
+    </form>
+</section>
