@@ -15,26 +15,26 @@
       </ul>
     </nav>
 
-    <!-- 📌 NUEVO - Tarjetas de Cursos -->
+    <!-- Tarjetas de Cursos -->
     <div class="courses-container">
       <div *ngFor="let course of filteredCourses" class="card-container incubator-theme" (click)="selectCourse(course)">
         <div class="hero-image-container">
-            <img *ngIf="course.img != null" class="hero-image img" src={{course.img}} alt={{course.name}} />
-            <img *ngIf="course.img == null" class="hero-image img"  [src]=imageUrl alt={{imageUrl}} />
+          <img *ngIf="course.img != null" class="hero-image img" [src]="course.img" alt="{{course.name}}" />
+          <img *ngIf="course.img == null" class="hero-image img" [src]="imageUrl" alt="default image" />
         </div>
 
         <main class="main-content">
-          <h1 class="course-title">{{course.name}}</h1>
+          <h1 class="course-title">{{ course.name }}</h1>
           <p class="course-description">{{ course.description }}</p>
 
           <div class="flex-row">
             <div class="course-category">
-              <img src="../../../assets/category-card.png" alt="category" class="small-image"/>
+              <img src="../../../assets/category-card.png" alt="category" class="small-image" />
               <h2>{{ course.category }}</h2>
             </div>
-            
+
             <div class="status">
-              <img src="https://i.postimg.cc/prpyV4mH/clock-selection-no-bg.png" alt="clock" class="small-image"/>
+              <img src="https://i.postimg.cc/prpyV4mH/clock-selection-no-bg.png" alt="clock" class="small-image" />
               <p *ngIf="course.active; else inactive" class="active-status">Activo</p>
               <ng-template #inactive><p class="inactive-status">Inactivo</p></ng-template>
             </div>
@@ -42,15 +42,13 @@
         </main>
 
         <div class="card-attribute">
-          <img src="../../../assets/teacher-card.png" alt="avatar" class="small-avatar"/>
-          <h4>Profesor:  <span>{{ course.teacherName }}</span></h4>
-
+          <img src="../../../assets/teacher-card.png" alt="avatar" class="small-avatar" />
+          <h4>Profesor: <span>{{ course.teacherName }}</span></h4>
         </div>
-
       </div>
     </div>
 
-    <!-- 📌 Detalle del Curso Seleccionado -->
+    <!-- Popup de Detalle del Curso -->
     <div *ngIf="selectedCourse" class="course-detail">
       <button class="close-btn" (click)="deselectCourse()">Cerrar</button>
       <h3>{{ selectedCourse.name }}</h3>
@@ -58,7 +56,9 @@
       <p><strong>Categoría:</strong> {{ selectedCourse.category }}</p>
       <p><strong>Requisitos:</strong> {{ selectedCourse.inscription_requeriments || 'N/A' }}</p>
       <p><strong>Condiciones de aprobación:</strong> {{ selectedCourse.approval_conditions || 'N/A' }}</p>
-      <button (click)="enroll(selectedCourse.course_id)">Inscribirse Ahora</button>
+      <button (click)="goToCourseDetail()">Ver Curso</button>
+
+
     </div>
   </section>
 </main>

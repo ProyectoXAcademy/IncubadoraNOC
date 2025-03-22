@@ -23,9 +23,12 @@ import { TermsComponent } from './views/terms/terms.component';
 import { CookiePoliciesComponent } from './views/cookie-policies/cookie-policies.component';
 import { AdminAttendanceComponent } from './views/admin-attendance/admin-attendance.component';
 import { CreateNoticeComponent } from './views/create-notice/create-notice.component';
+import { CourseDetailComponent } from './views/course-detail/course-detail.component';
 
 
 export const routes: Routes = [
+
+  // footer
   { path: '', component: HomeComponent },
   { path:'faq', component:FAQComponent},
   { path:'contact', component:ContactComponent},
@@ -37,7 +40,10 @@ export const routes: Routes = [
   // Rutas de autenticación
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+
+  //cursos y detalle 
   { path: 'courses', component: CoursesComponent },
+  {path: 'courses-detail/:course_id', component: CourseDetailComponent},
   // Ruta Dashboard con rutas hijas
   {
     path: 'dashboard',

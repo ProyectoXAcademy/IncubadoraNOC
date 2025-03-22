@@ -1,0 +1,22 @@
+<div *ngIf="course; else loading" class="course-detail-card">
+    <h2 class="course-title">{{ course.name }}</h2>
+    <button (click)="enroll()" class="btn-inscribirme">Inscribirme</button>
+
+
+    <p class="course-subtitle">{{ course.description }}</p>
+  
+    <div class="course-section">
+      <p><strong>Categoría:</strong> {{ course.category }}</p>
+      <p><strong>Requisitos:</strong> {{ course.inscription_requeriments || 'No especificados' }}</p>
+      <p><strong>Condiciones de aprobación:</strong> {{ course.approval_conditions || 'No especificadas' }}</p>
+    </div>
+  
+    <div class="teacher-info">
+      Profesor: {{ course.teacherName }}
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <div class="loading">Cargando curso...</div>
+  </ng-template>
+  

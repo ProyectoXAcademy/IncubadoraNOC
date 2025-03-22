@@ -1,10 +1,11 @@
-
-/*PALETA DE COLORES*/
 :root {
     --color-violeta: #6564cc;
     --color-azul: #00339e;
     --color-azul-oscuro: #010163;
     --color-naranja: #fc6a07;
+    --color-fondo: #f9f9f9;
+    --color-suave	: #9f9edd;
+    --sombra-suave: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   * {
@@ -13,153 +14,180 @@
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
-.borde{
-    border: 1px solid blue;
-}
+  
+  /* Contenedor general de secciones */
 
-select{
-    margin: .5rem 1rem ;
-    padding: .5rem;
-    font-weight: 600;
-
-}
-section{
-    margin: 1rem;
-    border: 1px solid #00339e50;
-}
-div{
-    margin: 2rem 1rem;
-}
-h2{
-    margin: 2rem 1rem;
-    text-align: center;
-    display: inline-block;
-}
-h3,p{
-    margin:1rem;
-}
-input, textarea{
-    margin:.2rem 1rem;
-    padding: .5rem;
-
-}
-
-.category{
-    display: inline-block;
-    background-color: #fc6a07;
-    border-radius: 5px;
-    padding: .5rem;
-    color: white;
-}
-
-button,summary{
-    margin:.5rem;
-    padding: .8rem 1.5rem;
-    background-color: var(--color-azul);
-    border: 1px solid var(--color-azul);
-    border-radius: 5px;
-    color: white;
-    font-weight: 500;
-}
-
-.sec_attendance{
-    background-color: #fc6a0750;
-    border: 1px solid  #fc6a0750;
-}
-.sec_notes{
-    background-color: #00339e50;
-    border: 1px solid #00339e50;
-}
-
-/* Estilos generales */
-h2, h3 {
-    color: #00339e; /* Azul oscuro */
-    text-align: center;
-    font-weight: bold;
-}
-
-p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-    text-align: center;
-}
-
-/* Contenedor del curso */
-section {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #f9f9f9;
+  section > div {
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--color-azul); /* Borde completo */
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 51, 158, 0.05);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #d9d8f7;
+    border-radius: 12px;
+    box-shadow: var(--sombra-suave);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-section:hover {
+    border-left: 6px solid var(--color-violeta);
+  }
+  
+  section:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-/* Botones */
-button {
-    background: #fc6a07;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Títulos principales */
+  h2 {
+    text-align: center;
+    font-size: 28px;
+    color: var(--color-azul-oscuro);
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    font-size: 20px;
+    color: var(--color-azul);
+    border-bottom: 2px solid var(--color-naranja);
+    padding-bottom: .3rem;
+    margin: 1rem 0 0.5rem;
+  }
+  
+  /* Párrafos */
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .category {
+    display: inline-block;
+    background-color: var(--color-naranja);
     color: white;
+    border-radius: 5px;
+    padding: .4rem .8rem;
+    margin: 0.5rem auto;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Botones */
+  button, summary {
+    margin: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(45deg, var(--color-naranja), var(--color-violeta));
+    color: white;
+    font-weight: bold;
     border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s ease;
-}
-
-button:hover {
-    background: #00339e;
-}
-
-/* Inputs y Textareas */
-input, select, textarea {
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(45deg, var(--color-azul), var(--color-azul-oscuro));
+    transform: scale(1.05);
+  }
+  
+  /* Inputs y formularios */
+  input, textarea, select {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 0.8rem;
+    margin: 0.3rem 0 1rem;
+    border: 1px solid var(--color-violeta);
+    border-radius: 6px;
     font-size: 16px;
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-    section {
-        max-width: 95%;
-    }
-
-    input, select, textarea {
-        font-size: 14px;
-    }
-
-    button {
-        width: 100%;
-        padding: 12px;
-    }
-}
-
-.cont_grades{
-    border: 1px solid white;
-    border-radius: .5rem;
-}
-.grade_tit{
-    display: inline-block;
-}
-.grade_value{
-    display: inline-block;
-    margin: .5rem 1rem;
-}
-.cont_grade_tit{
-    margin: 0;
-}
-
-
-.control{
-    display: inline;
+    transition: border 0.3s ease;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border: 2px solid var(--color-naranja);
+  }
+  
+  /* Bloques internos */
+  section > div {
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    border-left: 5px solid var(--color-azul);
+    box-shadow: 0 2px 5px rgba(0, 51, 158, 0.05);
+  }
+  
+  /* Secciones destacadas */
+  .sec_notes {
+    background-color: #e6ecff;
+    border-left: 6px solid var(--color-azul);
+  }
+  
+  .sec_attendance {
+    background-color: #fff3ea;
+    border-left: 6px solid var(--color-naranja);
+  }
+  
+  /* Calificaciones y asistencia */
+  .cont_grades {
+    border: 1px solid var(--color-azul);
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #fff;
+    margin-top: 1rem;
+  }
+  
+  .cont_grade_tit {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    margin-bottom: .5rem;
+  }
+  
+  .grade_tit, .grade_value {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .control {
     color: red;
-}
+    font-size: 14px;
+    margin-left: 0.5rem;
+  }
+  
+  /* Estilo para iframes (contenidos) */
+  iframe {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    section {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+  
+    h2 {
+      font-size: 24px;
+    }
+  
+    h3 {
+      font-size: 18px;
+    }
+  
+    button {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+  }
+  
