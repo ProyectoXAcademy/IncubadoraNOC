@@ -1,40 +1,68 @@
-/* Contenedor principal */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom, #336699, #4d79a3);
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #6564cc, #00339e, #010163, #fc6a07);
+  background-size: 300% 100%;
+  animation: moveGradient 6s ease-in-out infinite alternate;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 .container {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
-  }
 
-  /* Estilo del título con efecto marquee */
-  .title {
-    font-size: 3rem;
-    font-weight: bold;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    width: 100%;
-    color: #333;
-    font-family: Arial, sans-serif;
-  }
+  padding: 40px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to right, #6564cc, #00339e, #010163, #fc6a07);
+  background-size: 300% 100%;
+  animation: moveGradient 6s ease-in-out infinite alternate;
+  box-shadow: 6px 6px 15px rgba(252, 106, 7, 0.7);
+  
+}
 
+h1 {
+  font-size: 80px;
+  margin-bottom: 10px;
+}
 
-  /* Imagen */
-  .image {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-  }
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 
-  /* Responsividad */
-  @media (max-width: 600px) {
-    .title {
-      font-size: 2rem;
-    }
-    .image {
-      width: 100%;
-    }
-  }
+.btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

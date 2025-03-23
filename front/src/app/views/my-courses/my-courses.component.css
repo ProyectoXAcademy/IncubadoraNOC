@@ -108,7 +108,7 @@ Classes
   background-size: 300% 100%;
   animation: moveGradient 6s ease-in-out infinite alternate;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  
+  border-radius: 10px;
 }
 @keyframes moveGradient {
   0% {
@@ -134,6 +134,7 @@ Classes
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
 }
 
 .cards-grid {
