@@ -1,0 +1,68 @@
+.course-detail-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--sombra-suave);
+    max-width: 700px;
+    margin: 2rem auto;
+    border-left: 8px solid var(--color-violeta);
+  }
+  
+  .course-title {
+    font-size: 2rem;
+    color: var(--color-azul-oscuro);
+    margin-bottom: 0.5rem;
+  }
+  
+  .course-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-azul);
+    margin-bottom: 1rem;
+  }
+  
+  .course-section {
+    margin: 1.5rem 0;
+  }
+  
+  .course-section p {
+    margin: 0.3rem 0;
+    color: #333;
+  }
+  
+  .course-section strong {
+    color: var(--color-violeta);
+  }
+  
+  .teacher-info {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: var(--color-suave);
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-naranja);
+    font-size: 1.2rem;
+  }
+  
+
+  .btn-inscribirme {
+    background-color: var(--color-naranja);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 1rem;
+  }
+  
+  .btn-inscribirme:hover {
+    background-color: var(--color-violeta);
+  }

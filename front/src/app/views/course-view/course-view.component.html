@@ -131,7 +131,7 @@
 </section>
 
 <!-- Sección de contenidos -->
-<section>
+<section *ngIf="!agregarContenido && !esDocente">
     <h3>Contenidos</h3>
     <div *ngFor="let c of contents">
         <h4>{{ c.name }}</h4>

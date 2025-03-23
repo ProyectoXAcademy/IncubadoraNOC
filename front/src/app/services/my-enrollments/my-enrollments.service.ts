@@ -38,4 +38,3 @@ export class MyEnrollmentsService {
     return this.http.get<Registration[]>(this.endpointRegistrationByCourseId+course_id)
   }
 }
-
