@@ -2,7 +2,7 @@ export interface Courses {
     course_id?: number;
     name: string;
     description: string;
-    long_description?: string; // ✅ nuevo
+    long_description?: string; 
     category: string;
     inscription_requeriments?: string;
     approval_conditions?: string;
@@ -11,11 +11,11 @@ export interface Courses {
     active?: boolean;
     img: string;
   
-    start_date?: string; // ✅ nuevo (formato ISO: "2025-04-01")
-    end_date?: string;   // ✅ nuevo
-    duration?: string;   // ✅ nuevo
-    modality?: 'Presencial' | 'Online' | 'Híbrido'; // ✅ nuevo
-    level?: 'Básico' | 'Intermedio' | 'Avanzado';   // ✅ nuevo
-    price?: number;      // ✅ nuevo
+    start_date?: string; 
+    end_date?: string;   
+    duration?: string;   
+    modality?: 'Presencial' | 'Online' | 'Híbrido'; 
+    level?: 'Básico' | 'Intermedio' | 'Avanzado';   
+    price?: number;      
   }
   

@@ -50,7 +50,6 @@ const courseModel = dbConfig.sequelize.define("Courses", {
     allowNull: true
   },
 
-  // NUEVOS CAMPOS
   start_date: {
     type: DataTypes.DATE,
     allowNull: true
