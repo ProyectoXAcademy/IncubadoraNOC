@@ -6,7 +6,7 @@
         "date_of_birth": "1993-07-06",
         "email": "usuarioprueba1@gmail.com",
         "password": 12345,
-        "role":"Estudiante"
+        "role":"Administrador"
     }
 
 ]

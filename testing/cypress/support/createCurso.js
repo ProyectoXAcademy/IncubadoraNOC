@@ -1,14 +1,29 @@
-Cypress.Commands.add('createCurso', (name, description, cateogry, teacher) => {
-    cy.reload(); // Recarga la página para aplicar los cambios
-    cy.get('#edit-btn').should('be.visible').click(); // Hacer clic en el botón "Editar"
-  
-    cy.get('input[name="name"]').clear().type(name);
-    cy.get('input[name="description"]').clear().type(description);
-    cy.get('input[name="cateogry"]').clear().type(cateogry);
-    cy.get('input[name="teacher"]').clear().type(teacher); // Asegúrate de que el formato sea el esperado (ej. "yyyy-mm-dd")
-  
-    cy.get('.btn-save').click(); // Guardar cambios
-    cy.reload(); // Recarga la página para aplicar los cambios
-    cy.wait(1000); // Espera 2 segundos
-  
-  });
+Cypress.Commands.add('goToMiCreateCurso', () => {
+  cy.visit('http://localhost:4200/dashboard/create-course');
+  cy.reload(); // Recarga la página para aplicar los cambios
+  // Verificar que la URL cambió
+  cy.url().should('include', '/dashboard/create-course');
+  cy.wait(1000); // Espera 1 segundos
+});
+
+Cypress.Commands.add('createCurso', (name, description, category, teacher_id) => {
+  cy.get('input[formcontrolname="name"]').clear().type(name);
+  cy.get('input[formcontrolname="description"]').clear().type(description);
+  // Para el campo 'category', selecciona 'Programación'
+  cy.get('select[formcontrolname="category"]').select(category);
+  // Para el campo 'teacher', selecciona 'Leo Messi'
+  cy.get('select[formcontrolname="teacher_id"]').select(teacher_id);
+  // Asegúrate de que el formato sea el esperado en los inputs de texto
+  cy.get('.btn-submit').click(); // Guardar cambios
+  cy.reload(); // Recarga la página para aplicar los cambios
+  cy.wait(1000); // Espera 1 segundo
+});
+
+
+Cypress.Commands.add('goToMisCursosDictados', () => {
+  cy.visit('http://localhost:4200/dashboard/mycourses');
+  cy.reload(); // Recarga la página para aplicar los cambios  // Verificar que la URL cambió
+  cy.url().should('include', '/dashboard/mycourses');
+  cy.wait(1000); // Espera 1 segundos
+});
+

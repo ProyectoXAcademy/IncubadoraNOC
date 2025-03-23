@@ -22,4 +22,5 @@ import './editProfile'
 import './changePassword'
 import './createCurso'
 import './createNoticia'
+import './newDocente'
 import 'cypress-mochawesome-reporter/register'; // En el archivo e2e.js
