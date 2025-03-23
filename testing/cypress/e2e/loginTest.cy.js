@@ -6,9 +6,9 @@ describe('incubadoraNoc Test demo login', { testIsolation: false }, () => {
             cy.login(user.email, user.password);
             cy.checkFooterSocialLinks()
             cy.goToExplorarCursos()
-            cy.inscribirseEnCurso('Angular'); // Inscribirse en un curso específico
+            cy.inscribirseEnCurso('Inglés avanzado'); // Inscribirse en un curso específico
             cy.goToDashboard();
-            cy.goToMisCursos()
+            cy.goToMisInscripciones()
             cy.logout();
             cy.clearCookies();
             cy.clearLocalStorage();

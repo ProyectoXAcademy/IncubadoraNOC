@@ -93,7 +93,7 @@ export class CourseDetailComponent implements OnInit {
       },
       error: (error) => {
         const errorMessage = error.error?.message || 'No se pudo realizar la inscripción.';
-        Swal.fire('Error al inscribirse', errorMessage, 'error');
+        Swal.fire('¡Error al inscribirse!', errorMessage, 'error');
       }
     });
   }
