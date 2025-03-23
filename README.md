@@ -5,7 +5,7 @@
 - *Martín Nicolás Delhugo* 🇦🇷 - 🐣 [Mi Github](https://github.com/delhugo-martin)
 <figure><img src="./front/src/assets/Santex.png" alt="logo" style="height: 100px;"></figure>
 <figure><img src="./front/src/assets/xAcademy.png" alt="logo" style="height: 100px;"></figure>
-<figure><img src="./front/src/assets/incubadoraNoc.png" alt="logo" style="height: 200px; width:800px"></figure>
+<figure><img src="./front/src/assets/incubadoraNoc.png" alt="logo" style="height: auto;"></figure>
 # Proyecto: Portal Web Incubadora NOC y Web Centro Comercial Cruz del Eje
 
 ## Solicitante:
