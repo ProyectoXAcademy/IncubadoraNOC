@@ -36,4 +36,66 @@ Además, se propone un segundo proyecto opcional: la creación de un sitio web p
 - *Post:* http://localhost:3000/api/login
 - *Post:* http://localhost:3000/api/user/create
 
+- *Post*: http://localhost:3000/api/login
 
+- *Post*: http://localhost:3000/api/user/create
+
+- *Get*: http://localhost:3000/api/user
+
+- *Get*: http://localhost:3000/api/role
+
+- *Get*: http://localhost:3000/api/userRole
+
+- *Get*: http://localhost:3000/api/course
+
+- *Get*: http://localhost:3000/api/registration
+
+- *Get*: http://localhost:3000/api/note
+
+- *Get*: http://localhost:3000/api/payment
+
+- *Get*: http://localhost:3000/api/assistance
+
+- *Get*: http://localhost:3000/api/publication
+
+- *Get*: http://localhost:3000/api/content
+
+- *Put*: http://localhost:3000/api/user
+
+- *Put*: http://localhost:3000/api/role
+
+- *Put*: http://localhost:3000/api/userRole
+
+- *Put*: http://localhost:3000/api/course
+
+- *Put*: http://localhost:3000/api/registration
+
+- *Put*: http://localhost:3000/api/note
+
+- *Put*: http://localhost:3000/api/payment
+
+- *Put*: http://localhost:3000/api/assistance
+
+- *Put*: http://localhost:3000/api/publication
+
+- *Put*: http://localhost:3000/api/content
+
+- *Delete*: http://localhost:3000/api/user
+
+- *Delete*: http://localhost:3000/api/role
+
+- *Delete*: http://localhost:3000/api/userRole
+
+- *Delete*: http://localhost:3000/api/course
+
+- *Delete*: http://localhost:3000/api/registration
+
+- *Delete*: http://localhost:3000/api/note
+
+- *Delete*: http://localhost:3000/api/payment
+
+- *Delete*: http://localhost:3000/api/assistance
+
+- *Delete*: http://localhost:3000/api/publication
+
+- *Delete*: http://localhost:3000/api/content
