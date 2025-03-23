@@ -64,9 +64,15 @@
       <button (click)="editarDescripcionTrue()">Editar descripción del curso</button>
     </div>
   
-    <div>
-      <button [routerLink]="['/dashboard/myenrollments']">Volver a inscripción</button>
-    </div>
+    <!-- Si es docente, volver a sus cursos -->
+<button *ngIf="esDocente" [routerLink]="['/dashboard/mycourses']">
+  Volver a mis cursos
+</button>
+
+<!-- Si es alumno, volver a sus inscripciones -->
+<button *ngIf="!esDocente" [routerLink]="['/dashboard/myenrollments']">
+  Volver a mis inscripciónes
+</button>
   </section>
   
   <!-- Sección de edición del curso -->
