@@ -17,9 +17,10 @@ import { Title } from '@angular/platform-browser';
 import { MyEnrollmentsService } from '../../services/my-enrollments/my-enrollments.service';
 import { UserService } from '../../services/users/user.service';
 import { User } from '../../models/user.model';
+
 @Component({
   selector: 'app-course-view',
-  imports: [FormsModule, NgIf,RouterModule,NgFor,ReactiveFormsModule],
+  imports: [FormsModule, NgIf,RouterModule,NgFor,ReactiveFormsModule, CommonModule],
   standalone :true,
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css'
