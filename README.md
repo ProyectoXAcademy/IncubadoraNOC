@@ -5,7 +5,7 @@
 - *Martín Nicolás Delhugo* 🇦🇷 - 🐣 [Mi Github](https://github.com/delhugo-martin)
 <figure><img src="./front/src/assets/Santex.png" alt="logo" style="height: 100px;"></figure>
 <figure><img src="./front/src/assets/xAcademy.png" alt="logo" style="height: 100px;"></figure>
-
+<figure><img src="./front/src/assets/incubadoraNoc.png" alt="logo" style="height: 200px; width:800px"></figure>
 # Proyecto: Portal Web Incubadora NOC y Web Centro Comercial Cruz del Eje
 
 ## Solicitante:
@@ -19,8 +19,6 @@ Además, se propone un segundo proyecto opcional: la creación de un sitio web p
 ## Proyectos
 
 ### 1. Portal Web Incubadora NOC (PRIORITARIO)
-
-<figure><img src="./front/src/assets/incubadoraNoc.png" alt="logo" style="height: 200px; width:800px"></figure>
 
 #### Funcionalidades requeridas:
 - **Gestión de contenido web**: Publicaciones de cursos y capacitaciones, información sobre programas de créditos, entrenamientos laborales y empresas colaboradoras.
