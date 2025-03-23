@@ -59,7 +59,7 @@ export class CoursesComponent implements OnInit {
   }
 
   selectCourse(course: any) {
-    console.log('Curso seleccionado:', course); // 👈 esto
+    console.log('Curso seleccionado:', course); 
 
     this.selectedCourse = course;
   }

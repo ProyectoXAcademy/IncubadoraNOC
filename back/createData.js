@@ -31,11 +31,91 @@ const createData = async () => {
 
 
    //Curso de ejemplo
-   await courseService.createCourse("Angular", "Angular desde 0 a experto", "Programación", 1,"https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg")
-   await courseService.createCourse("UX-UI", "Diseño utilizando la herramienta figma", "Diseño", 1,"https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg")
-   await courseService.createCourse("Ingles avanzado", "Nivel 3 de ingles", "Idiomas", 1,"https://images.pexels.com/photos/5676740/pexels-photo-5676740.jpeg")
-   await courseService.createCourse("Comunity manager", "Aprenderas con las mejores herramientas para marketin", "Marketing", 1,"https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg")
-   await courseService.createCourse("Ser tu porpio jefe", "Como generar tus propios ingresos desde casa ", "Negocios", 1,"https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg")
+   await courseService.createCourse(
+    "Angular", 
+    "Angular desde 0 a experto", 
+    "En este curso aprenderás Angular desde los fundamentos hasta el desarrollo completo de aplicaciones web SPA...",
+    "Programación", 
+    1,
+    "https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg",
+    "2025-04-01",
+    "2025-06-01",
+    "8 semanas",
+    "Online",
+    "Intermedio",
+    45000,
+    "Conocimientos básicos de HTML, CSS y JavaScript",  // requisitos
+    "80% de asistencia y entrega del proyecto final"     // condiciones
+  );
+  
+  await courseService.createCourse(
+    "UX-UI", 
+    "Diseño utilizando la herramienta Figma", 
+    "Aprendé a diseñar experiencias digitales impactantes utilizando Figma...",
+    "Diseño", 
+    1,
+    "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
+    "2025-05-10",
+    "2025-06-20",
+    "6 semanas",
+    "Híbrido",
+    "Básico",
+    38000,
+    "Manejo básico de PC",
+    "Entrega de prototipo final en Figma"
+  );
+  
+  await courseService.createCourse(
+    "Inglés avanzado", 
+    "Nivel 3 de inglés", 
+    "Este curso está orientado a estudiantes con nivel intermedio-alto de inglés...",
+    "Idiomas", 
+    1,
+    "https://images.pexels.com/photos/5676740/pexels-photo-5676740.jpeg",
+    "2025-03-15",
+    "2025-05-30",
+    "10 semanas",
+    "Online",
+    "Avanzado",
+    52000,
+    "Haber aprobado nivel 2 o demostrar nivel con prueba de ingreso",
+    "Aprobación de exámenes escritos y orales"
+  );
+  
+  await courseService.createCourse(
+    "Community Manager", 
+    "Aprenderás con las mejores herramientas para marketing", 
+    "Convertite en un community manager profesional aprendiendo a gestionar redes sociales...",
+    "Marketing", 
+    1,
+    "https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg",
+    "2025-04-10",
+    "2025-05-15",
+    "5 semanas",
+    "Presencial",
+    "Intermedio",
+    41000,
+    "Conocimientos de redes sociales",
+    "Participación activa en simulaciones de campañas"
+  );
+  
+  await courseService.createCourse(
+    "Sé tu propio jefe", 
+    "Cómo generar tus propios ingresos desde casa", 
+    "Este curso está diseñado para despertar tu mentalidad emprendedora...",
+    "Negocios", 
+    1,
+    "https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg",
+    "2025-06-01",
+    "2025-08-01",
+    "8 semanas",
+    "Online",
+    "Básico",
+    39000,
+    "Ganas de emprender y compromiso con el desarrollo personal",
+    "Presentación de un plan de negocio final"
+  );
+  
 
    // Contenido de ejemplo
    await contentService.createContent("Video", "Angular completo", "https://www.youtube.com/watch?v=f7unUpshmpA", 1)
