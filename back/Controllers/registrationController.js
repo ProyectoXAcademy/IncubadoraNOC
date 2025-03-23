@@ -50,4 +50,31 @@ const getUsersRegistrationsByCourseId = async (req, res, next) => {
   }
 }
 
-module.exports = {getRegistrationById, createRegistration, getUserRegistrations, getUsersRegistrationsByCourseId}
+const updatePaymentStatus = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { paid } = req.body;
+
+    if (typeof paid !== 'boolean') {
+      return res.status(400).json({ message: 'El valor de "paid" debe ser true o false.' });
+    }
+
+    const updatedRegistration = await registrationService.updatePaymentStatus(id, paid);
+    res.status(200).json(updatedRegistration);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getRegistrationByCourseAndStudent = async (req, res, next) => {
+  try {
+    const { course_id, student_id } = req.params;
+    const registration = await registrationService.getRegistrationByCourseAndStudent(Number(course_id), Number(student_id));
+    res.status(200).json(registration);
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+module.exports = {getRegistrationById, createRegistration, getUserRegistrations, getUsersRegistrationsByCourseId, updatePaymentStatus, getRegistrationByCourseAndStudent}

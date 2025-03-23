@@ -29,6 +29,10 @@ const registrationModel = dbConfig.sequelize.define("Registrations", {
             model: 'Courses',
             key: 'course_id'
         }
+    },
+    paid: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
     }
 }, {
     timestamps: false,

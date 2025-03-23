@@ -49,22 +49,34 @@ export class CourseViewComponent {
   grades: Grade[] | null = null;
   docente: User | null = null;
   contents: Content[] | null = null;
+  registration: any = null;
+  registrationsByCourse: any[] = [];
+  users: User[] = [];
+
+
 
   formPOST: FormGroup | any;
 
   ngOnInit() {
+    this.controlRole(); // ← primero esto para definir si es docente
     this.getInfoCourse();
-    this.controlRole();
     this.getGradesAlumno();
     this.getAttendanceAlumno();
     this.getContents();
-
+    this.getRegistration();
+  
     this.formPOST = this.formBuilder.group({
       title: new FormControl<Content | null>(null, Validators.required),
       type: new FormControl<Content | null>(null, Validators.required),
       link: new FormControl<Content | null>(null, Validators.required),
     });
+
+    this.servUser.getAllUsers().subscribe({
+      next: (res) => this.users = res,
+      error: (err) => console.error('Error al traer usuarios', err)
+    });
   }
+  
 
   /////////// DESCRIPCIÓN /////////////
 
@@ -104,11 +116,14 @@ export class CourseViewComponent {
   controlRole() {
     const idCourse = Number(this.routerActive.snapshot.paramMap.get('course_id'));
     const teacher_id = JSON.parse(localStorage.getItem('loggedUser')!).user_id;
-
+  
     this.serv.getCourseByIdGET(idCourse).subscribe({
       next: (c) => {
         this.course = c;
-        if (teacher_id == c.teacher_id) this.esDocente = true;
+        if (teacher_id == c.teacher_id) {
+          this.esDocente = true;
+          this.getInscriptosPorCurso(); // ← solo si es docente
+        }
       }
     });
   }
@@ -217,5 +232,56 @@ export class CourseViewComponent {
     } else {
       this.formPOST.markAllAsTouched();
     }
+  }
+
+  getRegistration() {
+    const course_id = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+    const student_id = JSON.parse(localStorage.getItem('loggedUser')!).user_id;
+  
+    this.servEnrollments.getByStudentAndCourse(course_id, student_id).subscribe({
+      next: (r) => {
+        this.registration = r;
+      },
+      error: () => {
+        this.registration = null;
+      }
+    });
+  }
+
+  getInscriptosPorCurso() {
+    const course_id = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+    this.servEnrollments.getInscriptionsByIdCourse(course_id).subscribe({
+      next: (res) => {
+        this.registrationsByCourse = res;
+      },
+      error: (err) => {
+        console.error('Error al obtener inscripciones:', err);
+      }
+    });
+  }
+
+  marcarComoPagado(registration_id: number) {
+    this.servEnrollments.setPaidStatus(registration_id, true).subscribe({
+      next: () => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Pago confirmado',
+          text: 'El alumno ahora puede acceder al contenido.'
+        });
+        this.getInscriptosPorCurso(); 
+      },
+      error: () => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se pudo actualizar el estado de pago.'
+        });
+      }
+    });
+  }
+
+  getNombreAlumno(student_id: number): string {
+    const alumno = this.users.find(u => u.user_id === student_id);
+    return alumno ? `${alumno.name} ${alumno.lastName}` : 'Desconocido';
   }
 }

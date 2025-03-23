@@ -5,12 +5,14 @@ import { MyGradesService } from '../../services/my-grades/my-grades.service';
 import {FormBuilder,Validator,FormGroup,FormControl,ReactiveFormsModule,Validators,} from "@angular/forms";
 import { NgIf , NgFor} from "@angular/common";
 import Swal from "sweetalert2";
-import { RouterModule,ActivatedRoute } from '@angular/router';
+import { RouterModule,ActivatedRoute, RouterLinkActive } from '@angular/router';
+import {  Router } from '@angular/router';
+
 
 @Component({
 
   selector: 'app-admin-grades',
-  imports: [NgFor,ReactiveFormsModule,RouterModule],
+  imports: [NgFor,ReactiveFormsModule,RouterModule,],
   standalone: true,
   templateUrl: './admin-grades.component.html',
   styleUrl: './admin-grades.component.css'
@@ -21,7 +23,8 @@ export class AdminGradesComponent {
     private servUser:UserService,
     private servGrade:MyGradesService,
     private formBuilder:FormBuilder,
-    private routerActivate:ActivatedRoute
+    private routerActivate:ActivatedRoute,
+    private router: Router
   ){}
     students:any = []
     student:any
@@ -97,6 +100,9 @@ export class AdminGradesComponent {
 
 
 
-
+    volverAlCurso() {
+      const course_id = Number(this.routerActivate.snapshot.paramMap.get('course_id'));
+      this.router.navigate(['/dashboard/view-course', course_id]);
+    }
 
 }////////////////////////////

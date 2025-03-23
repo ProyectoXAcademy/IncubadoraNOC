@@ -37,4 +37,16 @@ export class MyEnrollmentsService {
   getInscriptionsByIdCourse(course_id:number): Observable<Registration[]>{
     return this.http.get<Registration[]>(this.endpointRegistrationByCourseId+course_id)
   }
+
+  getByStudentAndCourse(course_id: number, student_id: number): Observable<Registration> {
+    const url = `http://localhost:3000/api/registration/course/${course_id}/student/${student_id}`;
+    return this.http.get<Registration>(url);
+  }
+
+  setPaidStatus(registration_id: number, paid: boolean): Observable<any> {
+    const url = `http://localhost:3000/api/registration/${registration_id}/pay`;
+    return this.http.patch(url, { paid });
+  }
+  
+  
 }

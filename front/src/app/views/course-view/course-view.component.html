@@ -210,9 +210,39 @@
     </div>
 </section>
 
+<!-- Lista de alumnos inscritos (solo para profesores) -->
+<section *ngIf="esDocente">
+  <h3>Alumnos inscritos en este curso</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Alumno ID</th>
+        <th>Fecha de inscripción</th>
+        <th>¿Pagó?</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of registrationsByCourse">
+        <td>{{ getNombreAlumno(r.student_id) }}</td>
+        <td>{{ r.registration_date | date: 'shortDate' }}</td>
+        <td>{{ r.paid ? 'Sí' : 'No' }}</td>
+        <td>
+          <button *ngIf="!r.paid" (click)="marcarComoPagado(r.registration_id)">
+            Marcar como pagado
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
 <!-- Sección de contenidos -->
 <!-- Sección de contenidos -->
-<section *ngIf="!esDocente">
+<section *ngIf="!esDocente && registration && registration.paid">
+
+  <!-- Contenido visible solo si es alumno Y pagó -->
+  <p>Bienvenido al contenido del curso.</p>
   <h3>Contenidos</h3>
   <div *ngFor="let c of contents" class="contenido-block">
     <h4>{{ c.name }}</h4>
@@ -244,6 +274,13 @@
     </div>
   </div>
 </section>
+
+<section *ngIf="!esDocente && registration && !registration.paid">
+
+  <p>No podés acceder al contenido hasta que el pago sea confirmado.</p>
+</section>
+  
+
 
 <!-- Sección para agregar contenido (solo visible para docentes) -->
 <section *ngIf="!agregarContenido && esDocente">
