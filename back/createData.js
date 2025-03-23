@@ -36,7 +36,7 @@ const createData = async () => {
     "Angular desde 0 a experto", 
     "En este curso aprenderás Angular desde los fundamentos hasta el desarrollo completo de aplicaciones web SPA...",
     "Programación", 
-    1,
+    2,
     "https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg",
     "2025-04-01",
     "2025-06-01",
@@ -44,8 +44,8 @@ const createData = async () => {
     "Online",
     "Intermedio",
     45000,
-    "Conocimientos básicos de HTML, CSS y JavaScript",  // requisitos
-    "80% de asistencia y entrega del proyecto final"     // condiciones
+    "Conocimientos básicos de HTML, CSS y JavaScript",  
+    "80% de asistencia y entrega del proyecto final"     
   );
   
   await courseService.createCourse(
@@ -53,7 +53,7 @@ const createData = async () => {
     "Diseño utilizando la herramienta Figma", 
     "Aprendé a diseñar experiencias digitales impactantes utilizando Figma...",
     "Diseño", 
-    1,
+    3,
     "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
     "2025-05-10",
     "2025-06-20",
@@ -70,7 +70,7 @@ const createData = async () => {
     "Nivel 3 de inglés", 
     "Este curso está orientado a estudiantes con nivel intermedio-alto de inglés...",
     "Idiomas", 
-    1,
+    4,
     "https://images.pexels.com/photos/5676740/pexels-photo-5676740.jpeg",
     "2025-03-15",
     "2025-05-30",
@@ -87,7 +87,7 @@ const createData = async () => {
     "Aprenderás con las mejores herramientas para marketing", 
     "Convertite en un community manager profesional aprendiendo a gestionar redes sociales...",
     "Marketing", 
-    1,
+    2,
     "https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg",
     "2025-04-10",
     "2025-05-15",
@@ -104,7 +104,7 @@ const createData = async () => {
     "Cómo generar tus propios ingresos desde casa", 
     "Este curso está diseñado para despertar tu mentalidad emprendedora...",
     "Negocios", 
-    1,
+    3,
     "https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg",
     "2025-06-01",
     "2025-08-01",
@@ -115,6 +115,92 @@ const createData = async () => {
     "Ganas de emprender y compromiso con el desarrollo personal",
     "Presentación de un plan de negocio final"
   );
+
+  await courseService.createCourse(
+    "JavaScript Avanzado",
+    "Profundizá tus conocimientos en JavaScript moderno",
+    "Dominá funciones avanzadas, asincronía, módulos ES6+ y técnicas profesionales para el desarrollo frontend.",
+    "Programación",
+    4,
+    "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+    "2025-05-01",
+    "2025-06-15",
+    "6 semanas",
+    "Online",
+    "Avanzado",
+    47000,
+    "Conocimientos sólidos de JavaScript básico",
+    "Entrega de desafíos semanales y proyecto final"
+  );
+  
+  await courseService.createCourse(
+    "Diseño Gráfico con Canva",
+    "Creá piezas visuales impactantes sin experiencia previa",
+    "Aprendé a diseñar contenido para redes sociales, presentaciones y más usando Canva.",
+    "Diseño",
+    4,
+    "https://images.pexels.com/photos/1051077/pexels-photo-1051077.jpeg",
+    "2025-04-05",
+    "2025-05-10",
+    "5 semanas",
+    "Online",
+    "Básico",
+    32000,
+    "Solo necesitás una cuenta gratuita de Canva",
+    "Entrega de un portfolio final de piezas gráficas"
+  );
+  
+  await courseService.createCourse(
+    "Marketing Digital 360°",
+    "Dominá herramientas de marketing online",
+    "Estrategias de contenido, email marketing, SEO, SEM y gestión de campañas en redes sociales.",
+    "Marketing",
+    2,
+    "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+    "2025-06-05",
+    "2025-07-20",
+    "7 semanas",
+    "Híbrido",
+    "Intermedio",
+    49000,
+    "Conocimientos básicos de redes y contenido digital",
+    "Examen final + presentación de estrategia integral"
+  );
+  
+  await courseService.createCourse(
+    "Finanzas para Emprendedores",
+    "Aprendé a gestionar y planificar tus finanzas",
+    "Desde costos, precios y flujo de caja hasta proyecciones financieras y herramientas de control.",
+    "Negocios",
+    3,
+    "https://images.pexels.com/photos/4386373/pexels-photo-4386373.jpeg",
+    "2025-05-10",
+    "2025-06-20",
+    "6 semanas",
+    "Presencial",
+    "Básico",
+    43000,
+    "Manejo básico de Excel y calculadora",
+    "Entrega de plan financiero del emprendimiento"
+  );
+  
+  await courseService.createCourse(
+    "Portugués para Viajeros",
+    "Comunicación básica para tu próximo viaje",
+    "Frases útiles, expresiones cotidianas y cultura brasileña para disfrutar tu experiencia al máximo.",
+    "Idiomas",
+    3,
+    "https://st3.depositphotos.com/1022214/16484/i/450/depositphotos_164847814-stock-photo-question-falas-portuges-do-you.jpg",
+    "2025-04-20",
+    "2025-05-25",
+    "5 semanas",
+    "Online",
+    "Básico",
+    36000,
+    "Ningún requisito previo",
+    "Participación en clases prácticas y prueba oral final"
+  );
+  
   
 
    // Contenido de ejemplo

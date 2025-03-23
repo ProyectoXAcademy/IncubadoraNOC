@@ -55,7 +55,7 @@ html{
 }
 
 .categories-list li {
-  background-color: #00339E;
+  background-color: #6564CC;
   color: white;
   padding: 8px 15px;
   border-radius: 20px;
@@ -65,7 +65,7 @@ html{
 }
 
 .categories-list li:hover {
-  background-color: #6564CC;
+  background-color: #00339E;
 }
 .courses-container {
   display: flex;

@@ -104,11 +104,7 @@ Classes
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(to right, #6564CC, #00339E, #010163, #FC6A07);
-  background-size: 300% 100%;
-  animation: moveGradient 6s ease-in-out infinite alternate;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  
 }
 @keyframes moveGradient {
   0% {
@@ -249,7 +245,7 @@ div.attribution {
   justify-content: center;
   gap: 20px;
   padding: 20px;
-  background-color: #f5f5f5;
+  
 }
 
 /* 📌 Tarjeta de Curso */
