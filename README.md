@@ -20,7 +20,7 @@ Además, se propone un segundo proyecto opcional: la creación de un sitio web p
 
 ### 1. Portal Web Incubadora NOC (PRIORITARIO)
 
-<figure><img src="./front/src/assets/incubadoraNoc.png" alt="logo" style="height: 200px; width:auto"></figure>
+<figure><img src="./front/src/assets/incubadoraNoc.png" alt="logo" style="height: 200px; width:800px"></figure>
 
 #### Funcionalidades requeridas:
 - **Gestión de contenido web**: Publicaciones de cursos y capacitaciones, información sobre programas de créditos, entrenamientos laborales y empresas colaboradoras.
