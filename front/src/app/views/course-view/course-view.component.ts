@@ -58,22 +58,49 @@ export class CourseViewComponent {
   formPOST: FormGroup | any;
 
   ngOnInit() {
-    this.controlRole(); // ← primero esto para definir si es docente
-    this.getInfoCourse();
-    this.getGradesAlumno();
-    this.getAttendanceAlumno();
-    this.getContents();
-    this.getRegistration();
+    const course_id = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+    const user_id = JSON.parse(localStorage.getItem('loggedUser')!).user_id;
   
+    // Obtener curso + verificar si es docente
+    this.serv.getCourseByIdGET(course_id).subscribe({
+      next: (course) => {
+        this.course = course;
+  
+        // Verificar si es docente
+        this.esDocente = user_id === course.teacher_id;
+  
+        // Si es docente, cargar inscriptos al curso
+        if (this.esDocente) {
+          this.getInscriptosPorCurso();
+        } else {
+          // Si es alumno, verificar si pagó (registro individual)
+          this.getRegistration();
+          this.getGradesAlumno();
+          this.getAttendanceAlumno();
+        }
+  
+        // Obtener datos del docente
+        this.servUser.getUserById(course.teacher_id).subscribe({
+          next: (docente) => this.docente = docente
+        });
+      },
+      error: (err) => console.error('Error al cargar curso', err)
+    });
+  
+    // Obtener contenidos (visible para todos)
+    this.getContents();
+  
+    // Cargar todos los usuarios para mostrar nombres (opcional)
+    this.servUser.getAllUsers().subscribe({
+      next: (res) => this.users = res,
+      error: (err) => console.error('Error al traer usuarios', err)
+    });
+  
+    // Inicializar formulario de contenidos (solo docentes lo usan)
     this.formPOST = this.formBuilder.group({
       title: new FormControl<Content | null>(null, Validators.required),
       type: new FormControl<Content | null>(null, Validators.required),
       link: new FormControl<Content | null>(null, Validators.required),
-    });
-
-    this.servUser.getAllUsers().subscribe({
-      next: (res) => this.users = res,
-      error: (err) => console.error('Error al traer usuarios', err)
     });
   }
   
@@ -239,12 +266,8 @@ export class CourseViewComponent {
     const student_id = JSON.parse(localStorage.getItem('loggedUser')!).user_id;
   
     this.servEnrollments.getByStudentAndCourse(course_id, student_id).subscribe({
-      next: (r) => {
-        this.registration = r;
-      },
-      error: () => {
-        this.registration = null;
-      }
+      next: (r) => this.registration = r,
+      error: () => this.registration = null
     });
   }
 
@@ -283,5 +306,10 @@ export class CourseViewComponent {
   getNombreAlumno(student_id: number): string {
     const alumno = this.users.find(u => u.user_id === student_id);
     return alumno ? `${alumno.name} ${alumno.lastName}` : 'Desconocido';
+  }
+
+  toPayments() {
+    const course_id = Number(this.routerActive.snapshot.paramMap.get('course_id'));
+    this.router.navigate(['/dashboard/payments', course_id]);
   }
 }

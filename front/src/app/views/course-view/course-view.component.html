@@ -1,80 +1,78 @@
 <section *ngIf="!editarDescripcion">
-    <div>
-      <h2>{{ course?.name }}</h2>
-      <p class="category">{{ course?.category }}</p>
-    </div>
-  
-    <div>
-      <h3>Descripción del curso</h3>
-      <p>{{ course?.description }}</p>
-    </div>
-  
-    <div>
-      <h3>Descripción detallada</h3>
-      <p>{{ course?.long_description || 'No disponible' }}</p>
-    </div>
-  
-    <div>
-      <h3>Condiciones de aprobación</h3>
-      <p>{{ course?.approval_conditions }}</p>
-    </div>
-  
-    <div>
-      <h3>Requisitos de inscripción</h3>
-      <p>{{ course?.inscription_requeriments }}</p>
-    </div>
-  
-    <div>
-      <h3>Modalidad</h3>
-      <p>{{ course?.modality }}</p>
-    </div>
-  
-    <div>
-      <h3>Nivel</h3>
-      <p>{{ course?.level }}</p>
-    </div>
-  
-    <div>
-      <h3>Duración</h3>
-      <p>{{ course?.duration }}</p>
-    </div>
-  
-    <div>
-      <h3>Fecha de inicio</h3>
-      <p>{{ course?.start_date | date: 'longDate' }}</p>
-    </div>
-  
-    <div>
-      <h3>Fecha de finalización</h3>
-      <p>{{ course?.end_date | date: 'longDate' }}</p>
-    </div>
-  
-    <div>
-      <h3>Precio</h3>
-      <p>{{ course?.price | currency: 'ARS' : 'symbol' : '1.0-0' }}</p>
-    </div>
-  
-    <div>
-      <h3>Profesor</h3>
-      <p>{{ docente?.name }} {{ docente?.lastName }}</p>
-    </div>
-  
-    <!-- Botón de edición solo visible si el usuario es el docente de este curso -->
-    <div *ngIf="esDocente">
-      <button (click)="editarDescripcionTrue()">Editar descripción del curso</button>
-    </div>
-  
-    <!-- Si es docente, volver a sus cursos -->
-<button *ngIf="esDocente" [routerLink]="['/dashboard/mycourses']">
-  Volver a mis cursos
-</button>
+  <div>
+    <h2>{{ course?.name }}</h2>
+    <p class="category">{{ course?.category }}</p>
+  </div>
 
-<!-- Si es alumno, volver a sus inscripciones -->
-<button *ngIf="!esDocente" [routerLink]="['/dashboard/myenrollments']">
-  Volver a mis inscripciónes
-</button>
-  </section>
-  
+  <div>
+    <h3>Descripción del curso</h3>
+    <p>{{ course?.description }}</p>
+  </div>
+
+  <div>
+    <h3>Descripción detallada</h3>
+    <p>{{ course?.long_description || 'No disponible' }}</p>
+  </div>
+
+  <div>
+    <h3>Condiciones de aprobación</h3>
+    <p>{{ course?.approval_conditions }}</p>
+  </div>
+
+  <div>
+    <h3>Requisitos de inscripción</h3>
+    <p>{{ course?.inscription_requeriments }}</p>
+  </div>
+
+  <div>
+    <h3>Modalidad</h3>
+    <p>{{ course?.modality }}</p>
+  </div>
+
+  <div>
+    <h3>Nivel</h3>
+    <p>{{ course?.level }}</p>
+  </div>
+
+  <div>
+    <h3>Duración</h3>
+    <p>{{ course?.duration }}</p>
+  </div>
+
+  <div>
+    <h3>Fecha de inicio</h3>
+    <p>{{ course?.start_date | date: 'longDate' }}</p>
+  </div>
+
+  <div>
+    <h3>Fecha de finalización</h3>
+    <p>{{ course?.end_date | date: 'longDate' }}</p>
+  </div>
+
+  <div>
+    <h3>Precio</h3>
+    <p>{{ course?.price | currency: 'ARS' : 'symbol' : '1.0-0' }}</p>
+  </div>
+
+  <div>
+    <h3>Profesor</h3>
+    <p>{{ docente?.name }} {{ docente?.lastName }}</p>
+  </div>
+
+  <!-- Acciones solo visibles para docentes -->
+  <div *ngIf="esDocente" class="acciones-docente">
+    <button (click)="editarDescripcionTrue()">Editar descripción</button>
+    <button (click)="toGrades()">Asignar y consultar calificaciones</button>
+    <button (click)="toAttendance()">Asignar y consultar asistencias</button>
+    <button (click)="toPayments()">Administrar pagos</button>
+    <button [routerLink]="['/dashboard/mycourses']">Volver a mis cursos</button>
+  </div>
+
+  <!-- Acciones para alumnos -->
+  <div *ngIf="!esDocente">
+    <button [routerLink]="['/dashboard/myenrollments']">Volver a mis inscripciónes</button>
+  </div>
+</section>
   <!-- Sección de edición del curso -->
   <section *ngIf="editarDescripcion">
     <div>
@@ -167,12 +165,12 @@
   
 
 <!-- Sección de calificaciones (solo visible para docentes) -->
-<section class="sec_notes" *ngIf="esDocente">
+<!--<section class="sec_notes" *ngIf="esDocente">
     <div>
         <h3>Administrar calificaciones</h3>
         <button type="submit" (click)="toGrades()">Asignar y consultar calificaciones</button>
     </div>
-</section>
+</section>  -->
 
 <!-- Sección de calificaciones para alumnos -->
 <section class="sec_notes" *ngIf="!esDocente">
@@ -193,12 +191,12 @@
 </section>
 
 <!-- Sección de asistencia (solo visible para docentes) -->
-<section class="sec_attendance" *ngIf="esDocente">
+  <!-- <section class="sec_attendance" *ngIf="esDocente">
     <div>
         <h3>Administrar asistencias</h3>
         <button type="submit" (click)="toAttendance()">Asignar y consultar asistencias</button>
     </div>
-</section>
+</section>-->  
 
 <!-- Sección de asistencia para alumnos -->
 <section class="sec_attendance" *ngIf="!esDocente">
@@ -216,32 +214,11 @@
     </div>
 </section>
 
-<!-- Lista de alumnos inscritos (solo para profesores) -->
-<section *ngIf="esDocente">
-  <h3>Alumnos inscritos en este curso</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Alumno ID</th>
-        <th>Fecha de inscripción</th>
-        <th>¿Pagó?</th>
-        <th>Acción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let r of registrationsByCourse">
-        <td>{{ getNombreAlumno(r.student_id) }}</td>
-        <td>{{ r.registration_date | date: 'shortDate' }}</td>
-        <td>{{ r.paid ? 'Sí' : 'No' }}</td>
-        <td>
-          <button *ngIf="!r.paid" (click)="marcarComoPagado(r.registration_id)">
-            Marcar como pagado
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+
+  
+  
+  
+  
 
 <!-- Sección de contenidos -->
 <!-- Sección de contenidos -->

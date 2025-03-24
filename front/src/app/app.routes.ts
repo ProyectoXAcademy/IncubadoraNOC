@@ -24,6 +24,8 @@ import { CookiePoliciesComponent } from './views/cookie-policies/cookie-policies
 import { AdminAttendanceComponent } from './views/admin-attendance/admin-attendance.component';
 import { CreateNoticeComponent } from './views/create-notice/create-notice.component';
 import { CourseDetailComponent } from './views/course-detail/course-detail.component';
+import { PaidsComponent } from './views/paids/paids.component';
+import { Component } from '@angular/core';
 
 
 export const routes: Routes = [
@@ -61,6 +63,7 @@ export const routes: Routes = [
       { path: 'view-course/:course_id', component: CourseViewComponent},
       { path: 'admin-grades/:course_id', component: AdminGradesComponent},
       { path: 'admin-attendance/:course_id', component: AdminAttendanceComponent},
+      { path: 'payments/:course_id', component: PaidsComponent},
 
 
 
