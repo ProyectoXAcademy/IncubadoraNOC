@@ -146,5 +146,9 @@ router.get('/:id', registrationController.getRegistrationById);
 router.post('/create', registrationController.createRegistration);
 router.get('/user/:id', registrationController.getUserRegistrations);
 router.get('/course/:id', registrationController.getUsersRegistrationsByCourseId);
+router.patch('/:id/pay', registrationController.updatePaymentStatus);
+router.get('/course/:course_id/student/:student_id', registrationController.getRegistrationByCourseAndStudent);
+
+
 
 module.exports = router;

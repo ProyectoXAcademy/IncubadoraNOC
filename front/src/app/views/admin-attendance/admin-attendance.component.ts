@@ -6,6 +6,7 @@ import { UserService } from '../../services/users/user.service';
 import { RouterModule,ActivatedRoute } from '@angular/router';
 import { MyAttendanceService } from '../../services/my-attendance/my-attendance.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-attendance',
@@ -19,7 +20,8 @@ export class AdminAttendanceComponent {
      private servUser:UserService,
      private servAttendance:MyAttendanceService,
      private formBuilder:FormBuilder,
-     private routerActivate:ActivatedRoute
+     private routerActivate:ActivatedRoute,
+     private router : Router
    ){}
 
   students:any=[]
@@ -87,5 +89,10 @@ export class AdminAttendanceComponent {
                 });
 
             }
+    }
+
+    volverAlCurso() {
+      const course_id = Number(this.routerActivate.snapshot.paramMap.get('course_id'));
+      this.router.navigate(['/dashboard/view-course', course_id]);
     }
 }////////////////////

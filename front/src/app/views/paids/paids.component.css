@@ -1,0 +1,70 @@
+/* Encabezado */
+h2 {
+    text-align: center;
+    color: var(--color-azul-oscuro);
+    font-size: 26px;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Tabla de pagos */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+    margin-bottom: 2rem;
+  }
+  
+  thead {
+    background-color: var(--color-violeta);
+    color: white;
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+  }
+  
+  tr:hover {
+    background-color: #f3f3ff;
+  }
+  
+  td button {
+    background: linear-gradient(45deg, var(--color-naranja), var(--color-violeta));
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  td button:hover {
+    background: linear-gradient(45deg, var(--color-azul), var(--color-azul-oscuro));
+    transform: scale(1.05);
+  }
+  
+  
+  .btn-volver {
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.8rem 1.8rem;
+    background: linear-gradient(45deg, var(--color-violeta), var(--color-azul));
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-volver:hover {
+    background: linear-gradient(45deg, var(--color-naranja), var(--color-violeta));
+    transform: scale(1.05);
+  }

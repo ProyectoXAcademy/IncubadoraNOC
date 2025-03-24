@@ -6,5 +6,6 @@ export interface Registration {
   registration_date: Date;
   student_id: number;
   course_id: number;
+  paid: boolean; 
   Courses?: Courses; 
 }

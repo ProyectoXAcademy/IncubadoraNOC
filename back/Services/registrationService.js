@@ -34,7 +34,8 @@ const createRegistration = async (student_id, course_id) => {
     const newRegistration = await registrationModel.create({
       student_id,
       course_id,
-      registration_date: new Date()
+      registration_date: new Date(),
+      paid: false
     });
 
     console.log('Inscripción creada con éxito:', newRegistration);
@@ -77,8 +78,46 @@ const getUsersRegistrationsByCourseId = async (course_id) => {
   }
 }
 
+const updatePaymentStatus = async (registration_id, paid) => {
+  try {
+    const registration = await registrationModel.findByPk(registration_id);
 
-module.exports = {getRegistrationById, createRegistration, getUserRegistrations,getUsersRegistrationsByCourseId}
+    if (!registration) {
+      const error = new Error('Inscripción no encontrada');
+      error.statusCode = 404;
+      throw error;
+    }
+
+    registration.paid = paid;
+    await registration.save();
+
+    return registration;
+  } catch (error) {
+    throw error;
+  }
+}
 
 
-module.exports = {getRegistrationById, createRegistration, getUserRegistrations,getUsersRegistrationsByCourseId}
+const getRegistrationByCourseAndStudent = async (course_id, student_id) => {
+  try {
+    const registration = await registrationModel.findOne({
+      where: { course_id, student_id }
+    });
+
+    if (!registration) {
+      const error = new Error('No se encontró inscripción');
+      error.statusCode = 404;
+      throw error;
+    }
+
+    return registration;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+
+module.exports = {getRegistrationById, createRegistration, getUserRegistrations,getUsersRegistrationsByCourseId, updatePaymentStatus, getRegistrationByCourseAndStudent}
+
+
