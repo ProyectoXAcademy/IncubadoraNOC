@@ -1,16 +1,44 @@
-body{
+/*PALETA DE COLORES*/
+:root {
+  --color-violeta: #6564cc;
+  --color-azul: #00339e;
+  --color-azul-oscuro: #010163;
+  --color-naranja: #fc6a07;
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-*{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 /* Estilos generales */
-h2 {
-    text-align: center;
-    color: #010163; /* Azul oscuro */
-  }
+
+.contenedor {
+  max-width: 1200px;
+  margin: 30px auto;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--color-azul); /* Borde completo */
+  border-left: 5px solid var(--color-azul);
+  background-color: #f9f9f9;
+
+}
+
+.cont-tit{
+  background-color: #6564cc;
+  padding: 16px;
+  border-radius:8px 8px 0px 0px;
+  border: 1px solid #6564cc;
+}
+
+/* 📌 Títulos */
+.title {
+  text-align: center;
+  font-size: 24px;
+  color: white;
+}
+
   
   /* Contenedor de los cursos */
   ul {
@@ -24,7 +52,7 @@ h2 {
   
   /* Cada curso en una tarjeta */
   li {
-    background: linear-gradient(135deg, #6564cc, #00339e); /* Violeta a Azul */
+    background:#00339e;
     color: white;
     padding: 20px;
     margin-top: 30px;
@@ -60,7 +88,7 @@ h2 {
   h3 {
     margin-bottom: 10px;
     font-size: 1.3em;
-    color: #fc6a07; /* Naranja */
+    color: white; /* Naranja */
   }
   
   /* Párrafos dentro de cada tarjeta */
@@ -97,13 +125,13 @@ h2 {
 
 /* 📌 Tarjeta del Curso Inscrito */
 .course-card {
-  background: linear-gradient(135deg, #6564cc, #00339e);
-  border: 2px solid #010163;
+  background: #6564cc;
   border-radius: 12px;
   box-shadow: 6px 6px 15px rgba(252, 106, 7, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 300px;
-  padding: 20px;
+  padding: 16px;
+  margin: 12px;
   text-align: center;
 }
 
@@ -124,7 +152,7 @@ h2 {
 
 .course-card-title {
   font-size: 1.5rem;
-  color: #FC6A07;
+  color: white;
   margin-bottom: 8px;
 }
 
@@ -154,6 +182,21 @@ h2 {
   font-size: 1.2rem;
   color: #010163;
   margin-top: 20px;
+}
+.button {
+  background:  #fc6a07;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background:  #00339e;
+  transform: scale(1.05);
 }
 
 /* 📌 Responsividad */

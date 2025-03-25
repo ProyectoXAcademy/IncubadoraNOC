@@ -20,6 +20,7 @@ export class MyCoursesComponent implements OnInit {
     private router :Router
 
   ) {}
+  imageUrl: string = "https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg";
 
   ngOnInit() {
     this.getLoggedUser();

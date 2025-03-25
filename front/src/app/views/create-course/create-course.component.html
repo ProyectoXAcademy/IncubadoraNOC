@@ -1,29 +1,40 @@
 <section class="contenedor">
-  <h2 class="title">Ingresa los datos del nuevo curso:</h2>
+  <div class="cont-tit">
+    <h2 class="title">Ingresa los datos del nuevo curso:</h2>
+  </div>
   
   <form [formGroup]="formPOST" (ngSubmit)="createCourseSUBMIT()">
 
     <!-- Nombre del curso -->
     <div class="formCamp">
-      <label for="name">Nombre</label>
-      <input type="text" id="name" placeholder="Introducción a la IA" formControlName="name" required>
-      <div *ngIf="formPOST.controls['name'].invalid && (formPOST.controls['name'].dirty || formPOST.controls['name'].touched)" class="control">
-        <p *ngIf="formPOST.controls['name'].hasError('required')">(Este campo es requerido)</p>
+      <div class="err">
+        <label for="name">Nombre</label>
+        <div *ngIf="formPOST.controls['name'].invalid && (formPOST.controls['name'].dirty || formPOST.controls['name'].touched)" class="control">
+          <p *ngIf="formPOST.controls['name'].hasError('required')">(Este campo es requerido)</p>
+        </div>
       </div>
+      <input type="text" id="name" placeholder="Introducción a la IA" formControlName="name" required>
     </div>
 
     <!-- Descripción del curso -->
     <div class="formCamp">
-      <label for="description">Descripción</label>
-      <input type="text" id="description" placeholder="Una breve descripción sobre el curso" formControlName="description" required>
-      <div *ngIf="formPOST.controls['description'].invalid && (formPOST.controls['description'].dirty || formPOST.controls['description'].touched)" class="control">
-        <p *ngIf="formPOST.controls['description'].hasError('required')">(Este campo es requerido)</p>
+      <div class="err">
+        <label for="description">Descripción</label>
+        <div *ngIf="formPOST.controls['description'].invalid && (formPOST.controls['description'].dirty || formPOST.controls['description'].touched)" class="control">
+          <p *ngIf="formPOST.controls['description'].hasError('required')">(Este campo es requerido)</p>
+        </div>
       </div>
+      <input type="text" id="description" placeholder="Una breve descripción sobre el curso" formControlName="description" required>
     </div>
 
     <!-- Categoría del curso -->
     <div class="formCamp">
-      <label for="category">Categoría</label>
+      <div class="err">
+        <label for="category">Categoría</label>
+        <div *ngIf="formPOST.controls['category'].invalid && (formPOST.controls['category'].dirty || formPOST.controls['category'].touched)" class="control">
+          <p *ngIf="formPOST.controls['category'].hasError('required')">(Este campo es requerido)</p>
+        </div>
+      </div>
       <select id="category" formControlName="category" required>
         <option value="" disabled>-- Seleccione una opción --</option>
         <option value="Programación">Programación</option>
@@ -32,28 +43,28 @@
         <option value="Negocios">Negocios</option>
         <option value="Idiomas">Idiomas</option>
       </select>
-      <div *ngIf="formPOST.controls['category'].invalid && (formPOST.controls['category'].dirty || formPOST.controls['category'].touched)" class="control">
-        <p *ngIf="formPOST.controls['category'].hasError('required')">(Este campo es requerido)</p>
-      </div>
     </div>
 
     <!-- Lista desplegable de Profesores -->
     <div class="formCamp">
-      <label for="teacher">Asignar Profesor</label>
+      <div class="err">
+        <label for="teacher">Asignar Profesor</label>
+        <div *ngIf="formPOST.controls['teacher_id'].invalid && formPOST.controls['teacher_id'].touched" class="control">
+          <p *ngIf="formPOST.controls['teacher_id'].hasError('required')">(Este campo es requerido)</p>
+        </div>
+
+      </div>
       <select id="teacher" formControlName="teacher_id" required>
         <option value="" disabled selected>Selecciona un profesor</option>
         <option *ngFor="let teacher of teachers" [value]="teacher.user_id">
           {{ teacher.name }} {{ teacher.lastName }}
         </option>
       </select>
-      <div *ngIf="formPOST.controls['teacher_id'].invalid && formPOST.controls['teacher_id'].touched" class="control">
-        <p *ngIf="formPOST.controls['teacher_id'].hasError('required')">(Este campo es requerido)</p>
-      </div>
     </div>
 
     <!-- Botón de envío -->
     <div class="button">
-      <button type="submit" [disabled]="formPOST.invalid" class="btn-submit">Crear curso</button>
+      <button class="button" type="submit" [disabled]="formPOST.invalid" class="btn-submit">Crear curso</button>
     </div>
 
   </form>

@@ -1,20 +1,26 @@
 <section>
-    <h2 class="title">Asignar rol docente</h2>
+    <div class="cont-tit">
+        <h2 class="title">Asignar rol docente</h2>
+
+    </div>
     <form [formGroup]="formPOST" (ngSubmit)="getRolesSUBMIT()"  >    
 
 
          <!--    /////////////////////////   -->
          <div class="formCamp">
-            <label for="">Ingrese el mail del usuario</label>
-            <div *ngIf="email_GET.invalid && (email_GET.dirty || email_GET.touched)"  class="control" >
-                <p *ngIf="email_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
-                <p *ngIf="email_GET.hasError('email')" class="control" > (Ingrese un formato correcto)</p>
-            </div>
-            <input type="text" placeholder="ejemplo@mail.com" formControlName="email">
+            <div class="err">
+                <label  for="">Ingrese el mail del usuario</label>
+                <div *ngIf="email_GET.invalid && (email_GET.dirty || email_GET.touched)"  class="control" >
+                    <p *ngIf="email_GET.hasError('required')" class="control" > (Este campo es requerido)</p>
+                    <p  *ngIf="email_GET.hasError('email')" class="control" > (Ingrese un formato correcto)</p>
+                </div>
+                   
+                </div>
+                <input type="text" placeholder="ejemplo@mail.com" formControlName="email">
         </div>
        
-        <div class="button">
-            <button type="submit" >Buscar usuario</button>
+        <div >
+            <button class="button" type="submit" >Buscar usuario</button>
         </div>
     </form>
 </section>
@@ -49,28 +55,30 @@
             </div>
 
             <div class="div-line">
-                <button (click)="addRole(user.user_id)">Asignar rol de docente</button>
-                <button *ngIf="!insripcionCurso" (click)="verCursos()">Asignar curso al docente</button>
+                <button class="button" (click)="addRole(user.user_id)">Asignar rol de docente</button>
+                <button class="button" *ngIf="!insripcionCurso" (click)="verCursos()">Asignar curso al docente</button>
             </div>
 
         </div>
     </div>
 
     <div class="second-div"  *ngIf="insripcionCurso" >
-        <h3>Seleccione el curso que el docente dará</h3>
+        <h3>Seleccione el curso que el docente dictará</h3>
 
         <div>
             <div class="course-card" *ngFor="let c of courses" >
-                <h3>{{c.name}}</h3>
-                <p>{{c.description}}</p>
-                <p>{{c.course_id}}</p>
+                <h3>Nombre: {{c.name}}</h3>
+                <p> <strong>Descripción: </strong> {{c.description}}</p>
+                <p><strong>ID curso: </strong> {{c.course_id}}</p>
 
-                <button type="submit" (click)="addTeacherToCourse(c.course_id)">Asignar curso al docente</button>
+                <button class="button" type="submit" (click)="addTeacherToCourse(c.course_id)">Asignar curso al docente</button>
 
 
             </div>
         </div>
-        <button type="submit" (click)="cancelar()">Cancelar</button>
+        <div class="button">
+            <button class="button" type="submit" (click)="cancelar()">Cancelar</button>
+        </div>
         
   
 

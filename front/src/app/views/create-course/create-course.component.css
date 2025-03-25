@@ -17,26 +17,35 @@
 .contenedor {
     max-width: 600px;
     margin: 30px auto;
-    padding: 20px;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--color-azul); /* Borde completo */
+    border-left: 5px solid var(--color-azul);
     background-color: #f9f9f9;
-    font-family: 'Arial', sans-serif;
+
+}
+
+.cont-tit{
+    background-color: #6564cc;
+    padding: 16px;
+    border-radius:8px 8px 0px 0px;
+    border: 1px solid #6564cc;
 }
 
 /* 📌 Títulos */
 .title {
     text-align: center;
     font-size: 24px;
-    color: #00339e;
-    margin-bottom: 15px;
+    color: white;
 }
 
 /* 🎯 Estilo para Formulario */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    padding: 24px;
+
+
 }
 
 /* 📝 Campos de Entrada */
@@ -45,10 +54,17 @@ form {
     flex-direction: column;
 }
 
-.formCamp label {
+.formCamp div label {
     font-weight: bold;
-    color: #010163;
-    margin-bottom: 5px;
+    color: #00339e;
+    margin: 12px 4px;
+}
+.err label,.err div, .err select{
+    display: inline-block;
+    margin:  12px;
+}
+.err p{
+    margin: 0 4px;
 }
 
 /* ✏️ Inputs y Select */
@@ -80,8 +96,12 @@ form {
     margin-top: 15px;
 }
 
+.input_date{
+    padding: .5rem;
+    margin: .2rem;
+}
 .button button {
-    background: linear-gradient(135deg, #6564cc, #00339e);
+    background:  #fc6a07;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -92,6 +112,7 @@ form {
 }
 
 .button button:hover {
-    background: #fc6a07;
+    background:  #00339e;
     transform: scale(1.05);
 }
+

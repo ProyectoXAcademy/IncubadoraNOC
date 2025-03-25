@@ -1,4 +1,8 @@
-<h2 class="courses-title">Mis Cursos Registrados</h2>
+<section class="contenedor">
+  <div class="cont-tit">
+
+    <h2 class="title">Mis Cursos Registrados</h2>
+  </div>
 
 <div *ngIf="userCourses===noHayRegistros" >
   <h2>No hay registros a cursos</h2>
@@ -11,7 +15,7 @@
       <h5 class="course-card-title">{{ getCourseName(registration.course_id) }}</h5>
       <p class="course-card-text"><strong>Fecha de Inscripción:</strong> {{ registration.registration_date | date: 'medium' }}</p>
       
-      <button class="course-card-button" (click)="goToCourse(registration.course_id)">Ver Curso</button>
+      <button class="button" (click)="goToCourse(registration.course_id)">Ver Curso</button>
     </div>
   </div>
 </div>
@@ -19,3 +23,5 @@
 <ng-template #noCourses>
   <p class="no-courses">No estás inscrito en ningún curso aún.</p>
 </ng-template>
+
+</section>
