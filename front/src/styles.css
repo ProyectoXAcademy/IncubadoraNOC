@@ -73,7 +73,8 @@
 .dark-mode .courses-intro h2,
 .dark-mode .courses-intro h4,
 .dark-mode .title,
-.dark-mode section .presentation-tit h1
+.dark-mode section .presentation-tit h1,
+.dark-mode .dropdown-btn
 {
   color: white; !important;
 }

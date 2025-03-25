@@ -72,8 +72,10 @@ a {
 }
 
 .presentation-tit h1 {
-  font-size: 2rem;
   background-clip: text;
+  font-size: 2em;
+  font-weight: bold;
+  unicode-bidi: isolate;
 }
 
 /* caract */
@@ -107,9 +109,13 @@ a {
 
 .caract-cont h2 {
   padding: 0 0 8px 0;
+  
 }
-
-
+.caract-cont p{
+  font-size: 0.95em;
+  font-weight: bold;
+  unicode-bidi: isolate;
+}
 
 /* Hero */
 .courses {
@@ -381,9 +387,7 @@ a {
     align-content: center;
     padding: 24px;
   }
-  .presentation-tit h1 {
-    font-size: 2.5rem;
-  }
+  
   .caract-cont:hover {
     transform: scale(1.02);
   }
