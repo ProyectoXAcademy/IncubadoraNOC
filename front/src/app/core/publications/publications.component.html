@@ -1,12 +1,15 @@
 <section>
-  <article *ngFor="let p of publications" class="borde" class="card">
-    <h3>{{ p.title }}</h3>
+  <article *ngFor="let p of publications" class="card">
+    <h3 class="title">{{ p.title }}</h3>
 
     <div class="description">
-      <p>{{ p.description }}</p>
-      <p class="date" >{{ p.issue_date }}</p>
+      <ul>
+        <li>* {{ p.description }}</li>
+        <li class="date">* {{ formatDate(p.issue_date) }}</li> 
+        <li class="type">* {{ p.type }}</li>
+      </ul>
     </div>
-      <h4 class="type">{{ p.type }}</h4>
+    <h3 class="title">Incubadora Noc - Mitre 757</h3>
 
   </article>
 </section>

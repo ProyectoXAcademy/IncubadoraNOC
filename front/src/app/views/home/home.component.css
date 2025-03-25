@@ -73,9 +73,7 @@ a {
 
 .presentation-tit h1 {
   font-size: 2rem;
-  background-image: linear-gradient(to right, #010163, #00339e, #6564cc);
   background-clip: text;
-  color: transparent;
 }
 
 /* caract */
@@ -204,10 +202,10 @@ a {
 .carousel-container {
   position: relative;
   width: 100%;
-  max-width: 800px; /* Ajusta según tu diseño */
+  max-height: 850px;
+  max-width: 95%;
   margin: auto;
   overflow: hidden;
-  margin-top: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }

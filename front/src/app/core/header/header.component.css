@@ -15,7 +15,7 @@ li {
 .switch {
   position: relative; /* Posición relativa para el interruptor */
   display: inline-block; /* Mostrar en línea y como bloque */
-  width: 24px; /* Ancho del interruptor */
+  width: 40px; /* Ancho del interruptor */
   height: 18px; /* Altura del interruptor */
 }
 
@@ -66,13 +66,13 @@ input:focus + .slider {
 
 /* Estilo para el círculo dentro del slider cuando el input está marcado */
 input:checked + .slider::before {
-  transform: translateX(8px); /* Mover el círculo a la derecha */
+  transform: translateX(24px); /* Mover el círculo a la derecha */
 }
 header {
   background-color: #010163; /* Azul oscuro */
   color: #ffffff; /* Blanco */
   display: flex;
-  justify-content: space-between;
+  justify-content:space-around;
   align-items: center;
   padding: 15px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
