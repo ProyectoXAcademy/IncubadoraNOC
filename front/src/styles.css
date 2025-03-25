@@ -74,7 +74,9 @@
 .dark-mode .courses-intro h4,
 .dark-mode .title,
 .dark-mode section .presentation-tit h1,
-.dark-mode .dropdown-btn
+.dark-mode .dropdown-btn,
+.dark-mode .sidebar ul li a,
+.dark-mode .courses-title 
 {
   color: white; !important;
 }
