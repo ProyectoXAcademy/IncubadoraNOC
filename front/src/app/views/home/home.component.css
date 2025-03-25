@@ -102,7 +102,7 @@ a {
   overflow: hidden;
   margin: 16px;
   padding: 16px;
-  border: 1px solid #FC6A07;
+  border: 2px solid #FC6A07;
   border-radius: 5px;
   transition: all 0.5s ease;
 }
