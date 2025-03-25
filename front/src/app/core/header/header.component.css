@@ -1,8 +1,10 @@
-body,*{
+body,
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 a {
@@ -15,7 +17,7 @@ li {
 .switch {
   position: relative; /* Posición relativa para el interruptor */
   display: inline-block; /* Mostrar en línea y como bloque */
-  width: 24px; /* Ancho del interruptor */
+  width: 40px; /* Ancho del interruptor */
   height: 18px; /* Altura del interruptor */
 }
 
@@ -34,7 +36,7 @@ li {
   left: 0; /* Posición izquierda */
   right: 0; /* Posición derecha */
   bottom: 0; /* Posición inferior */
-  background-color: #00339E; /* Color de fondo del slider */
+  background-color: #00339e; /* Color de fondo del slider */
   border-radius: 24px; /* Bordes redondeados del slider */
   transition: background-color 0.4s ease; /* Transición suave para el cambio de color de fondo */
 }
@@ -66,27 +68,25 @@ input:focus + .slider {
 
 /* Estilo para el círculo dentro del slider cuando el input está marcado */
 input:checked + .slider::before {
-  transform: translateX(8px); /* Mover el círculo a la derecha */
+  transform: translateX(24px); /* Mover el círculo a la derecha */
 }
 header {
   background-color: #010163; /* Azul oscuro */
   color: #ffffff; /* Blanco */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 15px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative; 
-  z-index: 1000; 
+  position: relative;
+  z-index: 1000;
 }
 
 /* 🔹 Logo */
-.logo a img{
-
+.logo a img {
   height: 2.5rem;
   background-size: contain;
 }
-
 
 /* 🔹 Navbar */
 .nav-bar {
@@ -99,13 +99,14 @@ header {
 .dropdown {
   position: relative;
   z-index: 10;
-
 }
 
 .dropdown-btn {
-  background-color: #00339E; /* Azul */
-  color: #ffffff; /* Blanco */
+  background-color: #00339e; /* Azul */
   border: none;
+  font-size: 1.17em;
+  font-weight: bold;
+  unicode-bidi: isolate;
   padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
@@ -113,7 +114,7 @@ header {
 }
 
 .dropdown-btn:hover {
-  background-color: #FC6A07; /* Naranja */
+  background-color: #fc6a07; /* Naranja */
 }
 
 .dropdown-menu {
@@ -122,7 +123,7 @@ header {
   top: 100%; /* Coloca el dropdown debajo del botón */
   right: 0; /* Alinea el borde derecho del menú al borde derecho del botón */
   transform: translateX(0); /* No hay desplazamiento horizontal */
-  background-color: #6564CC; /* Violeta */
+  background-color: #6564cc; /* Violeta */
   color: #ffffff;
   border-radius: 5px;
   list-style: none;
@@ -147,20 +148,20 @@ header {
 }
 
 .dropdown-menu li:hover {
-  background-color: #00339E; /* Azul */
+  background-color: #00339e; /* Azul */
 }
 
 /* 🔎 Barra de búsqueda */
 .search-bar {
   padding: 8px;
   border-radius: 5px;
-  border: 1px solid #6564CC; /* Violeta */
+  border: 1px solid #6564cc; /* Violeta */
   width: 200px;
   transition: all 0.3s ease-in-out;
 }
 
 .search-bar:focus {
-  border: 1px solid #FC6A07; /* Naranja */
+  border: 1px solid #fc6a07; /* Naranja */
   outline: none;
 }
 
@@ -180,16 +181,14 @@ header {
 }
 
 .login-btn {
-  background-color: #00339E; /* Azul */
+  background-color: #00339e; /* Azul */
   color: #ffffff;
 }
 
 .register-btn {
-  background-color: #FC6A07; /* Naranja */
+  background-color: #fc6a07; /* Naranja */
   color: #ffffff;
 }
-
-
 
 .btn:hover {
   opacity: 0.8;
@@ -239,6 +238,5 @@ header {
   }
 }
 
-@media (max-width : 430px) {
-  
+@media (max-width: 430px) {
 }

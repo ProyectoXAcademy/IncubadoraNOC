@@ -61,7 +61,7 @@
 
 
 
-.dark-mode .title,
+.dark-mode section .title,
 .dark-mode .input-group label,
 .dark-mode .checkbox-group label,
 .dark-mode .caract-cont,
@@ -71,8 +71,14 @@
 .dark-mode .cursos-destacados h2,
 .dark-mode .container marquee span,
 .dark-mode .courses-intro h2,
-.dark-mode .courses-intro h4
+.dark-mode .courses-intro h4,
+.dark-mode .title,
+.dark-mode section .presentation-tit h1,
+.dark-mode .dropdown-btn,
+.dark-mode .sidebar ul li a,
+.dark-mode .courses-title 
 {
-  color: white;
+  color: white; !important;
 }
+
 
