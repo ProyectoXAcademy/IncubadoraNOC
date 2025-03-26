@@ -9,7 +9,7 @@ body{
 /* Estilos generales */
 h2 {
     text-align: center;
-    color: #010163; /* Azul oscuro */
+    color: #fcfcfc; /* Azul oscuro */
   }
   
   /* Contenedor de los cursos */
@@ -80,7 +80,7 @@ h2 {
   /* 📌 Sección de Cursos Registrados */
 .courses-title {
   font-size: 2.5rem;
-  color: #010163;
+  color: #ffffff;
   text-align: center;
   margin-bottom: 20px;
   font-weight: bold;
