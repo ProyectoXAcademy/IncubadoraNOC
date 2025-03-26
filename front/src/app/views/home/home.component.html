@@ -38,7 +38,7 @@
     
      <div class="carousel-container">
       <!-- Lista de imágenes definidas directamente en HTML -->
-      <div class="carousel-slide" *ngFor="let img of ['assets/slider-desktop-3.jpg', 'assets/slider-desktop-1.jpg', 'assets/slider-desktop-3.jpg']; let i = index"
+      <div class="carousel-slide" *ngFor="let img of ['assets/slider-desktop-3.jpg', 'assets/slider-desktop-1.jpg', 'assets/slider-desktop-2.jpg']; let i = index"
            [ngClass]="{'active': i === currentIndex}">
         <img [src]="img" alt="Imagen {{ i + 1 }}">
         
