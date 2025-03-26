@@ -1,28 +1,44 @@
-<section class="card-flex">
-  <div *ngFor="let course of courses" class="card-container incubator-theme">
-    <a href="/" class="hero-image-container">
-      <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg" alt="Course Image"/>
-    </a>
-    <main class="main-content">
-      <h1 class="course-title"><a href="#">{{ course.name }}</a></h1>
-      <p class="course-description">{{ course.description }}</p>
+<section class="contenedor">
+  <div class="cont-tit">
 
-      <div class="flex-row">
-        <div class="course-category">
-          <img src="https://i.postimg.cc/T1F1K0bW/Ethereum.png" alt="category" class="small-image"/>
-          <h2>{{ course.category }}</h2>
-        </div>
-        <div class="status">
-          <img src="https://i.postimg.cc/prpyV4mH/clock-selection-no-bg.png" alt="clock" class="small-image"/>
-          <p *ngIf="course.active; else inactive" class="active-status">Activo</p>
-          <ng-template #inactive><p class="inactive-status">Inactivo</p></ng-template>
-        </div>
-      </div>
-    </main>
-
-    <div class="card-attribute">
-      <img src="https://i.postimg.cc/SQBzNQf1/image-avatar.png" alt="avatar" class="small-avatar"/>
-      <p>Profesor: <span>{{ course.teacher_id }}</span></p>
-    </div>
+    <h2 class="title">Cursos que dicto</h2>
   </div>
+  
+    <div class="no-register" *ngIf="courses.length===0" >
+      <h2>Todavía no dictas a ningún curso.</h2>
+    </div>
+  
+  <div class="card-flex">
+
+    <div *ngFor="let course of courses" class="card-container incubator-theme">
+      <a href="/" class="hero-image-container">
+        <img class="hero-image img" src="{{ course.img }}" alt="Course Image"/>
+      </a>
+      <main class="main-content">
+        <h1 class="course-title">
+          <strong>
+            {{ course.name }}
+  
+          </strong>
+        </h1>
+        <p class="course-description">{{ course.description }}</p>
+  
+        <div class="flex-row">
+          <div class="course-category">
+            <img src="../../../assets/category-card.png" alt="category" class="small-image" />
+            <h2>{{ course.category }}</h2>
+          </div>
+          <div class="status">
+            <img src="https://i.postimg.cc/prpyV4mH/clock-selection-no-bg.png" alt="clock" class="small-image"/>
+            <p *ngIf="course.active; else inactive" class="active-status">Activo</p>
+            <ng-template #inactive><p class="inactive-status">Inactivo</p></ng-template>
+          </div>
+        </div>
+      </main>
+  
+      <button class="course-card-button"  (click)="goToCourse(course.course_id)">Ver Curso</button>
+    </div>
+
+  </div>
+
 </section>

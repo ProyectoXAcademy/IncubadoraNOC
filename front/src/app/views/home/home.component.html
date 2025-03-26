@@ -4,7 +4,7 @@
     
       <div class="presentation-img "></div>
       <div class="presentation-tit ">
-        <h1>Somos una empresa que apoya a emprendedores, brindándoles herramientas para alcanzar el éxito </h1>
+        <h1 >Somos una empresa que apoya a emprendedores, brindándoles herramientas para alcanzar el éxito </h1>
       </div>
   
     </section>
@@ -15,19 +15,19 @@
       
   
       <div class="caract-cont">
-        <h2>¿Qué hacemos?</h2>
-        <p>Acompañamos a personas para que conviertan sus emprendimientos en negocios sustentables.</p>
+        <h2  >¿Qué hacemos?</h2>
+        <p  >Acompañamos a personas para que conviertan sus emprendimientos en negocios sustentables.</p>
       </div>
   
       <div class="caract-cont">
-        <h2>¿Qué ofrecemos?</h2>
-        <p>Además de acompañarte para que tu negocio alcance el éxito, ofrecemos cursos, seminarios y talleres; prácticos, teóricos y presenciales.</p>
+        <h2  >¿Qué ofrecemos?</h2>
+        <p  >Además de acompañarte para que tu negocio alcance el éxito, ofrecemos cursos, seminarios y talleres; prácticos, teóricos y presenciales.</p>
       </div>
     
 
       <div class="caract-cont">
-        <h2>Aprende con los mejores cursos online</h2>
-        <p>Descubre nuestra oferta de formación y mejora tus habilidades.</p>
+        <h2  >Aprende con los mejores cursos online</h2>
+        <p  >Descubre nuestra oferta de formación y mejora tus habilidades.</p>
         <button  [routerLink]="['/courses']" class="cta">Explorar Cursos</button>
     </div>
       
@@ -38,7 +38,7 @@
     
      <div class="carousel-container">
       <!-- Lista de imágenes definidas directamente en HTML -->
-      <div class="carousel-slide" *ngFor="let img of ['assets/IMG_6426.jpg', 'assets/IMG_6427.jpg', 'assets/IMG_6425.jpg']; let i = index"
+      <div class="carousel-slide" *ngFor="let img of ['assets/slider-desktop-3.jpg', 'assets/slider-desktop-1.jpg', 'assets/slider-desktop-3.jpg']; let i = index"
            [ngClass]="{'active': i === currentIndex}">
         <img [src]="img" alt="Imagen {{ i + 1 }}">
         
@@ -51,7 +51,7 @@
       <!-- Indicadores (dots) -->
       <div class="carousel-dots">
         <span *ngFor="let img of ['assets/IMG_6426.jpg', 'assets/IMG_6427.jpg', 'assets/IMG_6425.jpg']; let i = index"
-              class="dot" 
+              class="dot " 
               [ngClass]="{'active': i === currentIndex}"
               (click)="goToSlide(i)">
         </span>
@@ -72,7 +72,7 @@
 <!-- PUBLICACIONES -->
   <section class="notices">
     <h1>Portal de noticias</h1>
-    <app-publications></app-publications>
+    <app-publications ></app-publications>
   </section>
 
 

@@ -91,10 +91,7 @@ form {
 }
 
 /* 🎯 Botón Principal */
-.button {
-    text-align: center;
-    margin-top: 15px;
-}
+
 
 .input_date{
     padding: .5rem;
@@ -116,3 +113,54 @@ form {
     transform: scale(1.05);
 }
 
+.second-div{
+    margin: 32px 24px;
+
+}
+
+
+.second-div p{
+    padding: 4px;
+    margin: 4px;
+
+}
+
+.third-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 32px 24px;
+
+}
+
+.third-div div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.third-div * {
+    margin: 4px;
+}
+.course-card{
+    border: 1px solid #fc6a07;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 8px;
+
+
+}
+button{
+    margin: 8px;
+}
+
+
+
+.third-div h3{
+    text-align: center;
+    margin: 32px;
+}
+
+.third-div button{
+    text-align: center;
+    margin: auto;
+}

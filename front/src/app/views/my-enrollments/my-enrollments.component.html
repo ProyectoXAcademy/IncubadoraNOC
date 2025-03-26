@@ -1,11 +1,11 @@
 <section class="contenedor">
   <div class="cont-tit">
 
-    <h2 class="title">Mis Cursos Registrados</h2>
+    <h2 class="title">Mis Inscripciones</h2>
   </div>
 
-<div *ngIf="userCourses===noHayRegistros" >
-  <h2>No hay registros a cursos</h2>
+<div class="no-register" *ngIf="userCourses===noHayRegistros" >
+  <h2>Todavía no te inscribiste a ningún curso, o no te dieron el alta.</h2>
 </div>
 
 <div class="courses-container">

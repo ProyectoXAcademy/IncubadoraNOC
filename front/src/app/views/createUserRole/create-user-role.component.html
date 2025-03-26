@@ -26,33 +26,25 @@
 </section>
 
 <section *ngIf="user" class="second-form">
+    <div class="cont-tit">
+        <h2 class="title">Información del usuario</h2>
 
+    </div>
     <div class="second-div">
-        <h3>Información del usuario</h3>
 
         <div class="user-info">
             <div >
-                <p>User ID</p>
-                <p>Nombre</p>
-                <p>Apellido</p>
-                <p>Email</p>
+                <p>User ID: {{user.user_id}}</p>
+                <p>Nombre: {{user.name}}</p>
+                <p>Apellido: {{user.lastName}}</p>
+                <p>Email: {{user.email}}</p>
 
                 <div class="div-line" *ngFor = "let r of roles">
-                    <p *ngIf="r.RoleRoleId==3">Rol Alumno</p>
-                    <p *ngIf="r.RoleRoleId==2">Rol Docente</p>
+                    <p *ngIf="r.RoleRoleId==3">Rol Alumno: Si</p>
+                    <p *ngIf="r.RoleRoleId==2">Rol Docente: Si</p>
                 </div>
             </div>
-            <div>
-                <p>{{user.user_id}}</p>
-                <p>{{user.name}}</p>
-                <p>{{user.lastName}}</p>
-                <p class="p-email">{{user.email}}</p>
-                <div class="div-line" *ngFor = "let r of roles">
-                    <p *ngIf="r.RoleRoleId==3">Si</p>
-                    <p *ngIf="r.RoleRoleId==2">Si</p>
-                </div>
 
-            </div>
 
             <div class="div-line">
                 <button class="button" (click)="addRole(user.user_id)">Asignar rol de docente</button>
@@ -62,21 +54,21 @@
         </div>
     </div>
 
-    <div class="second-div"  *ngIf="insripcionCurso" >
+    <div class="third-div"  *ngIf="insripcionCurso" >
         <h3>Seleccione el curso que el docente dictará</h3>
 
         <div>
             <div class="course-card" *ngFor="let c of courses" >
-                <h3>Nombre: {{c.name}}</h3>
+                <h4>Nombre: {{c.name}}</h4>
                 <p> <strong>Descripción: </strong> {{c.description}}</p>
                 <p><strong>ID curso: </strong> {{c.course_id}}</p>
 
-                <button class="button" type="submit" (click)="addTeacherToCourse(c.course_id)">Asignar curso al docente</button>
+                <button class="button " type="submit" (click)="addTeacherToCourse(c.course_id)">Asignar curso al docente</button>
 
 
             </div>
         </div>
-        <div class="button">
+        <div >
             <button class="button" type="submit" (click)="cancelar()">Cancelar</button>
         </div>
         

@@ -26,6 +26,7 @@ section {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   text-align: left;
   position: relative;
+  margin: 8px;
 }
 
 /* ESTILOS DEL TÍTULO */

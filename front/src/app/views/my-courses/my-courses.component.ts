@@ -15,12 +15,12 @@ export class MyCoursesComponent implements OnInit {
   courses: Courses[] = [];
   teacher_id: number = 0; 
 
+
   constructor(
     private coursesService: CoursesService,
     private router :Router
 
   ) {}
-  imageUrl: string = "https://images.pexels.com/photos/267582/pexels-photo-267582.jpeg";
 
   ngOnInit() {
     this.getLoggedUser();
@@ -45,6 +45,8 @@ export class MyCoursesComponent implements OnInit {
         this.courses = data;
       },
       error: (error) => {
+        this.courses = []
+        console.log(this.courses)
         console.error('Error al obtener los cursos del profesor', error);
       }
     });
